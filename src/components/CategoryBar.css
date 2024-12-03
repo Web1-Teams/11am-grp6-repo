@@ -1,0 +1,19 @@
+.img-cat {
+  width: 150px;
+  height: 150px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 22%;
+}
+
+.img-cat:hover {
+  transform: scale(1.07);
+  filter: brightness(1.135);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.category span {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+  letter-spacing: 1px;
+}
