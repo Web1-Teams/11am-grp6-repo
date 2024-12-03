@@ -1,10 +1,7 @@
 import "./App.css";
-import CategoryBar from "./components/CategoryBar";
 
 function App() {
-  return <>
-    <CategoryBar/>
-  </>;
+  return <div></div>;
 }
 
 export default App;
