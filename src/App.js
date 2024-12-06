@@ -1,7 +1,12 @@
 import "./App.css";
+import Slider from './components/Slideer'
 
 function App() {
-  return <div></div>;
+  return (
+    <>
+    <Slider/>
+    </>
+  );
 }
 
 export default App;
