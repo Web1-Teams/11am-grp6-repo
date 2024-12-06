@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Login.css";
+import "./Login.css";
 
 const Login = () => {
   const handleGoogleLogin = () => {

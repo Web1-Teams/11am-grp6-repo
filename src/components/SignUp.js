@@ -4,7 +4,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/SignUp.css"; // Import the CSS file
+import "./SignUp.css"; // Import the CSS file
 
 const SignUp = () => {
   return (
