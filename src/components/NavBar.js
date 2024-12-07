@@ -4,7 +4,7 @@ import './NavBar.css';
 const NavBar = (props) => {
   return (
     <div className="container">
-      <nav className="navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
+      <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
         <a className="navbar-brand" href="#بعدين">{props.BrandName}</a>
         <button
           className="navbar-toggler"

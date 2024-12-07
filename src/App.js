@@ -1,8 +1,9 @@
-import NavBar from "./components/NavBar";
+
+import HomePage from "./pages/HomePage";
 
 function App() {
   return <div>
-   <NavBar BrandName="eATMe" i1="Home" i2="Something Else2" i3="Something Else3" />
+   <HomePage/>
 
   </div>;
 }

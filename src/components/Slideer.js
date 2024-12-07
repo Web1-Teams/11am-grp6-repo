@@ -78,19 +78,19 @@ const Slider = () => {
 
       <div className="carousel-inner" style={{ scrollBehavior: "smooth" }}>
         <div className="carousel-item active" data-bs-interval="2200">
-          <img src={img8} className="d-block w-100" alt="Slide 1" />
+          <img src={img8} className="grp6-img d-block w-100" alt="Slide 1" />
         </div>
         <div className="carousel-item" data-bs-interval="2200">
-          <img src={img9} className="d-block w-100" alt="Slide 2" />
+          <img src={img9} className="grp6-img d-block w-100" alt="Slide 2" />
         </div>
         <div className="carousel-item" data-bs-interval="2200">
-          <img src={img10} className="d-block w-100" alt="Slide 3" />
+          <img src={img10} className="grp6-img d-block w-100" alt="Slide 3" />
         </div>
         <div className="carousel-item" data-bs-interval="2200">
-          <img src={img11} className="d-block w-100" alt="Slide 4" />
+          <img src={img11} className="grp6-img d-block w-100" alt="Slide 4" />
         </div>
         <div className="carousel-item" data-bs-interval="2200">
-          <img src={img12} className="d-block w-100" alt="Slide 5" />
+          <img src={img12} className="grp6-img d-block w-100" alt="Slide 5" />
         </div>
       </div>
     </div>
