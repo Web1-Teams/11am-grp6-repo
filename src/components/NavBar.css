@@ -1,5 +1,5 @@
 .navbar {
-  z-index: 1000;
+  z-index: 1500px;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,8 +15,7 @@ nav {
  color: #800020;
   font-size: 1.5rem;
   font-weight: bold;
-  padding: 3px;
-
+  padding: 14px;
 }
 
 .navbar-brand:hover {

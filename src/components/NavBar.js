@@ -4,7 +4,7 @@ import './NavBar.css';
 const NavBar = (props) => {
   return (
     <div className="container">
-      <nav className="navbar navbar-expand-md navbar-light p-2 bg-light">
+      <nav className="navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
         <a className="navbar-brand" href="#بعدين">{props.BrandName}</a>
         <button
           className="navbar-toggler"
@@ -32,7 +32,7 @@ const NavBar = (props) => {
               className="btn btn-ss btn-dark dropdown-toggle"
               data-bs-toggle="dropdown"
             >
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
             </button>
             <ul className="dropdown-menu dropdown-menu-start">
               <li><a className="dropdown-item" href="#favorites"><i className="fa-solid fa-star"></i> Favorites places</a></li> 
