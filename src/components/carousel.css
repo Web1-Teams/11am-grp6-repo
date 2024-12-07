@@ -1,0 +1,36 @@
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: black; 
+    border-radius: 70%; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+  }
+  
+  carousel-inner {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+  }
+  
+  .carousel-item {
+    overflow: hidden; 
+  }
+  
+  @media (min-width: 768px) {
+    .card-container {
+      flex: 0 0 33%; 
+     
+    }
+    .card{
+      margin:0 7rem;
+    }
+    
+  }
+  @media (max-width:400px) {
+    .card{
+      margin:0 2rem;
+    }
+  }
+  .d-flex.flex-nowrap.overflow-auto::-webkit-scrollbar {
+    display: none;
+  }
