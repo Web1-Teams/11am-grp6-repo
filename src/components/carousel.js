@@ -1,7 +1,7 @@
 import Card from "./Card";
 import "./carousel.css";
 import "./Card.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 const Carousel = () => {
   
