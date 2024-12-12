@@ -1,4 +1,16 @@
 
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto;
+  height: auto;
+  background: none;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-color: black; 
     border-radius: 70%; 

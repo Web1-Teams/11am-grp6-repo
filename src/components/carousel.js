@@ -1,51 +1,42 @@
+import React from "react";
 import Card from "./Card";
 import "./carousel.css";
 import "./Card.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
-const Carousel = () => {
-  
+const Carousel = ({ places, updatePlaceState, carouselId }) => {
+  const chunkSize = 3; // Cards per batch
+  const placeChunks = Array.from({ length: Math.ceil(places.length / chunkSize) }, (_, index) =>
+    places.slice(index * chunkSize, index * chunkSize + chunkSize)
+  );
+
   return (
-    
     <div
-      id="carouselExampleControlsNoTouching"
+      id={`carousel-${carouselId}`}
       className="carousel slide"
       data-bs-touch="true"
       data-bs-wrap="false"
     >
       <div className="carousel-inner">
-        <div className="carousel-item active">
-          <div className="d-flex flex-nowrap overflow-auto">
-            <div className="card-container">
-              <Card name="card 1" />
-            </div>
-            <div className="card-container">
-              <Card name="card 2" />
-            </div>
-            <div className="card-container">
-              <Card name="card 3" />
-            </div>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <div className="d-flex flex-nowrap overflow-auto">
-            <div className="card-container">
-              <Card name="card 4" />
-            </div>
-            <div className="card-container">
-              <Card name="card 5" />
-            </div>
-            <div className="card-container">
-              <Card name="card 6" />
+        {placeChunks.map((chunk, batchIndex) => (
+          <div
+            className={`carousel-item ${batchIndex === 0 ? "active" : ""}`}
+            key={batchIndex}
+          >
+            <div className="d-flex flex-nowrap overflow-auto">
+              {chunk.map((place) => (
+                <div className="card-container" key={place.id}>
+                  <Card {...place} updatePlaceState={updatePlaceState} />
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        ))}
       </div>
 
       <button
         className="carousel-control-prev"
         type="button"
-        data-bs-target="#carouselExampleControlsNoTouching"
+        data-bs-target={`#carousel-${carouselId}`}
         data-bs-slide="prev"
       >
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -54,7 +45,7 @@ const Carousel = () => {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target="#carouselExampleControlsNoTouching"
+        data-bs-target={`#carousel-${carouselId}`}
         data-bs-slide="next"
       >
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
