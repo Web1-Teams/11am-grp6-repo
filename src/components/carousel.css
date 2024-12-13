@@ -1,36 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+.globalStyle {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: black; 
-    border-radius: 70%; 
-    padding: 20px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
-  }
-  
-  carousel-inner {
+  .bodyStyle {
     display: flex;
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
   }
-  
-  .carousel-item {
-    overflow: hidden; 
+ 
+  .swiper-slide {
+
+    height: 600px; 
+  .slider-wrapper {
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 70px 55px;
   }
-  
+.slider-wrapper .swiper-pagination-bullet {
+    background: #fff;
+    height: 13px;
+    width: 13px;
+    opacity: 0.5;
+
+  }
+  .slider-wrapper .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+ 
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+
+    color: #501111; 
+  border-radius: 5px;
+  padding: 10px;
+}
+  @media (max-width: 768px) {
+    .slider-wrapper {
+      margin: 0 10px 40px;
+    }
+    .slider-wrapper .swiper-button-prev {
+      display: none;
+    }
+    .slider-wrapper .swiper-button-next {
+        display: none;
+      }
+    img {
+        width: 100%;
+        height: auto;
+      }
+
+  }
   @media (min-width: 768px) {
-    .card-container {
-      flex: 0 0 33%; 
-     
+    img {
+      width: 500px;
+      height: 300px;
     }
-    .card{
-      margin:0 7rem;
-    }
-    
-  }
-  @media (max-width:400px) {
-    .card{
-      margin:0 2rem;
-    }
-  }
-  .d-flex.flex-nowrap.overflow-auto::-webkit-scrollbar {
-    display: none;
-  }
+    }  }
