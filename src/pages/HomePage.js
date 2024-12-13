@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import CategoryBar from "../components/CategoryBar";
 import Section from "../components/Section";
 import Slideer from "../components/Slideer";
+
+
 const HomePage = () => {
   return (
     <div className="grp6-homepage">

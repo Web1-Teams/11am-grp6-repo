@@ -2,10 +2,10 @@
 import HomePage from "./pages/HomePage";
 
 function App() {
-  return <div>
+  return( 
+  <div>
    <HomePage/>
-
-  </div>;
+  </div>);
 }
 
 export default App;
