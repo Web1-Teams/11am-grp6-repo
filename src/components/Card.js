@@ -99,3 +99,5 @@ const Card = ({ id, image, name, locationname, rating = 0 }) => {
 };
 
 export default Card;
+
+

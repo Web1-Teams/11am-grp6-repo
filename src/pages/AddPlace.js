@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Addplace.css";
+import "./AddPlace.css";
 
 const AddPlace = ({ onAddPlace }) => {
   const [name, setName] = useState("");
@@ -119,3 +119,4 @@ const AddPlace = ({ onAddPlace }) => {
 };
 
 export default AddPlace;
+

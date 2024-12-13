@@ -4,7 +4,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
-import './carousel.css';
+import './Carousel.css';
+
 import Card from './Card';
 
 const Carousel = ({ places, updatePlaceState }) => {
@@ -17,7 +18,7 @@ const Carousel = ({ places, updatePlaceState }) => {
               modules={[Navigation, Pagination]}
               navigation
               pagination={{ clickable: true }}
-              spaceBetween={10}
+              spaceBetween={-10}
               slidesPerView={3}
               slidesPerGroup={1} // Move one card at a time
               loop={false}
@@ -33,17 +34,17 @@ const Carousel = ({ places, updatePlaceState }) => {
                   slidesPerView: 3,
                 },
               }}
+             
             >
               {places.map((place) => (
                 <SwiperSlide key={place.id}>
-                  <Card {...place} updatePlaceState={updatePlaceState} />
+                  <Card  {...place} updatePlaceState={updatePlaceState} />
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

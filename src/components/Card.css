@@ -1,4 +1,150 @@
 .place {
+    background: #f9f9f9; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    width: 410px; /* Fixed width for all cards */
+    margin:  0 ;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack image, name, and other content */
+    height: 500px; /* Fixed height for the card */
+  
+  }
+  
+  .place:hover {
+    transform: translateY(-8px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  /* Force the image to be 230px height */
+  .place-image {
+    width: 100%; /* Full width of the parent */
+    height: 330px; /* Fixed height */
+    object-fit: cover; /* Crop and fill the box */
+    border-bottom: 2px solid #eaeaea; /* Divider line below image */
+  }
+  
+  /* Name of the Place (bold, prominent) */
+  .place-name {
+    font-size: 1.6em; /* Emphasized name */
+    margin: 10px;
+    font-weight: bold;
+    color: #333; /* Dark gray color */
+  }
+  
+  /* Location Styling */
+  .place-location {
+    font-size: 0.9em; /* Smaller than name */
+    margin: 5px 10px;
+    color: #888; /* Light gray color */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .place-location::before {
+    content: "📍"; /* Location pin icon */
+    color: #888;
+  }
+  
+  /* Rating Styling */
+  .place-rating {
+    font-size: 1em;
+    color: #555;
+    margin: 10px;
+  }
+  
+  /* Buttons Container (Heart, Check, Share) */
+  .place-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    pointer-events: none;
+   
+    transition: opacity 0.3s ease;
+  }
+  
+  .place:hover .place-buttons {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Circular buttons for interactions */
+  .circular-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  /* Heart Button */
+  .heart-btn {
+    z-index: 3;
+  }
+  
+  .heart-btn:hover {
+    background-color: #cc0000;
+  }
+  
+  .heart-btn.active {
+    transform: scale(1.1); /* Slightly enlarge when active */
+  }
+  
+  /* Visited Button */
+  .check-btn {
+    z-index: 2;
+  }
+  
+  .check-btn:hover {
+    background-color: #009977;
+  }
+  
+  .check-btn.active {
+    transform: scale(1.1); 
+  }
+  
+  /* Share Button */
+  .share-btn {
+    z-index: 1;
+  }
+  
+  .share-btn:hover {
+    background-color: #cc9a06;
+  }
+  
+  .share-btn.active {
+    transform: scale(1.1); 
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .place {
+      width: 90%; /* Make card width responsive */
+    }
+  }
+  @media (min-width: 300px) {
+    .place {
+      width: 90%; /* Make card width responsive */
+      margin-left:1rem;
+      margin-right:1rem;
+      
+    }
+  }
+=======
   background: #f9f9f9; /* Light gray background */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
@@ -134,3 +280,4 @@
     width: 90%; /* Make card width responsive */
   }
 }
+
