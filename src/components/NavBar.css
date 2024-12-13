@@ -93,3 +93,21 @@
   background-color: #f3e9eb;
   padding: 5px;
 } 
+/* New updates */
+.fa-solid{
+  padding: 5px;
+  margin: 3px;
+}
+.Nav-SearchBar {
+  display: none; 
+}
+@media (max-width: 768px) {
+  .Nav-SearchBar {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%; 
+    transform: translateY(-50%); 
+    z-index: 2000;
+  }
+}
