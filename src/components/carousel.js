@@ -4,9 +4,7 @@ import "./Card.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Carousel = () => {
-  
   return (
-    
     <div
       id="carouselExampleControlsNoTouching"
       className="carousel slide"

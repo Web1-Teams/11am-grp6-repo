@@ -1,6 +1,6 @@
 import NavBar from "./components/NavBar";
 import React, { useState } from "react";
-import Card from "./components/Card";
+import CardList from "./components/Cardlist";
 import Slider from "./components/Slider";
 import "./App.css";
 
@@ -45,14 +45,14 @@ function App() {
       <NavBar BrandName="eATMe" i1="Home" i2="Calender" i3="Something Else3" />
       <Slider />
 
-      <div className="mt-5">
+      {/*<div className="mt-5">
         <div className="row justify-content-center">
           {cardList.map((card, idx) => (
             <div
               className="col-lg-3 col-md-4 col-sm-6 mb-5 d-flex justify-content-center"
               key={card.id}
             >
-              <Card
+              <CardList
                 title={card.title}
                 location={card.location}
                 rating={card.rating}
@@ -63,7 +63,7 @@ function App() {
             </div>
           ))}
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import PropTypes from "prop-types";
 import CuraselCard from "./CuraselCard";
 
-function Card({ title, location, rating }) {
+function CardList({ title, location, rating }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const uniqueId = uuidv4(); // إنشاء معرف فريد لكل بطاقة
 
@@ -45,10 +45,10 @@ function Card({ title, location, rating }) {
   );
 }
 
-Card.propTypes = {
+CardList.propTypes = {
   title: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
 };
 
-export default Card;
+export default CardList;

@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import img1 from "../img/2222.png";
-import img2 from "../img/333.png";
-import img3 from "../img/image.png";
+import img1 from "./cardimg/2222.png";
+import img2 from "./cardimg/333.png";
+import img3 from "./cardimg/image.png";
 
 function CuraselCard({ id, currentIndex, onNext, onPrev }) {
   const images = [img1, img2, img3];
