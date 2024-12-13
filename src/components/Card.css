@@ -4,12 +4,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
   overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  width: 310px; /* Fixed width for all cards */
-  margin: 0 auto;
+  width: 350px; /* Fixed width for all cards */
+  margin: 10 auto;
   position: relative;
   display: flex;
   flex-direction: column; /* Stack image, name, and other content */
-  height: 450px; /* Fixed height for the card */
+  height: 460px; /* Fixed height for the card */
 }
 
 .place:hover {
@@ -20,7 +20,7 @@
 /* Force the image to be 230px height */
 .place-image {
   width: 100%; /* Full width of the parent */
-  height: 230px; /* Fixed height */
+  height: 10px; /* Fixed height */
   object-fit: cover; /* Crop and fill the box */
   border-bottom: 2px solid #eaeaea; /* Divider line below image */
 }
