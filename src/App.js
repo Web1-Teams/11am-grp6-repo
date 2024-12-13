@@ -6,7 +6,6 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 
 function App() {
-
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
@@ -37,6 +36,7 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
+  
   return (
     <Router>
       <NavBar BrandName="My Places" i1="Home" i2="Categories" i3="Contact" />

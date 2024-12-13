@@ -1,65 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-.globalStyle {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-  }
 
-  .bodyStyle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-
-  }
- 
-  .swiper-slide {
-
-    height: 600px; 
-  .slider-wrapper {
-    overflow: hidden;
-    max-width: 1200px;
-    margin: 0 70px 55px;
-  }
+.swiper-slide {
+  height: 600px; 
+  margin-top:60px;
+}
+ /*pagination style*/
 .slider-wrapper .swiper-pagination-bullet {
-    background: #fff;
+    background: #4f0d0d;
     height: 13px;
     width: 13px;
     opacity: 0.5;
-
+ 
   }
   .slider-wrapper .swiper-pagination-bullet-active {
     opacity: 1;
   }
- 
 
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
+ /* arrows styling */
 
-    color: #501111; 
-  border-radius: 5px;
-  padding: 10px;
+ /*Remove the default arrow styles*/
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: ''; 
 }
-  @media (max-width: 768px) {
-    .slider-wrapper {
-      margin: 0 10px 40px;
-    }
-    .slider-wrapper .swiper-button-prev {
+
+/*Custom Next Arrow*/
+.swiper-button-next {
+
+  mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"%3E%3Cpath d="M321-72.35 242.35-151l329-329-329-329L321-887.65 728.65-480 321-72.35Z"/%3E%3C/svg%3E') no-repeat center center;
+  -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"%3E%3Cpath d="M321-72.35 242.35-151l329-329-329-329L321-887.65 728.65-480 321-72.35Z"/%3E%3C/svg%3E') no-repeat center center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  background-color: rgb(178, 171, 171); 
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 1%;
+  top: 7%;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.swiper-button-next:hover {
+  background-color: rgb(142, 43, 43); 
+  transform: translateY(-50%) scale(1.1);
+  cursor: pointer;
+}
+
+/*Custom Previous Arrow */
+
+.swiper-button-prev {
+
+  mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"%3E%3Cpath d="M407.65-72.35 0-480l407.65-407.65L486.3-809l-329 329 329 329-78.65 78.65Z"/%3E%3C/svg%3E') no-repeat center center;
+  -webkit-mask: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"%3E%3Cpath d="M407.65-72.35 0-480l407.65-407.65L486.3-809l-329 329 329 329-78.65 78.65Z"/%3E%3C/svg%3E') no-repeat center center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  background-color: rgb(178, 171, 171); 
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-left: 1200px;
+  top: 7%;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.swiper-button-prev:hover {
+  background-color: rgb(142, 43, 43); 
+  transform: translateY(-50%) scale(1.1); 
+  cursor: pointer;
+}
+/*responsive*/
+  @media (max-width:1500px) {
+
+    .swiper-button-next{
       display: none;
     }
-    .slider-wrapper .swiper-button-next {
-        display: none;
-      }
+     .swiper-button-prev{
+      display: none;
+     }
     img {
         width: 100%;
         height: auto;
       }
 
   }
-  @media (min-width: 768px) {
-    img {
-      width: 500px;
-      height: 300px;
-    }
-    }  }

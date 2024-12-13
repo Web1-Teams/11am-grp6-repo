@@ -169,3 +169,4 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 };
 
 export default PlacePage;
+
