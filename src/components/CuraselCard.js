@@ -4,7 +4,7 @@ import img1 from "../img/2222.png";
 import img2 from "../img/333.png";
 import img3 from "../img/image.png";
 
-function Curasel({ id, currentIndex, onNext, onPrev }) {
+function CuraselCard({ id, currentIndex, onNext, onPrev }) {
   const images = [img1, img2, img3];
 
   return (
@@ -64,4 +64,4 @@ function Curasel({ id, currentIndex, onNext, onPrev }) {
   );
 }
 
-export default Curasel;
+export default CuraselCard;

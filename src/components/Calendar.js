@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Calendar.css";
+import Navbar from "./NavBar.js";
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
@@ -77,73 +78,76 @@ const Calendar = () => {
   };
 
   return (
-    <div className="racer">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
-        <div className="container-fluid">
-          <h1 id="h1style">Calendar</h1>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav" id="astyle">
-              <a className="nav-link active" aria-current="page" href="#">
-                Home Page
-              </a>
-              <a className="nav-link active" href="#">
-                Events
-              </a>
-              <a className="nav-link active" href="#">
-                Schedule your day
-              </a>
+    <>
+      <Navbar />
+      <div className="racer">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+          <div className="container-fluid">
+            <h1 id="h1style">Calendar</h1>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav" id="astyle">
+                <a className="nav-link active" aria-current="page" href="#">
+                  Home Page
+                </a>
+                <a className="nav-link active" href="#">
+                  Events
+                </a>
+                <a className="nav-link active" href="#">
+                  Schedule your day
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <div className="box">
-        <header>
-          <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
-          <div className="icon">
-            <span
-              id="prev"
-              className="material-symbols-rounded"
-              onClick={() => handlePrevNext("prev")}
-            >
-              <i className="fa-solid fa-chevron-left fa-2xl"></i>
-            </span>
-            <span
-              id="next"
-              className="material-symbols-rounded"
-              onClick={() => handlePrevNext("next")}
-            >
-              <i className="fa-solid fa-chevron-right fa-2xl"></i>
-            </span>
+        <div className="box">
+          <header>
+            <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
+            <div className="icon">
+              <span
+                id="prev"
+                className="material-symbols-rounded"
+                onClick={() => handlePrevNext("prev")}
+              >
+                <i className="fa-solid fa-chevron-left fa-2xl"></i>
+              </span>
+              <span
+                id="next"
+                className="material-symbols-rounded"
+                onClick={() => handlePrevNext("next")}
+              >
+                <i className="fa-solid fa-chevron-right fa-2xl"></i>
+              </span>
+            </div>
+          </header>
+
+          <div className="calendar">
+            <ul className="weeks">
+              <li>Sun</li>
+              <li>Mon</li>
+              <li>Tue</li>
+              <li>Wed</li>
+              <li>Thu</li>
+              <li>Fri</li>
+              <li>Sat</li>
+            </ul>
+
+            <ul className="days">{renderCalendar()}</ul>
           </div>
-        </header>
-
-        <div className="calendar">
-          <ul className="weeks">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
-          </ul>
-
-          <ul className="days">{renderCalendar()}</ul>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

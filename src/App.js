@@ -1,8 +1,8 @@
 import NavBar from "./components/NavBar";
 import React, { useState } from "react";
-import Card from "./com/Card";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Card from "./components/Card";
+import Slider from "./components/Slider";
+import "./App.css";
 
 const cardList = [
   { id: 1, title: "Hulk Burger", location: "NNU Street", rating: 2 },
@@ -42,14 +42,10 @@ function App() {
 
   return (
     <div>
-      <NavBar
-        BrandName="eATMe"
-        i1="Home"
-        i2="Something Else2"
-        i3="Something Else3"
-      />
+      <NavBar BrandName="eATMe" i1="Home" i2="Calender" i3="Something Else3" />
+      <Slider />
 
-      <div className="mt-5">
+      {/*<div className="mt-5">
         <div className="row justify-content-center">
           {cardList.map((card, idx) => (
             <div
@@ -67,7 +63,7 @@ function App() {
             </div>
           ))}
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }
