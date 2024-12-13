@@ -1,65 +1,50 @@
-import Card from "./Card";
-import "./carousel.css";
-import "./Card.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination } from 'swiper/modules';
+import './Carousel.css';
+import Card from './Card';
 
-const Carousel = () => {
-  
+const Carousel = ({ places, updatePlaceState }) => {
   return (
-    
-    <div
-      id="carouselExampleControlsNoTouching"
-      className="carousel slide"
-      data-bs-touch="true"
-      data-bs-wrap="false"
-    >
-      <div className="carousel-inner">
-        <div className="carousel-item active">
-          <div className="d-flex flex-nowrap overflow-auto">
-            <div className="card-container">
-              <Card name="card 1" />
-            </div>
-            <div className="card-container">
-              <Card name="card 2" />
-            </div>
-            <div className="card-container">
-              <Card name="card 3" />
-            </div>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <div className="d-flex flex-nowrap overflow-auto">
-            <div className="card-container">
-              <Card name="card 4" />
-            </div>
-            <div className="card-container">
-              <Card name="card 5" />
-            </div>
-            <div className="card-container">
-              <Card name="card 6" />
-            </div>
+    <div className="globalStyle">
+      <div className="container swiper">
+        <div className="slider-wrapper">
+          <div className="card-list swiper-wrapper">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              navigation
+              pagination={{ clickable: true }}
+              spaceBetween={-10}
+              slidesPerView={3}
+              slidesPerGroup={1} // Move one card at a time
+              loop={false}
+              grabCursor={true}
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 3,
+                },
+              }}
+             
+            >
+              {places.map((place) => (
+                <SwiperSlide key={place.id}>
+                  <Card  {...place} updatePlaceState={updatePlaceState} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>
-
-      <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleControlsNoTouching"
-        data-bs-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleControlsNoTouching"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
-      </button>
+      
     </div>
   );
 };

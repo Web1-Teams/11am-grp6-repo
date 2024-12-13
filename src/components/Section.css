@@ -1,18 +1,18 @@
-.sectin-header {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #fff; 
-    line-height: 1.4;
-    margin: 100px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'Arial', sans-serif;
-    text-align: left;
-    background-color: #343a40; 
-    padding: 10px 20px;
-    border-radius: 8px;
-    display: inline-block; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    margin-left:25px
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playwrite+US+Modern+Guides&display=swap');
+h3 {
+  margin: 30px 0 20px 55px;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 44px;
+  font-style:normal;
+}
+.red-line {
+  width: 300px; /* Adjust the width as needed */
+  height: 5px; /* Adjust the height as needed */
+  background-color: #90271b; /* Adjust the color as needed */
+  display: block;
+ margin-top:80px;
+ margin-left: 50px;
+}
