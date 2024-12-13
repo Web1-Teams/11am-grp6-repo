@@ -6,6 +6,7 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 
 function App() {
+
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {

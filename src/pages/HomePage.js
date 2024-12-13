@@ -11,6 +11,8 @@ const HomePage = ({ places, updatePlaceState }) => {
     .slice(0, 6); // Top 6 rated places
   const favoritePlaces = places.filter((place) => place.isHeartClicked).slice(0, 6); // First 6 favorites
 
+
+const HomePage = () => {
   return (
     <div className="grp6-homepage">
       <nav>
