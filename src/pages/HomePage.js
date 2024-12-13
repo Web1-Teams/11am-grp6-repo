@@ -9,7 +9,9 @@ const HomePage = ({ places, updatePlaceState }) => {
   const topRatedPlaces = [...places]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 6); // Top 6 rated places
-  const favoritePlaces = places.filter((place) => place.isHeartClicked).slice(0, 6); // First 6 favorites
+  const favoritePlaces = places
+    .filter((place) => place.isHeartClicked)
+    .slice(0, 6); // First 6 favorites
 
   return (
     <div className="grp6-homepage">
