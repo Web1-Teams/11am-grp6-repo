@@ -5,6 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import './Carousel.css';
+
 import Card from './Card';
 
 const Carousel = ({ places, updatePlaceState }) => {
@@ -44,8 +45,6 @@ const Carousel = ({ places, updatePlaceState }) => {
           </div>
         </div>
       </div>
-      
-    </div>
   );
 };
 

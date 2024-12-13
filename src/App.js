@@ -36,6 +36,7 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
+  
   return (
     <Router>
       <NavBar BrandName="My Places" i1="Home" i2="Categories" i3="Contact" />

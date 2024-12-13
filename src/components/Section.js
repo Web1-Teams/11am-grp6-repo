@@ -1,5 +1,7 @@
 import React from "react";
+
 import Carousel from "./Carousel";
+
 import "./Section.css";
 
 const Section = ({ subtitle, places, updatePlaceState, id }) => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Card.css"
+import "./Card.css";
 
 const Card = ({ id, image, name, locationname, rating = 0 }) => {
   const [isShareClicked, setIsShareClicked] = useState(false);
@@ -72,7 +72,7 @@ const Card = ({ id, image, name, locationname, rating = 0 }) => {
           className={`circular-btn heart-btn ${isHeartClicked ? "active" : ""}`}
           onClick={handleHeartClick} // Use defined function
         >
-          <i className="fa-solid fa-location-dot fa-lg" style={{color: "#df1616" }}/>
+          ❤️
         </button>
 
         {/* Visited Button */}
@@ -99,3 +99,5 @@ const Card = ({ id, image, name, locationname, rating = 0 }) => {
 };
 
 export default Card;
+
+

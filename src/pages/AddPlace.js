@@ -119,3 +119,4 @@ const AddPlace = ({ onAddPlace }) => {
 };
 
 export default AddPlace;
+

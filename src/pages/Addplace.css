@@ -1,0 +1,71 @@
+.add-place {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffe3e3;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-place form {  
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-place label {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .add-place input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .add-place textarea {
+    width: 100%;
+    height: 120px; /* Adjust height as needed */
+    resize: vertical; /* Allow vertical resizing */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .add-place textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  .add-place button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #e25c03;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-place button:hover {
+    background-color: #b33300;
+  }
+  .add-place select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .add-place select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
