@@ -45,7 +45,7 @@ function App() {
       <NavBar BrandName="eATMe" i1="Home" i2="Calender" i3="Something Else3" />
       <Slider />
 
-      {/*<div className="mt-5">
+      <div className="mt-5">
         <div className="row justify-content-center">
           {cardList.map((card, idx) => (
             <div
@@ -63,7 +63,7 @@ function App() {
             </div>
           ))}
         </div>
-      </div>*/}
+      </div>
     </div>
   );
 }
