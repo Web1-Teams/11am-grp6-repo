@@ -8,7 +8,7 @@ const SearchBar = () => {
         <div className="input-group">
           <input
             className="form-control"
-            placeholder="search"
+            placeholder="Search for Destination, restaurant ..."
             type="text"
           />
           <button className="btn btn-dark" type="submit">
