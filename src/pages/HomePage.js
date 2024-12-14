@@ -16,12 +16,7 @@ const HomePage = ({ places, updatePlaceState }) => {
   return (
     <div className="grp6-homepage">
       <nav>
-        <NavBar
-          BrandName="eATMe"
-          i1="Home"
-          i2="Something Else2"
-          i3="Something Else3"
-        />
+        <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
       </nav>
       <section>
         <Slideer />

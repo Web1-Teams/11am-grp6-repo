@@ -5,7 +5,9 @@ const NavBar = (props) => {
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-        <a className="navbar-brand" href="#">{props.BrandName}</a>
+        <a className="navbar-brand" href="#">
+          {props.BrandName}
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -16,14 +18,22 @@ const NavBar = (props) => {
         </button>
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
+            {/* <li className="nav-item">
+              <a className="nav-link" href="#">
+                {props.i1}
+              </a>
+            </li> */}
             <li className="nav-item">
-              <a className="nav-link" href="#">{props.i1}</a>
+              <a className="nav-link" href="#">
+                <i className="fa-solid fa-calendar"></i>
+                {props.i2}
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">{props.i2}</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">{props.i3}</a>
+              <a className="nav-link" href="#">
+                <i class="fa-solid fa-heart"></i>
+                {props.i3}
+              </a>
             </li>
           </ul>
           <Link className="nav-link" to="/add-place">
@@ -42,7 +52,7 @@ const NavBar = (props) => {
             <ul className="dropdown-menu dropdown-menu-start">
               <li>
                 <a className="dropdown-item" href="#favorites">
-                  <i className="fa-solid fa-star"></i> Favorites places
+                  <i className="fa-solid fa-user"></i> My Profile
                 </a>
               </li>
               <li>
@@ -52,7 +62,7 @@ const NavBar = (props) => {
               </li>
               <li>
                 <a className="dropdown-item" href="#notifications">
-                  <i className="fa-regular fa-bell"></i> Notifications
+                  <i className="fa-solid fa-bell"></i> Notifications
                 </a>
               </li>
               <li>
