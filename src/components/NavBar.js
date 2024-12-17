@@ -17,12 +17,12 @@ const NavBar = (props) => {
         <div className="collapse navbar-collapse bg-light " id="navi">
           <ul className="navbar-nav me-auto ">
             <li className="nav-item ">
-              <a className="nav-link" href="#بعدين">{props.i1}</a></li>
+              <a className="nav-link" href="/">{props.i1}</a></li>
             <li className="nav-item ">
-              <a className="nav-link" href="#بعدين">{props.i2}</a>
+              <a className="nav-link" href="/login">{props.i2}</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#بعدين">{props.i3}</a>
+              <a className="nav-link" href="/addplace">{props.i3}</a>
             </li>
           </ul>
           <a className="nav-link" href="#add-restaurant"> <i className="fa-solid fa-plus"></i> Place</a> 
