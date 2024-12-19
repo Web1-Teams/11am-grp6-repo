@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import SearchBar from "./SearchBar";
 
 const NavBar = (props) => {
   return (
@@ -25,19 +26,19 @@ const NavBar = (props) => {
             </li> */}
             <li className="nav-item">
               <a className="nav-link" href="calendar">
-                <i className="fa-solid fa-calendar"/>
+                <i className="fa-solid fa-calendar" />
                 {props.i2}
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="love">
-                <i class="fa-solid fa-heart"/>
+                <i class="fa-solid fa-heart" />
                 {props.i3}
               </a>
             </li>
           </ul>
           <Link className="nav-link" to="/add-place">
-            <i className="fa-solid fa-plus"/> Place
+            <i className="fa-solid fa-plus" /> Place
           </Link>
           <a className="nav-link" href="#about-us">
             <i className="fa-solid fa-address-card"></i> Us
@@ -79,9 +80,9 @@ const NavBar = (props) => {
           </div>
         </div>
       </nav>
+      <SearchBar />
     </div>
   );
 };
 
 export default NavBar;
-
