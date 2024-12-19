@@ -5,7 +5,7 @@ const NavBar = (props) => {
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="logo">
           {props.BrandName}
         </a>
         <button
@@ -24,20 +24,20 @@ const NavBar = (props) => {
               </a>
             </li> */}
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                <i className="fa-solid fa-calendar"></i>
+              <a className="nav-link" href="calendar">
+                <i className="fa-solid fa-calendar"/>
                 {props.i2}
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                <i class="fa-solid fa-heart"></i>
+              <a className="nav-link" href="love">
+                <i class="fa-solid fa-heart"/>
                 {props.i3}
               </a>
             </li>
           </ul>
           <Link className="nav-link" to="/add-place">
-            <i className="fa-solid fa-plus"></i> Place
+            <i className="fa-solid fa-plus"/> Place
           </Link>
           <a className="nav-link" href="#about-us">
             <i className="fa-solid fa-address-card"></i> Us

@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
+import Calendar from "./pages/Calendar/Calendar.js";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -47,6 +48,7 @@ function App() {
           path="/place/:id"
           element={<PlacePage places={places} updatePlaceRating={updatePlaceRating} />}
         />
+        <Route path="/calendar" element={<Calendar places={places} />} />
       </Routes>
     </Router>
   );
