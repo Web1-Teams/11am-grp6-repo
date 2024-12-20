@@ -8,6 +8,7 @@ const AddPlace = ({ onAddPlace }) => {
   const [tags, setTags] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [longdescription, setLongDescription] = useState("");
   const [locationName, setLocationName] = useState("");
   const [category, setCategory] = useState(""); // New category state
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const AddPlace = ({ onAddPlace }) => {
       category,
       name,
       image,
-      tags: tags.split(",").map((tag) => tag.trim()),
+      tags: tags.split(",").map((tag) => tag.trim()),longdescription,
       location,
       locationname: locationName,
       description,
@@ -108,6 +109,16 @@ const AddPlace = ({ onAddPlace }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Write a short description about the place..."
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label>Long Description:</label>
+          <textarea
+            value={longdescription}
+            onChange={(e) => setLongDescription(e.target.value)}
+            placeholder="Write a description about the place..."
             rows="3"
             required
           ></textarea>
