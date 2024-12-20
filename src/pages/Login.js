@@ -55,7 +55,7 @@ const Login = () => {
           <p>Or continue with</p>
 
           <Link
-            to="./homepage"
+            to="/"
             className="btn facebook-btn"
             onClick={handleFacebookLogin}
           >

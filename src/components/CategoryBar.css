@@ -6,8 +6,8 @@
 }
 
 .img-cat:hover {
-  transform: scale(1.07);
-  filter: brightness(1.135);
+  transform: scale(1.045);
+  filter: brightness(1.125);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 

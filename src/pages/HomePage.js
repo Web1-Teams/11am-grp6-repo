@@ -4,17 +4,19 @@ import CategoryBar from "../components/CategoryBar";
 import Section from "../components/Section";
 import Slideer from "../components/Slideer";
 
+const HomePage = ({ places, updatePlaceState }) => {
+  const newPlaces = [...places].reverse().slice(0, 6); // Last 6 places
+  const topRatedPlaces = [...places]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 6); // Top 6 rated places
+  const favoritePlaces = places
+    .filter((place) => place.isHeartClicked)
+    .slice(0, 6); // First 6 favorites
 
-const HomePage = () => {
   return (
     <div className="grp6-homepage">
       <nav>
-        <NavBar
-          BrandName="eATMe"
-          i1="Home"
-          i2="Something Else2"
-          i3="Something Else3"
-        />
+        <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
       </nav>
       <section>
         <Slideer />
@@ -23,10 +25,30 @@ const HomePage = () => {
         <CategoryBar />
       </section>
       <section>
-        <Section subtitle="New Places" />
-        <Section subtitle="Top Rated" />
-        <Section subtitle="Your Favorites" />
-        <Section subtitle="Reccomended" />
+        <Section
+          subtitle="New Places"
+          places={newPlaces}
+          updatePlaceState={updatePlaceState}
+          id="new-places"
+        />
+        <Section
+          subtitle="Top Rated"
+          places={topRatedPlaces}
+          updatePlaceState={updatePlaceState}
+          id="top-rated"
+        />
+        <Section
+          subtitle="Your Favorites"
+          places={favoritePlaces}
+          updatePlaceState={updatePlaceState}
+          id="your-favorites"
+        />
+        <Section
+          subtitle="Recommended"
+          places={places.slice(0, 6)} // First 6 places
+          updatePlaceState={updatePlaceState}
+          id="recommended"
+        />
       </section>
     </div>
   );

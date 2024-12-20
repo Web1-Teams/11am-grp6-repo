@@ -1,36 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: black; 
-    border-radius: 70%; 
-    padding: 20px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+.swiper-slide {
+  height: 600px; 
+  margin-top:60px;
+}
+ /*pagination style*/
+.slider-wrapper .swiper-pagination-bullet {
+    background: #4f0d0d;
+    height: 13px;
+    width: 13px;
+    opacity: 0.5;
+ 
   }
+  .slider-wrapper .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+ /* arrows styling */
+
+ /*Remove the default arrow styles*/
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: ''; 
+}
+
+/*Custom Next Arrow*/
+.swiper-button-next {
+
+  color: #4f0d0d;
+ 
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 1%;
+  top: 7%;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.swiper-button-next:hover {
   
-  carousel-inner {
-    display: flex;
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory;
-  }
+  transform: translateY(-50%) scale(1.1);
+  cursor: pointer;
+}
+
+/*Custom Previous Arrow */
+
+.swiper-button-prev {
+
+  color: #4f0d0d;
   
-  .carousel-item {
-    overflow: hidden; 
-  }
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-left: 1200px;
+  top: 7%;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.swiper-button-prev:hover {
   
-  @media (min-width: 768px) {
-    .card-container {
-      flex: 0 0 33%; 
-     
+  transform: translateY(-50%) scale(1.1); 
+  cursor: pointer;
+}
+/*responsive*/
+  @media (max-width:1500px) {
+
+    .swiper-button-next{
+      display: none;
     }
-    .card{
-      margin:0 7rem;
-    }
-    
-  }
-  @media (max-width:400px) {
-    .card{
-      margin:0 2rem;
-    }
-  }
-  .d-flex.flex-nowrap.overflow-auto::-webkit-scrollbar {
-    display: none;
+     .swiper-button-prev{
+      display: none;
+     }
+    img {
+        width: 100%;
+        height: auto;
+      }
+
   }
