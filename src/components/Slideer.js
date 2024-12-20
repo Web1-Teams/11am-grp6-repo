@@ -95,9 +95,9 @@ const Slider = () => {
         </div>
       </div>
          {/* New updates  */}
-         <div className="Slider-Searchbar">
+         {/*<div className="Slider-Searchbar">
           <SearchBar/>
-        </div>
+        </div>*/}
     </div>
   );
 };
