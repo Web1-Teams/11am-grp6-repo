@@ -4,15 +4,18 @@
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: 80px;
 }
+
 .grp-6-nav {
+
   border-bottom: 1px solid #ddd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .navbar-brand {
- color: #800020;
+  color: #800020;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 14px;
@@ -28,41 +31,46 @@
   font-size: 1.1rem;
   margin-right: 15px;
   font-family: "Poppins", sans-serif;
-   letter-spacing: 0.1rem;
+  letter-spacing: 0.1rem;
 }
+
 .nav-link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 2px; 
+  bottom: 2px;
   width: 0;
-  height: 2px; 
-  background-color: #800020; 
+  height: 2px;
+  background-color: #800020;
   transition: width 0.3s ease;
 }
+
 .nav-link:hover::after {
-  width: 100%; 
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .nav-link:hover::after {
-    width:0;
+    width: 0;
   }
 }
+
 .nav-link:hover {
-  color: #640018; 
+  color: #640018;
 }
+
 .dropdown-menu {
-  transform:translateX(-105px);
+  transform: translateX(-105px);
   z-index: 1050;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  background-color: #ffffff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
+
 @media (max-width:790px) {
   .dropdown-menu {
-    left: 0; 
-    transform: translateX(0); 
-    width: 100%; 
+    left: 0;
+    transform: translateX(0);
+    width: 100%;
     box-shadow: none;
   }
 }
@@ -80,7 +88,7 @@
 }
 
 .btn-ss {
- background-color:#800020;
+  background-color: #800020;
   font-size: 1rem;
   border: 10px;
 }
@@ -92,9 +100,10 @@
 .navbar-toggler-icon {
   background-color: #f8f9fa;
   padding: 5px;
-} 
+}
+
 /* New updates */
-.fa-solid{
+.fa-solid {
   padding: 5px;
   margin: 3px;
 }

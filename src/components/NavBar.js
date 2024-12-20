@@ -6,9 +6,10 @@ const NavBar = (props) => {
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-        <a className="navbar-brand" href="logo">
+        <Link className="navbar-brand" to="/">
           {props.BrandName}
-        </a>
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -67,9 +68,9 @@ const NavBar = (props) => {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#login">
+                <Link className="dropdown-item" to="/Login">
                   <i className="fa-solid fa-right-to-bracket"></i> Log In
-                </a>
+                </Link>
               </li>
               <li>
                 <a className="dropdown-item" href="#logout">
