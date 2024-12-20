@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
+import Login from "./pages/Login";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -40,7 +41,7 @@ function App() {
   
   return (
     <Router>
-      <NavBar BrandName="My Places" i1="Home" i2="Categories" i3="Contact" />
+      <NavBar BrandName="VisitMe" i1="Home" i2="Categories" i3="Contact" />
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
         <Route path="/add-place" element={<AddPlace onAddPlace={handleAddPlace} />} />
@@ -49,6 +50,7 @@ function App() {
           element={<PlacePage places={places} updatePlaceRating={updatePlaceRating} />}
         />
         <Route path="/calendar" element={<Calendar places={places} />} />
+        <Route path="/login" element={<Login places={places} />} />
       </Routes>
     </Router>
   );
