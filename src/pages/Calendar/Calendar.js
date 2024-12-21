@@ -121,13 +121,13 @@ const Calendar = () => {
               >
                 <i className="fa-solid fa-chevron-left fa-2xl"></i>
               </span>
-              <span
+              <spanno
                 id="next"
                 className="material-symbols-rounded"
                 onClick={() => handlePrevNext("next")}
               >
                 <i className="fa-solid fa-chevron-right fa-2xl"></i>
-              </span>
+              </spanno>
             </div>
           </header>
 
