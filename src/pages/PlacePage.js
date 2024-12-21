@@ -5,7 +5,6 @@ import './PlacePage.css';
 const PlacePage = ({ places, updatePlaceRating }) => {
     const { id } = useParams();
     const place = places.find((r) => r.id === parseInt(id));
-
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [ratings, setRatings] = useState({
@@ -14,7 +13,38 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         price: null,
         atmosphere: null,
     });
-    const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+   //fav
+   const [isHeartClicked, setIsHeartClicked] = useState(() => {
+    const storedState = JSON.parse(localStorage.getItem("places")) || [];// اذا كانت البيانات موجودة بحولها من مجرد داتا لى كائن حقيقي في جافا سكريبت
+    const place = storedState.find((item) => item.id === parseInt(id)); 
+    return place ? place.isHeartClicked : false; 
+});
+const updateLocalStorage = (updatedPlace) => {
+    const storedState = JSON.parse(localStorage.getItem("places")) || [];
+    const updatedState = storedState.map((item) => 
+        item.id === updatedPlace.id ? { ...item, isHeartClicked: updatedPlace.isHeartClicked } : item
+    );
+    if (!storedState.find(item => item.id === updatedPlace.id)) {
+        updatedState.push(updatedPlace);
+    }
+    localStorage.setItem("places", JSON.stringify(updatedState));
+}; 
+const handleHeartClick = (e) => {
+    e.stopPropagation();//عشان بس يعدل هون وما يعدل عباقي الشغلات (منعه من التعديل على الاب)
+    const newHeartState = !isHeartClicked;
+    setIsHeartClicked(newHeartState);
+
+    updateLocalStorage({ id: place.id, isHeartClicked: newHeartState });
+};
+
+    //end of fav
+    //visited
+  
+
+    //end of visited
+const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+//متغير state عشان نتحكم بالحالة مبدئيا false عشان يكون الايموجي مختفي 
+const [showEmoji, setShowEmoji] = useState(false);
 
     const ratingValues = {
         "😭": 0.2,
@@ -54,8 +84,13 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         if (newComment.trim()) {
-            setComments([...comments, newComment.trim()]);
-            setNewComment('');
+            setComments([...comments, newComment.trim()]);//trim  بتفحص اذا الكومنت كلام حقيقي ولا بس فراغات //نسخة من الكومنتس السابقة بالاضافة للجديدة
+            setNewComment('');//انتقال الى حقل فارغ لكل كومنت
+            //طبعا الطول هو كم كومنت موجود حاليا
+            if (comments.length === 0) {// اذا رسمي كان مافي ولا كومنت قبل هيك
+                setShowEmoji(true);//خلينا حالة الايموجي ترو عشان يظهر الايموجي
+                setTimeout(() => setShowEmoji(false), 3000); // مدة ظهور الايموجي 3 ثواني
+            }
         }
     };
 
@@ -65,27 +100,43 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
     return (
         <div style={{ marginTop: '80px', padding: '20px' }}> {/* Adjust margin for navbar */}
-            <Link to="/">Go Back</Link>
-            <h1>{place.name}</h1>
-            <div className="place-details">
+        {/* واجهة المستخدم هون بظهر الايموجي */}
+        {showEmoji && (
+    <div className="emoji-overlay">
+        🎉
+        <p>you are the first comment </p>
+    </div>
+)}
                 <div className="image-and-tags">
                     <img
                         src={place.image}
                         alt={place.name}
                         className="place-page-image"
                     />
-                    <div className="place-tags">
-                        {place.tags.map((tag, index) => (
-                            <span key={index} className="place-tag">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
                 </div>
+                <section className="Info">
+                <h1>{place.name}</h1>
+                <p>{place.description}</p>
+                <div>
+                <button
+          className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
+          onClick={handleHeartClick} // Use defined function
+        >
+         <i className="fa-solid fa-heart"></i>
+          <p>favorite</p>
+        </button>
+        {/* <button
+          className={`visited-btn   ${isCheckClicked ? "active" : ""}`}
+          onClick={handleCheckClick} // Use defined function
+        >
+         <i class="fa-solid fa-circle-check"></i>
+          <p>Visited</p>
+        </button> */}
+        </div>
+          <p style={{fontSize:25 }}>{place.longDescription}</p>
+                </section>
                 <div className="place-extra-details">
-                    <h3>Description:</h3>
-                    <p>{place.description}</p>
-                    <h3>Location:</h3>
+                    <h2>Location:</h2>
                     <a
                         href={place.location}
                         target="_blank"
@@ -95,7 +146,13 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                         View on Google Maps
                     </a>
                 </div>
-            </div>
+            <div className="place-tags">
+                        {place.tags.map((tag, index) => (
+                            <span key={index} className="place-tag">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
 
             {/* Feedback Button */}
             <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">

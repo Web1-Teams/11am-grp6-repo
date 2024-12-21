@@ -1,13 +1,12 @@
+//import
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-
+//function
 const NavBar = (props) => {
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-        <a className="navbar-brand" href="#">
-          {props.BrandName}
-        </a>
+        <Link  className="navbar-brand"  to="/">{props.BrandName}</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -18,17 +17,18 @@ const NavBar = (props) => {
         </button>
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
-            {/* <li className="nav-item">
-              <a className="nav-link" href="#">
-                {props.i1}
-              </a>
-            </li> */}
             <li className="nav-item">
               <a className="nav-link" href="#">
                 <i className="fa-solid fa-calendar"></i>
                 {props.i2}
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+              <i class="fa-solid fa-circle-check"></i>
+                {props.i1}
+              </a>
+            </li> 
             <li className="nav-item">
               <a className="nav-link" href="#">
                 <i class="fa-solid fa-heart"></i>
@@ -82,6 +82,6 @@ const NavBar = (props) => {
     </div>
   );
 };
-
+//export
 export default NavBar;
 

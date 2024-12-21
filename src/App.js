@@ -39,7 +39,7 @@ function App() {
   
   return (
     <Router>
-      <NavBar BrandName="My Places" i1="Home" i2="Categories" i3="Contact" />
+      <NavBar BrandName="VisitMe" i1="Home" i2="Categories" i3="Contact" />
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
         <Route path="/add-place" element={<AddPlace onAddPlace={handleAddPlace} />} />

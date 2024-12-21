@@ -36,9 +36,9 @@
   
   /* Location Styling */
   .place-location {
-    font-size: 0.9em; /* Smaller than name */
+    font-size: 0.9em;
     margin: 5px 10px;
-    color: #888; /* Light gray color */
+    color: #888; 
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -56,8 +56,6 @@
     color: #555;
     margin: 10px;
   }
-  
-  /* Buttons Container (Heart, Check, Share) */
   .place-buttons {
     position: absolute;
     top: 10px;
@@ -66,10 +64,20 @@
     gap: 8px;
     opacity: 0;
     pointer-events: none;
-   
     transition: opacity 0.3s ease;
   }
-  
+  .circular-btn:hover{
+    background-color: #ddd8d8;
+  }
+.circular-btn.active {
+    color: rgb(117, 5, 5);
+}
+.circular-btn.active-check {
+    color: rgb(1, 110, 1); 
+}
+.circular-btn.active-share {
+    color: rgb(180, 180, 33);
+}
   .place:hover .place-buttons {
     opacity: 1;
     pointer-events: auto;
@@ -77,12 +85,12 @@
   
   /* Circular buttons for interactions */
   .circular-btn {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: none;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    background-color:#e9e5e5;
+    color: #6d6868;
     font-size: 1.2em;
     cursor: pointer;
     display: flex;
@@ -90,46 +98,6 @@
     align-items: center;
     transition: transform 0.2s ease, background-color 0.2s ease;
   }
-  
-  /* Heart Button */
-  .heart-btn {
-    z-index: 3;
-  }
-  
-  .heart-btn:hover {
-    background-color: #cc0000;
-  }
-  
-  .heart-btn.active {
-    transform: scale(1.1); /* Slightly enlarge when active */
-  }
-  
-  /* Visited Button */
-  .check-btn {
-    z-index: 2;
-  }
-  
-  .check-btn:hover {
-    background-color: #009977;
-  }
-  
-  .check-btn.active {
-    transform: scale(1.1); 
-  }
-  
-  /* Share Button */
-  .share-btn {
-    z-index: 1;
-  }
-  
-  .share-btn:hover {
-    background-color: #cc9a06;
-  }
-  
-  .share-btn.active {
-    transform: scale(1.1); 
-  }
-  
   /* Responsive Design */
   @media (max-width: 768px) {
     .place {
