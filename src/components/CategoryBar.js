@@ -61,7 +61,7 @@ const CategoryItem = (props) => {
 const CategoryBar = () => {
   return (
     <section className="catg py-4">
-      <div className="container">
+      <div className="container category">
         <div className="row justify-content-evenly">
           {categories.map((category) => (
             <CategoryItem

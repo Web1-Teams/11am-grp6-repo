@@ -1,15 +1,28 @@
 .grp-6-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -230%);
+    top: 24.5%;
+    left: 0;
+    transform: translate(0, -230%);
     z-index: 1000;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 .input-group .form-control {
     border: 1px solid #ddd;
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 10px;
+    flex: 1;
+    margin: 0;
+    border-radius: 0;
 }
 
 .input-group .btn {
@@ -17,6 +30,7 @@
     color: #fff;
     padding: 10px 20px;
     transition: background-color 0.3s ease;
+    border-radius: 0;
 }
 
 .input-group .btn:hover {
