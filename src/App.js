@@ -5,6 +5,8 @@ import SecondaryNavBar from "./components/SecondaryNavBar"
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
+import Calendar from "./pages/Calendar/Calendar.js";
+import Login from "./pages/Login";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -40,8 +42,7 @@ function App() {
   
   return (
     <Router>
-      
-     
+
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
         <Route path="/add-place" element={<><AddPlace onAddPlace={handleAddPlace} /> <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3=" My Favorites" /><SecondaryNavBar/></>} />
@@ -49,6 +50,8 @@ function App() {
           path="/place/:id"
           element={<><PlacePage places={places} updatePlaceRating={updatePlaceRating} /><NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" /><SecondaryNavBar/></>}
         />
+        <Route path="/calendar" element={<Calendar places={places} />} />
+        <Route path="/login" element={<Login places={places} />} />
       </Routes>
     </Router>
   );

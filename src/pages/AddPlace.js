@@ -5,11 +5,14 @@ import "./AddPlace.css";
 const AddPlace = ({ onAddPlace }) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
+  const [image2, setImage2] = useState(""); // New state for second image
+  const [image3, setImage3] = useState(""); // New state for third image
   const [tags, setTags] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [longDescription, setLongDescription] = useState(""); // New state for long description
   const [locationName, setLocationName] = useState("");
-  const [category, setCategory] = useState(""); // New category state
+  const [category, setCategory] = useState(""); // Category state
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -20,10 +23,13 @@ const AddPlace = ({ onAddPlace }) => {
       category,
       name,
       image,
+      image2, // Include second image
+      image3, // Include third image
       tags: tags.split(",").map((tag) => tag.trim()),
       location,
       locationname: locationName,
       description,
+      longDescription, // Include long description
       rating: Math.floor(Math.random() * 21) + 80, // Random rating between 80-100
       isHeartClicked: false,
       isCheckClicked: false,
@@ -47,12 +53,30 @@ const AddPlace = ({ onAddPlace }) => {
           />
         </div>
         <div>
-          <label>Image URL:</label>
+          <label>Image URL 1:</label>
           <input
             type="text"
             value={image}
             onChange={(e) => setImage(e.target.value)}
             required
+          />
+        </div>
+        <div>
+          <label>Image URL 2:</label>
+          <input
+            type="text"
+            value={image2}
+            onChange={(e) => setImage2(e.target.value)}
+            placeholder="Optional"
+          />
+        </div>
+        <div>
+          <label>Image URL 3:</label>
+          <input
+            type="text"
+            value={image3}
+            onChange={(e) => setImage3(e.target.value)}
+            placeholder="Optional"
           />
         </div>
         <div>
@@ -112,6 +136,16 @@ const AddPlace = ({ onAddPlace }) => {
             required
           ></textarea>
         </div>
+        <div>
+          <label>Long Description:</label>
+          <textarea
+            value={longDescription}
+            onChange={(e) => setLongDescription(e.target.value)}
+            placeholder="Write a detailed description about the place..."
+            rows="5"
+            required
+          ></textarea>
+        </div>
         <button type="submit">Add Place</button>
       </form>
     </div>
@@ -119,4 +153,3 @@ const AddPlace = ({ onAddPlace }) => {
 };
 
 export default AddPlace;
-

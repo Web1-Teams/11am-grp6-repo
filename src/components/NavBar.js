@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+
 import React, { useState } from "react";
 import logo from './img/logo.png';
 
@@ -10,10 +11,12 @@ const NavBar = ({ BrandName, i2, i3 }) => {
     setIsSearching((prev) => !prev);
   };
 
+
   return (
     <div className="container">
 
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
+
       
         <Link className="navbar-brand" to="/">
         <img src={logo} alt="Logo" className="logo" /> 
@@ -35,6 +38,7 @@ const NavBar = ({ BrandName, i2, i3 }) => {
             />
           )}
         </div>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -47,21 +51,22 @@ const NavBar = ({ BrandName, i2, i3 }) => {
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                  <i className="fa-solid fa-calendar"></i>
-                {i2}
+
+              <a className="nav-link" href="calendar">
+                <i className="fa-solid fa-calendar" />
+                {props.i2}
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                <i className="fa-solid fa-heart"></i>
-                {i3}
+              <a className="nav-link" href="love">
+                <i class="fa-solid fa-heart" />
+                {props.i3}
               </a>
             </li>
           </ul>
-
-          <Link className="nav-link" to="/add-place" style={{ padding: "10px" }}>
+         <Link className="nav-link" to="/add-place" style={{ padding: "10px" }}>
             <i className="fa-solid fa-plus"></i> Place
+
           </Link>
           <div className="dropdown ms">
             <button
@@ -101,7 +106,6 @@ const NavBar = ({ BrandName, i2, i3 }) => {
         </div>
       </nav>
 
-    
     </div>
   );
 };
