@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import SecondaryNavBar from "./components/SecondaryNavBar"
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
@@ -39,13 +40,14 @@ function App() {
   
   return (
     <Router>
-      <NavBar BrandName="My Places" i1="Home" i2="Categories" i3="Contact" />
+      
+     
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
-        <Route path="/add-place" element={<AddPlace onAddPlace={handleAddPlace} />} />
+        <Route path="/add-place" element={<><AddPlace onAddPlace={handleAddPlace} /> <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3=" My Favorites" /><SecondaryNavBar/></>} />
         <Route
           path="/place/:id"
-          element={<PlacePage places={places} updatePlaceRating={updatePlaceRating} />}
+          element={<><PlacePage places={places} updatePlaceRating={updatePlaceRating} /><NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" /><SecondaryNavBar/></>}
         />
       </Routes>
     </Router>
