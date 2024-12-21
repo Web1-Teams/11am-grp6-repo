@@ -32,11 +32,11 @@ a {
   text-decoration: none; /* إزالة الخط السفلي */
 }
 
-a:hover {
+/* a:hover {
      
   text-decoration: underline;
   transform: scale(1.1);
-}
+} */
 #socials_links li {
   font-size: 1rem;
   color: aliceblue;
@@ -67,14 +67,14 @@ font-weight:800;
  padding-bottom: 20px;
 }
 
-.logo{
+.Rlogo{
 
     color:rgb(8, 4, 61);
     font-size: larger;
     font-weight: bolder;
 
 }
-.logo:hover{
+.Rlogo:hover{
 color:  #132258;
 transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 text-decoration: underline;
