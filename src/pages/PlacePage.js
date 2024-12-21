@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import '../pages/PlacePage.css';
+import "./PlacePage.css";
 import PlacePageSlider from '../components/PlacePageSlider';
 import Footer from '../components/Footer';
 import Footer_cat from '../components/Footer_cat';

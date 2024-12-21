@@ -5,7 +5,7 @@
     
   
 }
- .cats-links-container  :hover{
+ .cats-links-container :hover{
   color:rgb(8, 4, 61);
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   text-decoration:none;
@@ -16,4 +16,15 @@
   }
   .cats-name:hover{
 color: aliceblue;
+  }
+
+  .i {
+     color: rgb(220, 220, 184);
+    text-decoration: none; /* إزالة الخط السفلي */
+  }
+  .i :hover{
+ 
+
+    color: #132258;
+transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   }
