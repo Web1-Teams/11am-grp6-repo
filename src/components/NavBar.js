@@ -1,14 +1,44 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import SearchBar from "./SearchBar";
 
-const NavBar = (props) => {
+import React, { useState } from "react";
+import logo from './img/logo.png';
+
+const NavBar = ({ BrandName, i2, i3 }) => {
+  const [isSearching, setIsSearching] = useState(false);
+
+  const handleSearchToggle = () => {
+    setIsSearching((prev) => !prev);
+  };
+
+
   return (
     <div className="container">
+
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-        <a className="navbar-brand" href="logo">
-          {props.BrandName}
-        </a>
+
+      
+        <Link className="navbar-brand" to="/">
+        <img src={logo} alt="Logo" className="logo" /> 
+          {BrandName}
+        </Link>
+        <div className={`search-container ${isSearching ? "active" : ""}`}>
+          <button className="search-button" onClick={handleSearchToggle}>
+            {isSearching ? (
+              <i className="fas fa-times"></i>
+            ) : (
+              <i className="fas fa-search"></i>
+            )}
+          </button>
+          {isSearching && (
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search..."
+            />
+          )}
+        </div>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -17,14 +47,11 @@ const NavBar = (props) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
-            {/* <li className="nav-item">
-              <a className="nav-link" href="#">
-                {props.i1}
-              </a>
-            </li> */}
             <li className="nav-item">
+
               <a className="nav-link" href="calendar">
                 <i className="fa-solid fa-calendar" />
                 {props.i2}
@@ -37,12 +64,10 @@ const NavBar = (props) => {
               </a>
             </li>
           </ul>
-          <Link className="nav-link" to="/add-place">
-            <i className="fa-solid fa-plus" /> Place
+         <Link className="nav-link" to="/add-place" style={{ padding: "10px" }}>
+            <i className="fa-solid fa-plus"></i> Place
+
           </Link>
-          <a className="nav-link" href="#about-us">
-            <i className="fa-solid fa-address-card"></i> Us
-          </a>
           <div className="dropdown ms">
             <button
               className="btn btn-ss btn-dark dropdown-toggle"
@@ -67,8 +92,8 @@ const NavBar = (props) => {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#login">
-                  <i className="fa-solid fa-right-to-bracket"></i> Log In
+                <a className="dropdown-item" href="#about-us">
+                  <i className="fa-solid fa-address-card"></i> Us
                 </a>
               </li>
               <li>
@@ -80,7 +105,7 @@ const NavBar = (props) => {
           </div>
         </div>
       </nav>
-      <SearchBar />
+
     </div>
   );
 };
