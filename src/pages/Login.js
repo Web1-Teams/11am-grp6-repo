@@ -46,7 +46,7 @@ const Login = () => {
           </div>
           <br></br>
           <Link to="./homepage">
-            <button type="submit">Login</button>
+            <button className="hamzabutton" type="submit">Login</button>
           </Link>
         </form>
         <Link to="./homepage" className="text-decoration-none">
