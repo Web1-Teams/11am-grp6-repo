@@ -115,9 +115,10 @@ transform: scale(1.1);
   }
  .custom_footer{
   position: fixed;
-  bottom: 75px;
+  bottom: 0px;
   right: 0;
   left: 0;
+  height:70px;
  }
 }
 @media only  screen and (max-width:990px) and (min-width:716px){
@@ -127,9 +128,10 @@ transform: scale(1.1);
   }
  .custom_footer{
   position: fixed;
-  bottom: 75px;
+  bottom: 0px;
   right: 0;
   left: 0;
+  height:70px;
  }
 
 }
@@ -146,9 +148,10 @@ transform: scale(1.1);
    }
    .custom_footer{
     position: fixed;
-    bottom:75px;
+    bottom:0px;
     right: 0;
     left: 0;
+    height:70px;
 }
 }
 @media only  screen and (max-width:355px){
@@ -163,10 +166,10 @@ transform: scale(1.1);
    }
    .custom_footer{
     position: fixed;
-    bottom:75px;
+    bottom:0px;
     right: 0;
     left: 0;
-
+    height:70px;
 }
 .hidden-text1{
   display: none;
