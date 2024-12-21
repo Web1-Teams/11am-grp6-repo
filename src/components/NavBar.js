@@ -15,7 +15,6 @@ const NavBar = ({ BrandName, i2, i3 }) => {
     <div className="container">
 
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-
         <Link className="navbar-brand" to="/">
         <img src={logo} alt="Logo" className="logo" /> 
           {BrandName}
@@ -36,8 +35,6 @@ const NavBar = ({ BrandName, i2, i3 }) => {
             />
           )}
         </div>
-
-
         <button
           className="navbar-toggler"
           type="button"
@@ -93,9 +90,9 @@ const NavBar = ({ BrandName, i2, i3 }) => {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#about-us">
-                  <i className="fa-solid fa-address-card"></i> Us
-                </a>
+                <Link className="dropdown-item" to="/Login">
+                  <i className="fa-solid fa-right-to-bracket"></i> Log In
+                </Link>
               </li>
               <li>
                 <a className="dropdown-item" href="#logout">

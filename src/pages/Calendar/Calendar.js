@@ -79,7 +79,7 @@ const Calendar = () => {
   return (
     <>
       <div className="body-calendar">
-        <div className="racer">
+        {/*<div className="racer">
           <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
             <div className="container-fluid">
               <h1 id="h1style">Calendar</h1>
@@ -108,42 +108,40 @@ const Calendar = () => {
                 </div>
               </div>
             </div>
-          </nav>
+          </nav>*/}
 
-          <div className="box">
-            <header>
-              <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
-              <div className="icon">
-                <span
-                  id="prev"
-                  className="material-symbols-rounded"
-                  onClick={() => handlePrevNext("prev")}
-                >
-                  <i className="fa-solid fa-chevron-left fa-2xl"></i>
-                </span>
-                <span
-                  id="next"
-                  className="material-symbols-rounded"
-                  onClick={() => handlePrevNext("next")}
-                >
-                  <i className="fa-solid fa-chevron-right fa-2xl"></i>
-                </span>
-              </div>
-            </header>
-
-            <div className="calendar">
-              <ul className="weeks">
-                <li>Sun</li>
-                <li>Mon</li>
-                <li>Tue</li>
-                <li>Wed</li>
-                <li>Thu</li>
-                <li>Fri</li>
-                <li>Sat</li>
-              </ul>
-
-              <ul className="days">{renderCalendar()}</ul>
+        <div className="box">
+          <header>
+            <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
+            <div className="icon">
+              <span
+                id="prev"
+                className="material-symbols-rounded"
+                onClick={() => handlePrevNext("prev")}
+              >
+                <i className="fa-solid fa-chevron-left fa-2xl"></i>
+              </span>
+              <span
+                id="next"
+                className="material-symbols-rounded"
+                onClick={() => handlePrevNext("next")}
+              >
+                <i className="fa-solid fa-chevron-right fa-2xl"></i>
+              </span>
             </div>
+          </header>
+
+          <div className="calendar">
+            <ul className="weeks">
+              <li>Sun</li>
+              <li>Mon</li>
+              <li>Tue</li>
+              <li>Wed</li>
+              <li>Thu</li>
+              <li>Fri</li>
+              <li>Sat</li>
+            </ul>
+            <ul className="days">{renderCalendar()}</ul>
           </div>
         </div>
       </div>
