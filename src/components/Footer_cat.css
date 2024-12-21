@@ -1,0 +1,19 @@
+.cats-links-container{
+  display: flex;
+  flex-direction: column;
+    font-weight: bold;
+    
+  
+}
+ .cats-links-container  :hover{
+  color:rgb(8, 4, 61);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  text-decoration:none;
+  }
+  .cats-name{
+    color:rgb(8, 4, 61);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  .cats-name:hover{
+color: aliceblue;
+  }
