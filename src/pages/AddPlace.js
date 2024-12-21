@@ -2,18 +2,100 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddPlace.css";
 
+const categoryTags = {
+  park: [
+    "have a parking",
+    "suitable for people with special needs",
+    "suitable for old people",
+    "internet",
+    "foods and drinks",
+    "family only",
+    "family section",
+    "entrance fee",
+    "suitable for barbecue",
+    "play ground for children"
+  ],
+  "gaming place": [
+    "have a parking",
+    "bowling",
+    "billiard",
+    "VR",
+    "card games",
+    "board games",
+    "cyber",
+    "suitable for people with special needs",
+    "foods and drinks"
+  ],
+  "ancient place": [
+    "have a parking",
+    "suitable for people with special needs",
+    "foods and drinks",
+    "internet",
+    "there will be physical activity",
+    "suitable for children",
+    "suitable for old people",
+    "markets",
+    "entrance fee",
+    "antique souvenirs shop"
+  ],
+  cafe: [
+    "sweets",
+    "family only",
+    "family section",
+    "suitable for work and study",
+    "shows matches",
+    "suitable for people with special needs",
+    "have a parking",
+    "card games"
+  ],
+  "amusement park": ["water park", "cinema"],
+  restaurant: [
+    "vegetarian food",
+    "fast food",
+    "traditional dishes",
+    "grills",
+    "sea food",
+    "play ground for children",
+    "have a parking",
+    "suitable for people with special needs",
+    "suitable for old people",
+    "family only",
+    "family section",
+    "home made dishes"
+  ]
+};
+
 const AddPlace = ({ onAddPlace }) => {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [image2, setImage2] = useState(""); // New state for second image
-  const [image3, setImage3] = useState(""); // New state for third image
-  const [tags, setTags] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [longDescription, setLongDescription] = useState(""); // New state for long description
+  const [longDescription, setLongDescription] = useState("");
   const [locationName, setLocationName] = useState("");
-  const [category, setCategory] = useState(""); // Category state
+  const [category, setCategory] = useState("");
+  const [tags, setTags] = useState({});
   const navigate = useNavigate();
+
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.target.value;
+    setCategory(selectedCategory);
+
+    // Initialize tag states for the selected category
+    const initialTags = categoryTags[selectedCategory]?.reduce(
+      (acc, tag) => ({ ...acc, [tag]: false }),
+      {}
+    );
+    setTags(initialTags || {});
+  };
+
+  const handleTagChange = (tag) => {
+    setTags((prevTags) => ({
+      ...prevTags,
+      [tag]: !prevTags[tag]
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,20 +105,20 @@ const AddPlace = ({ onAddPlace }) => {
       category,
       name,
       image,
-      image2, // Include second image
-      image3, // Include third image
-      tags: tags.split(",").map((tag) => tag.trim()),
+      image2,
+      image3,
       location,
       locationname: locationName,
       description,
-      longDescription, // Include long description
+      longDescription,
       rating: Math.floor(Math.random() * 21) + 80, // Random rating between 80-100
       isHeartClicked: false,
       isCheckClicked: false,
+      ...tags // Spread individual tag states
     };
 
-    onAddPlace(newPlace); // Pass new place to parent state
-    navigate("/"); // Redirect to homepage
+    onAddPlace(newPlace);
+    navigate("/");
   };
 
   return (
@@ -80,15 +162,6 @@ const AddPlace = ({ onAddPlace }) => {
           />
         </div>
         <div>
-          <label>Tags (comma separated):</label>
-          <input
-            type="text"
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
-            required
-          />
-        </div>
-        <div>
           <label>Location (Google Maps URL):</label>
           <input
             type="url"
@@ -112,20 +185,36 @@ const AddPlace = ({ onAddPlace }) => {
           <label>Category:</label>
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={handleCategoryChange}
             required
           >
             <option value="" disabled>
               Select a category
             </option>
-            <option value="park">Park</option>
-            <option value="restaurant">Restaurant</option>
-            <option value="amusement park">Amusement Park</option>
-            <option value="ancient place">Ancient Place</option>
-            <option value="gaming place">Gaming Place</option>
-            <option value="cafe">Cafe</option>
+            {Object.keys(categoryTags).map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
           </select>
         </div>
+        {category && (
+          <div>
+            <h3>Select Tags:</h3>
+            {categoryTags[category]?.map((tag) => (
+              <div key={tag}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={tags[tag] || false}
+                    onChange={() => handleTagChange(tag)}
+                  />
+                  {tag}
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
         <div>
           <label>Short Description:</label>
           <textarea

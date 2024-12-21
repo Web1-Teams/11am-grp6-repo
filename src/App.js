@@ -9,12 +9,17 @@ function App() {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-    // Load places from localStorage
     const storedPlaces = JSON.parse(localStorage.getItem("places"));
-    if (storedPlaces) {
+    if (storedPlaces && storedPlaces.length > 0) {
       setPlaces(storedPlaces);
     } else {
-      setPlaces([]); // Initialize with an empty array if no places exist
+      fetch("/places.json")
+        .then((response) => response.json())
+        .then((data) => {
+          setPlaces(data);
+          localStorage.setItem("places", JSON.stringify(data));
+        })
+        .catch((error) => console.error("Error loading places:", error));
     }
   }, []);
 
@@ -36,7 +41,6 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
-  
   return (
     <Router>
       <NavBar BrandName="My Places" i1="Home" i2="Categories" i3="Contact" />

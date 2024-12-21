@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import './PlacePage.css';
+import React, { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./PlacePage.css";
 
 const PlacePage = ({ places, updatePlaceRating }) => {
     const { id } = useParams();
@@ -62,6 +62,9 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     if (!place) {
         return <div>Place not found. <Link to="/">Go Back</Link></div>;
     }
+    //This is how we show the tag now its name is key 
+    const tags = Object.keys(place)
+        .filter((key) => place[key] === true && !["isHeartClicked", "isCheckClicked", "rating"].includes(key));
 
     return (
         <div style={{ marginTop: '80px', padding: '20px' }}> {/* Adjust margin for navbar */}
@@ -75,11 +78,15 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                         className="place-page-image"
                     />
                     <div className="place-tags">
-                        {place.tags.map((tag, index) => (
-                            <span key={index} className="place-tag">
-                                {tag}
-                            </span>
-                        ))}
+                        {tags.length > 0 ? (
+                            tags.map((tag, index) => (
+                                <span key={index} className="place-tag">
+                                    {tag}
+                                </span>
+                            ))
+                        ) : (
+                            <p>No tags available.</p>
+                        )}
                     </div>
                 </div>
                 <div className="place-extra-details">
@@ -169,4 +176,3 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 };
 
 export default PlacePage;
-
