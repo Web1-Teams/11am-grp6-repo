@@ -9,7 +9,7 @@ const Section = ({ subtitle, places, updatePlaceState, id }) => {
     <div>
       <div class="red-line"></div>
       <h3 className="section-header">{subtitle}</h3>
-      <Carousel  places={places} updatePlaceState={updatePlaceState} carouselId={id} />
+      <Carousel className ="slide" places={places} updatePlaceState={updatePlaceState} carouselId={id} />
     </div>
   );
 };
