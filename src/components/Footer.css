@@ -118,8 +118,8 @@ transform: scale(1.1);
   bottom: 0px;
   right: 0;
   left: 0;
-  height:70px;
- }
+
+  height:70px;}
 }
 @media only  screen and (max-width:990px) and (min-width:716px){
   .lastly,
@@ -170,6 +170,7 @@ transform: scale(1.1);
     right: 0;
     left: 0;
     height:70px;
+
 }
 .hidden-text1{
   display: none;
