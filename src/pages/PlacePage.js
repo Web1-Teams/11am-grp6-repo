@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import '../pages/PlacePage.css';
 import PlacePageSlider from '../components/PlacePageSlider';
 import Footer from '../components/Footer';
 import Footer_cat from '../components/Footer_cat';
+
 
 const PlacePage = ({ places, updatePlaceRating }) => {
     const { id } = useParams();
@@ -65,12 +67,52 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     if (!place) {
         return <div>Place not found. <Link to="/">Go Back</Link></div>;
     }
+    //This is how we show the tag now its name is key 
+    const tags = Object.keys(place)
+        .filter((key) => place[key] === true && !["isHeartClicked", "isCheckClicked", "rating"].includes(key));
 
     return (
         <div style={{ marginTop: '80px', padding: '0px' }}> {/* Adjust margin for navbar */}
             <Link to="/">Go Back</Link>
+     <PlacePageSlider/>
+            <h1>{place.name}</h1>
+            <div className="place-details">
+                <div className="image-and-tags">
+                    <img
+                        src={place.image}
+                        alt={place.name}
+                        className="place-page-image"
+                    />
+                    <div className="place-tags">
+                        {tags.length > 0 ? (
+                            tags.map((tag, index) => (
+                                <span key={index} className="place-tag">
+                                    {tag}
+                                </span>
+                            ))
+                        ) : (
+                            <p>No tags available.</p>
+                        )}
+                    </div>
+                </div>
+                <div className="place-extra-details">
+                    <h3>Description:</h3>
+                    <p>{place.description}</p>
+                    <h3>Location:</h3>
+                    <a
+                        href={place.location}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="place-location-link"
+                    >
+                        View on Google Maps
+                    </a>
+                </div>
+            </div>
+
               
-              <PlacePageSlider/>
+         
+
 
             {/* Feedback Button */}
             <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">
