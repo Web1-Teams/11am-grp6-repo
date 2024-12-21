@@ -72,17 +72,13 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         .filter((key) => place[key] === true && !["isHeartClicked", "isCheckClicked", "rating"].includes(key));
 
     return (
-        <div style={{ marginTop: '80px', padding: '0px' }}> {/* Adjust margin for navbar */}
+        <div style={{ marginTop: '50px', padding: '0px' }}> {/* Adjust margin for navbar */}
             <Link to="/">Go Back</Link>
      <PlacePageSlider/>
             <h1>{place.name}</h1>
             <div className="place-details">
                 <div className="image-and-tags">
-                    <img
-                        src={place.image}
-                        alt={place.name}
-                        className="place-page-image"
-                    />
+                   
                     <div className="place-tags">
                         {tags.length > 0 ? (
                             tags.map((tag, index) => (
