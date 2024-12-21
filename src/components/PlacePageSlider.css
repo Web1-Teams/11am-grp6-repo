@@ -1,0 +1,103 @@
+#place_page_slider {
+  display: relative;
+  margin-right: 10px;
+}
+carousel.slide {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow: hidden;
+  display: flex;
+  
+}
+
+.carousel-inner {
+  flex: 1 0 100%;
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  aspect-ratio: 16/6;
+  
+}
+
+.carousel-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+#place_page_slider .carousel-indicators button:active {
+  background-color: #420e0e;
+  transform: scale(0.95); 
+}
+#place_page_slider .carousel-indicators button:hover{
+  background-color: #801515;
+  transform: scale(1.045); 
+  box-shadow: 4px 4px 10px 5px #420e0e;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel-item img :hover{
+  height: 300px;
+  object-fit: cover;
+  transform: scale(1.045); 
+  box-shadow: 4px 4px 10px 5px #420e0e; /* h-offset v-offset blur spread color*/
+}
+
+
+@media all and (max-width: 1200px) {
+  .carousel-item img {
+      height: 100%;
+      object-fit: cover;
+  }
+ 
+  .carousel-indicators {
+      display: none;
+  }
+}
+
+@media only screen and (min-width: 990px) and (max-width:1199px) {
+  .carousel-item img {
+    width: 800;
+      height:    100%;
+      object-fit: cover;
+
+  }
+
+  carousel.slide {
+    position: relative;
+    width: 100%;
+    height: 05vh;
+   
+  }
+  
+}
+@media screen and (max-width:767px){
+  .carousel-item img {
+    width: 700;
+    height: 100%;
+    object-fit: cover;
+}
+}
+@media only screen and (min-width:768px) and (max-width: 989px){
+  .carousel-item img {
+    width: 700;
+    height: 100%;
+    object-fit: cover;
+}
+
+}
+
+@media only  screen and (min-width :1200px) {
+  .carousel-item img {
+    width: 700;
+    height: 100%;
+    object-fit: cover;
+}
+
+}
