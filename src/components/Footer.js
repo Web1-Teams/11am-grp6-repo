@@ -66,7 +66,7 @@ return (
   
 <section className='lastly'>
 <div className="footer-brand">
-<a className="logo" href="#">
+<a className="Rlogo" href="#">
           {props.BrandName}
         </a>
     

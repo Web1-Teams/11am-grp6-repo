@@ -27,16 +27,16 @@ transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     gap: 35px;
 }
 
-a {
+.social-item  {
   color: rgb(220, 220, 184);
   text-decoration: none; /* إزالة الخط السفلي */
 }
 
-a:hover {
-     
+
+.social-item :hover {   
   text-decoration: underline;
   transform: scale(1.1);
-}
+} 
 #socials_links li {
   font-size: 1rem;
   color: aliceblue;
@@ -67,14 +67,14 @@ font-weight:800;
  padding-bottom: 20px;
 }
 
-.logo{
+.Rlogo{
 
     color:rgb(8, 4, 61);
     font-size: larger;
     font-weight: bolder;
 
 }
-.logo:hover{
+.Rlogo:hover{
 color:  #132258;
 transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 text-decoration: underline;
@@ -115,10 +115,11 @@ transform: scale(1.1);
   }
  .custom_footer{
   position: fixed;
-  bottom: 75px;
+  bottom: 0px;
   right: 0;
   left: 0;
- }
+
+  height:70px;}
 }
 @media only  screen and (max-width:990px) and (min-width:716px){
   .lastly,
@@ -127,9 +128,10 @@ transform: scale(1.1);
   }
  .custom_footer{
   position: fixed;
-  bottom: 75px;
+  bottom: 0px;
   right: 0;
   left: 0;
+  height:70px;
  }
 
 }
@@ -146,9 +148,10 @@ transform: scale(1.1);
    }
    .custom_footer{
     position: fixed;
-    bottom:75px;
+    bottom:0px;
     right: 0;
     left: 0;
+    height:70px;
 }
 }
 @media only  screen and (max-width:355px){
@@ -163,9 +166,10 @@ transform: scale(1.1);
    }
    .custom_footer{
     position: fixed;
-    bottom:75px;
+    bottom:0px;
     right: 0;
     left: 0;
+    height:70px;
 
 }
 .hidden-text1{
