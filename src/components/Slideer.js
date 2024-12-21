@@ -4,7 +4,7 @@ import img10 from "./img/img-home.jpg";
 import img11 from "./img/img-1.jpg";
 import img12 from "./img/img-4.jpg";
 import "./Slider.css";
-import SearchBar from "./SearchBar";
+
 
 const Slider = () => {
   return (
@@ -95,9 +95,11 @@ const Slider = () => {
         </div>
       </div>
          {/* New updates  */}
+
          <div className="Slider-Searchbar">
-          <SearchBar/>
+          
         </div>
+
     </div>
   );
 };

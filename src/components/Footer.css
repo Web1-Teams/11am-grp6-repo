@@ -32,11 +32,11 @@ transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   text-decoration: none; /* إزالة الخط السفلي */
 }
 
-.social-item :hover {
-     
+
+.social-item :hover {   
   text-decoration: underline;
   transform: scale(1.1);
-}
+} 
 #socials_links li {
   font-size: 1rem;
   color: aliceblue;

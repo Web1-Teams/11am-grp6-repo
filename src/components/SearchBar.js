@@ -4,7 +4,7 @@ import "./SearchBar.css";
 const SearchBar = () => {
   return (
     <div className="grp-6-container container-fluid">
-      <form className="w-50 mx-auto">
+      <form>
         <div className="input-group">
           <input
             className="form-control"

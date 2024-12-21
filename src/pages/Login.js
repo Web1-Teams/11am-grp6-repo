@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import SignUp from "./SignUp.js";
 
 const Login = () => {
   const handleGoogleLogin = () => {
@@ -45,7 +46,7 @@ const Login = () => {
           </div>
           <br></br>
           <Link to="./homepage">
-            <button type="submit">Login</button>
+            <button className =" hamza-button"type="submit">Login</button>
           </Link>
         </form>
         <Link to="./homepage" className="text-decoration-none">
@@ -75,7 +76,7 @@ const Login = () => {
         </div>
         <br></br>
         <h5 className="form-title">
-          <Link to="./signup" id="noAccount">
+          <Link to="./SignUp" id="noAccount">
             Don't Have an account ?
           </Link>
         </h5>
