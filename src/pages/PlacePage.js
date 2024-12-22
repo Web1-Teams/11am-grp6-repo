@@ -19,12 +19,24 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         atmosphere: null,
     });
 
-    
+
+    const [isHeartClicked, setIsHeartClicked] = useState(() => {
+        const storedState = JSON.parse(localStorage.getItem("places")) || [];
+        const currentPlace = storedState.find((item) => item.id === parseInt(id));
+        return currentPlace ? currentPlace.isHeartClicked : false;
+    });
+
+    const [isCheckClicked, setIsCheckClicked] = useState(() => {
+        const storedState = JSON.parse(localStorage.getItem("places")) || [];
+        const currentPlace = storedState.find((item) => item.id === parseInt(id));
+        return currentPlace?.isCheckClicked || false;
+    });
 
     useEffect(() => {
         const storedComments = JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
         setComments(storedComments);
     }, [id]);
+
 
     const updateLocalStorage = (updatedPlace) => {
         const storedState = JSON.parse(localStorage.getItem("places")) || [];
@@ -43,6 +55,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 //متغير state عشان نتحكم بالحالة مبدئيا false عشان يكون الايموجي مختفي 
 const [showEmoji, setShowEmoji] = useState(false);
+
 
     const ratingValues = {
         "😭": 0.2,
@@ -79,8 +92,22 @@ const [showEmoji, setShowEmoji] = useState(false);
         }
     };
 
+    const handleHeartClick = (e) => {
+        e.stopPropagation();
+        const newHeartState = !isHeartClicked;
+        setIsHeartClicked(newHeartState);
+        const updatedPlace = { id: parseInt(id), isHeartClicked: newHeartState, isCheckClicked };
+        updateLocalStorage(updatedPlace);
+    };
 
-    
+    const handleCheckClick = (e) => {
+        e.stopPropagation();
+        const newCheckState = !isCheckClicked;
+        setIsCheckClicked(newCheckState);
+        const updatedPlace = { id: parseInt(id), isHeartClicked, isCheckClicked: newCheckState };
+        updateLocalStorage(updatedPlace);
+    };
+
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         if (newComment.trim() && !comments.includes(newComment.trim())) {
@@ -88,6 +115,7 @@ const [showEmoji, setShowEmoji] = useState(false);
             setComments(updatedComments);
             setNewComment("");
             localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
+
         }
     };
 
@@ -96,6 +124,7 @@ const [showEmoji, setShowEmoji] = useState(false);
         const match = url.match(regex);
         if (match) {
             return { lat: parseFloat(match[1]), lng: parseFloat(match[2]) };
+
         }
         return null;
     };
@@ -103,6 +132,7 @@ const [showEmoji, setShowEmoji] = useState(false);
     if (!place) {
         return <div>Place not found. <Link to="/">Go Back</Link></div>;
     }
+
 
     const coordinates = extractCoordinates(place.location);
 
@@ -113,7 +143,27 @@ const [showEmoji, setShowEmoji] = useState(false);
 
             <div className="name-heart-visited">
                 <h1>{place.name}</h1>
-                
+
+                <div>
+                    <button
+                        className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
+                        onClick={handleHeartClick}
+                    >
+                        <i className="fa-solid fa-heart"></i>
+                        <span className="hide_after">Favorite</span>
+                    </button>
+                </div>
+
+                <div>
+                    <button
+                        className={`visited-btn ${isCheckClicked ? "active" : ""}`}
+                        onClick={handleCheckClick}
+                    >
+                        <i className="fa-solid fa-circle-check"></i>
+                        <span className="hide_after">Visited</span>
+                    </button>
+                </div>
+
             </div>
 
             <div className="place-details">
@@ -121,6 +171,7 @@ const [showEmoji, setShowEmoji] = useState(false);
                     <p className="short-info">{place.description}</p>
                     <p className="long-info" style={{ fontSize: 25 }}>{place.longDescription}</p>
                 </div>
+
 
                 {coordinates ? (
                     <div className="map-container">

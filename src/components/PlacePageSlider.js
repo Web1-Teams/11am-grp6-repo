@@ -2,6 +2,7 @@ import './PlacePageSlider.css';
 
 const PlacePageSlider = ({ images }) => {
     return (
+
         <div id="place_page_slider" className="carousel carousel-dark slide">
             <div className="carousel-indicators">
                 {images.map((_, index) => (
@@ -13,6 +14,7 @@ const PlacePageSlider = ({ images }) => {
                         className={index === 0 ? "active" : ""}
                         aria-label={`Slide ${index + 1}`}
                         style={{
+
                             color: "#fff",
                             cursor: "pointer",
                             width: "4rem",
@@ -22,6 +24,8 @@ const PlacePageSlider = ({ images }) => {
                     ></button>
                 ))}
             </div>
+
+
 
             <div className="carousel-inner">
                 {images.map((image, index) => (
@@ -39,7 +43,8 @@ const PlacePageSlider = ({ images }) => {
                 ))}
             </div>
 
-          
+
+     
         </div>
     );
 };
