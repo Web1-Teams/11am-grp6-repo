@@ -2,8 +2,8 @@ import './PlacePageSlider.css';
 
 const PlacePageSlider = ({ images }) => {
     return (
-        <div id="place_page_slider" className="carousel carousel-dark slide" data-bs-ride="carousel">
-            {/* Carousel Indicators */}
+
+        <div id="place_page_slider" className="carousel carousel-dark slide">
             <div className="carousel-indicators">
                 {images.map((_, index) => (
                     <button
@@ -14,7 +14,8 @@ const PlacePageSlider = ({ images }) => {
                         className={index === 0 ? "active" : ""}
                         aria-label={`Slide ${index + 1}`}
                         style={{
-                            backgroundColor: "#fff",
+
+                            color: "#fff",
                             cursor: "pointer",
                             width: "4rem",
                             height: "0.5rem",
@@ -24,7 +25,8 @@ const PlacePageSlider = ({ images }) => {
                 ))}
             </div>
 
-            {/* Carousel Images */}
+
+
             <div className="carousel-inner">
                 {images.map((image, index) => (
                     <div
@@ -41,25 +43,8 @@ const PlacePageSlider = ({ images }) => {
                 ))}
             </div>
 
-            {/* Carousel Controls */}
-            <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#place_page_slider"
-                data-bs-slide="prev"
-            >
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#place_page_slider"
-                data-bs-slide="next"
-            >
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-            </button>
+
+     
         </div>
     );
 };
