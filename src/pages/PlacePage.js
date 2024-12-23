@@ -72,6 +72,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
             const updatedComments = [...comments, newComment.trim()];
             setComments(updatedComments);
             localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
+
             setNewComment("");
             setShowEmoji(comments.length === 0); // Show emoji only for the first comment
         }
@@ -112,14 +113,17 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     }
 
     const coordinates = extractCoordinates(place.location);
+
     const tags = Object.keys(place).filter(
         (key) => place[key] === true && !["isHeartClicked", "isCheckClicked", "rating"].includes(key)
     );
+
 
     return (
         <div className="place-page" style={{ marginTop: "50px", padding: "0px" }}>
             <Link to="/">Go Back</Link>
             <PlacePageSlider images={[place.image, place.image2, place.image3]} />
+
 
             {showEmoji && (
                 <div className="emoji-overlay">
@@ -128,6 +132,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 </div>
             )}
             <div className="place-tags">
+
                             <div>
                             {tags.length > 0 ? (
                                 tags.map((tag, index) => (
@@ -141,21 +146,28 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                       </div>
                  </div>
 
-            <div className="name-heart-visited">
-                <h1>{place.name}</h1>
-                <button
-                    className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
-                    onClick={handleHeartClick}
-                >
-                    <i className="fa-solid fa-heart"></i> Favorite
-                </button>
-                <button
-                    className={`visited-btn ${isCheckClicked ? "active" : ""}`}
-                    onClick={handleCheckClick}
-                >
-                    <i className="fa-solid fa-circle-check"></i> Visited
-                </button>
-            </div>
+
+           <div className="name-heart-visited">
+    <div className="NFV-container">
+        <h1>{place.name}</h1>
+        <div className="buttons-container">
+            <button
+                className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
+                onClick={handleHeartClick}
+            >
+              <i className="fa-solid fa-heart"></i>
+                <span className="hide_after">Favorite</span>
+            </button>
+            <button
+                className={`visited-btn ${isCheckClicked ? "active" : ""}`}
+                onClick={handleCheckClick}
+            >
+                <i className="fa-solid fa-circle-check"></i>
+                <span className="hide_after">Visited</span>
+            </button>
+        </div>
+    </div>
+</div>
 
             <div className="place-details">
                 <div className="Info">
@@ -211,7 +223,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 {isFeedbackOpen && (
                     <div className="feedback-popup">
                         <div className="feedback-content">
-                            <h2>Leave Feedback</h2>
                             <div className="rating-section">
                                 <h3>Rate Categories:</h3>
                                 {["food", "service", "price", "atmosphere"].map((category) => (
