@@ -127,29 +127,29 @@ const Card = ({ id, image, name, locationname, rating = 0 }) => {
       <div className="place-buttons">
         {/* Heart Button */}
         <button
-          className={`circular-btn heart-btn ${isHeartClicked ? "active" : ""}`}
+          className={`circular-btn  ${isHeartClicked ? "active" : ""}`}
           onClick={handleHeartClick} // Use defined function
         >
-          ❤️
+          <i class="fa-solid fa-heart"></i>
         </button>
 
         {/* Visited Button */}
         <button
-          className={`circular-btn check-btn ${isCheckClicked ? "active" : ""}`}
+          className={`circular-btn   ${isCheckClicked ? "active-check" : ""}`}
           onClick={handleCheckClick} // Use defined function
         >
-          ✔️
+          <i class="fa-solid fa-circle-check"></i>
         </button>
 
         {/* Share Button */}
         <button
-          className={`circular-btn share-btn ${isShareClicked ? "active" : ""}`}
+          className={`circular-btn  ${isShareClicked ? "active-share" : ""}`}
           onClick={(e) => {
             e.stopPropagation(); // Prevent card click
             setIsShareClicked(!isShareClicked);
           }}
         >
-          🔗
+          <i class="fa-solid fa-link"></i>
         </button>
       </div>
 

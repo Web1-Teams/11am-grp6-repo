@@ -52,9 +52,9 @@ const Login = () => {
             </label>
           </div>
           <br></br>
-          <button className="hamzabutton" type="submit">
-            Login
-          </button>
+          <Link to="./homepage">
+            <button className =" hamza-button"type="submit">Login</button>
+          </Link>
         </form>
         <Link to="HomePage" className="text-decoration-none">
           Forgot your password ?

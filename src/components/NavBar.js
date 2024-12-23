@@ -1,6 +1,6 @@
+//import
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-
 import React, { useState } from "react";
 import logo from './img/logo.png';
 
@@ -10,7 +10,6 @@ const NavBar = ({ BrandName, i2, i3 }) => {
   const handleSearchToggle = () => {
     setIsSearching((prev) => !prev);
   };
-
 
   return (
     <div className="container">
@@ -55,9 +54,11 @@ const NavBar = ({ BrandName, i2, i3 }) => {
               </a>
             </li>
             <li className="nav-item">
+
               <a className="nav-link" href="love">
                 <i class="fa-solid fa-heart" />
                 {i3}
+                
               </a>
             </li>
           </ul>
@@ -106,5 +107,5 @@ const NavBar = ({ BrandName, i2, i3 }) => {
     </div>
   );
 };
-
+//export
 export default NavBar;
