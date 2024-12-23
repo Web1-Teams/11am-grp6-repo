@@ -1,10 +1,9 @@
-import img8 from "./img/img-8.jpg";
-import img9 from "./img/img9.jpg";
+import img9 from "./img/videoBg.mp4"; // Video file
+import img1 from "./img/pink-sunset-seascape-nature.jpg";
 import img10 from "./img/img-home.jpg";
 import img11 from "./img/img-1.jpg";
 import img12 from "./img/img-4.jpg";
 import "./Slider.css";
-
 
 const Slider = () => {
   return (
@@ -78,28 +77,40 @@ const Slider = () => {
       </div>
 
       <div className="carousel-inner" style={{ scrollBehavior: "smooth" }}>
-        <div className="carousel-item active" data-bs-interval="2200">
-          <img src={img8} className="grp6-img d-block w-100" alt="Slide 1" />
+        {/* Video background slide */}
+        <div className="carousel-item active" data-bs-interval="5500">
+          <video
+            className="grp6-img d-block w-100"
+            src={img9}
+            autoPlay
+            loop
+            muted
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+            alt="Slide 1"
+          />
         </div>
-        <div className="carousel-item" data-bs-interval="2200">
-          <img src={img9} className="grp6-img d-block w-100" alt="Slide 2" />
+
+        {/* Image slides */}
+        <div className="carousel-item" data-bs-interval="2900">
+          <img src={img1} className="grp6-img d-block w-100" alt="Slide 2" />
         </div>
-        <div className="carousel-item" data-bs-interval="2200">
+        <div className="carousel-item" data-bs-interval="2900">
           <img src={img10} className="grp6-img d-block w-100" alt="Slide 3" />
         </div>
-        <div className="carousel-item" data-bs-interval="2200">
+        <div className="carousel-item" data-bs-interval="2900">
           <img src={img11} className="grp6-img d-block w-100" alt="Slide 4" />
         </div>
-        <div className="carousel-item" data-bs-interval="2200">
+        <div className="carousel-item" data-bs-interval="2900">
           <img src={img12} className="grp6-img d-block w-100" alt="Slide 5" />
         </div>
       </div>
-         {/* New updates  */}
 
-         <div className="Slider-Searchbar">
-          
-        </div>
-
+      {/* New updates */}
+      <div className="Slider-Searchbar"></div>
     </div>
   );
 };

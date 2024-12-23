@@ -74,7 +74,9 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     return (
         <div style={{ marginTop: '80px', padding: '0px' }}> {/* Adjust margin for navbar */}
             <Link to="/">Go Back</Link>
-     <PlacePageSlider/>
+
+            <PlacePageSlider images={[place.image, place.image2, place.image3]}/>
+            
             <h1>{place.name}</h1>
             <div className="place-details">
                 <div className="image-and-tags">

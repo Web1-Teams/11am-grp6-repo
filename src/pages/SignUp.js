@@ -1,21 +1,130 @@
-//imports
-//functions
-//exports
-
+import { useState } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
-import "./SignUp.css"; // Import the CSS file
+import { Link, useNavigate } from "react-router-dom";
+import "./SignUp.css";
+import Modal from "../components/Modal";
 
 const SignUp = () => {
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [loanInputs, setLoanInputs] = useState({
+    userName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassWord: "",
+    age: "",
+    gender: "",
+    cities: "",
+  });
+
+  const navigate = useNavigate(); // For navigation after successful sign up
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    setErrorMessage(null);
+
+    const { phoneNumber, password, confirmPassWord, age, email } = loanInputs;
+
+    // Validate age
+    if (Number(age) < 14 || Number(age) > 100) {
+      setErrorMessage(
+        "The age is not allowed. Age must be between 14 and 100."
+      );
+      setShowModal(true);
+      return;
+    }
+
+    // Validate email
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      setShowModal(true);
+      return;
+    }
+
+    // Validate phone number
+    if (!/^\d{10,12}$/.test(phoneNumber)) {
+      setErrorMessage(
+        "Phone Number Format is Incorrect. It should be 10-12 digits."
+      );
+      setShowModal(true);
+      return;
+    }
+
+    // Validate passwords match
+    if (password !== confirmPassWord) {
+      setErrorMessage("Passwords do not match");
+      setShowModal(true);
+      return;
+    }
+
+    // All validations pass
+    setErrorMessage("Sign up successful!");
+    setShowModal(true);
+
+    // Retrieve existing data from localStorage (if any)
+    const existingData = JSON.parse(localStorage.getItem("userForms")) || [];
+
+    // Create a new form with a unique ID (using Date.now() for simplicity)
+    const newForm = {
+      id: Date.now(), // Use the current timestamp as a unique ID
+      ...loanInputs, // Spread the form data
+    };
+
+    // Add the new form to the existing data array
+    existingData.push(newForm);
+
+    // Store the updated data back in localStorage
+    localStorage.setItem("userForms", JSON.stringify(existingData));
+
+    // Navigate to the login page after a delay
+    setTimeout(() => {
+      navigate("/login");
+    }, 1000); // Wait for 1 second before redirecting
+  }
+
+  const btnIsDisabled =
+    !loanInputs.userName ||
+    !loanInputs.email ||
+    !loanInputs.phoneNumber ||
+    !loanInputs.password ||
+    !loanInputs.confirmPassWord ||
+    !loanInputs.age ||
+    !loanInputs.gender ||
+    !loanInputs.cities;
+
+  let btnClasses = "";
+  if (btnIsDisabled) {
+    btnClasses = "disabled";
+  }
+
+  function handleDivClick() {
+    if (showModal) {
+      setShowModal(false);
+    }
+  }
+
   return (
     <>
-      <div className="form-container mt-5 mb-5" id="SignUpPage">
+      <div
+        className="form-container mt-5 mb-5"
+        id="SignUpPage"
+        onClick={handleDivClick}
+      >
         <div className="form-card col-9">
           <h2 className="form-title">Sign Up</h2>
           <form>
             <div className="form-group">
-              <label for="userName">Username</label>
+              <label htmlFor="userName">Username</label>
               <input
+                value={loanInputs.userName}
+                onChange={(event) => {
+                  setLoanInputs({
+                    ...loanInputs,
+                    userName: event.target.value,
+                  });
+                }}
                 type="text"
                 className="form-control"
                 placeholder="Enter username"
@@ -23,11 +132,14 @@ const SignUp = () => {
                 required
               />
             </div>
+
             <div className="form-group">
-              <label for="email" required>
-                Email
-              </label>
+              <label htmlFor="email">Email</label>
               <input
+                value={loanInputs.email}
+                onChange={(event) => {
+                  setLoanInputs({ ...loanInputs, email: event.target.value });
+                }}
                 type="email"
                 className="form-control"
                 placeholder="Enter email"
@@ -36,20 +148,32 @@ const SignUp = () => {
             </div>
 
             <div className="form-group">
-              <label for="mobile-number-form">Mobile Number (Optinal)</label>
+              <label htmlFor="mobile-number-form">Mobile Number</label>
               <input
+                value={loanInputs.phoneNumber}
+                onChange={(event) => {
+                  setLoanInputs({
+                    ...loanInputs,
+                    phoneNumber: event.target.value,
+                  });
+                }}
                 type="tel"
                 className="form-control"
-                pattern="[0]-[5]-[0-9]{8}"
                 placeholder="Enter Mobile Number"
                 id="mobile-number-form"
-                required
               />
             </div>
 
             <div className="form-group">
-              <label for="passWord">Password</label>
+              <label htmlFor="passWord">Password</label>
               <input
+                value={loanInputs.password}
+                onChange={(event) => {
+                  setLoanInputs({
+                    ...loanInputs,
+                    password: event.target.value,
+                  });
+                }}
                 type="password"
                 className="form-control"
                 placeholder="Enter password"
@@ -59,8 +183,15 @@ const SignUp = () => {
             </div>
 
             <div className="form-group">
-              <label for="confirmPassWord"> Confirm Password</label>
+              <label htmlFor="confirmPassWord">Confirm Password</label>
               <input
+                value={loanInputs.confirmPassWord}
+                onChange={(event) => {
+                  setLoanInputs({
+                    ...loanInputs,
+                    confirmPassWord: event.target.value,
+                  });
+                }}
                 type="password"
                 className="form-control"
                 placeholder="Re-Enter password"
@@ -71,8 +202,12 @@ const SignUp = () => {
 
             <div className="row">
               <div className="form-group col-6">
-                <label for="age">Age</label>
+                <label htmlFor="age">Age</label>
                 <input
+                  value={loanInputs.age}
+                  onChange={(event) => {
+                    setLoanInputs({ ...loanInputs, age: event.target.value });
+                  }}
                   type="number"
                   className="form-control"
                   placeholder="Enter Age"
@@ -82,58 +217,75 @@ const SignUp = () => {
 
               <div className="form-group col-6">
                 <label className="mb-1">Gender</label>
-                <br></br>
                 <select
+                  value={loanInputs.gender}
+                  onChange={(event) => {
+                    setLoanInputs({
+                      ...loanInputs,
+                      gender: event.target.value,
+                    });
+                  }}
                   name="gender"
                   id="gender-selection"
                   className="form-control"
                 >
-                  <option>Male</option>
-                  <option>Female</option>
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
             </div>
 
-            <div className="form-group row ">
-              <label id="cityForm" className="col-6">
+            <div className="form-group row">
+              <label htmlFor="cityForm" className="col-6">
                 Choose City
               </label>
-
               <select
+                value={loanInputs.cities}
+                onChange={(event) => {
+                  setLoanInputs({ ...loanInputs, cities: event.target.value });
+                }}
                 id="cities"
                 name="cities"
                 className="form-control col-6 mx-2"
               >
+                <option value="">Select City</option>
                 <option value="Tourist">Tourist</option>
                 <option value="Nablus">Nablus</option>
                 <option value="Jenin">Jenin</option>
                 <option value="Tulkarm">Tulkarm</option>
                 <option value="Ramallah">Ramallah</option>
                 <option value="Salfeet">Salfeet</option>
-                <option value="Salfeet">Tubas</option>
-                <option value="Salfeet">Jericho</option>
-                <option value="Salfeet">Hebron</option>
-                <option value="Salfeet">Bethlehem</option>
-                <option value="Salfeet">Jerusalem</option>
+                <option value="Tubas">Tubas</option>
+                <option value="Jericho">Jericho</option>
+                <option value="Hebron">Hebron</option>
+                <option value="Bethlehem">Bethlehem</option>
+                <option value="Jerusalem">Jerusalem</option>
               </select>
             </div>
 
-            <Link
-              to="./login"
+            <button
+              onClick={handleFormSubmit}
+              disabled={btnIsDisabled}
               type="submit"
-              className="btn btn-primary w-100 mt-3"
+              className={`btn btn-primary w-100 mt-3 ${btnClasses}`}
             >
               Sign Up
-            </Link>
+            </button>
           </form>
-          <br></br>
+          <br />
 
           <div className="form-title mb-0">
-            <Link to="./login" id="Already-User-Login">
-              Already a user ?
+            <Link to="/login" id="Already-User-Login">
+              Already a user?
             </Link>
           </div>
         </div>
+        <Modal
+          errorMessage={errorMessage}
+          isVisible={showModal}
+          onClose={() => setShowModal(false)}
+        />
       </div>
     </>
   );
