@@ -115,7 +115,6 @@ const [showEmoji, setShowEmoji] = useState(false);
             setComments(updatedComments);
             setNewComment("");
             localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
-
         }
     };
 
@@ -135,44 +134,62 @@ const [showEmoji, setShowEmoji] = useState(false);
 
 
     const coordinates = extractCoordinates(place.location);
+    const tags = Object.keys(place)
+    .filter((key) => place[key] === true && !["isHeartClicked", "isCheckClicked", "rating"].includes(key));
 
     return (
         <div style={{ marginTop: "50px", padding: "0px" }}>
             <Link to="/">Go Back</Link>
             <PlacePageSlider images={[place.image, place.image2, place.image3]} />
+            {showEmoji && (                       
+                    <div className="emoji-overlay"> {/'&&' عشان تعرض الايموجي بواجهة المسنخدم/}
+                        🎉
+                        <p>You are the first to comment!</p>
+                    </div>
+                )}
+                
+                  {/* Image and Tags Section */}
+                <div className="place-tags">
+                            <div>
+                            {tags.length > 0 ? (
+                                tags.map((tag, index) => (
+                                    <span key={index} className="place-tag">
+                                        {tag}
+                                    </span>
+                                ))
+                            ) : (
+                                <p>No tags available.</p>
+                            )}
+                      </div>
+                 </div>
 
-            <div className="name-heart-visited">
-                <h1>{place.name}</h1>
 
-                <div>
-                    <button
-                        className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
-                        onClick={handleHeartClick}
-                    >
-                        <i className="fa-solid fa-heart"></i>
-                        <span className="hide_after">Favorite</span>
-                    </button>
-                </div>
-
-                <div>
-                    <button
-                        className={`visited-btn ${isCheckClicked ? "active" : ""}`}
-                        onClick={handleCheckClick}
-                    >
-                        <i className="fa-solid fa-circle-check"></i>
-                        <span className="hide_after">Visited</span>
-                    </button>
-                </div>
-
-            </div>
-
-            <div className="place-details">
-                <div className="Info">
+                 <div className="name-heart-visited">
+    <div className="NFV-container">
+        <h1>{place.name}</h1>
+        <div className="buttons-container">
+            <button
+                className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
+                onClick={handleHeartClick}
+            >
+              <i className="fa-solid fa-heart"></i>
+                <span className="hide_after">Favorite</span>
+            </button>
+            <button
+                className={`visited-btn ${isCheckClicked ? "active" : ""}`}
+                onClick={handleCheckClick}
+            >
+                <i className="fa-solid fa-circle-check"></i>
+                <span className="hide_after">Visited</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div className="Info">
                     <p className="short-info">{place.description}</p>
                     <p className="long-info" style={{ fontSize: 25 }}>{place.longDescription}</p>
-                </div>
-
-
+                </div> 
+            <div className="place-details">
                 {coordinates ? (
                     <div className="map-container">
                         <h2>Location:</h2>
@@ -201,7 +218,6 @@ const [showEmoji, setShowEmoji] = useState(false);
                 {isFeedbackOpen && (
                     <div className="feedback-popup">
                         <div className="feedback-content">
-                            <h2>Leave Feedback</h2>
                             <div className="rating-section">
                                 <h3>Rate Categories:</h3>
                                 {["food", "service", "price", "atmosphere"].map((category) => (

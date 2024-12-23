@@ -66,8 +66,10 @@
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
+  /* بدي هاد التعديل...سهاد */
   .circular-btn:hover{
     background-color: #ddd8d8;
+    transform: scale(1.1); 
   }
 .circular-btn.active {
     color: rgb(117, 5, 5);
