@@ -173,7 +173,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 <div className="Info">
                    
                    {/* added div for displayment */}
-                   <div>
+                   <div className='SL-container'>
                    <p className="short-info">{place.description}</p>
                     <p className="long-info" style={{ fontSize: 25 }}>
                         {place.longDescription}

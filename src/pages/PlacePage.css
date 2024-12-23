@@ -455,16 +455,18 @@
 
 /* هون سهاد عدلت ولتحت */
 .Info{
+   display: flex;
+justify-content: space-between;
+padding-right: 40px;
+padding-left: 40px;
+}
+.SL-container{
   padding: 20px;
   margin: 20px; 
   font-family: 'Arial', sans-serif;
   overflow-wrap: break-word; 
   word-wrap: break-word;
   transform: translate(140px,-30px);
-   display: flex;
-justify-content: space-between;
-padding-right: 40px;
-padding-left: 40px;
 }
 .short-info {
   border: 1px solid #884a59; 
