@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // إضافة useNavigate
 import "./Login.css";
-import SignUp from "./SignUp.js";
 
 const Login = () => {
+  const navigate = useNavigate(); // استخدام navigate للتوجيه
+
   const handleGoogleLogin = () => {
     alert("Logged in with Google");
   };
@@ -12,11 +14,16 @@ const Login = () => {
     alert("Logged in with Facebook");
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault(); // لمنع تحميل الصفحة
+    navigate("/homepage"); // التوجيه إلى صفحة homepage بعد النجاح
+  };
+
   return (
     <div className="login-container">
       <div className="login-card">
         <h2>Login</h2>
-        <form>
+        <form onSubmit={handleLogin}> {/* إضافة onSubmit هنا */}
           <div className="form-group">
             <label for="Email" required>
               Email
@@ -49,14 +56,18 @@ const Login = () => {
             <button className =" hamza-button"type="submit">Login</button>
           </Link>
         </form>
-        <Link to="/" className="text-decoration-none">
+
+        <Link to="HomePage" className="text-decoration-none">
+
           Forgot your password ?
         </Link>
         <div className="social-login">
           <p>Or continue with</p>
 
           <Link
-            to="/"
+
+            to="/HomePage"
+
             className="btn facebook-btn"
             onClick={handleFacebookLogin}
           >
@@ -65,7 +76,9 @@ const Login = () => {
             </span>
           </Link>
           <Link
-            to="/"
+
+            to="/HomePage"
+
             className="btn google-btn "
             onClick={handleGoogleLogin}
           >
@@ -76,7 +89,7 @@ const Login = () => {
         </div>
         <br></br>
         <h5 className="form-title">
-          <Link to="./SignUp" id="noAccount">
+          <Link to="/signup" id="noAccount">
             Don't Have an account ?
           </Link>
         </h5>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Calendar.css";
+import Navbar from "../../components/NavBar";
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
@@ -78,72 +79,40 @@ const Calendar = () => {
 
   return (
     <>
-      <div className="body-calendar">
-        <div className="racer">
-          <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
-            <div className="container-fluid">
-              <h1 id="h1style">Calendar</h1>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+    <Navbar />
+      <div className="grp6-body-calendar">
+        <div className="box">
+          <header className="grp6-header">
+            <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
+            <div className="icon">
+              <span
+                id="prev"
+                className="material-symbols-rounded"
+                onClick={() => handlePrevNext("prev")}
               >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav" id="astyle">
-                  <a className="nav-link active" aria-current="page" href="#">
-                    Home Page
-                  </a>
-                  <a className="nav-link active" href="#">
-                    Events
-                  </a>
-                  <a className="nav-link active" href="#">
-                    Schedule your day
-                  </a>
-                </div>
-              </div>
+                <i className="fa-solid fa-chevron-left fa-2xl"></i>
+              </span>
+              <span
+                id="next"
+                className="material-symbols-rounded"
+                onClick={() => handlePrevNext("next")}
+              >
+                <i className="fa-solid fa-chevron-right fa-2xl"></i>
+              </span>
             </div>
-          </nav>
+          </header>
 
-          <div className="box">
-            <header>
-              <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
-              <div className="icon">
-                <span
-                  id="prev"
-                  className="material-symbols-rounded"
-                  onClick={() => handlePrevNext("prev")}
-                >
-                  <i className="fa-solid fa-chevron-left fa-2xl"></i>
-                </span>
-                <span
-                  id="next"
-                  className="material-symbols-rounded"
-                  onClick={() => handlePrevNext("next")}
-                >
-                  <i className="fa-solid fa-chevron-right fa-2xl"></i>
-                </span>
-              </div>
-            </header>
-
-            <div className="calendar">
-              <ul className="weeks">
-                <li>Sun</li>
-                <li>Mon</li>
-                <li>Tue</li>
-                <li>Wed</li>
-                <li>Thu</li>
-                <li>Fri</li>
-                <li>Sat</li>
-              </ul>
-
-              <ul className="days">{renderCalendar()}</ul>
-            </div>
+          <div className="calendar">
+            <ul className="weeks">
+              <li>Sun</li>
+              <li>Mon</li>
+              <li>Tue</li>
+              <li>Wed</li>
+              <li>Thu</li>
+              <li>Fri</li>
+              <li>Sat</li>
+            </ul>
+            <ul className="days">{renderCalendar()}</ul>
           </div>
         </div>
       </div>

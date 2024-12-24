@@ -1,9 +1,14 @@
 .logo {
-  height: 40px; 
-  width: auto; 
-  margin-right: 0px; 
+
+  height: 40px;
+  /* Adjust height as needed */
+  width: auto;
+  margin-right: 0px;
+  /* Add margin for spacing */
+
   margin-bottom: 10px;
 }
+
 .navbar {
   height: 68px;
   position: fixed;
@@ -23,19 +28,20 @@
 .navbar-brand {
 
   color: #800020;
- 
-   font-size: 1.5rem;
- 
-   font-weight: bold;
- 
-   padding: 3px;
-   
-  }
-   
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  padding: 3px;
+
+}
+
 .navbar-brand:hover {
 
   color: #640018;
 }
+
 .nav-link {
 
   position: relative;
@@ -48,7 +54,7 @@
 
   font-family: "Poppins", sans-serif;
 
-   letter-spacing: 0.1rem;
+  letter-spacing: 0.1rem;
 
 }
 
@@ -60,19 +66,18 @@
 
   left: 0;
 
-  bottom: 2px; 
+  bottom: 2px;
 
   width: 0;
-
-  height: 2px; 
-
-  background-color: #800020; 
+  height: 2px;
+  background-color: #800020;
 
   transition: width 0.3s ease;
 }
+
 .nav-link:hover::after {
 
-  width: 100%; 
+  width: 100%;
 
 }
 
@@ -82,30 +87,31 @@
 
   .nav-link:hover::after {
 
-    width:0;
+    width: 0;
 
   }
-  .navbar-brand{
-   margin-left: -5px;
+
+  .navbar-brand {
+    margin-left: -5px;
   }
 
 }
 
 .nav-link:hover {
 
-  color: #640018; 
+  color: #640018;
 
 }
 
 .dropdown-menu {
 
-  transform:translateX(-105px);
+  transform: translateX(-105px);
 
   z-index: 1050;
 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  background-color: #ffffff; 
+  background-color: #ffffff;
 
 }
 
@@ -113,17 +119,18 @@
 
   .dropdown-menu {
 
-    left: 0; 
+    left: 0;
 
-    transform: translateX(0); 
+    transform: translateX(0);
 
-    width: 100%; 
+    width: 100%;
 
     box-shadow: none;
 
   }
 
 }
+
 .dropdown-item {
 
   font-size: 1rem;
@@ -135,6 +142,7 @@
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 
 }
+
 .dropdown-item:hover {
 
   background-color: #800020;
@@ -142,9 +150,10 @@
   color: #ffffff;
 
 }
+
 .btn-ss {
 
- background-color:#800020;
+  background-color: #800020;
 
   font-size: 1rem;
 

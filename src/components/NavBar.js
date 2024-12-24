@@ -12,12 +12,13 @@ const NavBar = ({ BrandName, i2, i3 }) => {
     <div className="container">
 
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-
         <Link className="navbar-brand" to="/">
         <img src={logo} alt="Logo" className="logo" /> 
           {BrandName}
         </Link>
+
        <SearchBar/>
+
 
 
         <button
@@ -43,7 +44,7 @@ const NavBar = ({ BrandName, i2, i3 }) => {
               <a className="nav-link" href="love">
                 <i class="fa-solid fa-heart" />
                 {i3}
-
+                
               </a>
             </li>
           </ul>
