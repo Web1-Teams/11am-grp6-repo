@@ -61,8 +61,10 @@ const Popup = ({ children, onClose }) => {
   );
 };
 
-const Card = ({ id, image, name, locationname, rating = 0 }) => {
+
+const Card = ({ id, image,image2,image3, name, locationname, rating = 0 }) => {
   const [isShareClicked, setIsShareClicked] = useState(false); // State for Popup
+
   const navigate = useNavigate();
 
   const handleCardClick = () => {

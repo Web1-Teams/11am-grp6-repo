@@ -1,8 +1,8 @@
 import React from "react";
 import './PlacePageSlider.css';
-
 const PlacePageSlider = ({ images }) => {
   return (
+
     <div id="place_page_slider" className="carousel carousel-dark slide" data-bs-ride="carousel">
       {/* Carousel Indicators */}
       <div className="carousel-indicators">
@@ -30,12 +30,12 @@ const PlacePageSlider = ({ images }) => {
         {images.map((image, index) => (
           <div
             key={index}
-            className={`carousel-item ${index === 0 ? "active" : ""}`}  
+            className={`carousel-item ${index === 0 ? "active" : ""}`}
             data-bs-interval="5000"
           >
             <img
-              src={image || "./img/place_silder_default_img.jpg"} 
-              alt={`Slide ${index + 1}`}  
+              src={image || "./img/place_silder_default_img.jpg"} // Fallback to default image
+              alt={`Slide ${index + 1}`}
               className="place-page-image d-block w-100"
             />
           </div>
@@ -46,4 +46,3 @@ const PlacePageSlider = ({ images }) => {
 };
 
 export default PlacePageSlider;
-

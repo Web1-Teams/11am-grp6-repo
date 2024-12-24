@@ -52,7 +52,10 @@ const Login = () => {
             </label>
           </div>
           <br></br>
-          <Link to="/">
+
+
+          <Link to="./homepage">
+
             <button className =" hamza-button"type="submit">Login</button>
           </Link>
         </form>

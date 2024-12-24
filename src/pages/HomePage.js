@@ -17,6 +17,7 @@ const HomePage = ({ places, updatePlaceState }) => {
     .filter((place) => place.isHeartClicked)
     .slice(0, 6); // First 6 favorites
 
+    
   return (
     <div className="grp6-homepage">
         <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
