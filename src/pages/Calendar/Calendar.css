@@ -7,7 +7,9 @@
     overflow-y: hidden;
 }
 
+
 .grp6-header {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
