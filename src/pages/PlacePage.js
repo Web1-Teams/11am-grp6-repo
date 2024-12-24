@@ -95,7 +95,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     const coordinates = extractCoordinates(place.location);
 
     return (
-        <div style={{ marginTop: '50px', padding: '0px' }}>
+        <div style={{ marginTop: '50px', padding: '0px'}}>
             <Link to="/">Go Back</Link>
             <PlacePageSlider images={[place.image, place.image2, place.image3]} />
 
@@ -125,7 +125,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
             <div className="place-details">
                 <div className="Info">
                     <p className="short-info">{place.description}</p>
-                    <p className="long-info" style={{ fontSize: 25 }}>{place.longDescription}</p>
+                    <p className="long-info" style={{ fontSize: 25}}>{place.longDescription}</p>
                 </div>
 
                 {coordinates ? (
