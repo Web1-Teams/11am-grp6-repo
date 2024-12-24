@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState(""); // To display password strength
   const [loanInputs, setLoanInputs] = useState({
     userName: "",
     email: "",
@@ -28,9 +29,7 @@ const SignUp = () => {
 
     // Validate age
     if (Number(age) < 14 || Number(age) > 100) {
-      setErrorMessage(
-        "The age is not allowed. Age must be between 14 and 100."
-      );
+      setErrorMessage("The age is not allowed. Age must be between 14 and 100.");
       setShowModal(true);
       return;
     }
@@ -68,8 +67,8 @@ const SignUp = () => {
 
     // Create a new form with a unique ID (using Date.now() for simplicity)
     const newForm = {
-      id: Date.now(), // Use the current timestamp as a unique ID
-      ...loanInputs, // Spread the form data
+      id: Date.now(),
+      ...loanInputs,
     };
 
     // Add the new form to the existing data array
@@ -82,6 +81,23 @@ const SignUp = () => {
     setTimeout(() => {
       navigate("/login");
     }, 1000); // Wait for 1 second before redirecting
+  }
+
+  // Function to validate password strength
+  function validatePasswordStrength(password) {
+    if (password.length < 6) {
+      return "Weak: Password must be at least 6 characters.";
+    }
+    if (!/[A-Z]/.test(password)) {
+      return "Weak: Include at least one uppercase letter.";
+    }
+    if (!/[0-9]/.test(password)) {
+      return "Weak: Include at least one number.";
+    }
+    if (!/[!@#$%^&*]/.test(password)) {
+      return "Medium: Add a special character (!@#$%^&*).";
+    }
+    return "Strong";
   }
 
   const btnIsDisabled =
@@ -99,19 +115,9 @@ const SignUp = () => {
     btnClasses = "disabled";
   }
 
-  function handleDivClick() {
-    if (showModal) {
-      setShowModal(false);
-    }
-  }
-
   return (
     <>
-      <div
-        className="form-container mt-5 mb-5"
-        id="SignUpPage"
-        onClick={handleDivClick}
-      >
+      <div className="form-container mt-5 mb-5" id="SignUpPage">
         <div className="form-card col-9">
           <h2 className="form-title">Sign Up</h2>
           <form>
@@ -169,10 +175,12 @@ const SignUp = () => {
               <input
                 value={loanInputs.password}
                 onChange={(event) => {
+                  const password = event.target.value;
                   setLoanInputs({
                     ...loanInputs,
-                    password: event.target.value,
+                    password,
                   });
+                  setPasswordStrength(validatePasswordStrength(password));
                 }}
                 type="password"
                 className="form-control"
@@ -180,6 +188,7 @@ const SignUp = () => {
                 id="passWord"
                 required
               />
+              <small className="text-muted">{passwordStrength}</small>
             </div>
 
             <div className="form-group">

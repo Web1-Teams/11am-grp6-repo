@@ -19,6 +19,8 @@
     "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
     "react-share": "^5.1.1",
+    "react-social-login-buttons": "^4.1.0",
+    "reactjs-social-login": "^2.6.3",
     "styled-components": "^6.1.13",
     "swiper": "^11.1.15",
     "tailwindcss": "^3.4.17",
