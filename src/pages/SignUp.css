@@ -53,3 +53,35 @@
   font-size: 20px;
   text-decoration: solid;
 }
+
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.show-password-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.password-strength {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.password-strength.weak {
+  color: red;
+}
+
+.password-strength.moderate {
+  color: orange;
+}
+
+.password-strength.strong {
+  color: green;
+}
