@@ -1,6 +1,6 @@
 import React from "react";
 import "./CategoryBar.css";
-
+import"./SecondaryNavBar.css"
 // This is an array of categories. Each category has a name & image & link.
 // If we want to add or remove a category, we can do this here in the array without changing the rest of the code.
 const categories = [

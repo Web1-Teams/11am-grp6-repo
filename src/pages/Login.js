@@ -45,18 +45,18 @@ const Login = () => {
             </label>
           </div>
           <br></br>
-          <Link to="./homepage">
+          <Link to="/">
             <button className =" hamza-button"type="submit">Login</button>
           </Link>
         </form>
-        <Link to="./homepage" className="text-decoration-none">
+        <Link to="/" className="text-decoration-none">
           Forgot your password ?
         </Link>
         <div className="social-login">
           <p>Or continue with</p>
 
           <Link
-            to="./homepage"
+            to="/"
             className="btn facebook-btn"
             onClick={handleFacebookLogin}
           >
@@ -65,7 +65,7 @@ const Login = () => {
             </span>
           </Link>
           <Link
-            to="./homepage"
+            to="/"
             className="btn google-btn "
             onClick={handleGoogleLogin}
           >

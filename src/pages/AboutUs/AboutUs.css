@@ -1,0 +1,246 @@
+
+  body {
+   
+   background: linear-gradient(#F8F7F6);
+   
+  }
+
+   .about-section-modern {
+    padding: 80px 20px 130px 0px;
+    background: linear-gradient(135deg, #7a4c35, #5a3324);
+    color: #f7e7da;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    margin:50px  auto;
+    max-width: 900px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .about-section-modern:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+  }
+  
+  .about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-left:0 ;
+    color: #5a3324;
+    background: #f7e7da;
+    padding: 20px 45px 20px ;
+    border-radius: 0 50px 50px 0;
+    text-align: left;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .about-description {
+    font-family: 'Merriweather', serif;
+    font-size: 1.4rem;
+    line-height: 1.9;
+    text-align: left;
+    margin: 0 auto;
+    color: #e8d8c6;
+    max-width: 750px;
+    animation: fadeIn 1.2s ease-out;
+  }
+  
+  /* Keyframe animation for fade-in effect */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Button added for dynamic interactivity */
+  .explore-button {
+    margin-top: 30px;
+    background-color: #9a6b4b;
+    color: #ffffffcd;
+    border: none;
+    padding: 20px 35px;
+    font-family: 'Merriweather', serif;
+    font-size: 1.1rem;
+    border-radius: 15px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .explore-button:hover {
+    background-color: #815741;
+    transform: scale(1.05);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .about-title {
+      font-size: 2.5rem;
+    }
+    .about-description {
+      font-size: 1rem;
+      padding-left: 20px;
+    }
+    .about-section-modern {
+      padding: 60px 20px 60px 10px;
+      margin-left :5px;
+      margin-right :5px;
+      margin-top: 15px;
+    }
+   
+  }
+  
+ 
+   /* Overall Team Section Container */
+.aboutUs-teamSection {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #7a4c35, #5a3324);
+    color: #f7e7da;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    margin: 40px auto;
+    max-width: 1100px;
+  }
+  
+  /* Heading Styling */
+  .aboutUs-teamHeading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    margin-right: 870px;
+    color:  #fffdfb;
+    background: #96775e;
+    padding: 20px 50px 20px ;
+    border-radius: 0 50px 50px 0;
+    text-align: left;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Columns and Cards */
+  .aboutUs-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .aboutUs-column {
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+  }
+  
+  .aboutUs-card {
+    background: #5a3324;
+    color: #f7e7da;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height :600px
+  }
+  
+  .aboutUs-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Image Styling */
+  .aboutUs-image {
+    width: 100%; /* Or set a specific width like 200px */
+    aspect-ratio: 4 / 3; /* Define the aspect ratio */
+    object-fit: cover; /* Maintain content fit */
+  }
+  
+  /* Card Content Styling */
+  .aboutUs-cardContainer {
+    padding: 20px;
+  }
+  
+  .aboutUs-cardContainer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .aboutUs-cardContainer .aboutUs-title {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    color: #e8d8c6;
+    margin-bottom: 20px;
+  }                                                                                                                                                                                                                  
+  
+  .aboutUs-cardContainer p {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e8d8c6;
+  }
+  
+  /* Button Styling */
+  .aboutUs-button {
+    background-color: #9a6b4b;
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    border-radius: 15px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .aboutUs-button:hover {
+    background-color: #7f5138;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Styling */
+  @media screen and (max-width: 768px) {
+    .aboutUs-column {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  
+    .aboutUs-teamHeading {
+      font-size: 2.4rem;
+    }
+    .aboutUs-teamHeading{
+        padding:20px 50px 20px ;
+        margin-right: 0;
+    }
+  }
+  @media (max-width: 768px) {
+    .aboutUs-card {
+      flex-direction: column; /* Default stacking for small screens */
+    }
+  
+    .aboutUs-image {
+      height: auto; /* Let the image adjust based on content */
+      max-height: 370px; /* Optional: Limit the maximum height of the image */
+     
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .aboutUs-card {
+      flex-direction: column; /* Maintain vertical layout */
+    }
+  
+    .aboutUs-image {
+      max-height: 350px; /* Further restrict image height for very small screens */
+     
+    }
+  }
+  @media(min-width:1600px){
+    .aboutUs-image {
+      max-height: 250px; /* Further restrict image height for very small screens */
+     
+    }
+  }

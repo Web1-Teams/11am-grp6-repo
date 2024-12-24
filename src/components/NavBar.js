@@ -50,7 +50,7 @@ const NavBar = ({ BrandName, i2, i3 }) => {
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-
+           
               <a className="nav-link" href="calendar">
                 <i className="fa-solid fa-calendar" />
                 {i2}
@@ -65,10 +65,16 @@ const NavBar = ({ BrandName, i2, i3 }) => {
               </a>
             </li>
           </ul>
+          <Link  className="nav-link" to="/about-us">
+                  <i className="fa-solid fa-address-card"></i> Us
+                </Link>
          <Link className="nav-link" to="/add-place" style={{ padding: "10px" }}>
             <i className="fa-solid fa-plus"></i> Place
 
           </Link>
+         
+                
+          
           <div className="dropdown ms">
             <button
               className="btn btn-ss btn-dark dropdown-toggle"
@@ -83,19 +89,20 @@ const NavBar = ({ BrandName, i2, i3 }) => {
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#settings">
+                <Link className="dropdown-item" to="/settings">
                   <i className="fa-solid fa-gear"></i> Settings
-                </a>
+                </Link>
               </li>
               <li>
                 <a className="dropdown-item" href="#notifications">
                   <i className="fa-solid fa-bell"></i> Notifications
                 </a>
               </li>
+             
               <li>
-                <a className="dropdown-item" href="#about-us">
-                  <i className="fa-solid fa-address-card"></i> Us
-                </a>
+                <Link className="dropdown-item" to="/Login">
+                  <i className="fa-solid fa-right-to-bracket"></i> Log In
+                </Link>
               </li>
               <li>
                 <a className="dropdown-item" href="#logout">

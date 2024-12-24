@@ -34,7 +34,7 @@ input {
     border-radius: 4px;
 }
 
-.hamzabutton {
+.hamza-button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -45,7 +45,7 @@ input {
     transition: background-color 0.3s ease;
 }
 
-.hamzabutton:hover {
+.hamza-button:hover {
     background-color: #0056b3;
 }
 
