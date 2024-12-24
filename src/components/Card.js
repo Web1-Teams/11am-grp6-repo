@@ -1,9 +1,69 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
+import Grp6Popup from "./Grp6Popup";
+import CopyLink from "./CopyLink";
+
+// Popup Component with Close Button
+const Popup = ({ children, onClose }) => {
+  return (
+    <>
+      {/* Background overlay */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          zIndex: 999,
+          pointerEvents: "none", // إضافة هذه السطر لمنع التفاعل
+        }}
+        onClick={onClose} // Close Popup when clicking outside
+      ></div>
+
+      {/* Popup container */}
+      <div
+        style={{
+          width: "90%",
+          height: "80%",
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "white",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
+          borderRadius: "10px",
+          padding: "20px",
+          zIndex: 999,
+        }}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "-10px",
+            right: "20px",
+            backgroundColor: "transparent",
+            border: "none",
+            fontSize: "50px", // Larger button
+            color: "#800020", // Color of the button
+            cursor: "pointer",
+          }}
+        >
+          &times; {/* Close symbol */}
+        </button>
+        {children}
+      </div>
+    </>
+  );
+};
+
 
 const Card = ({ id, image,image2,image3, name, locationname, rating = 0 }) => {
-  const [isShareClicked, setIsShareClicked] = useState(false);
+  const [isShareClicked, setIsShareClicked] = useState(false); // State for Popup
 
   const navigate = useNavigate();
 
@@ -94,10 +154,29 @@ const Card = ({ id, image,image2,image3, name, locationname, rating = 0 }) => {
           <i class="fa-solid fa-link"></i>
         </button>
       </div>
+
+      {/* Popup for Share */}
+      {isShareClicked && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="popup-container"
+        >
+          <Popup onClose={() => setIsShareClicked(false)}>
+            <div>
+              <h5 style={{ fontWeight: "700" }}>Share Modal</h5>
+              <hr />
+              <h6 style={{ fontWeight: "600" }}>Share this Link Via</h6>
+              <Grp6Popup shareUrl={`${window.location.origin}/place/${id}`} />
+              <div style={{ position: "relative", height: "200px" }}></div>
+              <CopyLink link={`${window.location.origin}/place/${id}`} />
+            </div>
+          </Popup>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Card;
-
-

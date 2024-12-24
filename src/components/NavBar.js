@@ -58,7 +58,7 @@ const NavBar = ({ BrandName, i2, i3 }) => {
               <a className="nav-link" href="love">
                 <i class="fa-solid fa-heart" />
                 {i3}
-
+                
               </a>
             </li>
           </ul>

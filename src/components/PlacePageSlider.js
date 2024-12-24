@@ -1,9 +1,9 @@
 import React from "react";
 import './PlacePageSlider.css';
-
 const PlacePageSlider = ({ images }) => {
   return (
-    <div id="place_page_slider" className="carousel carousel-dark slide">
+
+    <div id="place_page_slider" className="carousel carousel-dark slide" data-bs-ride="carousel">
       {/* Carousel Indicators */}
       <div className="carousel-indicators">
         {images.map((_, index) => (
@@ -13,7 +13,7 @@ const PlacePageSlider = ({ images }) => {
             data-bs-target="#place_page_slider"
             data-bs-slide-to={index}
             className={index === 0 ? "active" : ""}
-            aria-label={`Slide ${index + 1}`}
+            aria-label={`Slide ${index + 1}`}  
             style={{
               color: "#fff",
               cursor: "pointer",

@@ -79,6 +79,12 @@ const AddPlace = ({ onAddPlace }) => {
   const [tags, setTags] = useState({});
   const navigate = useNavigate();
 
+  // Function to validate URL format
+  const isValidURL = (url) => {
+    const pattern = new RegExp('^(https?://)?(www.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(:[0-9]+)?(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?$', 'i');
+    return pattern.test(url);
+  };
+
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
@@ -100,7 +106,7 @@ const AddPlace = ({ onAddPlace }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const newPlace = {
       id: Date.now(),
       category,
@@ -382,4 +388,4 @@ const AddPlace = ({ onAddPlace }) => {
   
       }
 
-  export default AddPlace;
+export default AddPlace;

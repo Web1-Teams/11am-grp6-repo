@@ -1,0 +1,8 @@
+.box-weather {
+    position: relative;
+    padding: 20px;
+    left: 50%; /* تعديل الإزاحة إلى اليسار على حسب المطلوب */
+    width: 50%; /* تحديد العرض الكلي للصندوق */
+    transition: left 0.3s ease; /* إضافة حركة سلسة */
+  }
+  

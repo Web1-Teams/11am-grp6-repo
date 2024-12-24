@@ -7,7 +7,7 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
-import CategoryPage from "./pages/CategoryPage"; // Import the new component
+import SignUp from "./pages/SignUp";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -53,12 +53,12 @@ function App() {
           path="/add-place"
           element={
             <>
-              <AddPlace onAddPlace={handleAddPlace} />
+              <AddPlace onAddPlace={handleAddPlace} />{" "}
               <NavBar
                 BrandName="VisitMe"
                 i1="Home"
                 i2="Calendar"
-                i3="My Favorites"
+                i3=" My Favorites"
               />
               <SecondaryNavBar />
             </>
@@ -82,12 +82,25 @@ function App() {
             </>
           }
         />
-        <Route path="/calendar" element={<Calendar places={places} />} />
-        <Route path="/login" element={<Login places={places} />} />
         <Route
-          path="/category/:categoryName"
-          element={<CategoryPage />} // Add route for CategoryPage
+          path="/calendar"
+          element={
+            <>
+              <Calendar places={places} />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2="Calendar"
+                i3=" My Favorites"
+              />
+            </>
+          }
         />
+        <Route path="/login" element={<Login places={places} />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/HomePage" element={<HomePage places={places} />} />
       </Routes>
     </Router>
   );
