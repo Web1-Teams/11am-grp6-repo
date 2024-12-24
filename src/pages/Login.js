@@ -52,18 +52,22 @@ const Login = () => {
             </label>
           </div>
           <br></br>
-          <Link to="./homepage">
+          <Link to="/">
             <button className =" hamza-button"type="submit">Login</button>
           </Link>
         </form>
+
         <Link to="HomePage" className="text-decoration-none">
+
           Forgot your password ?
         </Link>
         <div className="social-login">
           <p>Or continue with</p>
 
           <Link
+
             to="/HomePage"
+
             className="btn facebook-btn"
             onClick={handleFacebookLogin}
           >
@@ -72,7 +76,9 @@ const Login = () => {
             </span>
           </Link>
           <Link
+
             to="/HomePage"
+
             className="btn google-btn "
             onClick={handleGoogleLogin}
           >
