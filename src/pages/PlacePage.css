@@ -326,9 +326,6 @@
 } 
 
 .place-tag {  
-   /* #640018 */
-  /* #800020; */
-
   display: inline-block;
   background-color:#f9cedc;
   color:#640018;
@@ -345,13 +342,6 @@
   margin-left: 35px;
   margin-right: 20px;
   margin-top: 4px;
-}
-.place-tag:hover{
-  background-color: #640018;
-  color:#f9cedc;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  box-shadow: 5px 5px 15px 5px rgba(67, 1, 16, 0.637), 5px 5px 15px 5px rgba(67, 1, 16, 0.637);  /* Multiple shadows */
-  
 }
 /*------------------------------------------------end remaa-----------*/
 
@@ -406,47 +396,20 @@
   .place-tag{
     font-size: smaller;
   }
-  
-
-   
-}
-
-/* هون سهاد عدلت ولتحت */
-.Info{
-   display: flex;
-justify-content: space-between;
-padding-right: 40px;
-padding-left: 40px;
 }
 .SL-container{
   padding: 20px;
   margin: 20px; 
-  font-family: 'Arial', sans-serif;
   overflow-wrap: break-word; 
   word-wrap: break-word;
-  transform: translate(140px,-30px);
 }
 .short-info {
-  border: 1px solid #884a59; 
-  background-color: #80002034;
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   max-height: 100px;
-  padding: 20px;
-  font-size: 13px; 
-  font-weight: 600; 
   color: #333; 
-  margin-bottom: 15px; 
-  letter-spacing: 1px;
 }
-/* تم حذف شيء يوز ليسس من قبل سهاد *
-/* سهاد مرت من هنا */
-
 .favorite-btn
 ,.visited-btn {
-  display: flex;
-  align-items: center;
   padding: 10px 10px;
   border: none;
   border-radius: 15px;
@@ -475,10 +438,8 @@ padding-left: 40px;
 }
 .favorite-btn:hover,
 .visited-btn:hover {
-  /* transform: scale(1.05); */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   background-color: #80002050;
-  /* box-shadow: 5px 5px 15px 5px rgba(109, 28, 47, 0.637), 5px 5px 15px 5px rgba(107, 28, 46, 0.637);   */
 }
 .emoji-overlay {
   position: fixed;
@@ -524,7 +485,6 @@ padding-left: 40px;
 }
 .name-heart-visited h1{
   font-size: 1.5rem;
-  padding: 4px;
 }
 @media (max-width: 768px) {
   .favorite-btn span, .visited-btn span {
@@ -534,19 +494,6 @@ padding-left: 40px;
   .favorite-btn, .visited-btn {
       padding: 5px;
   }
-}
-.long-info {
-  padding: 15px;
-  border: 1px solid #884a59; 
-  background-color: #80002034;
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  max-width: 500px; 
-  max-height: 1000px;
-  font-size: 20px; 
-  color: #444; 
-  text-align: justify;
-  margin-bottom: 15px;
 }
 @media (max-width: 768px) {
   .Info {
