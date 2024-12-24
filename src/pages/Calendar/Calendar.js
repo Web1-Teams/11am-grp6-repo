@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Calendar.css";
-import Navbar from "./NavBar.js";
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
@@ -79,37 +78,37 @@ const Calendar = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="racer">
-        <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
-          <div className="container-fluid">
-            <h1 id="h1style">Calendar</h1>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav" id="astyle">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home Page
-                </a>
-                <a className="nav-link active" href="#">
-                  Events
-                </a>
-                <a className="nav-link active" href="#">
-                  Schedule your day
-                </a>
+      <div className="body-calendar">
+        {/*<div className="racer">
+          <nav className="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+            <div className="container-fluid">
+              <h1 id="h1style">Calendar</h1>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav" id="astyle">
+                  <a className="nav-link active" aria-current="page" href="#">
+                    Home Page
+                  </a>
+                  <a className="nav-link active" href="#">
+                    Events
+                  </a>
+                  <a className="nav-link active" href="#">
+                    Schedule your day
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>*/}
 
         <div className="box">
           <header>
@@ -142,7 +141,6 @@ const Calendar = () => {
               <li>Fri</li>
               <li>Sat</li>
             </ul>
-
             <ul className="days">{renderCalendar()}</ul>
           </div>
         </div>

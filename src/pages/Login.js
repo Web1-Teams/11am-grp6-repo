@@ -44,8 +44,9 @@ const Login = () => {
             </label>
           </div>
           <br></br>
-          <Link to="/">
-            <button type="submit">Login</button>
+
+          <Link to="./homepage">
+            <button className =" hamza-button"type="submit">Login</button>
           </Link>
         </form>
         <Link to="./homepage" className="text-decoration-none">
@@ -75,7 +76,7 @@ const Login = () => {
         </div>
         <br></br>
         <h5 className="form-title">
-          <Link to="./signup" id="noAccount">
+          <Link to="./SignUp" id="noAccount">
             Don't Have an account ?
           </Link>
         </h5>

@@ -177,7 +177,8 @@ const AddPlace = ({ onAddPlace }) => {
       }
  
   export default AddPlace;
-/*
+
+  /*
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddPlace.css";
@@ -301,3 +302,5 @@ const AddPlace = ({ onAddPlace }) => {
 export default AddPlace;
 
 */
+
+
