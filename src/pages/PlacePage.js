@@ -122,7 +122,19 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     return (
         <div className="place-page" style={{ marginTop: "50px", padding: "0px" }}>
             <Link to="/">Go Back</Link>
-            <PlacePageSlider images={[place.image, place.image2, place.image3]} />
+          <div className="slider_and_dicription">
+              
+          <PlacePageSlider images={[place.image, place.image2, place.image3]} />
+
+     {/* added div for displayment */}
+     <div className='SL-container'>
+    <p className="short-info">{place.description}</p>
+     <p className="long-info" style={{ fontSize: 25 }}>
+         {place.longDescription}
+     </p>
+
+    </div>
+          </div>
 
 
             {showEmoji && (
@@ -131,21 +143,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     <p>You are the first to comment!</p>
                 </div>
             )}
-            <div className="place-tags">
-
-                            <div>
-                            {tags.length > 0 ? (
-                                tags.map((tag, index) => (
-                                    <span key={index} className="place-tag">
-                                        {tag}
-                                    </span>
-                                ))
-                            ) : (
-                                <p>No tags available.</p>
-                            )}
-                      </div>
-                 </div>
-
 
            <div className="name-heart-visited">
     <div className="NFV-container">
@@ -156,67 +153,35 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 onClick={handleHeartClick}
             >
               <i className="fa-solid fa-heart"></i>
-                <span className="hide_after">Favorite</span>
             </button>
             <button
                 className={`visited-btn ${isCheckClicked ? "active" : ""}`}
                 onClick={handleCheckClick}
             >
                 <i className="fa-solid fa-circle-check"></i>
-                <span className="hide_after">Visited</span>
             </button>
         </div>
     </div>
 </div>
+<div className="place-tags">
 
-            <div className="place-details">
-                <div className="Info">
-                   
-                   {/* added div for displayment */}
-                   <div className='SL-container'>
-                   <p className="short-info">{place.description}</p>
-                    <p className="long-info" style={{ fontSize: 25 }}>
-                        {place.longDescription}
-                    </p>
+<div>
+{tags.length > 0 ? (
+    tags.map((tag, index) => (
+        <span key={index} className="place-tag">
+            {tag}
+        </span>
+    ))
+) : (
+    <p>No tags available.</p>
+)}
+</div>
+</div>
 
-                   </div>
-                   
-                    <div className="comments-list-container">
-                       <p>  <span className="your-comment ">YOUR COMMINTS</span> </p>
-                <ul className="comments-list">
-                    {comments.length > 0 ? (
-                        comments.map((comment, index) => (
-                            <li key={index} className="comment-item">
-                                {comment}
-                            </li>
-                        ))
-                    ) : (
-                        <p className="no-comments">No comments yet. Be the first to comment!</p>
-                    )}
-                </ul>
 
-                </div>
-                </div>
-
-                <div className="comment-section">
-                <h2>Comments</h2>
-                <form onSubmit={handleCommentSubmit} className="comment-form"> 
-                    <textarea
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                        placeholder="Write your comment here..."
-                        required
-                    ></textarea>
-                    <button type="submit" className="submit-comment">
-                        Add Comment
-                    </button>
-                </form>
-            </div>
-
-               
-          
-                {/* Feedback Section */}
-                <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">
+<div className="feedback-map-container">
+      {/* Feedback Section */}
+      <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">
                     Leave Feedback
                 </button>
                 
@@ -275,6 +240,47 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 ) : (
                     <p>Location information is not available.</p>
                 )}
+</div>
+
+
+            <div className="place-details">
+                <div className="Info">
+                   
+                    <div className="comments-list-container">
+                       <p>  <span className="your-comment ">YOUR COMMINTS</span> </p>
+                <ul className="comments-list">
+                    {comments.length > 0 ? (
+                        comments.map((comment, index) => (
+                            <li key={index} className="comment-item">
+                                {comment}
+                            </li>
+                        ))
+                    ) : (
+                        <p className="no-comments">No comments yet. Be the first to comment!</p>
+                    )}
+                </ul>
+
+                </div>
+                </div>
+
+                <div className="comment-section">
+                <h2>Comments</h2>
+                <form onSubmit={handleCommentSubmit} className="comment-form"> 
+                    <textarea
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        placeholder="Write your comment here..."
+                        required
+                    ></textarea>
+                    <button type="submit" className="submit-comment">
+                        Add Comment
+                    </button>
+                </form>
+            </div>
+
+               
+          
+              
             </div>
            
 
