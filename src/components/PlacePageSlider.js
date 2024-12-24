@@ -15,13 +15,7 @@ const PlacePageSlider = ({ images }) => {
                         data-bs-slide-to={index}
                         className={index === 0 ? "active" : ""}
                         aria-label={`Slide ${index + 1}`}
-                        style={{
-
-                            cursor: "pointer",
-                            width: "4rem",
-                            height: "0.5rem",
-                            borderRadius: "4px",
-                        }}
+                
                     ></button>
                 ))}
             </div>
