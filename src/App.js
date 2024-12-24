@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import SecondaryNavBar from "./components/SecondaryNavBar"
+import SecondaryNavBar from "./components/SecondaryNavBar";
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
+import CategoryPage from "./pages/CategoryPage"; // Import the new component
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -46,16 +47,47 @@ function App() {
 
   return (
     <Router>
-
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
-        <Route path="/add-place" element={<><AddPlace onAddPlace={handleAddPlace} /> <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3=" My Favorites" /><SecondaryNavBar/></>} />
+        <Route
+          path="/add-place"
+          element={
+            <>
+              <AddPlace onAddPlace={handleAddPlace} />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2="Calendar"
+                i3="My Favorites"
+              />
+              <SecondaryNavBar />
+            </>
+          }
+        />
         <Route
           path="/place/:id"
-          element={<><PlacePage places={places} updatePlaceRating={updatePlaceRating} /><NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" /><SecondaryNavBar/></>}
+          element={
+            <>
+              <PlacePage
+                places={places}
+                updatePlaceRating={updatePlaceRating}
+              />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2=" Calendar"
+                i3=" My Favorites"
+              />
+              <SecondaryNavBar />
+            </>
+          }
         />
         <Route path="/calendar" element={<Calendar places={places} />} />
         <Route path="/login" element={<Login places={places} />} />
+        <Route
+          path="/category/:categoryName"
+          element={<CategoryPage />} // Add route for CategoryPage
+        />
       </Routes>
     </Router>
   );
