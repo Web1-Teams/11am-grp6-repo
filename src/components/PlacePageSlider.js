@@ -46,3 +46,4 @@ const PlacePageSlider = ({ images }) => {
 };
 
 export default PlacePageSlider;
+

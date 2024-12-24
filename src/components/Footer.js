@@ -79,7 +79,7 @@ return (
     fontFamily: 'system-ui',
     alignSelf: 'center',
     color:'rgb(8, 4, 61)'
-  }}>🎉 عروض جديدة على المنتجات! احصل على خصم 20% اليوم فقط!</p>
+  }}>🎉 New offers on products! Get a 20% discount today only!</p>
 </div>
 
 <div className="copyright">
@@ -89,7 +89,7 @@ return (
     fontFamily: 'system-ui',
     alignSelf: 'center',
     color:'rgb(8, 4, 61)'
-  }}>&copy; 2024 جميع الحقوق محفوظة</p>
+  }}>&copy; All rights reserved 2024.</p>
 </div>
 </section>
 
