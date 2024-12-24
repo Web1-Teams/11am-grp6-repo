@@ -4,7 +4,7 @@ import "./NavBar.css";
 import React, { useState } from "react";
 import logo from './img/logo.png';
 
-const NavBar = ({ BrandName, i2, i3 }) => {
+const NavBar = ({ BrandName, i2, i3,i4 }) => {
   const [isSearching, setIsSearching] = useState(false);
 
   const handleSearchToggle = () => {
@@ -54,7 +54,6 @@ const NavBar = ({ BrandName, i2, i3 }) => {
               </a>
             </li>
             <li className="nav-item">
-
               <a className="nav-link" href="love">
                 <i class="fa-solid fa-heart" />
                 {i3}

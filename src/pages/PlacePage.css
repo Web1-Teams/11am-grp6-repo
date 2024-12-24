@@ -96,10 +96,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
 
-
- 
 .place-details {
 
   align-items: center;
@@ -368,28 +365,6 @@
  .place-tag{
   margin: 5px 3px;
  }
- /* -------------remaa deleted-------------------------------
-  
-  
-
-
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-    */
-  
-
   .rating-form .category .rating {
     display: flex;
     justify-content: center;
@@ -419,23 +394,6 @@
     text-align: center;
   }
    /*remaa deleted */
-
-
-  
- 
-  
-
-
-
-   
-  
-  
-
-  
-
-
-  
-  
   .comment-item {
     background: #f9f9f9;
     padding: 10px;
