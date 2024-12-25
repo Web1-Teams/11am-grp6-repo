@@ -16,7 +16,7 @@ return (
     color:'rgb(8, 4, 61)'
   }}> 
  <span className="hidden-text1">   you can follow  us in our socials  </span>   </div>
-    z
+    
     {/* right */}
      <div > 
        < ul id="socials_links">
