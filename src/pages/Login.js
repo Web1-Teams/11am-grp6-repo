@@ -1,10 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import {
-  LoginSocialGoogle,
-  LoginSocialFacebook,
-} from "reactjs-social-login";
+import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
 import {
   FacebookLoginButton,
   GoogleLoginButton,
@@ -15,7 +12,7 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    navigate("/homepage");  
+    navigate("/homepage");
   };
 
   return (
@@ -49,6 +46,7 @@ const Login = () => {
               <span>Remember Me</span>
             </label>
           </div>
+
           <br />
           <button className="hamza-button" type="submit">
             Login
@@ -73,9 +71,7 @@ const Login = () => {
             }}
           >
             <FacebookLoginButton>
-              <span>
-                Continue with Facebook 
-              </span>
+              <span>Continue with Facebook</span>
             </FacebookLoginButton>
           </LoginSocialFacebook>
 
@@ -92,12 +88,9 @@ const Login = () => {
             }}
           >
             <GoogleLoginButton>
-              <span>
-                Continue with Google 
-              </span>
+              <span>Continue with Google</span>
             </GoogleLoginButton>
           </LoginSocialGoogle>
-          
         </div>
         <br />
         <h5 className="form-title">
