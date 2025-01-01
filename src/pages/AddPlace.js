@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 const categoryTags = {
-  park: [
+  "park": [
     "have a parking",
     "suitable for people with special needs",
     "suitable for old people",
@@ -14,7 +14,8 @@ const categoryTags = {
     "family section",
     "entrance fee",
     "suitable for barbecue",
-    "play ground for children"
+    "play ground for children",
+    "Open 24/7"
   ],
   "gaming place": [
     "have a parking",
@@ -25,7 +26,8 @@ const categoryTags = {
     "board games",
     "cyber",
     "suitable for people with special needs",
-    "foods and drinks"
+    "foods and drinks",
+    "Open 24/7"
   ],
   "ancient place": [
     "have a parking",
@@ -37,9 +39,10 @@ const categoryTags = {
     "suitable for old people",
     "markets",
     "entrance fee",
-    "antique souvenirs shop"
+    "antique souvenirs shop",
+    "Open 24/7"
   ],
-  cafe: [
+  "cafe": [
     "sweets",
     "family only",
     "family section",
@@ -47,10 +50,11 @@ const categoryTags = {
     "shows matches",
     "suitable for people with special needs",
     "have a parking",
-    "card games"
+    "card games",
+    "Open 24/7"
   ],
-  "amusement park": ["water park", "cinema"],
-  restaurant: [
+  "amusement park": ["water park", "cinema","Open 24/7"],
+  "restaurant": [
     "vegetarian food",
     "fast food",
     "traditional dishes",
@@ -62,7 +66,8 @@ const categoryTags = {
     "suitable for old people",
     "family only",
     "family section",
-    "home made dishes"
+    "home made dishes",
+    "Open 24/7"
   ]
 };
 

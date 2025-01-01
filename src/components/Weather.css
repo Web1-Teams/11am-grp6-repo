@@ -3,11 +3,12 @@
     max-width: 470px;
     background: linear-gradient(120deg, #000000, #800020);
     color: #ffffff;
-    margin: 35px auto 0;
+    margin: 5px auto 0;
     border-radius: 20px;
     padding: 10px 20px;
     text-align: center;
     z-index: 999;
+    height: 420px;
 }
 
 .we-search {
@@ -109,5 +110,8 @@
         display: block;
         /* تغيير العرض ليكون عموديًا */
         width: 100%;
+    }
+    .we-card{
+        height:460px;
     }
 }

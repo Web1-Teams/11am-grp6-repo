@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Weather.css";
 
 function Weather() {
@@ -6,7 +6,7 @@ function Weather() {
   const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("Nablus");  // وضع القيمة الافتراضية هنا
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(false);
 
@@ -45,6 +45,11 @@ function Weather() {
       setError(true);
     }
   };
+
+  // استخدام useEffect لتحميل البيانات للمدينة الافتراضية عند تحميل المكون
+  useEffect(() => {
+    checkweather();
+  }, [city]); // سيتم استدعاء checkweather عند تغيير قيمة المدينة
 
   return (
     <>

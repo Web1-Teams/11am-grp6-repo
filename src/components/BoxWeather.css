@@ -1,8 +1,39 @@
+.box-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  justify-content: space-around;
+}
+
 .box-weather {
-    position: relative;
-    padding: 20px;
-    left: 50%; /* تعديل الإزاحة إلى اليسار على حسب المطلوب */
-    width: 50%; /* تحديد العرض الكلي للصندوق */
-    transition: left 0.3s ease; /* إضافة حركة سلسة */
+  width: 60%;
+  margin-left: 20px;
+}
+
+.box-video {
+  width: 60%;
+  margin-left: 80px;
+  margin-top: 2px;
+}
+
+.box-video video {
+  width: 100%;
+}
+
+@media screen and (max-width: 824px) {
+  .box-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
   }
-  
+
+  .box-video {
+    width: 90%;
+    margin: 10px 0; 
+  }
+
+  .box-weather {
+    width: 90%; 
+    margin: 10px 0;
+  }
+}
