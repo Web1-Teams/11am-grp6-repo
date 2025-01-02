@@ -4,18 +4,21 @@ import "./NavBar.css";
 import React from "react";
 import logo from './img/logo.png';
 
-const NavBar = ({ BrandName, i2, i3 }) => {
+
+
+const NavBar = ({ BrandName, i2, i3,i4 }) => {
+  const [isSearching, setIsSearching] = useState(false);
+
+
 
 
   return (
     <div className="container">
-
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
         <Link className="navbar-brand" to="/">
-        <img src={logo} alt="Logo" className="logo" /> 
+          <img src={logo} alt="Logo" className="logo" />
           {BrandName}
         </Link>
-
         <button
           className="navbar-toggler"
           type="button"
@@ -27,8 +30,14 @@ const NavBar = ({ BrandName, i2, i3 }) => {
 
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-           
+
+          <li className="nav-item">
+  <a className="nav-link" href="/visited-places">
+    <i className="fa-solid fa-check" /> Visited Places
+  </a>
+</li> 
+
+      <li className="nav-item">
               <a className="nav-link" href="calendar">
                 <i className="fa-solid fa-calendar" />
                 {i2}
@@ -36,23 +45,24 @@ const NavBar = ({ BrandName, i2, i3 }) => {
             </li>
             <li className="nav-item">
 
-              <a className="nav-link" href="love">
-                <i class="fa-solid fa-heart" />
-                {i3}
-                
-              </a>
-            </li>
-          </ul>
-          <Link  className="nav-link" to="/about-us">
-                  <i className="fa-solid fa-address-card"></i> Us
-                </Link>
-         <Link className="nav-link" to="/add-place" style={{ padding: "10px" }}>
-            <i className="fa-solid fa-plus"></i> Place
+  <Link className="nav-link" to="/favorites">
+    <i className="fa-solid fa-heart" />
+    {i3}
+  </Link>
+</li>
 
+          </ul>
+          <Link className="nav-link" to="/about-us">
+            <i className="fa-solid fa-address-card"></i> Us
           </Link>
-         
-                
-          
+          <Link
+            className="nav-link"
+            to="/add-place"
+            style={{ padding: "10px" }}
+          >
+            <i className="fa-solid fa-plus"></i> Place
+          </Link>
+
           <div className="dropdown ms">
             <button
               className="btn btn-ss btn-dark dropdown-toggle"
@@ -62,10 +72,11 @@ const NavBar = ({ BrandName, i2, i3 }) => {
             </button>
             <ul className="dropdown-menu dropdown-menu-start">
               <li>
-                <a className="dropdown-item" href="#favorites">
+                <Link className="dropdown-item" to="/profile-page">
                   <i className="fa-solid fa-user"></i> My Profile
-                </a>
+                </Link>
               </li>
+
               <li>
                 <Link className="dropdown-item" to="/settings">
                   <i className="fa-solid fa-gear"></i> Settings
@@ -76,7 +87,7 @@ const NavBar = ({ BrandName, i2, i3 }) => {
                   <i className="fa-solid fa-bell"></i> Notifications
                 </a>
               </li>
-             
+
               <li>
                 <Link className="dropdown-item" to="/Login">
                   <i className="fa-solid fa-right-to-bracket"></i> Log In
@@ -86,6 +97,8 @@ const NavBar = ({ BrandName, i2, i3 }) => {
                 <a className="dropdown-item" href="#logout">
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
                 </a>
+              </li>
+              <li>
               </li>
             </ul>
           </div>
