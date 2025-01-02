@@ -5,7 +5,6 @@ import Section from "../components/Section";
 import Slideer from "../components/Slideer";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-import UserFeedBack from "./UserFeedBack";
 
 
 const HomePage = ({ places, updatePlaceState }) => {

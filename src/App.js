@@ -7,9 +7,8 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
-import CategoryPage from "./pages/CategoryPage"; // Import the new component
 import VisitedPlacePage from "./pages/VisitedPlacePage"; // Import VisitedPlacePage
-import UserFeedBack from "./pages/UserFeedBack.js";
+import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 
 
 function App() {
@@ -87,10 +86,6 @@ return (
         <Route path="/calendar" element={<Calendar places={places} />} />
         <Route path="/login" element={<Login places={places} />} />
         <Route
-          path="/category/:categoryName"
-          element={<CategoryPage />} // Add route for CategoryPage
-        />
-        <Route
           path="/visited-places"
           element={
             <>
@@ -109,7 +104,7 @@ return (
           path="/feedback"
           element={
             <>
-              <UserFeedBack />
+              <UserFeedBack/>
               <NavBar
                 BrandName="VisitMe"
                 i1="Home"
