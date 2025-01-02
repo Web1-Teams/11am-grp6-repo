@@ -16,8 +16,10 @@ return (
     color:'rgb(246, 243, 199)',
     paddingLeft:'42px'
   }}> 
+
  <span className="hidden-text1">   You Can Follow  Us In Our Socials  </span>   </div>
    
+
     {/* right */}
      <div > 
        < ul id="socials_links">

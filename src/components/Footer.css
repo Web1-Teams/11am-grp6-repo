@@ -1,4 +1,3 @@
-
 .custom_footer{
   display: flex;
   flex-direction: "row";
@@ -144,10 +143,12 @@ z-index: 1000;
    .custom_footer{
     height:70px;
     z-index: 1000;
+
 }
 .hidden-text1{
   margin-left: 20px;
   
+
 }
 }
 @media only  screen and (max-width:355px){

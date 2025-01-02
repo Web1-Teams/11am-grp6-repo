@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
 import "./CategoryBar.css";
 
-// Array of categories, each with a name, image, and route to its CategoryPage.
+import"./SecondaryNavBar.css"
+// This is an array of categories. Each category has a name & image & link.
+// If we want to add or remove a category, we can do this here in the array without changing the rest of the code.
+
+
 const categories = [
   {
     name: "Archaeological Sites",

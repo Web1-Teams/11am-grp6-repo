@@ -1,30 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import SignUp from "./SignUp.js";
+import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
+import {
+  FacebookLoginButton,
+  GoogleLoginButton,
+} from "react-social-login-buttons";
 
 const Login = () => {
-  const handleGoogleLogin = () => {
-    alert("Logged in with Google");
-  };
+  const navigate = useNavigate();
 
-  const handleFacebookLogin = () => {
-    alert("Logged in with Facebook");
+  const handleLogin = (event) => {
+    event.preventDefault();
+    navigate("/homepage");
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h2>Login</h2>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="form-group">
-            <label for="Email" required>
+            <label htmlFor="Email" required>
               Email
             </label>
             <input type="email" placeholder="Enter your email" id="Email" />
           </div>
           <div className="form-group">
-            <label for="Password" required>
+            <label htmlFor="Password" required>
               Password
             </label>
             <input
@@ -33,52 +36,67 @@ const Login = () => {
               id="Password"
             />
           </div>
-          <div class="form-check">
+          <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
-              value=""
               id="flexCheckDefault"
             />
-            <label class="form-check-label" for="flexCheckDefault">
-              <span> Remember Me</span>
+            <label className="form-check-label" htmlFor="flexCheckDefault">
+              <span>Remember Me</span>
             </label>
           </div>
-          <br></br>
-          <Link to="./homepage">
-            <button className =" hamza-button"type="submit">Login</button>
-          </Link>
+
+          <br />
+          <button className="hamza-button" type="submit">
+            Login
+          </button>
         </form>
-        <Link to="./homepage" className="text-decoration-none">
-          Forgot your password ?
-        </Link>
+        <a href="/HomePage" className="text-decoration-none">
+          Forgot your password?
+        </a>
         <div className="social-login">
           <p>Or continue with</p>
 
-          <Link
-            to="./homepage"
-            className="btn facebook-btn"
-            onClick={handleFacebookLogin}
+          <LoginSocialFacebook
+            appId="587887377179455"
+            onResolve={(response) => {
+              console.log("Facebook login successful:", response);
+              alert("Logged in with Facebook");
+              navigate("/HomePage");
+            }}
+            onReject={(error) => {
+              console.error("Facebook login failed:", error);
+              alert("Facebook login failed");
+            }}
           >
-            <span id="facebookBtn">
-              Continue with Facebook <i className="fa-brands fa-facebook" />
-            </span>
-          </Link>
-          <Link
-            to="./homepage"
-            className="btn google-btn "
-            onClick={handleGoogleLogin}
+            <FacebookLoginButton>
+              <span>Continue with Facebook</span>
+            </FacebookLoginButton>
+          </LoginSocialFacebook>
+
+          <LoginSocialGoogle
+            client_id="YOUR_GOOGLE_CLIENT_ID"
+            onResolve={(response) => {
+              console.log("Google login successful:", response);
+              alert("Logged in with Google");
+              navigate("/HomePage");
+            }}
+            onReject={(error) => {
+              console.error("Google login failed:", error);
+              alert("Google login failed");
+            }}
           >
-            <span>
-              Continue with Google <i class="fa-brands fa-google" />
-            </span>
-          </Link>
+            <GoogleLoginButton>
+              <span>Continue with Google</span>
+            </GoogleLoginButton>
+          </LoginSocialGoogle>
         </div>
-        <br></br>
+        <br />
         <h5 className="form-title">
-          <Link to="./SignUp" id="noAccount">
-            Don't Have an account ?
-          </Link>
+          <a href="/signup" id="noAccount">
+            Don't Have an account?
+          </a>
         </h5>
       </div>
     </div>

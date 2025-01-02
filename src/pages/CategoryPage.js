@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
@@ -76,6 +77,7 @@ const CategoryPage = () => {
                 <Footer_cat c1="Cafes" c1tag1="Family Type" c1tag2="Locations" c1tag3="Pictures" c1tag4="Best Sellers" c1tag5="Help" />
                 <Footer_cat c1="Play Centers" c1tag1="Support" c1tag2="Locations" c1tag3="Know More" c1tag4="Reviews" c1tag5="Help" />
             </Footer>
+
     </div>
   );
 };
