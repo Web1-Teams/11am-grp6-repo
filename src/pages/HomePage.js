@@ -9,7 +9,7 @@ import MarqueeIcons from "../components/MarqueeIcons";
 import BoxWeather from "../components/BoxWeather";
 import SearchBar from "../components/Search Bar/SearchBar";
 import LazyLoadSection from "./LazyLoadSection";
-/*import FeedBack from "../components/FeedBack";*/
+import ColorCard from "../components/ColorCard";
 
 const HomePage = ({ places, updatePlaceState }) => {
   const storedPlaces = JSON.parse(localStorage.getItem("places")) || [];
@@ -82,9 +82,6 @@ const HomePage = ({ places, updatePlaceState }) => {
             id="recommended"
           />
         </section>
-        {/*<section>
-          <FeedBack/>
-          </section>*/}
       </LazyLoadSection>
       <LazyLoadSection>
         <section>
@@ -96,6 +93,9 @@ const HomePage = ({ places, updatePlaceState }) => {
           <MarqueeIcons />
         </section>
       </LazyLoadSection>
+      <section>
+        <ColorCard />
+      </section>
       <LazyLoadSection>
         <section>
           <Footer BrandName="visit me ">
