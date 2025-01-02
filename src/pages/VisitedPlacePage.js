@@ -1,59 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Card from "../components/Card";
 import NavBar from "../components/NavBar";
-import CategoryBar from "../components/CategoryBar";
-import Section from "../components/Section";
-import Slideer from "../components/Slideer";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-import UserFeedBack from "./UserFeedBack";
+import "./VisitedPlacePage.css";
 
+const VisitedPlacePage = () => {
+  const [visitedPlaces, setVisitedPlaces] = useState([]);
 
-const HomePage = ({ places, updatePlaceState }) => {
-  const newPlaces = [...places].reverse().slice(0, 6); // Last 6 places
-  const topRatedPlaces = [...places]
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 6); // Top 6 rated places
-  const favoritePlaces = places
-    .filter((place) => place.isHeartClicked)
-    .slice(0, 6); // First 6 favorites
+  useEffect(() => {
+    const storedPlaces = JSON.parse(localStorage.getItem("places")) || [];
+    const filteredPlaces = storedPlaces.filter((place) => place.isCheckClicked);
+    setVisitedPlaces(filteredPlaces);
+  }, []);
 
   return (
-    <div className="grp6-homepage">
+    <div className="Visited-body">
 
-        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites"/>
-  
-      <section>
-        <Slideer />
-      </section>
-      <section>
-        <CategoryBar />
-      </section>
-      <section>
-        <Section
-          subtitle="New Places"
-          places={newPlaces}
-          updatePlaceState={updatePlaceState}
-          id="new-places"
-        />
-        <Section
-          subtitle="Top Rated"
-          places={topRatedPlaces}
-          updatePlaceState={updatePlaceState}
-          id="top-rated"
-        />
-        <Section
-          subtitle="Your Favorites"
-          places={favoritePlaces}
-          updatePlaceState={updatePlaceState}
-          id="your-favorites"
-        />
-        <Section
-          subtitle="Recommended"
-          places={places.slice(0, 6)} // First 6 places
-          updatePlaceState={updatePlaceState}
-          id="recommended"
-        />
-      </section>
+      <NavBar BrandName="VisitMe" i2="Calendar" i3="My Favorites" />
+      <div className="Title">Visited Places</div>
+      <div className="visited-places-container">
+        {visitedPlaces.length > 0 ? (
+          visitedPlaces.map((place) => (
+            <Card
+              key={place.id}
+              id={place.id}
+              image={place.image}
+              name={place.name}
+              locationname={place.locationname}
+              rating={place.rating}
+            />
+          ))
+        ) : (
+          <p className="no-visited-places">
+            No visited places yet. Start exploring and mark places as visited!
+          </p>
+        )}
+      </div>
       <Footer BrandName="Visit Me">
                 <Footer_cat
                     c1="Restaurants"
@@ -108,4 +91,4 @@ const HomePage = ({ places, updatePlaceState }) => {
   );
 };
 
-export default HomePage;
+export default VisitedPlacePage;

@@ -4,6 +4,7 @@ import "./NavBar.css";
 import React, { useState } from "react";
 import logo from './img/logo.png';
 
+
 const NavBar = ({ BrandName, i2, i3,i4 }) => {
   const [isSearching, setIsSearching] = useState(false);
 
@@ -46,8 +47,17 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
 
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-
+          <li className="nav-item">
+  <a className="nav-link" href="/visited-places">
+    <i className="fa-solid fa-check" /> Visited Places
+  </a>
+</li> 
+<li>
+<a className="nav-link" href="/feedback">
+<i class="fa-regular fa-message"></i> Feedback
+  </a>
+   </li>
+      <li className="nav-item">
               <a className="nav-link" href="calendar">
                 <i className="fa-solid fa-calendar" />
                 {i2}
@@ -78,6 +88,7 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                   <i className="fa-solid fa-user"></i> My Profile
                 </a>
               </li>
+
               <li>
                 <a className="dropdown-item" href="#settings">
                   <i className="fa-solid fa-gear"></i> Settings
@@ -97,6 +108,8 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                 <a className="dropdown-item" href="#logout">
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
                 </a>
+              </li>
+              <li>
               </li>
             </ul>
           </div>

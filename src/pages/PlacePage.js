@@ -20,8 +20,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         atmosphere: null,
     });
 
-    const [isHeartClicked, setIsHeartClicked] = useState(false);
-    const [isCheckClicked, setIsCheckClicked] = useState(false);
     const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
     const [showEmoji, setShowEmoji] = useState(false);
 
@@ -33,7 +31,16 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         "😊": 0.8,
         "😍": 1,
     };
-
+    const [isHeartClicked, setIsHeartClicked] = useState(() => {
+        const storedState = JSON.parse(localStorage.getItem("places")) || [];
+        const place = storedState.find((item) => item.id === parseInt(id));
+        return place ? place.isHeartClicked : false;
+    });
+    const [isCheckClicked, setIsCheckClicked] = useState(() => {
+        const storedState = JSON.parse(localStorage.getItem("places")) || [];
+        const place = storedState.find((item) => item.id === parseInt(id));
+        return place?.isCheckClicked || false;
+    });
     // Load states from localStorage
     useEffect(() => {
         const storedState = JSON.parse(localStorage.getItem("places")) || [];
@@ -48,23 +55,41 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     // Save place state to localStorage
     const updateLocalStorage = (updatedPlace) => {
         const storedState = JSON.parse(localStorage.getItem("places")) || [];
-        const updatedState = storedState.filter((item) => item.id !== updatedPlace.id);
-        updatedState.push(updatedPlace);
+        const updatedState = storedState.map((item) =>
+            item.id === updatedPlace.id
+                ? { ...item, ...updatedPlace } // Merge changes into the existing object
+                : item
+        );
+
+        // If the object doesn't exist, add it
+        if (!storedState.some((item) => item.id === updatedPlace.id)) {
+            updatedState.push(updatedPlace);
+        }
+
         localStorage.setItem("places", JSON.stringify(updatedState));
     };
 
-    // Handlers
-    const handleHeartClick = () => {
-        const newState = !isHeartClicked;
-        setIsHeartClicked(newState);
-        updateLocalStorage({ id: parseInt(id), isHeartClicked: newState, isCheckClicked });
+    const handleHeartClick = (e) => {
+        e.stopPropagation();
+        const newHeartState = !isHeartClicked;
+        setIsHeartClicked(newHeartState);
+
+        // Update only the isHeartClicked property
+        const updatedPlace = { id: parseInt(id), isHeartClicked: newHeartState, isCheckClicked };
+        updateLocalStorage(updatedPlace);
     };
 
-    const handleCheckClick = () => {
-        const newState = !isCheckClicked;
-        setIsCheckClicked(newState);
-        updateLocalStorage({ id: parseInt(id), isHeartClicked, isCheckClicked: newState });
+
+    const handleCheckClick = (e) => {
+        e.stopPropagation();
+        const newCheckState = !isCheckClicked;
+        setIsCheckClicked(newCheckState);
+
+        // Update only the isCheckClicked property
+        const updatedPlace = { id: parseInt(id), isHeartClicked, isCheckClicked: newCheckState };
+        updateLocalStorage(updatedPlace);
     };
+
 
     const handleCommentSubmit = (e) => {
         e.preventDefault();
@@ -120,50 +145,23 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
 
     return (
-        <div className="place-page" style={{ marginTop: "50px", padding: "0px" }}>
-            <Link to="/">Go Back</Link>
+        <div className="place-page" style={{ marginTop: "40px", padding: "0px" }}>
+         
           <div className="slider_and_dicription">
               
           <PlacePageSlider images={[place.image, place.image2, place.image3]} />
-
-     {/* added div for displayment */}
-     <div className='SL-container'>
+          <div className='SL-container'>
+          <section className="NamePlace">{place.name}</section>
     <p className="short-info">{place.description}</p>
-     <p className="long-info" style={{ fontSize: 25 }}>
-         {place.longDescription}
-     </p>
+    <p className="long-info">
+                            {place.longDescription}
+                       </p> 
 
     </div>
+    
+     {/* added div for displayment */}
           </div>
-
-
-            {showEmoji && (
-                <div className="emoji-overlay">
-                    🎉
-                    <p>You are the first to comment!</p>
-                </div>
-            )}
-
-           <div className="name-heart-visited">
-    <div className="NFV-container">
-        <h1>{place.name}</h1>
-        <div className="buttons-container">
-            <button
-                className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
-                onClick={handleHeartClick}
-            >
-              <i className="fa-solid fa-heart"></i>
-            </button>
-            <button
-                className={`visited-btn ${isCheckClicked ? "active" : ""}`}
-                onClick={handleCheckClick}
-            >
-                <i className="fa-solid fa-circle-check"></i>
-            </button>
-        </div>
-    </div>
-</div>
-<div className="place-tags">
+          <div className="place-tags">
 
 <div>
 {tags.length > 0 ? (
@@ -177,11 +175,9 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 )}
 </div>
 </div>
-
-
-<div className="feedback-map-container">
-      {/* Feedback Section */}
-      <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">
+          <div className="name-heart-visited"> 
+   
+    <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">
                     Leave Feedback
                 </button>
                 
@@ -219,15 +215,42 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                         </div>
                     </div>
                 )}
+                 <div className="NFV-container">
+   
+   <div className="buttons-container">
+       <button
+           className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
+           onClick={handleHeartClick}
+       >
+         <i className="fa-solid fa-heart"></i>
+       </button>
+       <button
+           className={`visited-btn ${isCheckClicked ? "active" : ""}`}
+           onClick={handleCheckClick}
+       >
+           <i className="fa-solid fa-circle-check"></i>
+       </button>
+   </div>
+</div>
+</div>
+
+            {showEmoji && (
+                <div className="emoji-overlay">
+                    🎉
+                    <p>You are the first to comment!</p>
+                </div>
+            )}
+
+<div className="feedback-map-container">
+      {/* Feedback Section */}
 
  {coordinates ? (   
-                    <div>
+                    <div className="Hamza-map">
                           <h2 className="location">Location:</h2>
                         <div  className="map-container">
-
                         <LoadScript googleMapsApiKey="AIzaSyDEsM7fwWviSUMUBW7HUDtVAJ_gEsg_jSU">
                             <GoogleMap
-                                mapContainerStyle={{ width: "calc(100%-70px)", height: "400px" }}
+                                mapContainerStyle={{ width: "100%", height: "400px" }}
                                 center={coordinates}
                                 zoom={15}
                             >
@@ -235,7 +258,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                             </GoogleMap>
                         </LoadScript>
                         </div>
-                        
                     </div>
                 ) : (
                     <p>Location information is not available.</p>
@@ -244,15 +266,30 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
 
             <div className="place-details">
-                <div className="Info">
-                   
-                    <div className="comments-list-container">
-                       <p>  <span className="your-comment ">YOUR COMMINTS</span> </p>
+
+                <div className="comment-section">
+                <h2>Comments</h2>
+                <form onSubmit={handleCommentSubmit} className="comment-form"> 
+                    <textarea
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        placeholder="Add your comment here..."
+                        required
+                    ></textarea>
+                    <div className="now">
+                    <button type="submit" className="submit-comment">
+                        Add Comment
+                    </button>
+                   </div>
+                </form> 
+                    <p>  <span className="your-comment ">Comments list</span> </p>
+                <div className="comments-list-container">
+                  
                 <ul className="comments-list">
                     {comments.length > 0 ? (
                         comments.map((comment, index) => (
                             <li key={index} className="comment-item">
-                                {comment}
+                               <i class="fa-solid fa-user"></i> : {comment}
                             </li>
                         ))
                     ) : (
@@ -261,21 +298,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 </ul>
 
                 </div>
-                </div>
-
-                <div className="comment-section">
-                <h2>Comments</h2>
-                <form onSubmit={handleCommentSubmit} className="comment-form"> 
-                    <textarea
-                        value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
-                        placeholder="Write your comment here..."
-                        required
-                    ></textarea>
-                    <button type="submit" className="submit-comment">
-                        Add Comment
-                    </button>
-                </form>
             </div>
 
                
