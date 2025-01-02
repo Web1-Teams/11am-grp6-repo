@@ -56,124 +56,96 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 return (
-    <Router>
+  <Router>
+  <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
 
-      <NavBar
-        BrandName="VisitMe"
-        i1="Home"
-        i2="Calendar"
-        i3="My Favorites"
-      />
-    
-
-      <Routes>
-        <Route path="/" element={<HomePage places={places} />} />
-        <Route
-          path="/add-place"
-          element={
-
-            <>
-
-              <AddPlace onAddPlace={handleAddPlace} />{" "}
-              <NavBar
-                BrandName="VisitMe"
-                i1="Home"
-                i2=" Calendar"
-                i3=" My Favorites"
-              />
-              <SecondaryNavBar />
-            </>
-          }
-        />
-
-        <Route
-          path="/place/:id"
-          element={
-            <>
-              <PlacePage
-                places={places}
-                updatePlaceRating={updatePlaceRating}
-              />
-              <NavBar
-                BrandName="VisitMe"
-                i1="Home"
-                i2=" Calendar"
-                i3=" My Favorites"
-              />
-              <SecondaryNavBar />
-            </>
-          }
-
-        />
-
-        <Route
-          path="/profile-page"
-          element={
-            <>
-              <ProfilePage places={places} />
-              <NavBar
-                BrandName="VisitMe"
-                i1="Home"
-                i2=" Calendar"
-                i3=" My Favorites"
-              />
-            </>
-          }
-        />
-        <Route
-          path="/calendar"
-          element={
-            <>
-              <Calendar places={places} />
-              <NavBar
-                BrandName="VisitMe"
-                i1="Home"
-                i2=" Calendar"
-                i3=" My Favorites"
-              />
-            </>
-          }
-        />
-        <Route path="/login" element={<Login places={places} />} />
-        <Route
-
-          path="/favorites"
-          element={<FavoritesPage places={places} />}
-        />
-        <Route
-          path="/category/:categoryName"
-          element={<CategoryPage />} // Add route for CategoryPage
-        />
-
-        <Route
-          path="/visited-places"
-          element={
-            <>
-              <VisitedPlacePage />
-              <NavBar
-                BrandName="VisitMe"
-                i1="Home"
-                i2="Calendar"
-                i3="My Favorites"
-              />
-              <SecondaryNavBar />
-            </>
-          }
-        />
-
-          path="/settings"
-          element={
-            <>
-              <Settings places={places} />{" "}
-            </>
-          }
-        ></Route>
-        <Route path="/about-us" element={<AboutUs places={places} />}></Route>
-        <Route path="/SignUp" element={<SignUp />} />
-
-      </Routes>
-    </Router>
-    
+  <Routes>
+    <Route path="/" element={<HomePage places={places} />} />
+    <Route
+      path="/add-place"
+      element={
+        <>
+          <AddPlace onAddPlace={handleAddPlace} />
+          <NavBar
+            BrandName="VisitMe"
+            i1="Home"
+            i2=" Calendar"
+            i3=" My Favorites"
+          />
+          <SecondaryNavBar />
+        </>
+      }
+    />
+    <Route
+      path="/place/:id"
+      element={
+        <>
+          <PlacePage
+            places={places}
+            updatePlaceRating={updatePlaceRating}
+          />
+          <NavBar
+            BrandName="VisitMe"
+            i1="Home"
+            i2=" Calendar"
+            i3=" My Favorites"
+          />
+          <SecondaryNavBar />
+        </>
+      }
+    />
+    <Route
+      path="/profile-page"
+      element={
+        <>
+          <ProfilePage places={places} />
+          <NavBar
+            BrandName="VisitMe"
+            i1="Home"
+            i2=" Calendar"
+            i3=" My Favorites"
+          />
+        </>
+      }
+    />
+    <Route
+      path="/calendar"
+      element={
+        <>
+          <Calendar places={places} />
+          <NavBar
+            BrandName="VisitMe"
+            i1="Home"
+            i2=" Calendar"
+            i3=" My Favorites"
+          />
+        </>
+      }
+    />
+    <Route path="/login" element={<Login places={places} />} />
+    <Route path="/favorites" element={<FavoritesPage places={places} />} />
+    <Route path="/category/:categoryName" element={<CategoryPage />} />
+    <Route
+      path="/visited-places"
+      element={
+        <>
+          <VisitedPlacePage />
+          <NavBar
+            BrandName="VisitMe"
+            i1="Home"
+            i2="Calendar"
+            i3="My Favorites"
+          />
+          <SecondaryNavBar />
+        </>
+      }
+    />
+    <Route path="/settings" element={<Settings />} />{" "}
+    {/* This should be here, not inside another <Routes> */}
+    <Route path="/about-us" element={<AboutUs places={places} />} />
+    <Route path="/SignUp" element={<SignUp />} />
+  </Routes>
+</Router>
   );
 }
 
