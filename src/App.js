@@ -7,6 +7,7 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
+import VisitedPlacePage from "./pages/VisitedPlacePage"; // Import VisitedPlacePage
 import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
@@ -47,8 +48,7 @@ function App() {
     setPlaces(updatedPlaces);
     updateLocalStorage(updatedPlaces);
   };
-
-  return (
+return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
@@ -56,6 +56,7 @@ function App() {
           path="/add-place"
           element={
             <>
+
               <AddPlace onAddPlace={handleAddPlace} />{" "}
               <NavBar
                 BrandName="VisitMe"
@@ -85,6 +86,7 @@ function App() {
               <SecondaryNavBar />
             </>
           }
+
         />
 
         <Route
@@ -117,6 +119,26 @@ function App() {
         />
         <Route path="/login" element={<Login places={places} />} />
         <Route
+
+          path="/category/:categoryName"
+          element={<CategoryPage />} // Add route for CategoryPage
+        />
+        <Route
+          path="/visited-places"
+          element={
+            <>
+              <VisitedPlacePage />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2="Calendar"
+                i3="My Favorites"
+              />
+              <SecondaryNavBar />
+            </>
+          }
+        />
+
           path="/settings"
           element={
             <>
@@ -128,6 +150,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
       </Routes>
     </Router>
+    
   );
 }
 

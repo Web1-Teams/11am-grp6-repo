@@ -20,8 +20,9 @@ const HomePage = ({ places, updatePlaceState }) => {
     
   return (
     <div className="grp6-homepage">
-        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
-        
+
+        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites"/>
+  
       <section>
         <Slideer />
       </section>
@@ -54,6 +55,7 @@ const HomePage = ({ places, updatePlaceState }) => {
           id="recommended"
         />
       </section>
+
       <section>
         <BoxWeather/>
       </section>
@@ -112,6 +114,7 @@ const HomePage = ({ places, updatePlaceState }) => {
           />
         </Footer>
       </section>
+
     </div>
   );
 };
