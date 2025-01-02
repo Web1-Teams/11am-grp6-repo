@@ -48,11 +48,13 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="love">
-                <i class="fa-solid fa-heart" />
-                {i3}
-              </a>
-            </li>
+
+  <Link className="nav-link" to="/favorites">
+    <i className="fa-solid fa-heart" />
+    {i3}
+  </Link>
+</li>
+
           </ul>
           <Link className="nav-link" to="/about-us">
             <i className="fa-solid fa-address-card"></i> Us

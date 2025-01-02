@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
-const categoryTags = {
+export const categoryTags = {
   park: [
     "have a parking",
     "suitable for people with special needs",
@@ -14,9 +14,9 @@ const categoryTags = {
     "family section",
     "entrance fee",
     "suitable for barbecue",
-    "play ground for children"
+    "play ground for children",
   ],
-  "gaming place": [
+  "play-center": [
     "have a parking",
     "bowling",
     "billiard",
@@ -25,9 +25,9 @@ const categoryTags = {
     "board games",
     "cyber",
     "suitable for people with special needs",
-    "foods and drinks"
+    "foods and drinks",
   ],
-  "ancient place": [
+  "archaeological-site": [
     "have a parking",
     "suitable for people with special needs",
     "foods and drinks",
@@ -37,7 +37,7 @@ const categoryTags = {
     "suitable for old people",
     "markets",
     "entrance fee",
-    "antique souvenirs shop"
+    "antique souvenirs shop",
   ],
   cafe: [
     "sweets",
@@ -47,7 +47,7 @@ const categoryTags = {
     "shows matches",
     "suitable for people with special needs",
     "have a parking",
-    "card games"
+    "card games",
   ],
   "amusement park": ["water park", "cinema"],
   restaurant: [
@@ -62,8 +62,8 @@ const categoryTags = {
     "suitable for old people",
     "family only",
     "family section",
-    "home made dishes"
-  ]
+    "home made dishes",
+  ],
 };
 
 const AddPlace = ({ onAddPlace }) => {
@@ -79,9 +79,11 @@ const AddPlace = ({ onAddPlace }) => {
   const [tags, setTags] = useState({});
   const navigate = useNavigate();
 
-  // Function to validate URL format
   const isValidURL = (url) => {
-    const pattern = new RegExp('^(https?://)?(www.)?[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+(:[0-9]+)?(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?$', 'i');
+    const pattern = new RegExp(
+      "^(https?://)?(www.)?[a-zA-Z0-9-]+(\\.[a-zA-Z]{2,})+(:[0-9]+)?(/[-a-zA-Z0-9@:%_+.~#?&//=]*)?$",
+      "i"
+    );
     return pattern.test(url);
   };
 
@@ -89,7 +91,6 @@ const AddPlace = ({ onAddPlace }) => {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
 
-    // Initialize tag states for the selected category
     const initialTags = categoryTags[selectedCategory]?.reduce(
       (acc, tag) => ({ ...acc, [tag]: false }),
       {}
@@ -100,13 +101,13 @@ const AddPlace = ({ onAddPlace }) => {
   const handleTagChange = (tag) => {
     setTags((prevTags) => ({
       ...prevTags,
-      [tag]: !prevTags[tag]
+      [tag]: !prevTags[tag],
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     const newPlace = {
       id: Date.now(),
       category,
@@ -118,10 +119,10 @@ const AddPlace = ({ onAddPlace }) => {
       locationname: locationName,
       description,
       longDescription,
-      rating: Math.floor(Math.random() * 21) + 80, // Random rating between 80-100
+      rating: Math.floor(Math.random() * 21) + 80,
       isHeartClicked: false,
       isCheckClicked: false,
-      ...tags // Spread individual tag states
+      ...tags,
     };
 
     onAddPlace(newPlace);
@@ -137,6 +138,7 @@ const AddPlace = ({ onAddPlace }) => {
             i2="Calendar"
             i3="My Favorites"
           />
+
         </nav>
         <br></br>
         <br></br>
@@ -265,6 +267,7 @@ const AddPlace = ({ onAddPlace }) => {
                   >
                     Location Name:{" "}
                   </label>
+
                   <input
                     id="locationName"
                     className="form-control"

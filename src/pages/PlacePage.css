@@ -1,3 +1,4 @@
+
 .place-page {
   background-color: #f8f9fa;
   border-radius: 10px;
@@ -490,13 +491,16 @@ margin: 10px 10px;
     font-size: 1rem; 
     margin-left: 30px;
 
+
   }
   .feedback-popup{
     width: 100%;
   }
+
   .feedback-content {
     padding: 20px;
     height: 100%;
+
   }
 
   .feedback-buttons button {

@@ -7,15 +7,19 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
+import FavoritesPage from "./pages/FavoritesPage"; 
+import CategoryPage from "./pages/CategoryPage"; 
 import VisitedPlacePage from "./pages/VisitedPlacePage"; // Import VisitedPlacePage
 import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
 import ProfilePage from "./pages/ProfilePage.js";
 
+
 function App() {
   const [places, setPlaces] = useState([]);
 
+  // Fetch places from localStorage or fallback to API
   useEffect(() => {
     const storedPlaces = JSON.parse(localStorage.getItem("places"));
     if (storedPlaces && storedPlaces.length > 0) {
@@ -31,16 +35,19 @@ function App() {
     }
   }, []);
 
+  // Update localStorage whenever places are updated
   const updateLocalStorage = (updatedPlaces) => {
     localStorage.setItem("places", JSON.stringify(updatedPlaces));
   };
 
+  // Handle adding a new place
   const handleAddPlace = (newPlace) => {
     const updatedPlaces = [...places, newPlace];
     setPlaces(updatedPlaces);
     updateLocalStorage(updatedPlaces);
   };
 
+  // Handle updating a place's rating
   const updatePlaceRating = (id, newRating) => {
     const updatedPlaces = places.map((place) =>
       place.id === id ? { ...place, rating: newRating } : place
@@ -50,11 +57,21 @@ function App() {
   };
 return (
     <Router>
+
+      <NavBar
+        BrandName="VisitMe"
+        i1="Home"
+        i2="Calendar"
+        i3="My Favorites"
+      />
+    
+
       <Routes>
         <Route path="/" element={<HomePage places={places} />} />
         <Route
           path="/add-place"
           element={
+
             <>
 
               <AddPlace onAddPlace={handleAddPlace} />{" "}
@@ -120,9 +137,14 @@ return (
         <Route path="/login" element={<Login places={places} />} />
         <Route
 
+          path="/favorites"
+          element={<FavoritesPage places={places} />}
+        />
+        <Route
           path="/category/:categoryName"
           element={<CategoryPage />} // Add route for CategoryPage
         />
+
         <Route
           path="/visited-places"
           element={
@@ -148,6 +170,7 @@ return (
         ></Route>
         <Route path="/about-us" element={<AboutUs places={places} />}></Route>
         <Route path="/SignUp" element={<SignUp />} />
+
       </Routes>
     </Router>
     
