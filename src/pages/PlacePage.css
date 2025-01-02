@@ -1,4 +1,25 @@
+/*new css by remaa*/
+.slider_and_dicription{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:30px;
+}
+.SL-container{
+  padding: 20px;
+  margin: 20px; 
+  overflow-wrap: break-word; 
+  word-wrap: break-word;
+  background-color: #198754;
+}
+.short-info {
+  max-width: 500px;
+  max-height: 100px;
+  color: #333; 
+}
+/*let suhad dicrease the margin in discription*/
 
+/*end of new css by remaa*/
   .feedback-button {
     background-color:#8000208e;
     color: #000000;
@@ -460,28 +481,7 @@ justify-content: space-between;
 padding-right: 40px;
 padding-left: 40px;
 }
-.SL-container{
-  padding: 20px;
-  margin: 20px; 
-  font-family: 'Arial', sans-serif;
-  overflow-wrap: break-word; 
-  word-wrap: break-word;
-  transform: translate(140px,-30px);
-}
-.short-info {
-  border: 1px solid #884a59; 
-  background-color: #80002034;
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  max-height: 100px;
-  padding: 20px;
-  font-size: 13px; 
-  font-weight: 600; 
-  color: #333; 
-  margin-bottom: 15px; 
-  letter-spacing: 1px;
-}
+
 /* تم حذف شيء يوز ليسس من قبل سهاد *
 /* سهاد مرت من هنا */
 
@@ -577,19 +577,7 @@ padding-left: 40px;
       padding: 5px;
   }
 }
-.long-info {
-  padding: 15px;
-  border: 1px solid #884a59; 
-  background-color: #80002034;
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  max-width: 500px; 
-  max-height: 1000px;
-  font-size: 20px; 
-  color: #444; 
-  text-align: justify;
-  margin-bottom: 15px;
-}
+
 @media (max-width: 768px) {
   .Info {
       padding: 8px;
