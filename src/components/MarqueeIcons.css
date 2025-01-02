@@ -1,0 +1,34 @@
+.marquee {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    top: 20px;
+    height: 50px; /* تحديد ارتفاع الشريط */
+  }
+  
+  .marquee-content {
+    display: flex;
+    animation: marquee-scroll 20s linear infinite; /* الانيميشن المستمر */
+  }
+  
+  .marquee-icon {
+    font-size: 1rem; /* تحديد حجم الأيقونات */
+    color: #800020;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 10px; /* تحديد المسافة بين الأيقونات */
+  }
+  
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* تحريك الأيقونات لنصف المسافة */
+    }
+  }
+  

@@ -262,6 +262,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 ) : (
                     <p>Location information is not available.</p>
                 )}
+
 </div>
 
 

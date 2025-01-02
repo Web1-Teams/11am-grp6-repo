@@ -7,10 +7,11 @@ import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
-import CategoryPage from "./pages/CategoryPage"; // Import the new component
 import VisitedPlacePage from "./pages/VisitedPlacePage"; // Import VisitedPlacePage
-import UserFeedBack from "./pages/UserFeedBack.js";
-
+import Settings from "./pages/Settings/Settings.js";
+import AboutUs from "./pages/AboutUs/AboutUs.js";
+import SignUp from "./pages/SignUp";
+import ProfilePage from "./pages/ProfilePage.js";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -55,17 +56,19 @@ return (
           path="/add-place"
           element={
             <>
-              <AddPlace onAddPlace={handleAddPlace} />
+
+              <AddPlace onAddPlace={handleAddPlace} />{" "}
               <NavBar
                 BrandName="VisitMe"
                 i1="Home"
-                i2="Calendar"
-                i3="My Favorites"
+                i2=" Calendar"
+                i3=" My Favorites"
               />
               <SecondaryNavBar />
             </>
           }
         />
+
         <Route
           path="/place/:id"
           element={
@@ -83,10 +86,40 @@ return (
               <SecondaryNavBar />
             </>
           }
+
         />
-        <Route path="/calendar" element={<Calendar places={places} />} />
+
+        <Route
+          path="/profile-page"
+          element={
+            <>
+              <ProfilePage places={places} />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2=" Calendar"
+                i3=" My Favorites"
+              />
+            </>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <>
+              <Calendar places={places} />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2=" Calendar"
+                i3=" My Favorites"
+              />
+            </>
+          }
+        />
         <Route path="/login" element={<Login places={places} />} />
         <Route
+
           path="/category/:categoryName"
           element={<CategoryPage />} // Add route for CategoryPage
         />
@@ -105,21 +138,16 @@ return (
             </>
           }
         />
-         <Route
-          path="/feedback"
+
+          path="/settings"
           element={
             <>
-              <UserFeedBack />
-              <NavBar
-                BrandName="VisitMe"
-                i1="Home"
-                i2="Calendar"
-                i3="My Favorites"
-              />
-              <SecondaryNavBar />
+              <Settings places={places} />{" "}
             </>
           }
-        />
+        ></Route>
+        <Route path="/about-us" element={<AboutUs places={places} />}></Route>
+        <Route path="/SignUp" element={<SignUp />} />
       </Routes>
     </Router>
     
