@@ -7,7 +7,7 @@ import logo from './img/logo.png';
 
 
 const NavBar = ({ BrandName, i2, i3,i4 }) => {
-  const [isSearching, setIsSearching] = useState(false);
+
 
 
 
