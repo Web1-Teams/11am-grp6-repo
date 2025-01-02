@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
-
+import ProfilePage from "./pages/ProfilePage.js";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -51,7 +51,6 @@ function App() {
   return (
     <Router>
       <Routes>
-
         <Route path="/" element={<HomePage places={places} />} />
         <Route
           path="/add-place"
@@ -61,7 +60,7 @@ function App() {
               <NavBar
                 BrandName="VisitMe"
                 i1="Home"
-                i2="Calendar"
+                i2=" Calendar"
                 i3=" My Favorites"
               />
               <SecondaryNavBar />
@@ -87,16 +86,46 @@ function App() {
             </>
           }
         />
-      
 
-        <Route path="/calendar" element={<><Calendar places={places} /><NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" /></>} />
+        <Route
+          path="/profile-page"
+          element={
+            <>
+              <ProfilePage places={places} />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2=" Calendar"
+                i3=" My Favorites"
+              />
+            </>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <>
+              <Calendar places={places} />
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2=" Calendar"
+                i3=" My Favorites"
+              />
+            </>
+          }
+        />
         <Route path="/login" element={<Login places={places} />} />
-        <Route path="/settings" element ={<><Settings places={places}/> </>}></Route>
-        <Route path="/about-us" element={<AboutUs places={places}/>}></Route>
+        <Route
+          path="/settings"
+          element={
+            <>
+              <Settings places={places} />{" "}
+            </>
+          }
+        ></Route>
+        <Route path="/about-us" element={<AboutUs places={places} />}></Route>
         <Route path="/SignUp" element={<SignUp />} />
-       
-       
-
       </Routes>
     </Router>
   );

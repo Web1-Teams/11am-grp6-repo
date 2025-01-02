@@ -10,16 +10,13 @@ const NavBar = ({ BrandName, i2, i3 }) => {
 
   return (
     <div className="container">
-
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
         <Link className="navbar-brand" to="/">
-        <img src={logo} alt="Logo" className="logo" /> 
+          <img src={logo} alt="Logo" className="logo" />
           {BrandName}
         </Link>
 
-       <SearchBar/>
-
-
+        <SearchBar />
 
         <button
           className="navbar-toggler"
@@ -33,31 +30,29 @@ const NavBar = ({ BrandName, i2, i3 }) => {
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-           
               <a className="nav-link" href="calendar">
                 <i className="fa-solid fa-calendar" />
                 {i2}
               </a>
             </li>
             <li className="nav-item">
-
               <a className="nav-link" href="love">
                 <i class="fa-solid fa-heart" />
                 {i3}
-                
               </a>
             </li>
           </ul>
-          <Link  className="nav-link" to="/about-us">
-                  <i className="fa-solid fa-address-card"></i> Us
-                </Link>
-         <Link className="nav-link" to="/add-place" style={{ padding: "10px" }}>
-            <i className="fa-solid fa-plus"></i> Place
-
+          <Link className="nav-link" to="/about-us">
+            <i className="fa-solid fa-address-card"></i> Us
           </Link>
-         
-                
-          
+          <Link
+            className="nav-link"
+            to="/add-place"
+            style={{ padding: "10px" }}
+          >
+            <i className="fa-solid fa-plus"></i> Place
+          </Link>
+
           <div className="dropdown ms">
             <button
               className="btn btn-ss btn-dark dropdown-toggle"
@@ -67,9 +62,9 @@ const NavBar = ({ BrandName, i2, i3 }) => {
             </button>
             <ul className="dropdown-menu dropdown-menu-start">
               <li>
-                <a className="dropdown-item" href="#favorites">
+                <Link className="dropdown-item" to="/profile-page">
                   <i className="fa-solid fa-user"></i> My Profile
-                </a>
+                </Link>
               </li>
               <li>
                 <Link className="dropdown-item" to="/settings">
@@ -81,7 +76,7 @@ const NavBar = ({ BrandName, i2, i3 }) => {
                   <i className="fa-solid fa-bell"></i> Notifications
                 </a>
               </li>
-             
+
               <li>
                 <Link className="dropdown-item" to="/Login">
                   <i className="fa-solid fa-right-to-bracket"></i> Log In
@@ -96,7 +91,6 @@ const NavBar = ({ BrandName, i2, i3 }) => {
           </div>
         </div>
       </nav>
-
     </div>
   );
 };
