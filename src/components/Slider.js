@@ -94,10 +94,6 @@ const Slider = () => {
           <img src={img12} className="grp6-img d-block w-100" alt="Slide 5" />
         </div>
       </div>
-         {/* New updates  */}
-         <div className="Slider-Searchbar">
-          <SearchBar/>
-        </div>
     </div>
   );
 };

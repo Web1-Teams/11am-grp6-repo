@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
-export const categoryTags = {
-  park: [
+
+const categoryTags = {
+  "park": [
     "have a parking",
     "suitable for people with special needs",
     "suitable for old people",
@@ -15,6 +16,7 @@ export const categoryTags = {
     "entrance fee",
     "suitable for barbecue",
     "play ground for children",
+    "Open 24/7"
   ],
   "play-center": [
     "have a parking",
@@ -26,6 +28,7 @@ export const categoryTags = {
     "cyber",
     "suitable for people with special needs",
     "foods and drinks",
+    "Open 24/7"
   ],
   "archaeological-site": [
     "have a parking",
@@ -38,8 +41,9 @@ export const categoryTags = {
     "markets",
     "entrance fee",
     "antique souvenirs shop",
+    "Open 24/7"
   ],
-  cafe: [
+  "cafe": [
     "sweets",
     "family only",
     "family section",
@@ -48,9 +52,10 @@ export const categoryTags = {
     "suitable for people with special needs",
     "have a parking",
     "card games",
+    "Open 24/7"
   ],
-  "amusement park": ["water park", "cinema"],
-  restaurant: [
+  "amusement park": ["water park", "cinema","Open 24/7"],
+  "restaurant": [
     "vegetarian food",
     "fast food",
     "traditional dishes",
@@ -63,7 +68,8 @@ export const categoryTags = {
     "family only",
     "family section",
     "home made dishes",
-  ],
+    "Open 24/7"
+  ]
 };
 
 const AddPlace = ({ onAddPlace }) => {

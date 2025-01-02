@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import React from "react";
 import logo from './img/logo.png';
-import SearchBar from "./SearchBar";
 
 
 
@@ -20,9 +19,6 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
           <img src={logo} alt="Logo" className="logo" />
           {BrandName}
         </Link>
-
-        <SearchBar />
-
         <button
           className="navbar-toggler"
           type="button"
