@@ -10,13 +10,13 @@ import Login from "./pages/Login";
 import FavoritesPage from "./pages/FavoritesPage";
 import CategoryPage from "./pages/CategoryPage";
 import VisitedPlacePage from "./pages/VisitedPlacePage";
-import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp.js";
 import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
+import SecondaryNavBar from "./components/SecondaryNavBar.js";
 
 
 
