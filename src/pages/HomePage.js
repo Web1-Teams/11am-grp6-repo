@@ -17,11 +17,10 @@ const HomePage = ({ places, updatePlaceState }) => {
     .filter((place) => place.isHeartClicked)
     .slice(0, 6); // First 6 favorites
 
-    
   return (
     <div className="grp6-homepage">
-        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
-        
+      <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
+
       <section>
         <Slideer />
       </section>
@@ -55,11 +54,11 @@ const HomePage = ({ places, updatePlaceState }) => {
         />
       </section>
       <section>
-        <BoxWeather/>
+        <BoxWeather />
       </section>
       <section>
-          <MarqueeIcons />
-        </section>
+        <MarqueeIcons />
+      </section>
       <section>
         <Footer BrandName="visit me ">
           <Footer_cat

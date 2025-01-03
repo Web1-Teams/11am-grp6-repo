@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
 import "./CategoryBar.css";
-import"./SecondaryNavBar.css"
+import "./SecondaryNavBar.css";
 // This is an array of categories. Each category has a name & image & link.
 // If we want to add or remove a category, we can do this here in the array without changing the rest of the code.
 
@@ -40,38 +40,35 @@ const categories = [
 
 const CategoryItem = ({ name, image, link }) => {
   return (
-    <div className="col-lg-2 col-sm-6 col-md-3">
-      <div className="d-flex flex-column align-items-center">
-        <Link to={link}>
-          <img
-            className="img-cat img-fluid mb-2"
-            src={image}
-            alt={name}
-          />
-        </Link>
-        <Link to={link} className="text-decoration-none">
-          <span className="fw-bold text-dark">{name}</span>
-        </Link>
-      </div>
+    // <div className=" ">
+    <div className="hz-Citem">
+      <Link to={link}>
+        <img className="img-cat " src={image} alt={name} />
+      </Link>
+
+      <Link to={link} className="text-decoration-none">
+        <span className="hz-item-txt fw-bold text-dark">{name}</span>
+      </Link>
     </div>
+    // </div>
   );
 };
 
 const CategoryBar = () => {
   return (
-    <section className="catg py-4">
-      <div className="container category">
-        <div className="row justify-content-evenly">
-          {categories.map((category, index) => (
-            <CategoryItem
-              key={index} // Added a unique key for each item
-              name={category.name}
-              image={category.image}
-              link={category.link}
-            />
-          ))}
-        </div>
-      </div>
+    <section className="catg ">
+      {/* <div className=" category"> */}
+      {/* <div className="catg "> */}
+      {categories.map((category, index) => (
+        <CategoryItem
+          key={index} // Added a unique key for each item
+          name={category.name}
+          image={category.image}
+          link={category.link}
+        />
+      ))}
+      {/* </div> */}
+      {/* </div> */}
     </section>
   );
 };

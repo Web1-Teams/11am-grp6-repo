@@ -8,7 +8,7 @@ const EditEmailModal = ({
   onSave,
 }) => {
   const handleSave = () => {
-    onSave(); // استدعاء دالة الحفظ الموجودة في ProfilePage  -->handleSaveEmail
+    onSave(); // استدعاء فنكشن الحفظ الموجود في ProfilePage  -->handleSaveEmail
   };
 
   return (

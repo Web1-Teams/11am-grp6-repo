@@ -11,6 +11,7 @@ import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
 import ProfilePage from "./pages/ProfilePage.js";
+import EventPage from "./components/FB-EventCard/EventPage/EventPage.js";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -101,6 +102,15 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/event-page"
+          element={
+            <>
+              <EventPage />
+            </>
+          }
+        />
+
         <Route
           path="/calendar"
           element={
