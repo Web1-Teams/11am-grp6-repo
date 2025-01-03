@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import SecondaryNavBar from "./components/SecondaryNavBar";
 import ScrollTop from "./components/ScrollTop/ScrollTop.js";
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
@@ -16,6 +15,7 @@ import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp.js";
 import ProfilePage from "./pages/ProfilePage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
+
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -58,7 +58,6 @@ function App() {
       <ScrollTop />
       <Router>
         <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
-        <SecondaryNavBar />
         <Routes>
           <Route path="/" element={<HomePage places={places} />} />
           <Route
@@ -113,7 +112,6 @@ function App() {
                   i2="Calendar"
                   i3="My Favorites"
                 />
-                <SecondaryNavBar />
               </>
             }
           />
