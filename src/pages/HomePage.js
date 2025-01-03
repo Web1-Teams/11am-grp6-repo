@@ -82,14 +82,14 @@ const HomePage = ({ places, updatePlaceState }) => {
       <section>
         <BoxWeather />
       </section>
-      <section>
-        <MarqueeIcons />
-      </section>
+      
 
       <section>
         <FeedBackCardSlider />
       </section>
-
+<section>
+        <MarqueeIcons />
+      </section>
       <section>
         <Footer BrandName="visit me ">
           <Footer_cat
