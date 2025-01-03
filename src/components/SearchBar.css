@@ -1,5 +1,5 @@
 /* Search container styles */
-.search-container {
+/*.search-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@
     transition: color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     color: #a67c68;
     box-shadow: none;
-    border-radius: 50%; /* Make it circular */
+    border-radius: 50%; /* Make it circular 
   }
   
   .search-button:hover,
@@ -35,7 +35,7 @@
   
   .search-button:active {
     transform: scale(0.95);
-    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1); /* Consistent shadow effect */
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1); /* Consistent shadow effect 
   }
   
   .search-bar {
@@ -65,7 +65,7 @@
   
   
   
-  /* Responsive adjustments */
+  /* Responsive adjustments 
   @media(width:768){
     .search-container.active .search-bar {
       width: 140px;
@@ -124,4 +124,4 @@
      left: 320px;
     }
   
-  }
+  }*/

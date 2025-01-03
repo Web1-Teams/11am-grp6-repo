@@ -1,27 +1,31 @@
-/* CategoryPage.css */
+
 .category-page {
-    padding: 20px;
+  margin-top: 30px;
+
+}
+.all-container{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.cat-text{
+  padding-top: 10px;
+ margin-top: 10px;
+color: #640018;
+font-family: "Georgia", serif;
+font-size:80px;
+font-weight: 800;
+
+}
+.text{
+  color: #000000;
+font-family: "Georgia", serif;
+font-size:30px;
+font-weight: 800;
+text-align: center;
+}
+@media only screen and (max-width:767px) {
+  .cat-text{
+    font-size:50px;
   }
   
-  .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card img {
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-  
-  .card-text {
-    color: #6c757d;
-  }
+}

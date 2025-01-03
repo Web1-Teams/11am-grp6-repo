@@ -1,0 +1,39 @@
+.box-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  justify-content: space-around;
+}
+
+.box-weather {
+  width: 60%;
+  margin-left: 20px;
+}
+
+.box-video {
+  width: 60%;
+  margin-left: 80px;
+  margin-top: 2px;
+}
+
+.box-video video {
+  width: 100%;
+}
+
+@media screen and (max-width: 824px) {
+  .box-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .box-video {
+    width: 90%;
+    margin: 10px 0; 
+  }
+
+  .box-weather {
+    width: 90%; 
+    margin: 10px 0;
+  }
+}

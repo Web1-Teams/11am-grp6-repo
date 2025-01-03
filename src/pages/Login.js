@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
@@ -8,32 +8,54 @@ import {
 } from "react-social-login-buttons";
 
 const Login = () => {
+  
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    navigate("/homepage");
+  const handleLogin = (event, email, password) => {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    //users from localStorage
+    const users = JSON.parse(localStorage.getItem("userForms")) || [];
+    const currentUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (currentUser) {
+      alert("Login successfully!");
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      navigate("../");
+    } else {
+      alert("Invalid email or password.");
+      console.log("Entered email:", email);
+      console.log("Entered password:", password);
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h2>Login</h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={(event) => handleLogin(event, email, password)}>
           <div className="form-group">
-            <label htmlFor="Email" required>
-              Email
-            </label>
-            <input type="email" placeholder="Enter your email" id="Email" />
+            <label htmlFor="Email">Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              id="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="Password" required>
-              Password
-            </label>
+            <label htmlFor="Password">Password</label>
             <input
               type="password"
               placeholder="Enter your password"
               id="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="form-check">
@@ -46,7 +68,6 @@ const Login = () => {
               <span>Remember Me</span>
             </label>
           </div>
-
           <br />
           <button className="hamza-button" type="submit">
             Login

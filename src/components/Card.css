@@ -100,6 +100,23 @@
     align-items: center;
     transition: transform 0.2s ease, background-color 0.2s ease;
   }
+  .place-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .star-container {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+  
+  .star-container div {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  
   /* Responsive Design */
   @media (max-width: 768px) {
     .place {
