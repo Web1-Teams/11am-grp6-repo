@@ -11,6 +11,8 @@ import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
 
+import MyChatBot from "./components/Chatbot/MyChatBot.js";
+
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -48,7 +50,9 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
-  return (
+  return ( 
+    <div>
+      <MyChatBot/>
     <Router>
       <Routes>
 
@@ -99,6 +103,7 @@ function App() {
 
       </Routes>
     </Router>
+    </div>
   );
 }
 
