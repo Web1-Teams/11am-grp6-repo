@@ -19,7 +19,6 @@ import MyChatBot from "./components/Chatbot/MyChatBot.js";
 import SecondaryNavBar from "./components/SecondaryNavBar.js";
 
 
-
 function App() {
   const [places, setPlaces] = useState([]);
 
@@ -89,7 +88,7 @@ function App() {
                   i2="Calendar"
                   i3=" My Favorites"
                 />{" "}
-                <SecondaryNavBar />
+                <SecondaryNavBar/>
                 <AddPlace onAddPlace={handleAddPlace} />
               </>
             }
