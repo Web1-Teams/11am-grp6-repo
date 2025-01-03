@@ -325,58 +325,57 @@ const PlacePage = ({ places, updatePlaceRating }) => {
             </div>
           </div>
         </div>
-
-        <Footer BrandName="Visit Me">
-          <Footer_cat
-            c1="Restaurants"
-            c1tag1="Family Type"
-            c1tag2="Locations"
-            c1tag3="Generic"
-            c1tag4="Best Sellers"
-            c1tag5="Help"
-          />
-          <Footer_cat
-            c1="Archaeological Sites"
-            c1tag1="Pictures"
-            c1tag2="Locations"
-            c1tag3="More Info"
-            c1tag4="Most Visited"
-            c1tag5="Help"
-          />
-          <Footer_cat
-            c1="Amusement Parks"
-            c1tag1="Childish"
-            c1tag2="Locations"
-            c1tag3="Reviews"
-            c1tag4="More Info"
-            c1tag5="Help"
-          />
-          <Footer_cat
-            c1="Parks"
-            c1tag1="More Info"
-            c1tag2="Locations"
-            c1tag3="Photos"
-            c1tag4="Entertainment"
-            c1tag5="Help"
-          />
-          <Footer_cat
-            c1="Cafés"
-            c1tag1="Family Type"
-            c1tag2="Locations"
-            c1tag3="Pictures"
-            c1tag4="Best Sellers"
-            c1tag5="Help"
-          />
-          <Footer_cat
-            c1="Play Centers"
-            c1tag1="Support"
-            c1tag2="Locations"
-            c1tag3="Know More"
-            c1tag4="More Info"
-            c1tag5="Help"
-          />
-        </Footer>
       </div>
+      <Footer BrandName="Visit Me">
+        <Footer_cat
+          c1="Restaurants"
+          c1tag1="Family Type"
+          c1tag2="Locations"
+          c1tag3="Generic"
+          c1tag4="Best Sellers"
+          c1tag5="Help"
+        />
+        <Footer_cat
+          c1="Archaeological Sites"
+          c1tag1="Pictures"
+          c1tag2="Locations"
+          c1tag3="More Info"
+          c1tag4="Most Visited"
+          c1tag5="Help"
+        />
+        <Footer_cat
+          c1="Amusement Parks"
+          c1tag1="Childish"
+          c1tag2="Locations"
+          c1tag3="Reviews"
+          c1tag4="More Info"
+          c1tag5="Help"
+        />
+        <Footer_cat
+          c1="Parks"
+          c1tag1="More Info"
+          c1tag2="Locations"
+          c1tag3="Photos"
+          c1tag4="Entertainment"
+          c1tag5="Help"
+        />
+        <Footer_cat
+          c1="Cafés"
+          c1tag1="Family Type"
+          c1tag2="Locations"
+          c1tag3="Pictures"
+          c1tag4="Best Sellers"
+          c1tag5="Help"
+        />
+        <Footer_cat
+          c1="Play Centers"
+          c1tag1="Support"
+          c1tag2="Locations"
+          c1tag3="Know More"
+          c1tag4="More Info"
+          c1tag5="Help"
+        />
+      </Footer>
     </div>
   );
 };

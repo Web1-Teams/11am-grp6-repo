@@ -1,6 +1,6 @@
 // src/pages/EventPage/EventPage.jsx
 import React from "react";
-import EventCard from "../EventCard";
+import EventCard from "../../components/FB-EventCard/EventCard";
 import "./EventPage.css";
 // import eventImage from"../../components/EventCard/imgs/385895981_122123332418032872_8395541712617587456_n.jpg";
 const EventPage = () => {

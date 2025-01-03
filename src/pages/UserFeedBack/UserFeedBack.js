@@ -117,7 +117,7 @@ const UserFeedBack = () => {
           />
           <br />
           <div className="ssh-CategoryRating-body">
-            {["content", "reviews", "interactive", "ui", "performance"].map(
+            {["Content", "Reviews", "Interactive", "User Interface & Design", "Performance"].map(
               (category) => (
                 <div key={category} className="ssh-rating-category">
                   <h4>{category.replace(/([A-Z])/g, " $1")}</h4>
@@ -158,7 +158,7 @@ const UserFeedBack = () => {
           </button>
         </form>
 
-        <h3 className="ssh-TheFeedBacks">Feedbacks list</h3>
+        <h3 className="ssh-TheFeedBacks">Feedbacks List</h3>
         {userfeedbacks.length > 0 ? (
           <ul className="ssh-feedback-list">
             {userfeedbacks.map((feedback) => (
@@ -196,7 +196,7 @@ const UserFeedBack = () => {
             ))}
           </ul>
         ) : (
-          <p>No feedback yet.</p>
+          <p>No Feedbacks Yet.</p>
         )}
       </div>
     </div>
