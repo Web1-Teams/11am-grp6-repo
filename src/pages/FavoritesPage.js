@@ -38,7 +38,7 @@ const FavoritesPage = ({ places }) => {
         categories={categories}
         onCategorySelect={(category) => setSelectedCategory(category)}
       />
-      <h1>You Favorites</h1>
+      <h1 className="fav-text">Your Favorites</h1>
 
       {/* Display filtered places */}
       <div className="favorites-grid">
