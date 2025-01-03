@@ -131,6 +131,15 @@ return (
       element={
         <>
           <VisitedPlacePage />
+
+          <NavBar
+            BrandName="VisitMe"
+            i1="Home"
+            i2="Calendar"
+            i3="My Favorites"
+          />
+          <SecondaryNavBar />
+
         </>
       }
     />
@@ -153,6 +162,7 @@ return (
             </>
           }
         />
+
   </Routes>
 </Router>
   );
