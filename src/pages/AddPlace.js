@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 
-const categoryTags = {
+export const categoryTags = {
   "park": [
     "have a parking",
     "suitable for people with special needs",

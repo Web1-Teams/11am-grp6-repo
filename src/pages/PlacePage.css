@@ -1,5 +1,7 @@
-
-.place-page {
+.ssh-placePage-body{
+  margin-top: 20px;
+}
+.ssh-place-page {
   background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -7,53 +9,53 @@
 }
 
 /* Slider and Description */
-.slider_and_dicription {
+.ssh-slider_and_dicription {
   display: flex;
-  margin-left: -120px;
+  margin-left: 10px;
 }
 
 .SL-container {
   flex: 1;
-  min-width: 300px; 
-  margin-left: -70px;
-  margin-top: 100px;
+  margin-left: 40px;
+  margin-top: 50px;
 }
+.NamePlace{
+  font-size: 3rem;
+  font-family:'Playfair Display', serif;
+}  
 
-.Info {
+.ssh-Info{
   flex: 1;
   min-width: 300px; 
   background-color: white;
-  
 }
 
-.short-info {
+.short-ssh-Info{
   margin-bottom: 10px;
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
-  margin-top: 160px;
-
 }
 
-.long-info {
+.long-ssh-Info{
   color: #555;
   max-width: 600px;
   overflow-wrap: break-word; 
   word-wrap: break-word;
-  text-align:start;
+  text-align:justify;
   font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
 }
 
 /* Tags Section */
-.place-tags {
-  margin-top: -20px;
+.ssh-place-tags {
+  margin-top: 10px;
  max-width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 30px;
 border-radius:20px ;
 }
 
-.place-tag {
+.ssh-place-tag {
   display: inline-block;
   background-color: #0e3f3d;
   color: #fff;
@@ -66,7 +68,7 @@ border-radius:20px ;
   
 }
 /* Name, Heart, and Visited */
-.name-heart-visited {
+.FeedBack-heart-visited {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -75,8 +77,8 @@ border-radius:20px ;
   font-family: 'Playfair Display', serif;
   gap: 50px;
 }
-.favorite-btn
-,.visited-btn {
+.ssh-favorite-btn
+,.ssh-visited-btn {
  font-size: 1.8rem;
   border: none;
   border-radius: 15px;
@@ -85,26 +87,26 @@ border-radius:20px ;
   transition: background-color 0.3s;
   margin: 5px;
 }
-.favorite-btn i 
-,.visited-btn i{
+.ssh-favorite-btn .ssh-heart
+,.ssh-visited-btn .ssh-visited{
   font-size: 24px;
   color: #ffffff;
   padding: 10px;
   transition: color 0.3s ease;
   gap:20px;
 }
-.favorite-btn.active i {
+.ssh-favorite-btn.active .ssh-heart {
   color: rgb(245, 0, 0);
 }
-.visited-btn.active i{
+.ssh-visited-btn.active .ssh-visited{
   color: #009977;
 }
-.favorite-btn:hover,
-.visited-btn:hover {
+.ssh-favorite-btn:hover,
+.ssh-visited-btn:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   background-color: #042c2b;
 }
-.emoji-overlay {
+.ssh-emoji-overlay {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -114,7 +116,7 @@ border-radius:20px ;
   pointer-events: none; 
   animation: fade-out 2s forwards;
 }
-.emoji-overlay p{
+.ssh-emoji-overlay p{
   font-size: 25px;
 }
 /* عشان يختفي تدريجيا  */
@@ -128,7 +130,7 @@ border-radius:20px ;
       opacity: 0; 
   }
 }
-.feedback-button {
+.ssh-feedback-button {
   background-color:#0e3f3d;
   color:white;
   font-family: 'Playfair Display', serif;
@@ -139,11 +141,11 @@ border-radius:20px ;
   cursor: pointer;
 }
 
-.feedback-button:hover {
+.ssh-feedback-button:hover {
   background-color:#042c2b;
 }
 
-.feedback-popup {
+.sh-feedback-popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -155,10 +157,10 @@ border-radius:20px ;
   align-items: center;
   z-index: 1000;
 }
-.feedback-content h3 {
+.ssh-RateName {
   margin: 2px;
 }
-.feedback-content {
+.ssh-feedback-content {
   background: rgb(247, 243, 243);
   padding: 30px;
   border-radius: 10px;
@@ -166,20 +168,20 @@ border-radius:20px ;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
-.comments-list i{
+.ssh-user{
   color:#0e3f3d;
 }
-.comments-list i:hover{
+.ssh-user:hover{
   color:#009977;
 }
-.rating-section {
+.ssh-rating-section {
   margin-bottom: 20px;
 }
 
-.rating-category {
+.ssh-rating-category {
   margin-bottom: 10px;
 }
-.rating-emoji {
+.ssh-rating-emoji {
   background: none;
   border: none;
   font-size: 1.5em;
@@ -187,15 +189,15 @@ border-radius:20px ;
   cursor: pointer;
 }
 
-.rating-emoji.selected {
+.ssh-rating-emoji.selected {
   transform: scale(1.2);
 }
-.feedback-buttons {
+.ssh-feedback-buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.submit-feedback{
+.ssh-submit-feedback{
   background-color:#198754;
   color: #000000;
   border: none;
@@ -213,7 +215,7 @@ border-radius:20px ;
   border-radius: 5px;
   cursor: pointer;
 }
-.submit-feedback:hover {
+.ssh-submit-feedback:hover {
   background-color: #156d44 ;
   transform: scale(1.02); 
 }
@@ -250,12 +252,6 @@ margin-bottom: 10px;
 font-size: 1.2em;
 text-align: center;
 }
-.NamePlace{
-  position: absolute;
-  bottom: 310px;
-  font-size: 3rem;
-  font-family:'Playfair Display', serif;
-}  
 .submit-btn {
 background-color: #00cc99;
 color: #000;
@@ -296,7 +292,7 @@ background-color: #009977;
   text-align: center;
 
 }
-.map-container {
+.ssh-map-container {
   margin: 10px 10px;
   height: 400px;
   border: 2px solid #ddd;
@@ -305,7 +301,7 @@ background-color: #009977;
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.location{
+.ssh-location{
   margin-left: 20PX;
   margin-top: 10px;
   font-family: 'Playfair Display', serif;
@@ -428,14 +424,14 @@ margin: 10px 10px;
 
 @media (max-width: 1024px) {
 
-  .short-info {
+  .short-ssh-Info{
     font-size: 16px; 
     margin-top: 10px; 
-    margin: 10px;
+    margin-left: 30px;
     font-size: 1rem; 
   }
 
-  .long-info {
+  .long-ssh-Info{
     max-width: 90%; 
     font-size: 14px;
     margin-top: 10px; 
@@ -444,14 +440,15 @@ margin: 10px 10px;
   }
 }
 @media (max-width: 1024px) {
-  .slider_and_dicription {
+  .ssh-slider_and_dicription {
     flex-direction: column; 
     flex-direction: column; 
     margin: 0;
   }
   .SL-container,
-  .Info {
+  .ssh-Info{
     width: 100%; 
+    margin-top: 80px;
     margin-bottom: 17px;
     margin-left: -7px;
     width: 100%;
@@ -462,8 +459,7 @@ margin: 10px 10px;
   .map-container {
     height: 250px;
   }
-
-  .name-heart-visited {
+  .FeedBack-heart-visited {
     margin-left: 15px;
     flex-direction: row;
     align-items: flex-start;
@@ -487,11 +483,15 @@ margin: 10px 10px;
 
 @media (max-width: 1024px) {
   .short-info,
-  .long-info {
+  .long-ssh-Info{
     font-size: 1rem; 
     margin-left: 30px;
 
 
+  }
+  .NamePlace{
+    font-size: 2rem;
+    margin-left: 30px;
   }
   .feedback-popup{
     width: 100%;
