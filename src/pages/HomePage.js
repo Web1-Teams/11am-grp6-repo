@@ -5,7 +5,7 @@ import Section from "../components/Section";
 import Slideer from "../components/Slideer";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-
+import SearchBar from  "../components/Search Bar/SearchBar.js"
 
 const HomePage = ({ places, updatePlaceState }) => {
   const newPlaces = [...places].reverse().slice(0, 6); // Last 6 places
@@ -20,6 +20,7 @@ const HomePage = ({ places, updatePlaceState }) => {
     <div className="grp6-homepage">
 
         <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites"/>
+  
       <SearchBar/>
       <section>
         <Slideer />
