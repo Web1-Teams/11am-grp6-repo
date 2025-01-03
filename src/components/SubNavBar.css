@@ -1,0 +1,38 @@
+.sub-navbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  padding-top: 15px;
+  background-color: white;
+  border-bottom: 1px solid white;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  height: 85px;
+  justify-content: center;
+}
+
+.subnav-tag {
+  padding: 8px 12px;
+  border: none;
+  background-color:#f1f1e8d5;
+  color: #393e43;
+  border-radius: 13px;
+  cursor: pointer;
+  border: 1px solid  #830522dc;
+  transition: background-color 0.3s ease;
+  font-size: 11px;
+  font-weight: 650;
+  font-family: "Georgia", serif;
+  text-align: center;
+}
+
+.subnav-tag.active {
+  background-color:  #830522e1;
+  color:#f5f5d5;
+  filter: brightness(1.02);
+}
+
+.subnav-tag:hover {
+  background-color:  #830522dc;
+  color:#f5f5d5;
+}

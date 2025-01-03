@@ -1,0 +1,37 @@
+.favorites-page {
+  margin-top: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0;
+}
+
+.fav-text{
+  text-align: center;
+
+  margin-bottom: 30px;
+ color: #f7f7f7;
+ font-family: "Georgia", serif;
+ font-size:75px;
+ font-weight: 800;
+   
+  margin-bottom: 30px;
+
+  font-size: 2.6rem;
+  margin-right: 970px;
+  background-color:  #640017d4;
+  padding: 30px 55px ;
+  border-radius: 0 50px 50px 0;
+  text-align: left;
+width: fit-content;
+}
+
+.favorites-grid {
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 19px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 10px;
+  row-gap: 22px;
+justify-items: center;
+}

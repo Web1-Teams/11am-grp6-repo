@@ -1,100 +1,123 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"; // إضافة useNavigate
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { LoginSocialGoogle, LoginSocialFacebook } from "reactjs-social-login";
+import {
+  FacebookLoginButton,
+  GoogleLoginButton,
+} from "react-social-login-buttons";
 
 const Login = () => {
-  const navigate = useNavigate(); // استخدام navigate للتوجيه
+  
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleGoogleLogin = () => {
-    alert("Logged in with Google");
-  };
+  const handleLogin = (event, email, password) => {
+    event.preventDefault(); // Prevent default form submission behavior
 
-  const handleFacebookLogin = () => {
-    alert("Logged in with Facebook");
-  };
+    //users from localStorage
+    const users = JSON.parse(localStorage.getItem("userForms")) || [];
+    const currentUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
-  const handleLogin = (event) => {
-    event.preventDefault(); // لمنع تحميل الصفحة
-    navigate("/homepage"); // التوجيه إلى صفحة homepage بعد النجاح
+    if (currentUser) {
+      alert("Login successfully!");
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      navigate("../");
+    } else {
+      alert("Invalid email or password.");
+      console.log("Entered email:", email);
+      console.log("Entered password:", password);
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-card">
         <h2>Login</h2>
-        <form onSubmit={handleLogin}> {/* إضافة onSubmit هنا */}
+        <form onSubmit={(event) => handleLogin(event, email, password)}>
           <div className="form-group">
-            <label for="Email" required>
-              Email
-            </label>
-            <input type="email" placeholder="Enter your email" id="Email" />
+            <label htmlFor="Email">Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              id="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="form-group">
-            <label for="Password" required>
-              Password
-            </label>
+            <label htmlFor="Password">Password</label>
             <input
               type="password"
               placeholder="Enter your password"
               id="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div class="form-check">
+          <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
-              value=""
               id="flexCheckDefault"
             />
-            <label class="form-check-label" for="flexCheckDefault">
-              <span> Remember Me</span>
+            <label className="form-check-label" htmlFor="flexCheckDefault">
+              <span>Remember Me</span>
             </label>
           </div>
-          <br></br>
-
-
-          <Link to="./homepage">
-
-            <button className =" hamza-button"type="submit">Login</button>
-          </Link>
+          <br />
+          <button className="hamza-button" type="submit">
+            Login
+          </button>
         </form>
-
-        <Link to="HomePage" className="text-decoration-none">
-
-          Forgot your password ?
-        </Link>
+        <a href="/HomePage" className="text-decoration-none">
+          Forgot your password?
+        </a>
         <div className="social-login">
           <p>Or continue with</p>
 
-          <Link
-
-            to="/HomePage"
-
-            className="btn facebook-btn"
-            onClick={handleFacebookLogin}
+          <LoginSocialFacebook
+            appId="587887377179455"
+            onResolve={(response) => {
+              console.log("Facebook login successful:", response);
+              alert("Logged in with Facebook");
+              navigate("/HomePage");
+            }}
+            onReject={(error) => {
+              console.error("Facebook login failed:", error);
+              alert("Facebook login failed");
+            }}
           >
-            <span id="facebookBtn">
-              Continue with Facebook <i className="fa-brands fa-facebook" />
-            </span>
-          </Link>
-          <Link
+            <FacebookLoginButton>
+              <span>Continue with Facebook</span>
+            </FacebookLoginButton>
+          </LoginSocialFacebook>
 
-            to="/HomePage"
-
-            className="btn google-btn "
-            onClick={handleGoogleLogin}
+          <LoginSocialGoogle
+            client_id="YOUR_GOOGLE_CLIENT_ID"
+            onResolve={(response) => {
+              console.log("Google login successful:", response);
+              alert("Logged in with Google");
+              navigate("/HomePage");
+            }}
+            onReject={(error) => {
+              console.error("Google login failed:", error);
+              alert("Google login failed");
+            }}
           >
-            <span>
-              Continue with Google <i class="fa-brands fa-google" />
-            </span>
-          </Link>
+            <GoogleLoginButton>
+              <span>Continue with Google</span>
+            </GoogleLoginButton>
+          </LoginSocialGoogle>
         </div>
-        <br></br>
+        <br />
         <h5 className="form-title">
-          <Link to="/signup" id="noAccount">
-            Don't Have an account ?
-          </Link>
+          <a href="/signup" id="noAccount">
+            Don't Have an account?
+          </a>
         </h5>
       </div>
     </div>

@@ -13,10 +13,13 @@ return (
     fontWeight: 800,
     fontFamily: 'system-ui',
     alignSelf: 'center',
-    color:'rgb(8, 4, 61)'
+    color:'rgb(246, 243, 199)',
+    paddingLeft:'42px'
   }}> 
- <span className="hidden-text1">   you can follow  us in our socials  </span>   </div>
-    z
+
+ <span className="hidden-text1">   You Can Follow  Us In Our Socials  </span>   </div>
+   
+
     {/* right */}
      <div > 
        < ul id="socials_links">
@@ -78,7 +81,7 @@ return (
     fontWeight: 800,
     fontFamily: 'system-ui',
     alignSelf: 'center',
-    color:'rgb(8, 4, 61)'
+    color:'  rgb(236, 233, 188)'
   }}>🎉 New offers on products! Get a 20% discount today only!</p>
 </div>
 
@@ -88,7 +91,7 @@ return (
     fontWeight: 800,
     fontFamily: 'system-ui',
     alignSelf: 'center',
-    color:'rgb(8, 4, 61)'
+    color:' rgb(236, 233, 188)'
   }}>&copy; All rights reserved 2024.</p>
 </div>
 </section>

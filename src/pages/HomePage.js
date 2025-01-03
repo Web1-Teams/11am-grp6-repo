@@ -2,13 +2,16 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import CategoryBar from "../components/CategoryBar";
 import Section from "../components/Section";
-import Slideer from "../components/Slideer";
+import Slideer from "../components/Slideer/Slideer";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-import MarqueeIcons from "../components/MarqueeIcons";
-import BoxWeather from "../components/BoxWeather";
+import MarqueeIcons from "../components/IconsScrolls/MarqueeIcons";
+import BoxWeather from "../components/WeatherContainer/BoxWeather";
+import SearchBar from "../components/SearchBar/SearchBar";
+import FeedBackCardSlider from "../components/FeedBackSection/FeedBackCardSlider";
 
 const HomePage = ({ places, updatePlaceState }) => {
+  const storedPlaces = JSON.parse(localStorage.getItem("places")) || [];
   const newPlaces = [...places].reverse().slice(0, 6); // Last 6 places
   const topRatedPlaces = [...places]
     .sort((a, b) => b.rating - a.rating)
@@ -17,11 +20,21 @@ const HomePage = ({ places, updatePlaceState }) => {
     .filter((place) => place.isHeartClicked)
     .slice(0, 6); // First 6 favorites
 
-    
+
+  const filteredPlaces = storedPlaces
+    .filter((place) => place["Open 24/7"])
+    .slice(0, 7);
+
+  const filteredForChildrenPlaces = storedPlaces.filter(
+    (place) =>
+      place["family only"] === true ||
+      place["play ground for children"] === true
+  );
   return (
     <div className="grp6-homepage">
-        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
-        
+     <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
+      <SearchBar />
+
       <section>
         <Slideer />
       </section>
@@ -48,18 +61,35 @@ const HomePage = ({ places, updatePlaceState }) => {
           id="your-favorites"
         />
         <Section
+          subtitle="Open 24/7"
+          places={filteredPlaces}
+          updatePlaceState={updatePlaceState}
+          id="open-247"
+        />
+        <Section
           subtitle="Recommended"
           places={places.slice(0, 6)} // First 6 places
           updatePlaceState={updatePlaceState}
           id="recommended"
         />
+        <Section
+          subtitle="Suitable For Children"
+          places={filteredForChildrenPlaces}
+          updatePlaceState={updatePlaceState}
+          id="recommended"
+        />
       </section>
       <section>
-        <BoxWeather/>
+        <BoxWeather />
       </section>
       <section>
-          <MarqueeIcons />
-        </section>
+        <MarqueeIcons />
+      </section>
+
+      <section>
+        <FeedBackCardSlider />
+      </section>
+
       <section>
         <Footer BrandName="visit me ">
           <Footer_cat

@@ -1,0 +1,628 @@
+/* EventCard=============================================================================== */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* الحاوية الرئيسية للبطاقة */
+.hz-container {
+  width: 40vw; /* العرض يكون نسبة من الشاشة */
+  height: 70vh;
+  perspective: 1000px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* البطاقة */
+.hz-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+  border-radius: 7px;
+  background-color: #ffffff; /* لون خلفية الكارد */
+  animation: shadowAnimation 2s ease-in-out infinite; /* تطبيق الحركة */
+}
+
+@keyframes shadowAnimation {
+  0%,
+  100% {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 16px 40px rgba(0, 0, 0, 0.25),
+      0 24px 60px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 24px 50px rgba(0, 0, 0, 0.35),
+      0 36px 70px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.hz-flipped {
+  transform: rotateY(180deg);
+}
+
+/* استجابة للأجهزة الصغيرة */
+@media (max-width: 600px) {
+  .hz-container {
+    width: 90vw;
+    height: 500px;
+  }
+
+  .hz-event-name {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 5rem !important;
+  }
+
+  .hz-event-image {
+    height: 150px;
+  }
+
+  .hz-flip-button,
+  .hz-join-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .hz-sponsor-logo {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.hz-icon {
+  margin-right: 10px;
+  color: #ffd700;
+  font-size: 1.5rem;
+}
+
+/* End EventCard=============================================================================== */
+
+/*CardFront=============================================================================== */
+
+/* .HZ-BOOK{
+  font-size: 1.2rem;
+} */
+/*الوجه الأمامي */
+.hz-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 7px;
+  background: rgb(8, 1, 32);
+  color: #fff;
+  justify-content: space-between;
+}
+.hz-event-name {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2rem;
+  margin: 0.3rem !important;
+}
+/* تصميم حاوية الصورة */
+.hz-image-container {
+  position: relative;
+  width: 100%;
+  height: 65%;
+  overflow: hidden;
+  border-radius: 0;
+}
+.hz-event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* تصميم التاريخ */
+.hz-event-date {
+  background-color: #08012083;
+  color: #fff;
+  text-align: center;
+  padding: 10px 25px;
+  border-radius: 0px 0px 7px 0px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.hz-date-day {
+  font-size: 1.5rem;
+  display: block;
+}
+.hz-date-month {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* اسم الحدث مع تأثير Blur */
+.hz-event-name-blur {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #08012083;
+  backdrop-filter: blur(5px);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  /* font-size: 13rem; */
+  /* margin-bottom: 5rem !important; */
+}
+
+/* وصف الحدث */
+.hz-event-description {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* زر المزيد من التفاصيل */
+.hz-flip-button {
+  padding: 0.7rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem; /* مسافة من الأعلى */
+  position: relative; /* يتيح التحكم بالموقع */
+  top: -30px; /* رفع الزر بمقدار 10px */
+}
+
+.hz-flip-button:hover {
+  background-color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+.hz-event-description {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.hz-flip-button {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.hz-flip-button:hover {
+  background-color: #fff;
+  transform: translateY(-3px);
+}
+
+/* تصميم التاريخ والموقع */
+.hz-event-date-location {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column; /* جعل العناصر عمودية */
+  align-items: flex-start;
+  gap: 8px; /* مسافة بين التاريخ والموقع */
+}
+
+/* الموقع */
+.hz-event-location {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.hz-location-text {
+  font-size: 0.9rem;
+}
+.hz-flip-button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.hz-flip-button:hover {
+  background-color: rgb(0, 98, 255);
+  /* transform: translateY(-3px); */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+/*End CardFront=============================================================================== */
+
+/*CardBack=============================================================================== */
+.hz-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+/* الوجه الخلفي */
+.hz-back {
+  background-color: #2c2c2c;
+  color: #ddd;
+  transform: rotateY(180deg);
+  justify-content: space-between;
+}
+
+/* تفاصيل الوجه الخلفي */
+.hz-details-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 1rem 2rem 2.3rem 2rem !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.hz-details-title::after {
+  content: "";
+  display: block;
+  width: 75%; /* عرض الخط */
+  height: 2px; /* سماكة الخط */
+  background-color: #ddd; /* لون الخط */
+  margin: 0.5rem auto 0; /* مسافة بين العنوان والخط */
+  border-radius: 1px; /* يجعل الخط رقيقًا ومستدير الحواف */
+}
+.hz-sponsors-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.hz-sponsor-logos {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.hz-sponsor-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 10px;
+  /* background-color: #fff; */
+  /* padding: 5px; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hz-no-sponsors {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+/* الخلفية */
+.hz-back {
+  /* background: url("/public/event-imgs/evnt.jpg") no-repeat center center / cover; */
+  /* background:  */
+  position: relative;
+  color: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+}
+.hz-back-overlay {
+  background-color: rgba(3, 5, 36, 0.7); /* تأثير اللون الأخضر */
+  backdrop-filter: blur(10px); /* تغبيش الخلفية */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 2rem;
+  border-radius: 7px;
+}
+
+/* تفاصيل الحدث */
+.hz-event-details {
+  width: 50%;
+  margin: 0rem 0.3rem 0rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.5rem;
+  /* align-self: */
+  /* justify-content:right ; */
+}
+.the2-children {
+  width: 100%;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.hz-detail-item {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.hz-detail-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* الرعاة */
+.hz-sponsors {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 0rem 0rem 0.3rem;
+  /* justify-content: ; */
+}
+
+.hz-sponsors-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hz-sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hz-sponsor-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hz-sponsor-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.hz-sponsor-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+}
+/* الأزرار */
+.hz-buttons {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+/* .hz-join-button {
+  background-color: #261894;
+  color: #fff;
+} */
+
+/* .hz-join-button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+} */
+.hz-join-button {
+  background: linear-gradient(45deg, #fff0a5, #ffcc33, #ffaa00, #ffae42);
+  background-size: 200% 200%; /* لضمان الحركة */
+  color: #000000;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* الظل الأساسي */
+  animation: gradientAnimation 3s ease infinite,
+    glowAnimation 2.5s ease infinite; /* إضافة وميض */
+  margin-bottom: 0.6rem;
+}
+.hz-join-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glowAnimation {
+  0%,
+  100% {
+    box-shadow: 0 0 7px #ffd700, 0 0 10px #ffcc33, 0 0 15px #ffbf00;
+  }
+  50% {
+    box-shadow: 0 0 15px #ffbb00, 0 0 20px #ffcc33, 0 0 25px #ffbf00;
+  }
+}
+
+/* .hz-join-button:hover {
+  background: linear-gradient(45deg, #2cd10b, #1414ed, #f70808);
+  
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+} */
+/* @keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+
+.hz-back-arrow {
+  /* position: absolute; */
+  bottom: 24px; /* قريب من الحافة السفلية */
+  left: 50%; /* يتحرك إلى منتصف الكارد */
+  /* transform: translateX(-50%); يضمن أن العنصر يكون في المنتصف تمامًا */
+  background-color: #fff;
+  color: #000000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.hz-back-arrow:hover {
+  /* background-color: #f0f0f0; */
+  transform: scale(1.1);
+  /* box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); */
+  background-color: rgb(0, 98, 255);
+  /* transform: translateY(-3px); */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+/*End CardBack=============================================================================== */
+
+/* الخطوط المتحركة----------------------------------------------------*/
+
+.btn-hz-n:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+.span-hz:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #0c002b, #1779ff);
+  animation: animate1 2s linear infinite;
+}
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.span-hz:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #0c002b, #1779ff);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+.span-hz:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #0c002b, #1779ff);
+  animation: animate3 2s linear infinite;
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.span-hz:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #0c002b, #1779ff);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+/* ------------------------------------------------------ */
+
+/* ------------------------------------------------------ */
+/* .box-hz { */
+/* width: 100px; */
+/* height: 100px; */
+/* background-color: #4caf50; */
+/* margin: 50px auto; */
+/* display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 #c20202; /* الحالة الابتدائية للظل */
+/* transform: translateX(0) translateY(0); الحالة الابتدائية للتحول */
+/* transition: box-shadow 0.2s cubic-bezier(0.47, 0, 0.745, 0.715), */
+/* transform 0.2s cubic-bezier(0.47, 0, 0.745, 0.715); */
+/* } */
+
+/* .box-hz:hover {
+  box-shadow: 1px -1px #512606, 2px -2px #512606, 3px -3px #512606,
+    4px -4px #512606, 5px -5px #512606;
+  transform: translateX(-5px) translateY(5px);
+} */
+
+/* ------------------------------------------------------ */

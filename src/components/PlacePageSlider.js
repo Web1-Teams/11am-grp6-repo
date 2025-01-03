@@ -3,9 +3,9 @@ import './PlacePageSlider.css';
 const PlacePageSlider = ({ images }) => {
   return (
 
-    <div id="place_page_slider" className="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div id="place_page_slider" className="carousel carousel-dark slide suhad-carousel" data-bs-ride="carousel">
       {/* Carousel Indicators */}
-      <div className="carousel-indicators">
+      <div className="carousel-indicators ssh-carousel-indicators">
         {images.map((_, index) => (
           <button
             key={index}
@@ -26,11 +26,11 @@ const PlacePageSlider = ({ images }) => {
       </div>
 
       {/* Carousel Items */}
-      <div className="carousel-inner">
+      <div className="carousel-inner ssh-carousel-inner">
         {images.map((image, index) => (
           <div
             key={index}
-            className={`carousel-item ${index === 0 ? "active" : ""}`}
+            className={`carousel-item ssh-carousel-item ${index === 0 ? "active" : ""}`}
             data-bs-interval="5000"
           >
             <img

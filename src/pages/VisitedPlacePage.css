@@ -1,0 +1,58 @@
+.visited-places-container {
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 19px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 5px;
+  row-gap: 22px;
+justify-items: center;
+margin-top: 100px;
+}
+
+.no-visited-places {
+  text-align: center;
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.Title {
+  margin-top: 6px;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-right: 970px;
+  color: #fffdfb;
+  background-color: #96775e;
+  padding: 10px 30px 10px;
+  border-radius: 0 50px 50px 0;
+  text-align: left;
+  width: fit-content;
+}
+
+@media (max-width: 767px) {
+  .visited-places-container {
+    grid-template-columns: 1fr; 
+    justify-content: center;
+  }
+
+  .Title {
+    font-size: 2rem;
+    margin-right: 10px;
+    padding: 10px 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .visited-places-container {
+    grid-template-columns: repeat(2, minmax(0, 320px)); 
+    justify-content: center; 
+  }
+
+  .Title {
+    font-size: 2.4rem;
+    margin-right: 20px;
+  }
+}
+
+

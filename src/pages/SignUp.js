@@ -7,7 +7,7 @@ import Modal from "../components/Modal";
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [passwordStrength, setPasswordStrength] = useState(""); // To display password strength
+  const [passwordStrength, setPasswordStrength] = useState("");
   const [loanInputs, setLoanInputs] = useState({
     userName: "",
     email: "",
@@ -17,9 +17,10 @@ const SignUp = () => {
     age: "",
     gender: "",
     cities: "",
+    profilePic:"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png"
   });
 
-  const navigate = useNavigate(); // For navigation after successful sign up
+  const navigate = useNavigate();
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -27,14 +28,14 @@ const SignUp = () => {
 
     const { phoneNumber, password, confirmPassWord, age, email } = loanInputs;
 
-    // Validate age
     if (Number(age) < 14 || Number(age) > 100) {
-      setErrorMessage("The age is not allowed. Age must be between 14 and 100.");
+      setErrorMessage(
+        "The age is not allowed. Age must be between 14 and 100."
+      );
       setShowModal(true);
       return;
     }
 
-    // Validate email
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       setErrorMessage("Please enter a valid email address.");
@@ -42,7 +43,6 @@ const SignUp = () => {
       return;
     }
 
-    // Validate phone number
     if (!/^\d{10,12}$/.test(phoneNumber)) {
       setErrorMessage(
         "Phone Number Format is Incorrect. It should be 10-12 digits."
@@ -51,39 +51,31 @@ const SignUp = () => {
       return;
     }
 
-    // Validate passwords match
     if (password !== confirmPassWord) {
       setErrorMessage("Passwords do not match");
       setShowModal(true);
       return;
     }
 
-    // All validations pass
     setErrorMessage("Sign up successful!");
     setShowModal(true);
 
-    // Retrieve existing data from localStorage (if any)
     const existingData = JSON.parse(localStorage.getItem("userForms")) || [];
 
-    // Create a new form with a unique ID (using Date.now() for simplicity)
     const newForm = {
       id: Date.now(),
       ...loanInputs,
     };
 
-    // Add the new form to the existing data array
     existingData.push(newForm);
 
-    // Store the updated data back in localStorage
     localStorage.setItem("userForms", JSON.stringify(existingData));
 
-    // Navigate to the login page after a delay
     setTimeout(() => {
-      navigate("/login");
-    }, 1000); // Wait for 1 second before redirecting
+      navigate("../Login/login");
+    }, 1000);
   }
 
-  // Function to validate password strength
   function validatePasswordStrength(password) {
     if (password.length < 6) {
       return "Weak: Password must be at least 6 characters.";
