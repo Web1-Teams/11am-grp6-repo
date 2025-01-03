@@ -14,7 +14,10 @@ import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp.js";
 import ProfilePage from "./pages/ProfilePage.js";
+import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
+import MyChatBot from "./components/Chatbot/MyChatBot.js";
+
 
 
 function App() {
@@ -53,30 +56,140 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
+
   return (
     <>
-      <ScrollTop />
+     <ScrollTop />
+    <MyChatBot/>
+     
       <Router>
         <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
         <Routes>
-          <Route path="/" element={<HomePage places={places} />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <HomePage places={places} />
+              </>
+            }
+          />
           <Route
             path="/add-place"
-            element={<AddPlace onAddPlace={handleAddPlace} />}
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />{" "}
+                <SecondaryNavBar />
+                <AddPlace onAddPlace={handleAddPlace} />
+              </>
+            }
           />
           <Route
             path="/place/:id"
             element={
-              <PlacePage
-                places={places}
-                updatePlaceRating={updatePlaceRating}
-              />
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <PlacePage
+                  places={places}
+                  updatePlaceRating={updatePlaceRating}
+                />
+              </>
+            }
+          />
+
+
+          <Route
+            path="/favorites"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <FavoritesPage places={places} />
+              </>
+            }
+          />
+          <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route
+            path="/visited-places"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <VisitedPlacePage />
+              </>
+            }
+          />
+
+          <Route
+            path="/feedback"
+            element={
+              <>
+                <UserFeedBack />
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <SecondaryNavBar />
+              </>
+            }
+          />
+
+          <Route
+            path="/profile-page"
+            element={
+              <>
+                <ProfilePage places={places} />
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2=" Calendar"
+                  i3=" My Favorites"
+                />
+              </>
             }
           />
           <Route
-            path="/profile-page"
-            element={<ProfilePage places={places} />}
+            path="/event-page"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <EventPage />
+              </>
+            }
           />
+
+
+
           <Route
             path="/calendar"
             element={
@@ -92,33 +205,29 @@ function App() {
             }
           />
           <Route path="/login" element={<Login places={places} />} />
+
           <Route
-            path="/favorites"
-            element={<FavoritesPage places={places} />}
-          />
-          <Route path="/category/:categoryName" element={<CategoryPage />} />
-          <Route path="/visited-places" element={<VisitedPlacePage />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/about-us" element={<AboutUs places={places} />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route
-            path="/feedback"
+            path="/about-us"
             element={
               <>
-                <UserFeedBack />
                 <NavBar
                   BrandName="VisitMe"
                   i1="Home"
                   i2="Calendar"
-                  i3="My Favorites"
+                  i3=" My Favorites"
                 />
+                <AboutUs places={places} />
               </>
             }
-          />
+          ></Route>
+          <Route path="/SignUp" element={<SignUp />} />
         </Routes>
       </Router>
     </>
+
   );
 }
 
 export default App;
+
+   
