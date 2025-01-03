@@ -2,13 +2,12 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import CategoryBar from "../components/CategoryBar";
 import Section from "../components/Section";
-import Slideer from "../components/Slideer";
+import Slideer from "../components/Slideer/Slideer";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-import MarqueeIcons from "../components/MarqueeIcons";
-import BoxWeather from "../components/BoxWeather";
-import SearchBar from "../components/Search Bar/SearchBar";
-import LazyLoadSection from "./LazyLoadSection";
+import MarqueeIcons from "../components/IconsScrolls/MarqueeIcons";
+import BoxWeather from "../components/WeatherContainer/BoxWeather";
+import SearchBar from "../components/SearchBar/SearchBar";
 import FeedBackCardSlider from "../components/FeedBackSection/FeedBackCardSlider";
 
 const HomePage = ({ places, updatePlaceState }) => {
@@ -33,17 +32,12 @@ const HomePage = ({ places, updatePlaceState }) => {
     <div className="grp6-homepage">
       <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
       <SearchBar />
-      <LazyLoadSection>
         <section>
           <Slideer />
         </section>
-      </LazyLoadSection>
-      <LazyLoadSection>
         <section>
           <CategoryBar />
         </section>
-      </LazyLoadSection>
-      <LazyLoadSection>
         <section>
           <Section
             subtitle="New Places"
@@ -82,21 +76,15 @@ const HomePage = ({ places, updatePlaceState }) => {
             id="recommended"
           />
         </section>
-      </LazyLoadSection>
-      <LazyLoadSection>
         <section>
           <BoxWeather />
         </section>
-      </LazyLoadSection>
-      <LazyLoadSection>
         <section>
           <MarqueeIcons />
         </section>
-      </LazyLoadSection>
       <section>
         <FeedBackCardSlider/>
       </section>
-      <LazyLoadSection>
         <section>
           <Footer BrandName="visit me ">
             <Footer_cat
@@ -149,7 +137,6 @@ const HomePage = ({ places, updatePlaceState }) => {
             />
           </Footer>
         </section>
-      </LazyLoadSection>
     </div>
   );
 };
