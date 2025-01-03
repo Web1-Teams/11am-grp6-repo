@@ -28,9 +28,10 @@ const SignUp = () => {
 
     const { phoneNumber, password, confirmPassWord, age, email } = loanInputs;
 
-    if (Number(age) < 14 || Number(age) > 100) {
+
+    if (Number(age) < 14) {
       setErrorMessage(
-        "The age is not allowed. Age must be between 14 and 100."
+        "The Age must be older than 14."
       );
       setShowModal(true);
       return;
@@ -56,8 +57,9 @@ const SignUp = () => {
       setShowModal(true);
       return;
     }
-
-    setErrorMessage("Sign up successful!");
+    
+    // Set success message and show modal
+    setErrorMessage(null); 
     setShowModal(true);
 
     const existingData = JSON.parse(localStorage.getItem("userForms")) || [];
@@ -72,7 +74,7 @@ const SignUp = () => {
     localStorage.setItem("userForms", JSON.stringify(existingData));
 
     setTimeout(() => {
-      navigate("../Login/login");
+      navigate("../Login");
     }, 1000);
   }
 
