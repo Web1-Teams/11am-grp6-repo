@@ -72,7 +72,7 @@ const SignUp = () => {
     localStorage.setItem("userForms", JSON.stringify(existingData));
 
     setTimeout(() => {
-      navigate("/login");
+      navigate("../Login/login");
     }, 1000);
   }
 

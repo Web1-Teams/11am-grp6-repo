@@ -6,10 +6,10 @@ import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
 import AddPlace from "./pages/AddPlace";
 import Calendar from "./pages/Calendar/Calendar.js";
-import Login from "./pages/Login";
+import Login from "./pages/Login.js";
 import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/SignUp.js";
 
 
 function App() {
