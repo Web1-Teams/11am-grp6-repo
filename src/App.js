@@ -18,6 +18,8 @@ import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 
+import MyChatBot from "./components/Chatbot/MyChatBot.js";
+
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -55,9 +57,12 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
+
   return (
     <>
-      <ScrollTop />
+     <ScrollTop />
+    <MyChatBot/>
+     
       <Router>
         <Routes>
           <Route
@@ -106,6 +111,7 @@ function App() {
               </>
             }
           />
+
 
           <Route
             path="/favorites"
@@ -182,6 +188,8 @@ function App() {
             }
           />
 
+
+
           <Route
             path="/calendar"
             element={
@@ -216,6 +224,7 @@ function App() {
         </Routes>
       </Router>
     </>
+
   );
 }
 
