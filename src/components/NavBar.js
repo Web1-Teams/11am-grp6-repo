@@ -83,23 +83,6 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                 <i class="fa-solid fa-message"></i> FeedBack
                 </Link>
               </li>
-              
-              <li>
-                <Link className="dropdown-item" to="/settings">
-                  <i className="fa-solid fa-gear"></i> Settings
-                </Link>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#notifications">
-                  <i className="fa-solid fa-bell"></i> Notifications
-                </a>
-              </li>
-
-              <li>
-                <Link className="dropdown-item" to="/Login">
-                  <i className="fa-solid fa-right-to-bracket"></i> Log In
-                </Link>
-              </li>
               <li>
                 <a className="dropdown-item" href="#logout">
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
