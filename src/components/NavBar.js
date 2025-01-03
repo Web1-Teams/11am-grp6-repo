@@ -12,6 +12,8 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
 
 
 
+
+
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
@@ -76,7 +78,12 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                   <i className="fa-solid fa-user"></i> My Profile
                 </Link>
               </li>
-
+              <li>
+                <Link className="dropdown-item" to="/feedback">
+                <i class="fa-solid fa-message"></i> FeedBack
+                </Link>
+              </li>
+              
               <li>
                 <Link className="dropdown-item" to="/settings">
                   <i className="fa-solid fa-gear"></i> Settings

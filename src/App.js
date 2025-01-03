@@ -14,6 +14,7 @@ import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
 import ProfilePage from "./pages/ProfilePage.js";
+import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 
 
 function App() {
@@ -130,6 +131,7 @@ return (
       element={
         <>
           <VisitedPlacePage />
+
           <NavBar
             BrandName="VisitMe"
             i1="Home"
@@ -137,6 +139,7 @@ return (
             i3="My Favorites"
           />
           <SecondaryNavBar />
+
         </>
       }
     />
@@ -144,6 +147,22 @@ return (
     {/* This should be here, not inside another <Routes> */}
     <Route path="/about-us" element={<AboutUs places={places} />} />
     <Route path="/SignUp" element={<SignUp />} />
+    <Route
+          path="/feedback"
+          element={
+            <>
+              <UserFeedBack/>
+              <NavBar
+                BrandName="VisitMe"
+                i1="Home"
+                i2="Calendar"
+                i3="My Favorites"
+              />
+              <SecondaryNavBar />
+            </>
+          }
+        />
+
   </Routes>
 </Router>
   );
