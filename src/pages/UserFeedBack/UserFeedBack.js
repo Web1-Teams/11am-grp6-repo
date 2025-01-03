@@ -28,7 +28,6 @@ const UserFeedBack = () => {
   // حفظ التقييمات في اللوكال ستورج 
   const saveToLocalStorage = (feedbacks) => {
     localStorage.setItem(`userfeedbacks-${username}`, JSON.stringify(feedbacks));
-    localStorage.setItem("username", username); // حفظ اسم المستخدم
   };
 
   // حساب النسبة المئوية الإجمالية لكل التقييمات
@@ -82,7 +81,7 @@ const UserFeedBack = () => {
       ui: 0,
       performance: 0,
     });
-    alert("Feedback submitted successfully!"); 
+    alert("Feedback submitted successfully!"); // رسالة نجاح العملية
   };
 
   // تحديث تقييم النجوم لكل فئة
@@ -169,7 +168,7 @@ const UserFeedBack = () => {
                     <i className="fa-solid fa-user"></i> {feedback.username}:
                   </strong>
                 </p>
-                <p>{feedback.text}</p>
+                <p className="TheText-ssh">{feedback.text}</p>
                 <div className="star-rating-display">
                   <strong>{feedback.totalPercentage}%</strong>
                   <div className="stars-container">

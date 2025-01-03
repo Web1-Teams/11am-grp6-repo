@@ -18,6 +18,19 @@
   padding-bottom: 40px;
   overflow-x: hidden;
 }
+.ssh-delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.ssh-delete-btn:hover {
+  background-color: #e60000;
+}
+
 
 .ssh-TextArea {
   width: 100%;
@@ -221,3 +234,6 @@
     font-size: 14px;
   }
 }
+.TheText-ssh{
+overflow-wrap: break-word; 
+word-wrap: break-word;}
