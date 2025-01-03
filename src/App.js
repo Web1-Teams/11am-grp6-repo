@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import SecondaryNavBar from "./components/SecondaryNavBar";
 import ScrollTop from "./components/ScrollTop/ScrollTop.js";
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
@@ -17,8 +16,8 @@ import SignUp from "./pages/SignUp.js";
 import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
-
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
+
 
 
 function App() {
@@ -64,6 +63,7 @@ function App() {
     <MyChatBot/>
      
       <Router>
+        <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
         <Routes>
           <Route
             path="/"
