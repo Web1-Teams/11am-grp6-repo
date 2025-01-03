@@ -9,7 +9,7 @@ import MarqueeIcons from "../components/MarqueeIcons";
 import BoxWeather from "../components/BoxWeather";
 import SearchBar from "../components/Search Bar/SearchBar";
 import LazyLoadSection from "./LazyLoadSection";
-import ColorCard from "../components/ColorCard";
+import FeedBackCardSlider from "../components/FeedBackSection/FeedBackCardSlider";
 
 const HomePage = ({ places, updatePlaceState }) => {
   const storedPlaces = JSON.parse(localStorage.getItem("places")) || [];
@@ -94,7 +94,7 @@ const HomePage = ({ places, updatePlaceState }) => {
         </section>
       </LazyLoadSection>
       <section>
-        <ColorCard />
+        <FeedBackCardSlider/>
       </section>
       <LazyLoadSection>
         <section>

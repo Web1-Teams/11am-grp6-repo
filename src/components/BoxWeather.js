@@ -5,7 +5,6 @@ import Weather from "./Weather";
 export default function BoxWeather() {
   return (
     <div className="box-container">
-      <h1></h1>
       <div className="box-video">
         <video autoPlay loop muted>
           <source src="/Video/weather.mp4" type="video/mp4" />
