@@ -27,7 +27,7 @@ if (matchedFeature) {
 }
 
 const personalQuestions = [
-    { type: "tell me about visitme website", keywords: [ "about visitme",  "about the website"] }, 
+    { type: "tell me about visitme website", keywords: [ "about visitme",  "about website","website"] }, 
     { type: "how are you", keywords: ["how are you", "how's it going", "how are you doing","how are u"] },
     { type: "what is your name", keywords: ["what is your name", "who are you", "name", "your name"] },
     { type: "how is the weather", keywords: ["how is the weather", "weather", "weather today", "current weather"] },
