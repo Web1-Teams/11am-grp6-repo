@@ -8,7 +8,7 @@ const EditPhoneModal = ({
   onSave,
 }) => {
   const handleSave = () => {
-    onSave(); // استدعاء دالة الحفظ الموجودة في ProfilePage --> handleSavePhone
+    onSave(); // استدعاء فنكشن الحفظ الموجود في ProfilePage --> handleSavePhone
   };
 
   return (

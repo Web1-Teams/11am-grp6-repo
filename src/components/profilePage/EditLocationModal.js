@@ -9,7 +9,7 @@ const EditLocationModal = ({
   onSave,
 }) => {
   const handleSave = () => {
-    onSave(); // استدعاء دالة الحفظ الموجودة في ProfilePage --> handleSaveLocation
+    onSave(); // استدعاء فنكشن الحفظ الموجود في ProfilePage --> handleSaveLocation
   };
 
   return (

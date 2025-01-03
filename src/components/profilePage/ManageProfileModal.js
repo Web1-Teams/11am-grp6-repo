@@ -10,7 +10,7 @@ const ManageProfileModal = ({
   setTemporaryUserName,
 }) => {
   const handleSave = () => {
-    onSaveProfile(); // استدعاء دالة الحفظ الموجودة في ProfilePage --> handleSaveProfile
+    onSaveProfile(); // استدعاء فنكشن الحفظ الموجود في ProfilePage --> handleSaveProfile
   };
 
   return (
