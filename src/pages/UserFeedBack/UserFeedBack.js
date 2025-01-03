@@ -165,7 +165,7 @@ const UserFeedBack = () => {
               <li key={feedback.id} className="ssh-feedback-item">
                 <p className="ssh-feedback-username">
                   <strong>
-                    <i className="fa-solid fa-user"></i> {feedback.username}:
+                  <i className="fa-solid fa-circle-user ssha-user"></i> {feedback.username}:
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>
