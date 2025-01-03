@@ -63,7 +63,9 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div style={{  position: "relative" }}>
+
+    <div style={{ position: "relative" }}>
+
       <div className="search-container">
         <select
           className="SelectSearch"

@@ -9,7 +9,7 @@ import Calendar from "./pages/Calendar/Calendar.js";
 import Login from "./pages/Login";
 import FavoritesPage from "./pages/FavoritesPage"; 
 import CategoryPage from "./pages/CategoryPage"; 
-import VisitedPlacePage from "./pages/VisitedPlacePage"; // Import VisitedPlacePage
+import VisitedPlacePage from "./pages/VisitedPlacePage"; 
 import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp";
@@ -163,8 +163,21 @@ return (
           }
         />
 
-  </Routes>
-</Router>
+ <Route
+          path="/settings"
+          element={
+            <>
+              <Settings places={places} />{" "}
+            </>
+          }
+        ></Route>
+        <Route path="/about-us" element={<AboutUs places={places} />}></Route>
+        <Route path="/SignUp" element={<SignUp />} />
+
+      </Routes>
+    </Router>
+    
+
   );
 }
 

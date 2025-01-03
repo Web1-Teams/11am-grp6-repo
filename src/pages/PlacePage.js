@@ -145,6 +145,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
 
     return (
+
         <div className="ssh-placePage-body">
         <div className="ssh-place-page" style={{ marginTop: "40px", padding: "0px" }}>
          
@@ -291,6 +292,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                         comments.map((comment, index) => (
                             <li key={index} className="comment-item">
                                <i className="fa-solid fa-user ssh-user"></i> : {comment}
+
                             </li>
                         ))
                     ) : (

@@ -12,8 +12,6 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
 
 
 
-
-
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
