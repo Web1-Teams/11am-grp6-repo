@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -28,4 +28,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default SearchBar;*/

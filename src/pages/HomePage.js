@@ -5,8 +5,7 @@ import Section from "../components/Section";
 import Slideer from "../components/Slideer";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-import MarqueeIcons from "../components/MarqueeIcons";
-import BoxWeather from "../components/BoxWeather";
+
 
 const HomePage = ({ places, updatePlaceState }) => {
   const newPlaces = [...places].reverse().slice(0, 6); // Last 6 places
@@ -17,11 +16,11 @@ const HomePage = ({ places, updatePlaceState }) => {
     .filter((place) => place.isHeartClicked)
     .slice(0, 6); // First 6 favorites
 
-    
   return (
     <div className="grp6-homepage">
-        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites" />
-        
+
+        <NavBar BrandName="VisitMe" i1="Home" i2=" Calendar" i3=" My Favorites"/>
+      <SearchBar/>
       <section>
         <Slideer />
       </section>
@@ -54,64 +53,56 @@ const HomePage = ({ places, updatePlaceState }) => {
           id="recommended"
         />
       </section>
-      <section>
-        <BoxWeather/>
-      </section>
-      <section>
-          <MarqueeIcons />
-        </section>
-      <section>
-        <Footer BrandName="visit me ">
-          <Footer_cat
-            c1="resturents"
-            c1tag1="family type"
-            c1tag2="locations"
-            c1tag3="generic"
-            c1tag4="best sellers"
-            c1tag5="help"
-          />
-          <Footer_cat
-            c1="Archaeological Sites"
-            c1tag1="picturs"
-            c1tag2="locations"
-            c1tag3="more info"
-            c1tag4="most visited"
-            c1tag5="help"
-          />
-          <Footer_cat
-            c1="Amusement Parks"
-            c1tag1="childesh"
-            c1tag2="locations"
-            c1tag3="reviews"
-            c1tag4="more info"
-            c1tag5="help"
-          />
-          <Footer_cat
-            c1="Parks"
-            c1tag1="more info"
-            c1tag2="locations"
-            c1tag3="photos"
-            c1tag4="intertetment"
-            c1tag5="help"
-          />
-          <Footer_cat
-            c1="Cafés"
-            c1tag1="family type"
-            c1tag2="locations"
-            c1tag3="pics"
-            c1tag4="best sellers"
-            c1tag5="help"
-          />
-          <Footer_cat
-            c1="Play Centers"
-            c1tag1="support"
-            c1tag2="locations"
-            c1tag3="know more "
-            c1tag4="reviews"
-            c1tag5="help"
-          />
-        </Footer>
-      </section>
+      <Footer BrandName="Visit Me">
+                <Footer_cat
+                    c1="Restaurants"
+                    c1tag1="Family Type"
+                    c1tag2="Locations"
+                    c1tag3="Generic"
+                    c1tag4="Best Sellers"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Archaeological Sites"
+                    c1tag1="Pictures"
+                    c1tag2="Locations"
+                    c1tag3="More Info"
+                    c1tag4="Most Visited"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Amusement Parks"
+                    c1tag1="Childish"
+                    c1tag2="Locations"
+                    c1tag3="Reviews"
+                    c1tag4="More Info"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Parks"
+                    c1tag1="More Info"
+                    c1tag2="Locations"
+                    c1tag3="Photos"
+                    c1tag4="Entertainment"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Cafés"
+                    c1tag1="Family Type"
+                    c1tag2="Locations"
+                    c1tag3="Pictures"
+                    c1tag4="Best Sellers"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Play Centers"
+                    c1tag1="Support"
+                    c1tag2="Locations"
+                    c1tag3="Know More"
+                    c1tag4="More Info"
+                    c1tag5="Help"
+                />
+            </Footer>
     </div>
   );
 };
