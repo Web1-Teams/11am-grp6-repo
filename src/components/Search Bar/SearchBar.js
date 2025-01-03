@@ -63,7 +63,7 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div style={{ paddingTop: "70px", position: "relative" }}>
+    <div style={{ position: "relative" }}>
       <div className="search-container">
         <select
           className="SelectSearch"
