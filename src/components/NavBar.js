@@ -25,32 +25,31 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
 
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
-
-          <li className="nav-item">
-  <a className="nav-link" href="/visited-places">
-    <i className="fa-solid fa-check" /> Visited Places
-  </a>
-</li> 
+            <li className="nav-item">
+              <a className="nav-link" href="/visited-places">
+                <i className="fa-solid fa-check" /> Visited Places
+              </a>
+            </li>
 
             <li className="nav-item">
-  <Link className="nav-link" to="/favorites">
-    <i className="fa-solid fa-heart" />
-    {i3}
-  </Link>
-</li>
-<li className="nav-item">
-              <a className="nav-link" href="calendar">
-              <i className="fa-solid fa-calendar-days"></i> {i2}
-              </a>
+              <Link className="nav-link" to="/favorites">
+                <i className="fa-solid fa-heart" />
+                {i3}
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="calendar">
-              <i className="fa-regular fa-calendar-check"></i> Events
+                <i className="fa-solid fa-calendar-days"></i> {i2}
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/event-page">
+                <i className="fa-regular fa-calendar-check"></i> Events
               </a>
             </li>
           </ul>
           <Link className="nav-link" to="/about-us">
-          <i className="fa-solid fa-users"></i> Us
+            <i className="fa-solid fa-users"></i> About Us
           </Link>
           <Link
             className="nav-link"
@@ -75,7 +74,7 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
               </li>
               <li>
                 <Link className="dropdown-item" to="/feedback">
-                <i className="fa-solid fa-message"></i> FeedBack
+                  <i className="fa-solid fa-message"></i> FeedBack
                 </Link>
               </li>
               <li>
@@ -83,8 +82,7 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
                 </a>
               </li>
-              <li>
-              </li>
+              <li></li>
             </ul>
           </div>
         </div>

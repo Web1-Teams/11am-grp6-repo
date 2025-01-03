@@ -1,0 +1,53 @@
+/* src/pages/EventPage/EventPage.css */
+
+.hz-event-page {
+  padding: 2rem;
+  margin: 0;
+  box-sizing: border-box;
+
+  /* جعل الخلفية تمتد مع المحتوى */
+  background: linear-gradient(45deg, #290330, #060664, #540101);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+
+  /* ضمان تغطية الصفحة بالكامل */
+  min-height: 100vh; /* تغطية الشاشة عند بداية التحميل */
+  height: auto; /* تمدد حسب المحتوى */
+}
+
+
+
+.hz-page-title {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hz-event-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hz-page-title{
+   
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 3rem;
+    margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
