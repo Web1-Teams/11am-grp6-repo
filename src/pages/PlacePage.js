@@ -145,28 +145,29 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
 
     return (
-        <div className="place-page" style={{ marginTop: "40px", padding: "0px" }}>
+        <div className="ssh-placePage-body">
+        <div className="ssh-place-page" style={{ marginTop: "40px", padding: "0px" }}>
          
-          <div className="slider_and_dicription">
+          <div className="ssh-slider_and_dicription">
               
-          <PlacePageSlider images={[place.image, place.image2, place.image3]} />
+          <PlacePageSlider className="ssh-sliderr" images={[place.image, place.image2, place.image3]} />
           <div className='SL-container'>
           <section className="NamePlace">{place.name}</section>
-    <p className="short-info">{place.description}</p>
-    <p className="long-info">
-                            {place.longDescription}
+    <p className="short-ssh-Info">{place.description}</p>
+    <p className="long-ssh-Info">
+         {place.longDescription}
                        </p> 
 
     </div>
     
      {/* added div for displayment */}
           </div>
-          <div className="place-tags">
+          <div className="ssh-place-tags">
 
 <div>
 {tags.length > 0 ? (
     tags.map((tag, index) => (
-        <span key={index} className="place-tag">
+        <span key={index} className="ssh-place-tag">
             {tag}
         </span>
     ))
@@ -175,24 +176,24 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 )}
 </div>
 </div>
-          <div className="name-heart-visited"> 
+          <div className="FeedBack-heart-visited"> 
    
-    <button onClick={() => setIsFeedbackOpen(true)} className="feedback-button">
+    <button onClick={() => setIsFeedbackOpen(true)} className="ssh-feedback-button">
                     Leave Feedback
                 </button>
                 
                 {isFeedbackOpen && (
-                    <div className="feedback-popup">
-                        <div className="feedback-content">
-                            <div className="rating-section">
-                                <h3>Rate Categories:</h3>
+                    <div className="sh-feedback-popup">
+                        <div className="ssh-feedback-content">
+                            <div className="ssh-rating-section">
+                                <h3 className="ssh-RateName">Rate Categories:</h3>
                                 {["food", "service", "price", "atmosphere"].map((category) => (
-                                    <div key={category} className="rating-category">
+                                    <div key={category} className="ssh-rating-category">
                                         <label>{category.charAt(0).toUpperCase() + category.slice(1)}:</label>
                                         {["😭", "😟", "😐", "😊", "😍"].map((emoji) => (
                                             <button
                                                 key={emoji}
-                                                className={`rating-emoji ${
+                                                className={`ssh-rating-emoji ${
                                                     ratings[category] === emoji ? "selected" : ""
                                                 }`}
                                                 onClick={() => handleRatingClick(category, emoji)}
@@ -204,8 +205,8 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                                 ))}
                             </div>
                             
-                            <div className="feedback-buttons">
-                                <button onClick={handleFeedbackSubmit} className="submit-feedback">
+                            <div className="ssh-feedback-buttons">
+                                <button onClick={handleFeedbackSubmit} className="ssh-submit-feedback">
                                     Submit
                                 </button>
                                 <button onClick={() => setIsFeedbackOpen(false)} className="close-popup">
@@ -219,23 +220,23 @@ const PlacePage = ({ places, updatePlaceRating }) => {
    
    <div className="buttons-container">
        <button
-           className={`favorite-btn ${isHeartClicked ? "active" : ""}`}
+           className={`ssh-favorite-btn ${isHeartClicked ? "active" : ""}`}
            onClick={handleHeartClick}
        >
-         <i className="fa-solid fa-heart"></i>
+         <i className="fa-solid fa-heart ssh-heart"></i>
        </button>
        <button
-           className={`visited-btn ${isCheckClicked ? "active" : ""}`}
+           className={`ssh-visited-btn ${isCheckClicked ? "active" : ""}`}
            onClick={handleCheckClick}
        >
-           <i className="fa-solid fa-circle-check"></i>
+           <i className="fa-solid fa-circle-check ssh-visited"></i>
        </button>
    </div>
 </div>
 </div>
 
             {showEmoji && (
-                <div className="emoji-overlay">
+                <div className="ssh-emoji-overlay">
                     🎉
                     <p>You are the first to comment!</p>
                 </div>
@@ -246,8 +247,8 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
  {coordinates ? (   
                     <div className="Hamza-map">
-                          <h2 className="location">Location:</h2>
-                        <div  className="map-container">
+                          <h2 className="ssh-location">Location:</h2>
+                        <div  className="ssh-map-container">
                         <LoadScript googleMapsApiKey="AIzaSyDEsM7fwWviSUMUBW7HUDtVAJ_gEsg_jSU">
                             <GoogleMap
                                 mapContainerStyle={{ width: "100%", height: "400px" }}
@@ -289,7 +290,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     {comments.length > 0 ? (
                         comments.map((comment, index) => (
                             <li key={index} className="comment-item">
-                               <i class="fa-solid fa-user"></i> : {comment}
+                               <i className="fa-solid fa-user ssh-user"></i> : {comment}
                             </li>
                         ))
                     ) : (
@@ -356,7 +357,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     c1tag5="Help"
                 />
             </Footer>
-        </div>
+        </div></div>
     );
 };
 
