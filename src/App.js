@@ -138,7 +138,6 @@ return (
             i2="Calendar"
             i3="My Favorites"
           />
-          <SecondaryNavBar />
 
         </>
       }
