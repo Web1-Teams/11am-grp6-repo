@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
-import Grp6Popup from "./Grp6Popup";
-import CopyLink from "./CopyLink";
+import Grp6Popup from "./ShareItem/Grp6Popup";
+import CopyLink from "./ShareItem/CopyLink";
 
 
 // Popup Component with Close Button
@@ -62,9 +62,8 @@ const Popup = ({ children, onClose }) => {
   );
 };
 
-
 const Card = ({ id, image,image2,image3, name, locationname, rating = 0 }) => {
-  const [isShareClicked, setIsShareClicked] = useState(false); // State for Popup
+  const [isShareClicked, setIsShareClicked] = useState(false);
 
 
   const navigate = useNavigate();

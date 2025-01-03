@@ -12,15 +12,15 @@
 }
 
 .subnav-tag {
-  padding: 8px 16px;
+  padding: 8px 12px;
   border: none;
   background-color:#f1f1e8d5;
   color: #393e43;
   border-radius: 13px;
   cursor: pointer;
-  border: 2px solid  #830522dc;
+  border: 1px solid  #830522dc;
   transition: background-color 0.3s ease;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 650;
   font-family: "Georgia", serif;
   text-align: center;

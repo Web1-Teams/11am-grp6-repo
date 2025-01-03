@@ -17,6 +17,7 @@ const SignUp = () => {
     age: "",
     gender: "",
     cities: "",
+    profilePic:"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png"
   });
 
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const SignUp = () => {
     localStorage.setItem("userForms", JSON.stringify(existingData));
 
     setTimeout(() => {
-      navigate("/login");
+      navigate("../Login/login");
     }, 1000);
   }
 

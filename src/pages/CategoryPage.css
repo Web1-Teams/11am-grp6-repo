@@ -1,13 +1,13 @@
 
 .category-page {
-  margin-top: 90px;
+  margin-top: 30px;
 
 }
 .all-container{
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.text-center{
+.cat-text{
   padding-top: 10px;
  margin-top: 10px;
 color: #640018;
@@ -24,7 +24,7 @@ font-weight: 800;
 text-align: center;
 }
 @media only screen and (max-width:767px) {
-  .text-center{
+  .cat-text{
     font-size:50px;
   }
   
