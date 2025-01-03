@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import "./PlacePage.css";
@@ -9,16 +9,15 @@ import Footer_cat from "../components/Footer_cat";
 const PlacePage = ({ places, updatePlaceRating }) => {
     const { id } = useParams();
     const place = places.find((r) => r.id === parseInt(id));
-
-    // State management
     const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState("");
+    const [newComment, setNewComment] = useState('');
     const [ratings, setRatings] = useState({
         food: null,
         service: null,
         price: null,
         atmosphere: null,
     });
+
 
     const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
     const [showEmoji, setShowEmoji] = useState(false);
@@ -43,16 +42,20 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     });
     // Load states from localStorage
     useEffect(() => {
+
         const storedState = JSON.parse(localStorage.getItem("places")) || [];
-        const currentPlace = storedState.find((item) => item.id === parseInt(id)) || {};
-        setIsHeartClicked(currentPlace.isHeartClicked || false);
-        setIsCheckClicked(currentPlace.isCheckClicked || false);
+        const place = storedState.find((item) => item.id === parseInt(id));
+        return place ? place.isHeartClicked : false;
+    });
 
-        const storedComments = JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
-        setComments(storedComments);
-    }, [id]);
+    // Visited state
+    const [isCheckClicked, setIsCheckClicked] = useState(() => {
+        const storedState = JSON.parse(localStorage.getItem("places")) || [];
+        const place = storedState.find((item) => item.id === parseInt(id));
+        return place?.isCheckClicked || false;
+    });
 
-    // Save place state to localStorage
+    // Function to update localStorage
     const updateLocalStorage = (updatedPlace) => {
         const storedState = JSON.parse(localStorage.getItem("places")) || [];
         const updatedState = storedState.map((item) =>
@@ -98,53 +101,48 @@ const PlacePage = ({ places, updatePlaceRating }) => {
             setComments(updatedComments);
             localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
 
-            setNewComment("");
-            setShowEmoji(comments.length === 0); // Show emoji only for the first comment
-        }
+
+        // Update only the isHeartClicked property
+        const updatedPlace = { id: parseInt(id), isHeartClicked: newHeartState, isCheckClicked };
+        updateLocalStorage(updatedPlace);
     };
 
-    const handleRatingClick = (category, emoji) => {
-        setRatings((prev) => ({ ...prev, [category]: emoji }));
+    // Visited button click handler
+    const handleCheckClick = (e) => {
+        e.stopPropagation();
+        const newCheckState = !isCheckClicked;
+        setIsCheckClicked(newCheckState);
+
+        // Update only the isCheckClicked property
+        const updatedPlace = { id: parseInt(id), isHeartClicked, isCheckClicked: newCheckState };
+        updateLocalStorage(updatedPlace);
     };
 
-    const handleFeedbackSubmit = () => {
-        if (Object.values(ratings).every(Boolean)) {
-            const totalRating = (
-                ratingValues[ratings.food] * 39.5 +
-                ratingValues[ratings.service] * 24.5 +
-                ratingValues[ratings.price] * 19.5 +
-                ratingValues[ratings.atmosphere] * 16.5
-            ).toFixed(2);
-
-            updatePlaceRating(place.id, totalRating);
-            setIsFeedbackOpen(false);
-        } else {
-            alert("Please rate all categories!");
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+        if (newComment.trim()) {
+            setComments([...comments, newComment.trim()]);
+            setNewComment('');
         }
     };
 
     const extractCoordinates = (url) => {
         const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
         const match = url.match(regex);
-        return match ? { lat: parseFloat(match[1]), lng: parseFloat(match[2]) } : null;
+        if (match) {
+            return { lat: parseFloat(match[1]), lng: parseFloat(match[2]) };
+        }
+        return null;
     };
 
     if (!place) {
-        return (
-            <div>
-                Place not found. <Link to="/">Go Back</Link>
-            </div>
-        );
+        return <div>Place not found. <Link to="/">Go Back</Link></div>;
     }
 
     const coordinates = extractCoordinates(place.location);
 
-    const tags = Object.keys(place).filter(
-        (key) => place[key] === true && !["isHeartClicked", "isCheckClicked", "rating"].includes(key)
-    );
-
-
     return (
+
         <div className="place-page" style={{ marginTop: "40px", padding: "0px" }}>
          
           <div className="slider_and_dicription">
@@ -251,25 +249,31 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                         <LoadScript googleMapsApiKey="AIzaSyDEsM7fwWviSUMUBW7HUDtVAJ_gEsg_jSU">
                             <GoogleMap
                                 mapContainerStyle={{ width: "100%", height: "400px" }}
+
                                 center={coordinates}
                                 zoom={15}
                             >
                                 <Marker position={coordinates} />
                             </GoogleMap>
                         </LoadScript>
+
                         </div>
+
                     </div>
                 ) : (
                     <p>Location information is not available.</p>
                 )}
+
+
 </div>
 
 
             <div className="place-details">
 
-                <div className="comment-section">
+
+            <div className="comment-section">
                 <h2>Comments</h2>
-                <form onSubmit={handleCommentSubmit} className="comment-form"> 
+                <form onSubmit={handleCommentSubmit} className="comment-form">
                     <textarea
                         value={newComment}
                         onChange={(e) => setNewComment(e.target.value)}
@@ -280,16 +284,20 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     <button type="submit" className="submit-comment">
                         Add Comment
                     </button>
+
                    </div>
                 </form> 
                     <p>  <span className="your-comment ">Comments list</span> </p>
                 <div className="comments-list-container">
                   
+
                 <ul className="comments-list">
                     {comments.length > 0 ? (
                         comments.map((comment, index) => (
                             <li key={index} className="comment-item">
+
                                <i class="fa-solid fa-user"></i> : {comment}
+
                             </li>
                         ))
                     ) : (
@@ -297,64 +305,18 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     )}
                 </ul>
 
-                </div>
-            </div>
 
-               
-          
-              
+                </div>
+
             </div>
-           
 
             <Footer BrandName="Visit Me">
-                <Footer_cat
-                    c1="Restaurants"
-                    c1tag1="Family Type"
-                    c1tag2="Locations"
-                    c1tag3="Generic"
-                    c1tag4="Best Sellers"
-                    c1tag5="Help"
-                />
-                <Footer_cat
-                    c1="Archaeological Sites"
-                    c1tag1="Pictures"
-                    c1tag2="Locations"
-                    c1tag3="More Info"
-                    c1tag4="Most Visited"
-                    c1tag5="Help"
-                />
-                <Footer_cat
-                    c1="Amusement Parks"
-                    c1tag1="Childish"
-                    c1tag2="Locations"
-                    c1tag3="Reviews"
-                    c1tag4="More Info"
-                    c1tag5="Help"
-                />
-                <Footer_cat
-                    c1="Parks"
-                    c1tag1="More Info"
-                    c1tag2="Locations"
-                    c1tag3="Photos"
-                    c1tag4="Entertainment"
-                    c1tag5="Help"
-                />
-                <Footer_cat
-                    c1="Cafés"
-                    c1tag1="Family Type"
-                    c1tag2="Locations"
-                    c1tag3="Pictures"
-                    c1tag4="Best Sellers"
-                    c1tag5="Help"
-                />
-                <Footer_cat
-                    c1="Play Centers"
-                    c1tag1="Support"
-                    c1tag2="Locations"
-                    c1tag3="Know More"
-                    c1tag4="More Info"
-                    c1tag5="Help"
-                />
+                <Footer_cat c1="Restaurants" c1tag1="Family Type" c1tag2="Locations" c1tag3="Generic" c1tag4="Best Sellers" c1tag5="Help" />
+                <Footer_cat c1="Archaeological Sites" c1tag1="Pictures" c1tag2="Locations" c1tag3="More Info" c1tag4="Most Visited" c1tag5="Help" />
+                <Footer_cat c1="Amusement Parks" c1tag1="Childish" c1tag2="Locations" c1tag3="Reviews" c1tag4="More Info" c1tag5="Help" />
+                <Footer_cat c1="Parks" c1tag1="More Info" c1tag2="Locations" c1tag3="Photos" c1tag4="Entertainment" c1tag5="Help" />
+                <Footer_cat c1="Cafes" c1tag1="Family Type" c1tag2="Locations" c1tag3="Pictures" c1tag4="Best Sellers" c1tag5="Help" />
+                <Footer_cat c1="Play Centers" c1tag1="Support" c1tag2="Locations" c1tag3="Know More" c1tag4="Reviews" c1tag5="Help" />
             </Footer>
         </div>
     );

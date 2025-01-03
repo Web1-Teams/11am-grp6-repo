@@ -1,0 +1,31 @@
+
+.category-page {
+  margin-top: 90px;
+
+}
+.all-container{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.text-center{
+  padding-top: 10px;
+ margin-top: 10px;
+color: #640018;
+font-family: "Georgia", serif;
+font-size:80px;
+font-weight: 800;
+
+}
+.text{
+  color: #000000;
+font-family: "Georgia", serif;
+font-size:30px;
+font-weight: 800;
+text-align: center;
+}
+@media only screen and (max-width:767px) {
+  .text-center{
+    font-size:50px;
+  }
+  
+}

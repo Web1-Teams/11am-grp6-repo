@@ -1,0 +1,41 @@
+.fav-nav {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 ;
+  padding: 10px 0;
+  background-color: white;
+  border-bottom: 1px solid #ffffffee;
+  overflow-x: auto;
+}
+
+.fav-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 9px;
+  margin: 0;
+}
+
+.fav-nav-item {
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 7px;
+  border: 2px solid #640017d3;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.435);
+  font-family: "Georgia", serif;
+  font-size: 19px;
+  font-weight: 590px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.fav-nav-item :active {
+  background-color:  #830522e1;
+  color:#0b6d86;
+}
+.fav-nav-item:hover{
+  background-color: #640017d7 ;
+  color:#f5f5d5;
+}
+
