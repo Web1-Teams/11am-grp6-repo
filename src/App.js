@@ -19,6 +19,7 @@ import MyChatBot from "./components/Chatbot/MyChatBot.js";
 import SecondaryNavBar from "./components/SecondaryNavBar.js";
 import FeedBackCardSlider from "./components/FeedBackSection/FeedBackCardSlider.js";
 
+
 function App() {
   const [places, setPlaces] = useState([]);
 
@@ -61,22 +62,9 @@ function App() {
       <MyChatBot />
 
       <Router>
-        <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <HomePage places={places} />
-              </>
-            }
-          />
+          <Route path="/" element={<Login places={places} />} />
+
           <Route
             path="/add-place"
             element={
@@ -216,8 +204,26 @@ function App() {
             }
           ></Route>
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/" element={<FeedBackCardSlider />} />
+
+
+          <Route
+            path="/HomePage"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <HomePage places={places} />
+              </>
+            }
+          />
+
+
           <Route path="/UserFeedBack" element={<UserFeedBack />} />
+
         </Routes>
       </Router>
     </>

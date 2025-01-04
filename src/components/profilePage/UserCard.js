@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 const UserCard = ({ name, profileImage, onManageProfile }) => {
-  let User = localStorage.getItem("currentUser");
-  let nowUser = JSON.parse(User);
+  // let User = localStorage.getItem("currentUser");
+  // let nowUser = JSON.parse(User);
 
   return (
     <div className="user-card card text-center border-0">
       <img
-        src={nowUser.profilePic}
+        src={profileImage}
         alt="User Profile"
         className="grp-6-pic mx-auto rounded-circle"
       />
       <div className="card-body">
-        <h2 className="card-title text-center fw-bold">{nowUser.userName}</h2>
+        <h2 className="card-title text-center fw-bold">{name}</h2>
         <div className="row">
           <div className="col-12">
             <button
@@ -41,7 +41,7 @@ const UserCard = ({ name, profileImage, onManageProfile }) => {
                     "User logged out and currentUser removed from localStorage"
                   );
                   toast.success("User logged out successfully!", {
-                    position: "top-center", 
+                    position: "top-center",
                   });
                 }}
               >

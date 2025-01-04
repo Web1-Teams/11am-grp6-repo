@@ -2,28 +2,35 @@ import React from "react";
 import "./FavNav.css";
 
 const FavNav = ({ categories, onCategorySelect }) => {
-  return (
-    <>
-    
+  // Array of icons in the same order as the categories
+  const categoryIcons = [
+    <i className="fa-solid fa-utensils fa-xl "></i>,
+    <i className="fa-solid fa-building-wheat "></i>,
+    <i className="material-symbols-outlined " style={{ fontSize: "28px" }}>attractions</i>,
+    <i className="material-symbols-outlined " style={{ fontSize: "28px" }}>nature</i>,
+    <i className="fa-solid fa-mug-saucer "></i>,
+    <i className="fa-solid fa-puzzle-piece fa-lg "></i>,
+  ];
 
-    <div className="fav-nav">
+  return (
+    <div className="remaa-fav-nav">
       <ul>
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <li
             key={category}
-            className="fav-nav-item"
+            className="remaa-fav-nav-item"
             onClick={() => onCategorySelect(category)}
           >
-            {category}
+            {categoryIcons[index]} {/* Icon */}
+            <span className="remaa-fav-nav-text">{category}</span> 
           </li>
         ))}
-        <li className="fav-nav-item" onClick={() => onCategorySelect("")}>
-          All Categories
+        <li className="remaa-fav-nav-item" onClick={() => onCategorySelect("")}>
+        < i className ="fa-solid fa-icons" />
+          All Categories 
         </li>
       </ul>
     </div>
-  
-   </> 
   );
 };
 

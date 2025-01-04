@@ -6,12 +6,18 @@
 
 }
 
-  .cats-name{
-    color: #f9c1c1d5;
+.cats-name a{
+    color: #ffabab;
     font-family: "Georgia", serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 670px;
+  text-decoration: none;
   }
+  
+.cats-name a:hover{
+color:rgb(120, 244, 228);
+transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
   .cats-links-container a:hover{
  filter:brightness(1.4);
  color: rgb(120, 244, 228);

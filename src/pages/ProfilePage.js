@@ -4,13 +4,14 @@ import UserCard from "../components/profilePage/UserCard";
 import ManageProfileModal from "../components/profilePage/ManageProfileModal";
 import ChangePasswordModal from "../components/profilePage/ChangePasswordModal";
 import UserInfo from "../components/profilePage/UserInfo";
-import myImage from "../components/profilePage/pic/pic.jpg";
+// import myImage from "../components/profilePage/pic/pic.jpg";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 
 const ProfilePage = ({ places }) => {
   let User = localStorage.getItem("currentUser"); //User is json
   let nowUser = JSON.parse(User); //nowUser is Object
+  let currentUserId = nowUser.id;
   //  تحويل نص مكتوب بصيغة
   // JSON
   // إلى
@@ -19,7 +20,7 @@ const ProfilePage = ({ places }) => {
   // JSON.parse().
 
   const [userName, setUserName] = useState(nowUser.userName);
-  const [profileImage, setProfileImage] = useState(nowUser.profilePic);
+  const [profileImage, setProfileImage] = useState("/img/profile-pic.png");
   const [email, setEmail] = useState(nowUser.email);
   const [phone, setPhone] = useState(nowUser.phoneNumber);
   const [location, setLocation] = useState(nowUser.cities);
@@ -63,13 +64,12 @@ const ProfilePage = ({ places }) => {
     return doesNotStartWithNumber && notAllNumbers;
   };
   //=======================================================================================================
-  function updateUserInForms(nowUser) {
-    // بجيب userForms
+  const updateUserInForms = (nowUser) => {
     let userForms = localStorage.getItem("userForms"); // userForms is JSON
     if (userForms) {
       //بلاش تكون فاضية
 
-      let userFormsArray = JSON.parse(userForms); // تحويل إلى مصفوفة من الاوبجكتس في جافا سكربت
+      let userFormsArray = JSON.parse(userForms); // تحويل جيسون إلى مصفوفة من الاوبجكتس في جافا سكربت
 
       // بروح بدورلي على رقم الاندكس لليوزر باليوز فورمز
       let userIndex = userFormsArray.findIndex(
@@ -77,17 +77,37 @@ const ProfilePage = ({ places }) => {
       );
 
       if (userIndex !== -1) {
-        userFormsArray[userIndex] = nowUser; // تحديث بيانات المستخدم بالمصفوفة
+        userFormsArray[userIndex] = nowUser; // تحديث بيانات اليوزر باليوزر فورمز
       } else {
         console.warn(`User not found in userForms`);
       }
 
-      // حفظ المصفوفة المحدثة في localStorage
+      // حفظ في localStorage
       localStorage.setItem("userForms", JSON.stringify(userFormsArray));
     } else {
       console.error("userForms not found in localStorage.");
     }
-  }
+  };
+  //=======================================================================================================
+  //=======================================================================================================
+  const deleteUserFromForms = (userId) => {
+    const userFormsJSON = localStorage.getItem("userForms");
+    if (userFormsJSON) {
+      let userFormsArray = JSON.parse(userFormsJSON);
+
+      // إيجاد اليوزر وحذفه
+      const updatedUserForms = userFormsArray.filter(
+        (user) => user.id !== userId
+      );
+
+      // حفظ اليوزر فورمز المحدثة في localStorage
+      localStorage.setItem("userForms", JSON.stringify(updatedUserForms));
+      console.log(`User has been deleted successfully.`);
+      
+    } else {
+      console.error("userForms not found in localStorage");
+    }
+  };
   //=======================================================================================================
   // دالة تغيير الاسم
   const handleSaveProfile = () => {
@@ -264,6 +284,8 @@ const ProfilePage = ({ places }) => {
         onPictureChange={handlePictureChange}
         temporaryUserName={temporaryUserName}
         setTemporaryUserName={setTemporaryUserName}
+        deleteUserFromForms={deleteUserFromForms}
+        userId={currentUserId}
       />
 
       <ChangePasswordModal onSavePassword={handleSavePassword} />

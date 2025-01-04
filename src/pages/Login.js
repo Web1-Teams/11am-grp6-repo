@@ -28,7 +28,7 @@ const Login = () => {
       // aolert("Login successfully!");
       toast.success("Login successfully!");
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
-      navigate("../");
+      navigate("/HomePage");
     } else {
       // aolert("Invalid email or password.");
       toast.error("Invalid email or password.");
