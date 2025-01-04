@@ -132,7 +132,7 @@ const AddPlace = ({ onAddPlace }) => {
     };
 
     onAddPlace(newPlace);
-    navigate("/");
+    navigate("/HomePage");
   };
 
     return (
