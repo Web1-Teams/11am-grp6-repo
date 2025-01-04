@@ -75,7 +75,7 @@ function Calendar() {
   };
 
   return (
-    <div>
+    <div className="wa-calendar-page">
       <input
         type="text"
         placeholder="Search events"

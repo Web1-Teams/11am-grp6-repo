@@ -16,7 +16,7 @@ import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
-import SecondaryNavBar from "./components/SecondaryNavBar.js"
+import SecondaryNavBar from "./components/SecondaryNavBar.js";
 
 
 function App() {
