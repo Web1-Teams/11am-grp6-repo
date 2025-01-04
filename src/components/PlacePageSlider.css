@@ -104,3 +104,10 @@
   #place_page_slider {
     width: 90%;
   }}
+  .ssh-profile-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px; 
+  }
+  

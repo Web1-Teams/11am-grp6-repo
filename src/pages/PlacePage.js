@@ -371,6 +371,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       <Toaster position="top-center" />
     </div>
   );
-};
+}
 
 export default PlacePage;

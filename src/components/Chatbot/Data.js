@@ -334,7 +334,7 @@ const restaurantData = [
     Id: 16,
     Name: "Tree House Cafe",
     Category: "cafe",
-    Locationname: "naser st شارع النصر حارة الغرب, Nablus",
+    Locationname: "  Nablus ,شارع النصر حارة الغرب",
     Description: "almost as if in a hobbit hole. Highly recommended.",
     Longdescription: "Wow what an absolutely amazing gem to find. A must visit. Such a beautiful location, wonderful coffee, and gracious staff.",
     Rating: 98,

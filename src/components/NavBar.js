@@ -2,15 +2,13 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import React from "react";
-import logo from './img/logo.png';
+import logo from "./img/logo.png";
 
-
-
-const NavBar = ({ BrandName, i2, i3,i4 }) => {
+const NavBar = ({ BrandName, i2, i3, i4 }) => {
   return (
     <div className="container">
       <nav className="grp-6-nav navbar navbar-expand-md navbar-light p-2 bg-light fixed-top">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/HomePage">
           <img src={logo} alt="Logo" className="logo" />
           {BrandName}
         </Link>
@@ -78,9 +76,18 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                 </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#logout">
+                <Link
+                  className="dropdown-item"
+                  to="/login"
+                  onClick={() => {
+                    localStorage.removeItem("currentUser");
+                    console.log(
+                      "User logged out and currentUser removed from localStorage"
+                    );
+                  }}
+                >
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
-                </a>
+                </Link>
               </li>
               <li></li>
             </ul>
