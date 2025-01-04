@@ -47,7 +47,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         const currentPlace = storedState.find((item) => item.id === parseInt(id)) || {};
         setIsHeartClicked(currentPlace.isHeartClicked || false);
         setIsCheckClicked(currentPlace.isCheckClicked || false);
-        const temp = localStorage.getItem("currentUser");
+        const temp = localStorage.getItem("currentUser") || "Guest";
         const user = JSON.parse(temp);
         const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
         setUsername(storedUsername);
