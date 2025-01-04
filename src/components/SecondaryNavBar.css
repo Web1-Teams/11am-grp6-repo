@@ -86,8 +86,8 @@
     }
 }
 @media (max-width:1198px) { 
-    .sub-navbar{
-       display:none;
+    .sub-navbarDR{
+       display:none ;
     }
    
 }
