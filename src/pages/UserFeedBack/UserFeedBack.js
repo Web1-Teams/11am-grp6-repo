@@ -14,8 +14,7 @@ const UserFeedBack = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-
-    const temp = localStorage.getItem("currentUser");
+    const temp = localStorage.getItem("currentUser") || "Guest";
     const user = JSON.parse(temp);
     const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
     setUsername(storedUsername);
