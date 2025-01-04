@@ -14,16 +14,21 @@ const UserFeedBack = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const storedUsername = localStorage.getItem("userName") || "Guest";
+
+    const temp = localStorage.getItem("currentUser");
+    const user = JSON.parse(temp);
+    const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
     setUsername(storedUsername);
 
     const storedFeedbacks =
-      JSON.parse(localStorage.getItem(`userfeedbacks-${storedUsername}`)) || [];
-    setUserFeedbacks(storedFeedbacks);
+
+      JSON.parse(localStorage.getItem(`userfeedbacks`)) || [];
+    setUserFeedbacks(storedFeedbacks); // تعيين التقييمات في الحالة
+
   }, []);
 
   const saveToLocalStorage = (feedbacks) => {
-    localStorage.setItem(`userfeedbacks-${username}`, JSON.stringify(feedbacks));
+    localStorage.setItem(`userfeedbacks`, JSON.stringify(feedbacks));
   };
 
   const calculateTotalPercentage = () => {
@@ -97,34 +102,39 @@ const UserFeedBack = () => {
           />
           <br />
           <div className="ssh-CategoryRating-body">
-            {["content", "reviews", "interactive", "ui", "performance"].map((category) => (
-              <div key={category} className="ssh-rating-category">
-                <h4>{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
-                <div className="ssh-star-rating">
-                  {[...Array(5)].map((_, index) => {
-                    const starValue = index + 1;
-                    return (
-                      <label key={starValue}>
-                        <input
-                          type="radio"
-                          name={category}
-                          value={starValue}
-                          checked={StarRatings[category] === starValue}
-                          onChange={() => handleStarClick(category, starValue)}
-                          style={{ display: "none" }}
-                        />
-                        <span
-                          className={`ssh-star ${
-                            starValue <= StarRatings[category] ? "filled-star" : "empty-star"
-                          }`}
-                          onClick={() => handleStarClick(category, starValue)}
-                        >
-                          &#9733;
-                        </span>
-                      </label>
-                    );
-                  })}
-                </div>
+
+            {["content", "reviews", "interactive", "ui", "performance"].map(
+              (category) => (
+                <div key={category} className="ssh-rating-category">
+                  <h4>{category.replace(/([A-Z])/g, " $1")}</h4>
+                  <div className="ssh-star-rating">
+                    {[...Array(5)].map((_, index) => {
+                      const starValue = index + 1;
+                      return (
+                        <label key={starValue}>
+                          <input
+                            type="radio"
+                            name={category}
+                            value={starValue}
+                            checked={StarRatings[category] === starValue}
+                            onChange={() => handleStarClick(category, starValue)}
+                            style={{ display: "none" }}
+                          />
+                          <span
+                            className={`ssh-star ${
+                              starValue <= StarRatings[category]
+                                ? "filled-star"
+                                : "empty-star"
+                            }`}
+                            onClick={() => handleStarClick(category, starValue)}
+                          >
+                            &#9733;
+                          </span>
+                        </label>
+                      );
+                    })}
+                  </div>
+               
               </div>
             ))}
           </div>
@@ -134,14 +144,15 @@ const UserFeedBack = () => {
           </button>
         </form>
 
-        <h3 className="ssh-TheFeedBacks">Feedbacks List</h3>
+        <h3 className="ssh-TheFeedBacks">Feedbacks list</h3>
         {userfeedbacks.length > 0 ? (
           <ul className="ssh-feedback-list">
             {userfeedbacks.map((feedback) => (
               <li key={feedback.id} className="ssh-feedback-item">
                 <p className="ssh-feedback-username">
                   <strong>
-                    <i className="fa-solid fa-circle-user ssha-user"></i> {feedback.username}:
+                  <i className="fa-solid fa-circle-user ssha-user"></i> {username}:
+
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>
@@ -169,7 +180,7 @@ const UserFeedBack = () => {
             ))}
           </ul>
         ) : (
-          <p>No Feedbacks Yet.</p>
+          <p>No feedback yet.</p>
         )}
       </div>
     </div>
