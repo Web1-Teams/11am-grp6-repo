@@ -8,7 +8,7 @@ import "./FeedBackSlider.css";
 
 const FeedBackCardSlider = () => {
   const [feedbacks, setFeedbacks] = useState([]);
-  const navigate = useNavigate(); // استخدام الـ navigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const storedFeedbacks =

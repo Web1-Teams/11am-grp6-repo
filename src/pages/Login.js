@@ -6,6 +6,8 @@ import {
   FacebookLoginButton,
   GoogleLoginButton,
 } from "react-social-login-buttons";
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const Login = () => {
   
@@ -23,11 +25,13 @@ const Login = () => {
     );
 
     if (currentUser) {
-      alert("Login successfully!");
+      // aolert("Login successfully!");
+      toast.success("Login successfully!");
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
       navigate("../");
     } else {
-      alert("Invalid email or password.");
+      // aolert("Invalid email or password.");
+      toast.error("Invalid email or password.");
       console.log("Entered email:", email);
       console.log("Entered password:", password);
     }
@@ -84,6 +88,7 @@ const Login = () => {
             onResolve={(response) => {
               console.log("Facebook login successful:", response);
               alert("Logged in with Facebook");
+              
               navigate("/HomePage");
             }}
             onReject={(error) => {
@@ -101,11 +106,12 @@ const Login = () => {
             onResolve={(response) => {
               console.log("Google login successful:", response);
               alert("Logged in with Google");
+              
               navigate("/HomePage");
             }}
             onReject={(error) => {
               console.error("Google login failed:", error);
-              alert("Google login failed");
+              toast.error("Google login failed");
             }}
           >
             <GoogleLoginButton>
@@ -120,6 +126,7 @@ const Login = () => {
           </a>
         </h5>
       </div>
+      <Toaster position="bottom-right" />
     </div>
   );
 };
