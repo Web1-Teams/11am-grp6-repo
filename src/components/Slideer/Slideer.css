@@ -4,7 +4,6 @@
     padding: 0 !important;
 }
 
-
 #carouselExampleSlidesOnly {
     margin-bottom: 0px !important;
     padding-bottom: 0 !important;
@@ -18,7 +17,6 @@
     overflow-y: hidden;
     display: flex;
 }
-
 
 .carousel-inner {
     cursor: pointer;
@@ -95,12 +93,5 @@
 
     .carousel.slide {
         height: 240px;
-    }
-}
-
-/* Hide caption for screens with width 1205px or less */
-@media (max-width: 1205px) {
-    .carousel-caption {
-        display: none;
     }
 }
