@@ -16,8 +16,11 @@ import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
-import SecondaryNavBar from "./components/SecondaryNavBar.js"
 import TeamPage from "./pages/AboutUs/TeamPage.js"
+import SecondaryNavBar from "./components/SecondaryNavBar.js";
+import FeedBackCardSlider from "./components/FeedBackSection/FeedBackCardSlider.js";
+
+
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -55,13 +58,13 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
-
   return (
     <>
-     <ScrollTop />
-    <MyChatBot/>
-     
+      <ScrollTop />
+      <MyChatBot />
+
       <Router>
+
       <NavBar
                   BrandName="VisitMe"
                   i1="Home"
@@ -85,6 +88,11 @@ function App() {
               </>
             }
           />
+
+        <Routes>
+          <Route path="/" element={<Login places={places} />} />
+
+
           <Route
             path="/add-place"
             element={
@@ -95,7 +103,7 @@ function App() {
                   i2="Calendar"
                   i3=" My Favorites"
                 />{" "}
-                <SecondaryNavBar/>
+                <SecondaryNavBar />
                 <AddPlace onAddPlace={handleAddPlace} />
               </>
             }
@@ -117,7 +125,6 @@ function App() {
               </>
             }
           />
-
 
           <Route
             path="/favorites"
@@ -194,8 +201,6 @@ function App() {
             }
           />
 
-
-
           <Route
             path="/calendar"
             element={
@@ -222,13 +227,30 @@ function App() {
             }
           ></Route>
           <Route path="/SignUp" element={<SignUp />} />
+
+
+          <Route
+            path="/HomePage"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <HomePage places={places} />
+              </>
+            }
+          />
+
+
+          <Route path="/UserFeedBack" element={<UserFeedBack />} />
+
         </Routes>
       </Router>
     </>
-
   );
 }
 
 export default App;
-
-   

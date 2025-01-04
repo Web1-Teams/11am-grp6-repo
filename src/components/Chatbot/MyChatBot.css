@@ -1,7 +1,7 @@
 
 .chatbot-toggle-btn {
   position: fixed;
-  bottom: 80px;
+  bottom: 10px;
   right: 10px;
   background-color: #5a0909; 
   width:70px;
@@ -120,7 +120,7 @@
 .my-chatbot-container {
   
   position: fixed;
-  bottom: 90px;
+  bottom: 20px;
   right: 90px;
   width: 400px;
   height: 600px;

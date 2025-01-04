@@ -2,6 +2,7 @@
 import React from "react";
 import EventCard from "../../components/FB-EventCard/EventCard";
 import "./EventPage.css";
+import { Toaster } from "react-hot-toast";
 // import eventImage from"../../components/EventCard/imgs/385895981_122123332418032872_8395541712617587456_n.jpg";
 const EventPage = () => {
   // بيانات الفعاليات (يمكن جلبها من API في المستقبل)
@@ -166,6 +167,7 @@ const EventPage = () => {
           />
         ))}
       </div>
+       <Toaster position="top-center" />
     </div>
   );
 };

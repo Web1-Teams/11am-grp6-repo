@@ -5,6 +5,8 @@ import "./PlacePage.css";
 import PlacePageSlider from "../components/PlacePageSlider";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const PlacePage = ({ places, updatePlaceRating }) => {
   const { id } = useParams();
@@ -22,7 +24,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [showEmoji, setShowEmoji] = useState(false);
-
+  const [username, setUsername] = useState("");
   // Constants
   const ratingValues = {
     "😭": 0.2,
@@ -48,7 +50,10 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       storedState.find((item) => item.id === parseInt(id)) || {};
     setIsHeartClicked(currentPlace.isHeartClicked || false);
     setIsCheckClicked(currentPlace.isCheckClicked || false);
-
+    const temp = localStorage.getItem("currentUser");
+    const user = JSON.parse(temp);
+    const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
+    setUsername(storedUsername);
     const storedComments =
       JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
     setComments(storedComments);
@@ -68,13 +73,14 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       updatedState.push(updatedPlace);
     }
 
-    localStorage.setItem("places", JSON.stringify(updatedState));
-  };
+        localStorage.setItem("places", JSON.stringify(updatedState));
+    };
+    
+    const handleHeartClick = (e) => {
+        e.stopPropagation();
+        const newHeartState = !isHeartClicked;
+        setIsHeartClicked(newHeartState);
 
-  const handleHeartClick = (e) => {
-    e.stopPropagation();
-    const newHeartState = !isHeartClicked;
-    setIsHeartClicked(newHeartState);
 
     // Update only the isHeartClicked property
     const updatedPlace = {
@@ -82,22 +88,10 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       isHeartClicked: newHeartState,
       isCheckClicked,
     };
+
     updateLocalStorage(updatedPlace);
   };
 
-  const handleCheckClick = (e) => {
-    e.stopPropagation();
-    const newCheckState = !isCheckClicked;
-    setIsCheckClicked(newCheckState);
-
-    // Update only the isCheckClicked property
-    const updatedPlace = {
-      id: parseInt(id),
-      isHeartClicked,
-      isCheckClicked: newCheckState,
-    };
-    updateLocalStorage(updatedPlace);
-  };
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -127,8 +121,25 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       updatePlaceRating(place.id, totalRating);
       setIsFeedbackOpen(false);
     } else {
-      alert("Please rate all categories!");
+      // alert("Please rate all categories!");
+      toast.error("Please provide rating for all categories.", {
+        icon: "⚠️",
+      });
     }
+  };
+
+  const handleCheckClick = (e) => {
+    e.stopPropagation();
+    const newCheckState = !isCheckClicked;
+    setIsCheckClicked(newCheckState);
+
+    // Update only the isCheckClicked property
+    const updatedPlace = {
+      id: parseInt(id),
+      isHeartClicked,
+      isCheckClicked: newCheckState,
+    };
+    updateLocalStorage(updatedPlace);
   };
 
   const extractCoordinates = (url) => {
@@ -142,7 +153,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
   if (!place) {
     return (
       <div>
-        Place not found. <Link to="/">Go Back</Link>
+        Place not found. <Link to="/HomePage">Go Back</Link>
       </div>
     );
   }
@@ -313,7 +324,11 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 {comments.length > 0 ? (
                   comments.map((comment, index) => (
                     <li key={index} className="comment-item">
-                      <i className="fa-solid fa-user ssh-user"></i> : {comment}
+                      <strong>
+                        <i className="fa-solid fa-circle-user ssha-user"></i>{" "}
+                        {username}:
+                      </strong>
+                      <p>{comment}</p>
                     </li>
                   ))
                 ) : (
@@ -376,6 +391,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
           c1tag5="Help"
         />
       </Footer>
+      <Toaster position="top-center" />
     </div>
   );
 };

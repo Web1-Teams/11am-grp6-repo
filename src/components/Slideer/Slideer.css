@@ -97,11 +97,6 @@
     .carousel.slide {
         max-height: 30vh; /* Ensure it doesn't get cut off */
     }
+
 }
 
-/* Hide caption for screens with width 1205px or less */
-@media (max-width: 1205px) {
-    .carousel-caption {
-        display: none;
-    }
-}

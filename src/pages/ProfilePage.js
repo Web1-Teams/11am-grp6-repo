@@ -4,16 +4,26 @@ import UserCard from "../components/profilePage/UserCard";
 import ManageProfileModal from "../components/profilePage/ManageProfileModal";
 import ChangePasswordModal from "../components/profilePage/ChangePasswordModal";
 import UserInfo from "../components/profilePage/UserInfo";
-import myImage from "../components/profilePage/pic/pic.jpg";
+// import myImage from "../components/profilePage/pic/pic.jpg";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 
 const ProfilePage = ({ places }) => {
-  const [userName, setUserName] = useState("Hamza Zarour");
-  const [profileImage, setProfileImage] = useState(myImage);
-  const [email, setEmail] = useState("hamzazarour@gmail.com");
-  const [phone, setPhone] = useState("+970569022005");
-  const [location, setLocation] = useState("Nablus, Rafidia.");
+  let User = localStorage.getItem("currentUser"); //User is json
+  let nowUser = JSON.parse(User); //nowUser is Object
+  let currentUserId = nowUser.id;
+  //  تحويل نص مكتوب بصيغة
+  // JSON
+  // إلى
+  //  (Object)
+  // باستخدام الفنكشن
+  // JSON.parse().
+
+  const [userName, setUserName] = useState(nowUser.userName);
+  const [profileImage, setProfileImage] = useState("/img/profile-pic.png");
+  const [email, setEmail] = useState(nowUser.email);
+  const [phone, setPhone] = useState(nowUser.phoneNumber);
+  const [location, setLocation] = useState(nowUser.cities);
 
   //=======================================================================================================
   // الحالة المؤقتة للايميل،بنستعملها اثناء عملية التغيير  :setTemporaryEmail
@@ -54,6 +64,51 @@ const ProfilePage = ({ places }) => {
     return doesNotStartWithNumber && notAllNumbers;
   };
   //=======================================================================================================
+  const updateUserInForms = (nowUser) => {
+    let userForms = localStorage.getItem("userForms"); // userForms is JSON
+    if (userForms) {
+      //بلاش تكون فاضية
+
+      let userFormsArray = JSON.parse(userForms); // تحويل جيسون إلى مصفوفة من الاوبجكتس في جافا سكربت
+
+      // بروح بدورلي على رقم الاندكس لليوزر باليوز فورمز
+      let userIndex = userFormsArray.findIndex(
+        (user) => user.id === nowUser.id
+      );
+
+      if (userIndex !== -1) {
+        userFormsArray[userIndex] = nowUser; // تحديث بيانات اليوزر باليوزر فورمز
+      } else {
+        console.warn(`User not found in userForms`);
+      }
+
+      // حفظ في localStorage
+      localStorage.setItem("userForms", JSON.stringify(userFormsArray));
+    } else {
+      console.error("userForms not found in localStorage.");
+    }
+  };
+  //=======================================================================================================
+  //=======================================================================================================
+  const deleteUserFromForms = (userId) => {
+    const userFormsJSON = localStorage.getItem("userForms");
+    if (userFormsJSON) {
+      let userFormsArray = JSON.parse(userFormsJSON);
+
+      // إيجاد اليوزر وحذفه
+      const updatedUserForms = userFormsArray.filter(
+        (user) => user.id !== userId
+      );
+
+      // حفظ اليوزر فورمز المحدثة في localStorage
+      localStorage.setItem("userForms", JSON.stringify(updatedUserForms));
+      console.log(`User has been deleted successfully.`);
+      
+    } else {
+      console.error("userForms not found in localStorage");
+    }
+  };
+  //=======================================================================================================
   // دالة تغيير الاسم
   const handleSaveProfile = () => {
     if (!temporaryUserName.trim()) {
@@ -70,6 +125,11 @@ const ProfilePage = ({ places }) => {
     setProfileImage(temporaryProfileImage);
     toast.success("The Profile has been successfully updated!");
 
+    nowUser.userName = temporaryUserName;
+    User = JSON.stringify(nowUser);
+    localStorage.setItem("currentUser", User);
+    updateUserInForms(nowUser); // تحديث معلومات اليوزر في اليوزر فورمز باللوكال ستوريج اللي فيها معلومات كل اليوزرز
+
     // إغلاق المودل
     const modalElement = document.getElementById("manageProfileModal");
     const modalInstance = window.bootstrap.Modal.getInstance(modalElement);
@@ -82,10 +142,13 @@ const ProfilePage = ({ places }) => {
   const handlePictureChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // يمكنك إضافة امور إضافية هنا مثل رفع الصورة إلى اللوكل ستورج
       const reader = new FileReader();
       reader.onloadend = () => {
         setTemporaryProfileImage(reader.result);
+        // nowUser.profilePic = reader.result;
+        // User = JSON.stringify(nowUser);
+        // localStorage.setItem("currentUser", User);
+        // updateUserInForms(nowUser);
       };
       reader.readAsDataURL(file);
     }
@@ -139,6 +202,11 @@ const ProfilePage = ({ places }) => {
     setEmail(temporaryEmail);
     toast.success("The Email has been successfully updated!");
 
+    nowUser.email = temporaryEmail;
+    User = JSON.stringify(nowUser);
+    localStorage.setItem("currentUser", User);
+    updateUserInForms(nowUser); // تحديث معلومات اليوزر في اليوزر فورمز باللوكال ستوريج اللي فيها معلومات كل اليوزرز
+
     // إغلاق المودل فقط في حالة تغيير الايميل بنجاح
     const modalElement = document.getElementById("editEmailModal");
     const modalInstance = window.bootstrap.Modal.getInstance(modalElement);
@@ -161,6 +229,11 @@ const ProfilePage = ({ places }) => {
 
     setPhone(temporaryPhone);
     toast.success("The Phone number has been successfully updated!");
+
+    nowUser.phoneNumber = temporaryPhone;
+    User = JSON.stringify(nowUser);
+    localStorage.setItem("currentUser", User);
+    updateUserInForms(nowUser); // تحديث معلومات اليوزر في اليوزر فورمز باللوكال ستوريج اللي فيها معلومات كل اليوزرز
 
     // إغلاق المودال
     const modalElement = document.getElementById("editPhoneModal");
@@ -185,6 +258,11 @@ const ProfilePage = ({ places }) => {
     setLocation(temporaryLocation);
     toast.success("The Location has been successfully updated!");
 
+    nowUser.cities = temporaryLocation;
+    User = JSON.stringify(nowUser);
+    localStorage.setItem("currentUser", User);
+    updateUserInForms(nowUser); // تحديث معلومات اليوزر في اليوزر فورمز باللوكال ستوريج اللي فيها معلومات كل اليوزرز
+
     // إغلاق المودال
     const modalElement = document.getElementById("editLocationModal");
     const modalInstance = window.bootstrap.Modal.getInstance(modalElement);
@@ -206,6 +284,8 @@ const ProfilePage = ({ places }) => {
         onPictureChange={handlePictureChange}
         temporaryUserName={temporaryUserName}
         setTemporaryUserName={setTemporaryUserName}
+        deleteUserFromForms={deleteUserFromForms}
+        userId={currentUserId}
       />
 
       <ChangePasswordModal onSavePassword={handleSavePassword} />

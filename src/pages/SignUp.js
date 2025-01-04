@@ -3,7 +3,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import Modal from "../components/Modal";
-
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -17,7 +18,7 @@ const SignUp = () => {
     age: "",
     gender: "",
     cities: "",
-    profilePic:"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png"
+    profilePic: "/img/profile-pic.png",
   });
 
   const navigate = useNavigate();
@@ -28,9 +29,9 @@ const SignUp = () => {
 
     const { phoneNumber, password, confirmPassWord, age, email } = loanInputs;
 
-    if (Number(age) < 14 || Number(age) > 100) {
+    if (Number(age) < 14 ) {
       setErrorMessage(
-        "The age is not allowed. Age must be between 14 and 100."
+        "Age must be older than 14."
       );
       setShowModal(true);
       return;
@@ -57,8 +58,8 @@ const SignUp = () => {
       return;
     }
 
-    setErrorMessage("Sign up successful!");
-    setShowModal(true);
+
+    toast.success("Sign up successful!");
 
     const existingData = JSON.parse(localStorage.getItem("userForms")) || [];
 
@@ -288,6 +289,7 @@ const SignUp = () => {
           onClose={() => setShowModal(false)}
         />
       </div>
+      <Toaster position="top-center" />
     </>
   );
 };

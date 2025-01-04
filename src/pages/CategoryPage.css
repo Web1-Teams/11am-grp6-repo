@@ -1,21 +1,44 @@
 
 .category-page {
   margin-top: 30px;
+padding-left: 30px;
+padding-right: 20px;
 
 }
 .all-container{
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.cat-text{
+.cat-text {
   padding-top: 10px;
- margin-top: 10px;
-color: #640018;
-font-family: "Georgia", serif;
-font-size:80px;
-font-weight: 800;
-
+  margin-top: 10px;
+  color: #ffffff;
+  font-family: "Georgia", serif;
+  font-weight: 800;
+  opacity: 0; /* Start invisible */
+  transform: translateY(-50px); /* Start slightly above */
+  animation: fadeInSlide 1.3s ease-in-out forwards; 
+  font-size: 2.6rem;
+  margin-right: 970px;
+  background-color:  #640017d4;
+  padding: 30px 55px ;
+  border-radius: 0 50px 50px 0;
+  text-align: left;
+width: fit-content;
 }
+
+/* Keyframes for fade-in and slide-down */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px); /* Starting position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End position */
+  }
+}
+
 .text{
   color: #000000;
 font-family: "Georgia", serif;
@@ -23,9 +46,34 @@ font-size:30px;
 font-weight: 800;
 text-align: center;
 }
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:767px) and (min-width:440px) {
   .cat-text{
-    font-size:50px;
+    font-size:25px;
+    padding: 14px ;
   }
-  
+  .category-page {
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+}
+@media only screen and (min-width:767px) {
+  .cat-text{
+    font-size:35px;
+    padding: 28px ;
+  }
+  .category-page {
+    padding-left: 10px;
+    padding-right: 0px;
+   
+  }
+}
+@media only screen and (max-width:439px){
+  .cat-text{
+    font-size:15px;
+    padding: 14px ;
+  }
+  .category-page {
+    padding-left: 10px;
+    padding-right: 0px;
+  }
 }
