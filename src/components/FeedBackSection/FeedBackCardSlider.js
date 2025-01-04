@@ -8,12 +8,32 @@ import "./FeedBackSlider.css";
 
 const FeedBackCardSlider = () => {
   const [feedbacks, setFeedbacks] = useState([]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const storedFeedbacks =
-      JSON.parse(localStorage.getItem("userfeedbacks")) || [];
-    setFeedbacks(storedFeedbacks);
+    const loadFeedbacks = async () => {
+      let storedFeedbacks =
+        JSON.parse(localStorage.getItem("userfeedbacks")) || [];
+
+      if (storedFeedbacks.length === 0) {
+        try {
+          const response = await fetch("/userfeedbacks.json");
+          if (response.ok) {
+            const jsonData = await response.json();
+            storedFeedbacks = jsonData;
+            localStorage.setItem("userfeedbacks", JSON.stringify(jsonData));
+          } else {
+            console.error("Error fetching feedbacks.json:", response.statusText);
+          }
+        } catch (error) {
+          console.error("Error fetching feedbacks.json:", error);
+        }
+      }
+
+      setFeedbacks(storedFeedbacks);
+    };
+
+    loadFeedbacks();
   }, []);
 
   const settings = {
