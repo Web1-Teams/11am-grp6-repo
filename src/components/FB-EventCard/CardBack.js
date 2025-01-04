@@ -1,6 +1,7 @@
 import React from "react";
 import "./EventCard.css";
-
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 const CardBack = ({
   eventDescription,
   sponsors = [],
@@ -10,7 +11,8 @@ const CardBack = ({
   onFlip,
 }) => {
   const handleJoin = () => {
-    alert('تم الضغط على زر "Purchase Tickets"');
+    // alert('تم الضغط على زر "Purchase Tickets"');
+    toast.success("This feature is coming soon in Web 2🚀 — don’t miss it!✨");
   };
 
   return (
@@ -74,6 +76,7 @@ const CardBack = ({
           </button>
         </div>
       </div>
+      
     </div>
   );
 };
