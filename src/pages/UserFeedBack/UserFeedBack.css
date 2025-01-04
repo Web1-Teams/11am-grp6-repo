@@ -7,7 +7,7 @@
   max-width: 1200px;
   margin: 130px auto;
   padding: 30px;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   background-color: #f8f9fa;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -37,7 +37,6 @@
   transform: translateY(-2px);
 }
 
-
 .ssh-TextArea {
   width: 100%;
   padding: 15px;
@@ -47,6 +46,7 @@
   font-size: 16px;
   resize: vertical;
   background-color: #fff;
+
   border-color: #880223;
   background-color: #f8f9fa;
   box-sizing: border-box;
@@ -55,31 +55,30 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
 }
-
 .ssh-TheFeedBacks {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.9rem;
   margin-bottom: 0px;
   width: 300px;
   margin-left: -30px;
   color: #fffdfb;
+
   background: #880223;
-  padding: 15px 20px 15px;
+  padding:15px 20px 15px;
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-
 }
 
 .ssh-Write {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.9rem;
   margin-bottom: 40px;
   width: 300px;
   margin-left: -30px;
   color: #fffdfb;
-  background: #880223;
-  padding: 15px 20px 15px;
+  background:#880223;
+  padding:15px 20px 15px;
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
@@ -152,9 +151,8 @@
   position: relative;
   display: inline-block;
   font-size: 2.4rem;
-
 }
-
+}
 .ssh-CategoryRating-body {
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -238,12 +236,11 @@
     font-size: 14px;
   }
 }
-
 .TheText-ssh {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
-
 .ssha-user {
   font-size: 1.5rem;
 }
+
