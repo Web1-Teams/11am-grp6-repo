@@ -101,7 +101,7 @@ This project is designed to assist visitors, tourists, and local residents in di
 4. *Start the Application*  
    - Run the application locally:  
      bash
-     change the caurusel file name 
+     change the carousel file name and make it capitalize Carousel
      npm start
      
 5. *Access the Website*  
