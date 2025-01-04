@@ -1,123 +1,175 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Fullcalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
 import "./Calendar.css";
-import Navbar from "../../components/NavBar";
 
-const Calendar = () => {
-  const [date, setDate] = useState(new Date());
-  const [currYear, setCurrYear] = useState(date.getFullYear());
-  const [currMonth, setCurrMonth] = useState(date.getMonth());
+function Calendar() {
+  const [events, setEvents] = useState([]);
+  const [allEvents, setAllEvents] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [eventData, setEventData] = useState({
+    title: "",
+    description: "",
+    start: "",
+    end: "",
+  });
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const renderCalendar = () => {
-    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
-    let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
-    let lastDayofMonth = new Date(
-      currYear,
-      currMonth,
-      lastDateofMonth
-    ).getDay();
-    let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
-    let liTag = [];
-
-    for (let i = firstDayofMonth; i > 0; i--) {
-      liTag.push(
-        <li key={`prev-${i}`} className="inactive">
-          {lastDateofLastMonth - i + 1}
-        </li>
-      );
+  useEffect(() => {
+    const storedEvents = JSON.parse(localStorage.getItem("eventCalendar"));
+    if (storedEvents) {
+      setEvents(storedEvents);
+      setAllEvents(storedEvents);
     }
+  }, []);
 
-    for (let i = 1; i <= lastDateofMonth; i++) {
-      let isToday =
-        i === date.getDate() &&
-        currMonth === new Date().getMonth() &&
-        currYear === new Date().getFullYear()
-          ? "active"
-          : "";
-      liTag.push(
-        <li key={`current-${i}`} className={isToday}>
-          {i}
-        </li>
-      );
-    }
-
-    for (let i = lastDayofMonth; i < 6; i++) {
-      liTag.push(
-        <li key={`next-${i}`} className="inactive">
-          {i - lastDayofMonth + 1}
-        </li>
-      );
-    }
-
-    return liTag;
+  const handleDateClick = (info) => {
+    setShowModal(true);
+    setEventData({
+      ...eventData,
+      start: info.dateStr,
+      end: info.dateStr,
+    });
   };
 
-  const handlePrevNext = (direction) => {
-    let newMonth = currMonth + (direction === "prev" ? -1 : 1);
-    if (newMonth < 0 || newMonth > 11) {
-      const newDate = new Date(currYear, newMonth, date.getDate());
-      setCurrYear(newDate.getFullYear());
-      setCurrMonth(newDate.getMonth());
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEventData({
+      ...eventData,
+      [name]: value,
+    });
+  };
+
+  const handleSaveEvent = () => {
+    if (eventData.title && eventData.start && eventData.end) {
+      const newEvent = {
+        id: events.length + 1,
+        title: eventData.title,
+        start: eventData.start,
+        end: eventData.end,
+        description: eventData.description,
+      };
+
+      const updatedEvents = [...events, newEvent];
+      setEvents(updatedEvents);
+      setAllEvents(updatedEvents);
+
+      localStorage.setItem("eventCalendar", JSON.stringify(updatedEvents));
+
+      setShowModal(false);
+      setEventData({ title: "", description: "", start: "", end: "" });
     } else {
-      setCurrMonth(newMonth);
+      alert("Please fill in all fields.");
     }
+  };
+
+  const handleEventSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    const filteredEvents = allEvents.filter(
+      (event) =>
+        event.title.toLowerCase().includes(query) ||
+        event.description.toLowerCase().includes(query)
+    );
+    setEvents(filteredEvents);
   };
 
   return (
-    <>
-    <Navbar />
-      <div className="grp6-body-calendar">
-        <div className="box">
-          <header className="grp6-header">
-            <p className="current-date">{`${months[currMonth]} ${currYear}`}</p>
-            <div className="icon">
-              <span
-                id="prev"
-                className="material-symbols-rounded"
-                onClick={() => handlePrevNext("prev")}
-              >
-                <i className="fa-solid fa-chevron-left fa-2xl"></i>
-              </span>
-              <span
-                id="next"
-                className="material-symbols-rounded"
-                onClick={() => handlePrevNext("next")}
-              >
-                <i className="fa-solid fa-chevron-right fa-2xl"></i>
-              </span>
-            </div>
-          </header>
+    <div className="wa-calendar-page">
+      <input
+        type="text"
+        placeholder="Search events"
+        onChange={handleEventSearch}
+        className="search-bar"
+      />
 
-          <div className="calendar">
-            <ul className="weeks">
-              <li>Sun</li>
-              <li>Mon</li>
-              <li>Tue</li>
-              <li>Wed</li>
-              <li>Thu</li>
-              <li>Fri</li>
-              <li>Sat</li>
-            </ul>
-            <ul className="days">{renderCalendar()}</ul>
+      <Fullcalendar
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        initialView={"dayGridMonth"}
+        headerToolbar={{
+          end: "today prev,next",
+          center: "title",
+          start: "dayGridMonth,timeGridWeek,timeGridDay",
+        }}
+        events={events}
+        editable={true}
+        droppable={true}
+        eventDrop={(info) => {
+          const updatedEvents = events.map((event) =>
+            event.id === info.event.id
+              ? { ...event, start: info.event.start, end: info.event.end }
+              : event
+          );
+          setEvents(updatedEvents);
+          setAllEvents(updatedEvents);
+          localStorage.setItem("eventCalendar", JSON.stringify(updatedEvents));
+        }}
+        height={"85vh"}
+        dateClick={handleDateClick}
+      />
+
+      {showModal && (
+        <div className="wa-se modal">
+          <div className="wa modal-content">
+            <h2 className="wa-header">Add New Note</h2>
+            <div className="wa-body">
+              <label className="wa-label">Note Title</label>
+              <input
+                className="wa-input"
+                type="text"
+                name="title"
+                value={eventData.title}
+                onChange={handleInputChange}
+                placeholder="Enter event title"
+              />
+            </div>
+            <div>
+              <label className="wa-label">Description</label>
+              <textarea
+                className="wa-textarea"
+                name="description"
+                value={eventData.description}
+                onChange={handleInputChange}
+                placeholder="Enter event description"
+              ></textarea>
+            </div>
+            <div>
+              <label className="wa-label">Start Date</label>
+              <input
+                className="wa-input"
+                type="date"
+                name="start"
+                value={eventData.start}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <label className="wa-label">End Date</label>
+              <input
+                className="wa-input"
+                type="date"
+                name="end"
+                value={eventData.end}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <button className="wa-button" onClick={handleSaveEvent}>
+                Save Note
+              </button>
+              <button
+                className="wa-button"
+                id="close"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
-};
+}
 
 export default Calendar;
