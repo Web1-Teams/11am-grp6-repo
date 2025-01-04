@@ -73,7 +73,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
         localStorage.setItem("places", JSON.stringify(updatedState));
     };
-
+    
     const handleHeartClick = (e) => {
         e.stopPropagation();
         const newHeartState = !isHeartClicked;
@@ -83,9 +83,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         const updatedPlace = { id: parseInt(id), isHeartClicked: newHeartState, isCheckClicked };
         updateLocalStorage(updatedPlace);
     };
-
-    updateLocalStorage(updatedPlace);
-  };
+  
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
