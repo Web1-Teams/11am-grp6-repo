@@ -43,6 +43,7 @@ const ManageProfileModal = ({
                     modalInstance.hide();
                   }
                   deleteUserFromForms(userId);
+                  localStorage.removeItem("currentUser");
                   toast.dismiss(t.id);
                   console.log("Account deleted successfully.");
                   toast.success("Your Account has been deleted successfully!");

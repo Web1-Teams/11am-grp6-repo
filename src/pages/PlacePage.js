@@ -24,7 +24,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [showEmoji, setShowEmoji] = useState(false);
-
+  const [username, setUsername] = useState("");
   // Constants
   const ratingValues = {
     "😭": 0.2,
@@ -50,7 +50,10 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       storedState.find((item) => item.id === parseInt(id)) || {};
     setIsHeartClicked(currentPlace.isHeartClicked || false);
     setIsCheckClicked(currentPlace.isCheckClicked || false);
-
+    const temp = localStorage.getItem("currentUser");
+    const user = JSON.parse(temp);
+    const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
+    setUsername(storedUsername);
     const storedComments =
       JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
     setComments(storedComments);
@@ -83,20 +86,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       id: parseInt(id),
       isHeartClicked: newHeartState,
       isCheckClicked,
-    };
-    updateLocalStorage(updatedPlace);
-  };
-
-  const handleCheckClick = (e) => {
-    e.stopPropagation();
-    const newCheckState = !isCheckClicked;
-    setIsCheckClicked(newCheckState);
-
-    // Update only the isCheckClicked property
-    const updatedPlace = {
-      id: parseInt(id),
-      isHeartClicked,
-      isCheckClicked: newCheckState,
     };
     updateLocalStorage(updatedPlace);
   };
@@ -134,6 +123,20 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         icon: "⚠️",
       });
     }
+  };
+
+  const handleCheckClick = (e) => {
+    e.stopPropagation();
+    const newCheckState = !isCheckClicked;
+    setIsCheckClicked(newCheckState);
+
+    // Update only the isCheckClicked property
+    const updatedPlace = {
+      id: parseInt(id),
+      isHeartClicked,
+      isCheckClicked: newCheckState,
+    };
+    updateLocalStorage(updatedPlace);
   };
 
   const extractCoordinates = (url) => {
@@ -318,7 +321,11 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 {comments.length > 0 ? (
                   comments.map((comment, index) => (
                     <li key={index} className="comment-item">
-                      <i className="fa-solid fa-user ssh-user"></i> : {comment}
+                      <strong>
+                        <i className="fa-solid fa-circle-user ssha-user"></i>{" "}
+                        {username}:
+                      </strong>
+                      <p>{comment}</p>
                     </li>
                   ))
                 ) : (

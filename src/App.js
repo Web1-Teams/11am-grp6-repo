@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import SecondaryNavBar from "./components/SecondaryNavBar";
 import ScrollTop from "./components/ScrollTop/ScrollTop.js";
 import HomePage from "./pages/HomePage";
 import PlacePage from "./pages/PlacePage";
@@ -11,12 +10,13 @@ import Login from "./pages/Login";
 import FavoritesPage from "./pages/FavoritesPage";
 import CategoryPage from "./pages/CategoryPage";
 import VisitedPlacePage from "./pages/VisitedPlacePage";
-import Settings from "./pages/Settings/Settings.js";
 import AboutUs from "./pages/AboutUs/AboutUs.js";
 import SignUp from "./pages/SignUp.js";
 import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
+import MyChatBot from "./components/Chatbot/MyChatBot.js";
+import SecondaryNavBar from "./components/SecondaryNavBar.js";
 
 
 function App() {
@@ -55,10 +55,14 @@ function App() {
     updateLocalStorage(updatedPlaces);
   };
 
+
   return (
     <>
-      <ScrollTop />
+     <ScrollTop />
+    <MyChatBot/>
+     
       <Router>
+        <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
         <Routes>
           <Route
             path="/"
@@ -84,7 +88,7 @@ function App() {
                   i2="Calendar"
                   i3=" My Favorites"
                 />{" "}
-                <SecondaryNavBar />
+                <SecondaryNavBar/>
                 <AddPlace onAddPlace={handleAddPlace} />
               </>
             }
@@ -106,6 +110,7 @@ function App() {
               </>
             }
           />
+
 
           <Route
             path="/favorites"
@@ -182,6 +187,8 @@ function App() {
             }
           />
 
+
+
           <Route
             path="/calendar"
             element={
@@ -216,6 +223,7 @@ function App() {
         </Routes>
       </Router>
     </>
+
   );
 }
 
