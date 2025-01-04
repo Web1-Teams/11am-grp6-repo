@@ -16,11 +16,8 @@ import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
-import TeamPage from "./pages/AboutUs/TeamPage.js"
+import TeamPage from "./pages/AboutUs/TeamPage.js";
 import SecondaryNavBar from "./components/SecondaryNavBar.js";
-import FeedBackCardSlider from "./components/FeedBackSection/FeedBackCardSlider.js";
-
-
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -62,47 +59,20 @@ function App() {
     <>
       <ScrollTop />
       <MyChatBot />
-
       <Router>
-
-      <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
+        <NavBar
+          BrandName="VisitMe"
+          i1="Home"
+          i2="Calendar"
+          i3=" My Favorites"
+        />
         <Routes>
-          <Route path="team-page" element={<TeamPage/>}>
-          </Route>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <HomePage places={places} />
-              </>
-            }
-          />
-
-        <Routes>
-          <Route path="/" element={<Login places={places} />} />
-
-
+          <Route path="/" element={<HomePage places={places} />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/add-place"
             element={
               <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />{" "}
                 <SecondaryNavBar />
                 <AddPlace onAddPlace={handleAddPlace} />
               </>
@@ -111,142 +81,24 @@ function App() {
           <Route
             path="/place/:id"
             element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <PlacePage
-                  places={places}
-                  updatePlaceRating={updatePlaceRating}
-                />
-              </>
+              <PlacePage
+                places={places}
+                updatePlaceRating={updatePlaceRating}
+              />
             }
           />
-
-          <Route
-            path="/favorites"
-            element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <FavoritesPage places={places} />
-              </>
-            }
-          />
+          <Route path="/favorites" element={<FavoritesPage places={places} />} />
           <Route path="/category/:categoryName" element={<CategoryPage />} />
-          <Route
-            path="/visited-places"
-            element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <VisitedPlacePage />
-              </>
-            }
-          />
-
-          <Route
-            path="/feedback"
-            element={
-              <>
-                <UserFeedBack />
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <SecondaryNavBar />
-              </>
-            }
-          />
-
-          <Route
-            path="/profile-page"
-            element={
-              <>
-                <ProfilePage places={places} />
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2=" Calendar"
-                  i3=" My Favorites"
-                />
-              </>
-            }
-          />
-          <Route
-            path="/event-page"
-            element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <EventPage />
-              </>
-            }
-          />
-
-          <Route
-            path="/calendar"
-            element={
-              <>
-                <Calendar places={places} />
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2=" Calendar"
-                  i3=" My Favorites"
-                />
-              </>
-            }
-          />
-          <Route path="/login" element={<Login places={places} />} />
-
-          <Route
-            path="/about-us"
-            element={
-              <>
-               
-                <AboutUs places={places} />
-              </>
-            }
-          ></Route>
-          <Route path="/SignUp" element={<SignUp />} />
-
-
-          <Route
-            path="/HomePage"
-            element={
-              <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
-                <HomePage places={places} />
-              </>
-            }
-          />
-
-
-          <Route path="/UserFeedBack" element={<UserFeedBack />} />
-
+          <Route path="/visited-places" element={<VisitedPlacePage />} />
+          <Route path="/feedback" element={<UserFeedBack />} />
+          <Route path="/profile-page" element={<ProfilePage />} />
+          <Route path="/event-page" element={<EventPage />} />
+          <Route path="/calendar" element={<Calendar places={places} />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/team-page" element={<TeamPage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/user-feedback" element={<UserFeedBack />} />
+          <Route path="/homepage" element={<HomePage places={places} />} />
         </Routes>
       </Router>
     </>
