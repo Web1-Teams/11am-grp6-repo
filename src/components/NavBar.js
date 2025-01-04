@@ -35,10 +35,10 @@ const NavBar = ({ BrandName, i2, i3, i4 }) => {
                 {i3}
               </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="calendar">
+            <li className="nav-item ">
+              <Link className=" nav-link" to="/calendar">
                 <i className="fa-solid fa-calendar-days"></i> {i2}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/event-page">
