@@ -1,3 +1,20 @@
+@keyframes backgroundChange {
+  0% {
+    background-color: #f7e0e0; 
+  }
+  50% {
+    background-color: #faece2; 
+  }
+  100% {
+    background-color: #f5dfeb; 
+  }
+}
+
+body {
+  background-color: #ddd3d3; 
+  animation: backgroundChange 8s infinite;
+}
+
 .userfeedback-body {
   overflow-y: hidden;
 }

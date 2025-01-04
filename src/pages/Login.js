@@ -8,7 +8,7 @@ import {
 } from "react-social-login-buttons";
 import { toast } from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   
   const navigate = useNavigate();
@@ -121,9 +121,9 @@ const Login = () => {
         </div>
         <br />
         <h5 className="form-title">
-          <a href="/signup" id="noAccount">
+          <Link to="/signup" id="noAccount">
             Don't Have an account?
-          </a>
+          </Link>
         </h5>
       </div>
       <Toaster position="bottom-right" />

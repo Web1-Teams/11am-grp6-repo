@@ -1,0 +1,90 @@
+[
+    {
+      "id": 1,
+      "text": "firey website",
+      "StarRatings": {
+        "content": 5,
+        "reviews": 5,
+        "interactive": 5,
+        "design": 5,
+        "performance": 5
+      },
+      "totalPercentage": 100,
+      "username": "Suhad"
+    },{
+        "id": 2,
+        "text": "mt3oob aleh and have many nice features, t7iatee lkl 7da 3ml el website",
+        "StarRatings": {
+          "content": 5,
+          "reviews": 5,
+          "interactive": 5,
+          "design": 5,
+          "performance": 5
+        },
+        "totalPercentage": 100,
+        "username": "Zoro"
+      },{
+        "id": 3,
+        "text": "this website is very nice, it helps you find your way inside nablus city",
+        "StarRatings": {
+          "content": 5,
+          "reviews": 5,
+          "interactive": 5,
+          "design": 5,
+          "performance": 5
+        },
+        "totalPercentage": 100,
+        "username": "waseem"
+      },{
+        "id": 4,
+        "text": "nice Idea for a website,I'll use it, bdnaa places!!",
+        "StarRatings": {
+          "content": 5,
+          "reviews": 5,
+          "interactive": 5,
+          "design": 5,
+          "performance": 5
+        },
+        "totalPercentage": 100,
+        "username": "Remaa"
+      },{
+        "id": 5,
+        "text": "everything is good on this website",
+        "StarRatings": {
+          "content": 5,
+          "reviews": 5,
+          "interactive": 5,
+          "design": 5,
+          "performance": 5
+        },
+        "totalPercentage": 100,
+        "username": "Hamza"
+      },
+    {
+      "id": 6,
+      "text": "a fantastic website, with so many beutiful places",
+      "StarRatings": {
+        "content": 4,
+        "reviews": 4,
+        "interactive": 5,
+        "design": 4,
+        "performance": 5
+      },
+      "totalPercentage": 88,
+      "username": "Dareen"
+    },
+    {
+      "id": 7,
+      "text": "its the best website, made by the best team 🔥",
+      "StarRatings": {
+        "content": 5,
+        "reviews": 5,
+        "interactive": 5,
+        "design": 5,
+        "performance": 5
+      },
+      "totalPercentage": 100,
+      "username": "Dareen"
+    }
+  ]
+  
