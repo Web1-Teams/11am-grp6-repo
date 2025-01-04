@@ -30,7 +30,7 @@ const UserInfo = ({
   // let nowUser = JSON.parse(User);
 
   return (
-    <div className="user-info bg-white d-flex flex-column justify-content-start">
+    <div className="user-info  d-flex flex-column justify-content-start">
       <section className="mt-5">
         <h3 className="Profile-Information text-center mb-4">
           Profile Information
