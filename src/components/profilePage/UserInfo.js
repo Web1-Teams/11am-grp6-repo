@@ -24,6 +24,11 @@ const UserInfo = ({
     .filter((place) => place.isHeartClicked)
     .slice(0, 3); // أول 6 مفضلات
 
+  // let userForms = localStorage.getItem("userForms");
+
+  let User = localStorage.getItem("currentUser");
+  let nowUser = JSON.parse(User);
+
   return (
     <div className="user-info bg-white d-flex flex-column justify-content-start">
       <section className="mt-5">
@@ -75,7 +80,7 @@ const UserInfo = ({
                       <span className="text-muted d-block mb-1 fs-6">
                         Location
                       </span>
-                      <strong id="displayLocation">{location}</strong>
+                      <strong id="displayLocation">{location}.</strong>
                     </div>
                     <button
                       className="btn btn-sm btn-outline-success hover-button"
