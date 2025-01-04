@@ -43,7 +43,6 @@
   }
 }
 
-/* عند الشاشات أصغر من 360px */
 @media (max-width: 360px) {
   .custom-hr {
     width: 80%;
