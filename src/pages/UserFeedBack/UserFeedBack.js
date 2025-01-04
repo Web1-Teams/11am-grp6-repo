@@ -22,11 +22,11 @@ const UserFeedBack = () => {
     const temp = localStorage.getItem("currentUser");
   const user = JSON.parse(temp);
   if (user) {
-    setCUser(user); // تعيين المستخدم الحالي
+    setCUser(user); // تعيين المستخدم الموجود هلا
     setUsername(user.userName || "Guest"); // تعيين اسم المستخدم
     setProfilePic(user.profilePic || ""); // استرجاع صورة البروفايل
   } else {
-    setUsername("Guest"); // إذا لم يكن هناك مستخدم سابق، نعرض اسم "Guest"
+    setUsername("Guest"); // إذا لم يكن هناك مستخدم سابق هاي ديفولت للاحتياط يعني اذا مش معمول لوج
   }
 
   // استرجاع الفيدباك من localStorage
@@ -116,21 +116,20 @@ const UserFeedBack = () => {
     saveToLocalStorage(updatedFeedbacks); // حفظ التغييرات في localStorage
   };
 
-  // const handleSignUp = (newUserName) => {
-  //   const newUser = {
-  //     id: Date.now(), // يمكن استخدام قيمة الوقت كمعرف للمستخدم
-  //     userName: newUserName,
-  //   };
-  //   setUsername(newUserName); // تعيين اسم المستخدم الجديد
-  //   saveUserData(newUser); // حفظ بيانات المستخدم في localStorage
-  // };
+   const handleSignUp = (newUserName) => {
+     const newUser = {
+      id: Date.now(), // يمكن استخدام قيمة الوقت كمعرف للمستخدم
+      userName: newUserName,
+    };
+    setUsername(newUserName); // تعيين اسم المستخدم الجديد
+    saveUserData(newUser); // حفظ بيانات المستخدم في localStorage
+  };
 
   return (
     <div className="userfeedback-body">
       <div className="userfeedback-container">
         <h2 className="ssh-Write">Feedbacks</h2>
         
-        {/* تسجيل الدخول أو التعديل على اسم المستخدم
         {!CUser&& (
           <div>
             <input
@@ -142,7 +141,7 @@ const UserFeedBack = () => {
               Sign Up
             </button>
           </div>
-        )} */}
+        )} 
 
         <form onSubmit={handleSubmit}>
           <textarea
@@ -204,7 +203,6 @@ const UserFeedBack = () => {
             {profilePic ? (
               <img src={profilePic} alt="Profile" className="ssh-profile-image" />
             ) : (
-              // لا يتم عرض أي شيء إذا لم توجد صورة بروفايل
               ""
             )}
             {feedback.username}:
