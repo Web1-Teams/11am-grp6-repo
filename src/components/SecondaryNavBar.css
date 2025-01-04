@@ -1,5 +1,10 @@
+.sub-ul{
+    display: flex !important;
+   gap: 50px;
+}
 .sub-navbar {
     background-color: #f8f9fa;
+   
     padding: 15px;
     height: 60px;
     position: fixed;
@@ -61,6 +66,7 @@
 }
 
 .sub-link::after {
+  
     content: '';
     position: absolute;
     left: 0;

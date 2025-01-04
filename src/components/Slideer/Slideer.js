@@ -1,8 +1,8 @@
 import "./Slideer.css";
 import img1 from "../img/slide1 (1).jpg";
-import img2 from "../img/تصميم بدون عنوان.png";
+import img2 from "../img/quds.jpg";
 import img3 from "../img/img-home.jpg";
-import img4 from "../img/img-8.jpg";
+import img4 from "../img/decoration.jpg";
 import video from "../img/videoplayback.mp4";
 
 const Slideer = () => {

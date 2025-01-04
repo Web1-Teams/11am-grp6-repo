@@ -13,8 +13,7 @@ const featureMap = {
     restaurant: "restaurant",
     cafe: "cafe", 
     play:"play-center",
-    archaeological:"archaeological-site"
-  
+    archaeological:"archaeological-site",
 };
 
 const matchedFeature = Object.keys(featureMap).find((feature) =>
@@ -32,7 +31,7 @@ const personalQuestions = [
     { type: "what is your name", keywords: ["what is your name", "who are you", "name", "your name"] },
     { type: "how is the weather", keywords: ["how is the weather", "weather", "weather today", "current weather"] },
     { type: "What are the top 5 tourist attractions in nablus?", keywords: ["tourist", "attractions", "top 5", "places to visit", "must-see", "top sights", "best places", "top attractions in nablus"] }, 
-    { type: "Describe nablus", keywords: ["describe nablus", "about nablus", "tell me about nablus", "what is nablus", "Nablus description"] }, 
+    { type: "Describe nablus", keywords: ["describe nablus", "about nablus", "tell me about nablus", "Nablus description"] }, 
     { type: "What is Nablus famous for?", keywords: ["famous for", "known for", "speciality", "famous in Nablus", "Nablus specialties"] }, 
     { type: "What are some of the main religions practiced in Nablus?", keywords: ["religions", "religion", "beliefs", "religious practices"] }, 
     { type: "What is the best time to visit Nablus?", keywords: ["best time to visit", "when to visit", "best season", "best time", "good time to visit"] },
@@ -65,11 +64,19 @@ const personalQuestions = [
     { type: "What are the system requirements?", keywords: ["system requirements", "system specs", "compatibility"] },
     { type: "What are your hours of operation?", keywords: ["hours of operation", "business hours", "opening hours", "available hours"] },
     { type: "How can I register?", keywords: ["register", "sign up", "create account", "new account"] }, 
-  { type: "Is VisitMe free to use?", keywords: ["free to use", "free", "cost", "pricing", "free or paid"] }, 
-  { type: "How can I update my profile?", keywords: ["update profile", "edit profile", "profile settings", "change profile"] },
-  { type: "Can I save my favorite places?", keywords: ["save places", "favorites", "bookmark", "save for later"] },
-  { type: "What languages does VisitMe support?", keywords: ["languages", "language support", "available languages"] },
-  { type: "Is there a mobile app?", keywords: ["mobile app", "app", "download app", "app available"] },
+    { type: "Is VisitMe free to use?", keywords: ["free to use", "free", "cost", "pricing", "free or paid"] }, 
+    { type: "How can I update my profile?", keywords: ["update profile", "edit profile", "profile settings", "change profile"] },
+    { type: "Can I save my favorite places?", keywords: ["save places", "favorites", "bookmark", "save for later"] },
+    { type: "What languages does VisitMe support?", keywords: ["languages", "language support", "available languages"] },
+    { type: "Is there a mobile app?", keywords: ["mobile app", "app", "download app", "app available"] },
+    { type: "What events are happening in Nablus?", keywords: ["events in Nablus", "upcoming events", "Nablus events","events"] },
+    { type: "who is Dareen Abu Aisheh", keywords: ["dareen", "who is Dareen", "about Dareen"] },
+    { type: "who is Suhad Shaheen", keywords: ["suhad", "who is Suhad", "about Suhad"] },
+    { type: "who is Hamza Nasser", keywords: ["hamza nasser", "who is Hamza Nasser", "about Hamza Nasser"] },
+    { type: "who is Hamza Zarour", keywords: ["hamza zarour", "who is Hamza Zarour", "about Hamza Zarour"] },
+    { type: "who is Remaa Saleh", keywords: ["remaa", "reema","who is Remaa", "about Remaa"] },
+    { type: "who is Waseem Qaneer", keywords: ["waseem","wasseem", "who is Waseem", "about Waseem"] },
+    { type: "who is Ashour Jarrar", keywords: ["ashour", "who is Ashour", "about Ashour"] },
 
 
   ];

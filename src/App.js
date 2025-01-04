@@ -17,7 +17,7 @@ import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
 import SecondaryNavBar from "./components/SecondaryNavBar.js"
-
+import TeamPage from "./pages/AboutUs/TeamPage.js"
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -62,8 +62,15 @@ function App() {
     <MyChatBot/>
      
       <Router>
-        <NavBar BrandName="VisitMe" i1="Home" i2="Calendar" i3="My Favorites" />
+      <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
         <Routes>
+          <Route path="team-page" element={<TeamPage/>}>
+          </Route>
           <Route
             path="/"
             element={
@@ -209,12 +216,7 @@ function App() {
             path="/about-us"
             element={
               <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
+               
                 <AboutUs places={places} />
               </>
             }
