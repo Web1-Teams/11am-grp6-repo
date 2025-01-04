@@ -26,8 +26,8 @@ const UserInfo = ({
 
   // let userForms = localStorage.getItem("userForms");
 
-  let User = localStorage.getItem("currentUser");
-  let nowUser = JSON.parse(User);
+  // let User = localStorage.getItem("currentUser");
+  // let nowUser = JSON.parse(User);
 
   return (
     <div className="user-info bg-white d-flex flex-column justify-content-start">
