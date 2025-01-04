@@ -24,9 +24,9 @@ const NavBar = ({ BrandName, i2, i3, i4 }) => {
         <div className="collapse navbar-collapse bg-light" id="navi">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/visited-places">
+              <Link className="nav-link" to="/visited-places">
                 <i className="fa-solid fa-check" /> Visited Places
-              </a>
+              </Link>
             </li>
 
             <li className="nav-item">
@@ -41,9 +41,9 @@ const NavBar = ({ BrandName, i2, i3, i4 }) => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/event-page">
+              <Link className="nav-link" to="/event-page">
                 <i className="fa-regular fa-calendar-check"></i> Events
-              </a>
+              </Link>
             </li>
           </ul>
           <Link className="nav-link" to="/about-us">

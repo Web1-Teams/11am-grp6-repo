@@ -4,6 +4,9 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "./Calendar.css";
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+
 
 function Calendar() {
   const [events, setEvents] = useState([]);
@@ -60,7 +63,8 @@ function Calendar() {
       setShowModal(false);
       setEventData({ title: "", description: "", start: "", end: "" });
     } else {
-      alert("Please fill in all fields.");
+      // alert("Please fill in all fields.");
+      toast.error("Please fill in all fields.");
     }
   };
 
@@ -168,6 +172,7 @@ function Calendar() {
           </div>
         </div>
       )}
+      <Toaster position="top-center" />
     </div>
   );
 }
