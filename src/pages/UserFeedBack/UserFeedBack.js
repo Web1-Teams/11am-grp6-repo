@@ -23,13 +23,13 @@ const UserFeedBack = () => {
     setUsername(storedUsername);
     
     const storedFeedbacks =
-      JSON.parse(localStorage.getItem(`userfeedbacks-${storedUsername}`)) || [];
+      JSON.parse(localStorage.getItem(`userfeedbacks`)) || [];
     setUserFeedbacks(storedFeedbacks); // تعيين التقييمات في الحالة
   }, []);
 
   // حفظ التقييمات في اللوكال ستورج 
   const saveToLocalStorage = (feedbacks) => {
-    localStorage.setItem(`userfeedbacks-${username}`, JSON.stringify(feedbacks));
+    localStorage.setItem(`userfeedbacks`, JSON.stringify(feedbacks));
   };
 
   // حساب النسبة المئوية الإجمالية لكل التقييمات
