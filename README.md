@@ -5,7 +5,14 @@ This project is designed to assist visitors, tourists, and local residents in di
 
 ---
 
-## ✨ Features  
+## Here you can watch a detailed video for the website in which there is an explanation of all the features.
+
+[![شاهد الفيديو](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://drive.google.com/drive/folders/1lP3VohWrGEem0E3MnECL1Vdt5K1VpOtg?usp=drive_link)
+
+---
+
+
+# ✨ Features  
 
 ### 🔍 1. Advanced Search Bar  
 - Allows users to search places by name (in Arabic or English), features, or geographic location.  
@@ -94,9 +101,9 @@ This project is designed to assist visitors, tourists, and local residents in di
 4. *Start the Application*  
    - Run the application locally:  
      bash
+     change the caurusel file name 
      npm start
      
-
 5. *Access the Website*  
    - Open your browser and navigate to http://localhost:3000.
 
