@@ -1,78 +1,62 @@
 import React, { useState, useEffect } from "react";
 import "./UserFeedBack.css";
 
-// مكون رئيسي UserFeedBack
 const UserFeedBack = () => {
-  // تعريف حالات التطبيق (States)
-  const [userfeedbacks, setUserFeedbacks] = useState([]); // قائمة التقييمات
-  const [newUserFeedback, setNewUserFeedback] = useState(""); // ملاحظات جديدة
+  const [userfeedbacks, setUserFeedbacks] = useState([]);
+  const [newUserFeedback, setNewUserFeedback] = useState("");
   const [StarRatings, setStarRatings] = useState({
     content: 0,
     reviews: 0,
     interactive: 0,
     ui: 0,
     performance: 0,
-  }); // تقييم النجوم لكل فئة
-  const [username, setUsername] = useState(""); // اسم المستخدم
+  });
+  const [username, setUsername] = useState("");
 
-  // عند تحميل الصفحة: تحميل التقييمات المحفوظة في localStorage
   useEffect(() => {
-    const storedUsername = localStorage.getItem("userName") || "Guest"; // استرجاع اسم المستخدم
+    const storedUsername = localStorage.getItem("userName") || "Guest";
     setUsername(storedUsername);
-    
+
     const storedFeedbacks =
       JSON.parse(localStorage.getItem(`userfeedbacks-${storedUsername}`)) || [];
-    setUserFeedbacks(storedFeedbacks); // تعيين التقييمات في الحالة
+    setUserFeedbacks(storedFeedbacks);
   }, []);
 
-  // حفظ التقييمات في اللوكال ستورج 
   const saveToLocalStorage = (feedbacks) => {
     localStorage.setItem(`userfeedbacks-${username}`, JSON.stringify(feedbacks));
   };
 
-  // حساب النسبة المئوية الإجمالية لكل التقييمات
   const calculateTotalPercentage = () => {
     const totalStars = Object.values(StarRatings).reduce((a, b) => a + b, 0);
-    return Math.round((totalStars / 25) * 100); // 25 = 5 فئات * 5 نجوم كحد أقصى
+    return Math.round((totalStars / 25) * 100);
   };
 
-  // إرسال التقييم الجديد
   const handleSubmit = (e) => {
-    e.preventDefault(); // منع التحديث الافتراضي للصفحة
-
-    // التحقق من أن المستخدم كتب ملاحظاته
+    e.preventDefault();
     if (newUserFeedback.trim() === "") {
-      alert("Please write your feedback before submitting."); // رسالة تحذير
+      alert("Please write your feedback before submitting.");
       return;
     }
 
-    // التحقق من أن جميع الفئات تم تقييمها
-    const allCategoriesRated = Object.keys(StarRatings).every(
-      (category) => StarRatings[category] > 0
-    );
+    const allCategoriesRated = Object.values(StarRatings).every((rating) => rating > 0);
     if (!allCategoriesRated) {
-      alert("Please provide at least one star for all categories."); // رسالة تحذير
+      alert("Please provide at least one star for all categories.");
       return;
     }
 
-    // حساب النسبة المئوية الإجمالية
     const totalPercentage = calculateTotalPercentage();
-
-    // تكوين التقييم الجديد
     const feedback = {
-      id: Date.now(), // توليد معرّف فريد
-      text: newUserFeedback, // النص المكتوب
-      StarRatings, // تقييم النجوم
-      totalPercentage, // النسبة المئوية الإجمالية
-      username, // اسم المستخدم
+      id: Date.now(),
+      text: newUserFeedback,
+      StarRatings,
+      totalPercentage,
+      username,
     };
 
-    // تحديث قائمة التقييمات وإضافة التقييم الجديد 
     const updatedFeedbacks = [feedback, ...userfeedbacks];
-    setUserFeedbacks(updatedFeedbacks); // تحديث الحالة
-    saveToLocalStorage(updatedFeedbacks); // حفظ القائمة الجديدة في اللوكال ستورج
+    setUserFeedbacks(updatedFeedbacks);
+    saveToLocalStorage(updatedFeedbacks);
 
-    // إعادة تعيين الحقول إلى القيم الافتراضية
     setNewUserFeedback("");
     setStarRatings({
       content: 0,
@@ -81,27 +65,23 @@ const UserFeedBack = () => {
       ui: 0,
       performance: 0,
     });
-    alert("Feedback submitted successfully!"); // رسالة نجاح العملية
+
+    alert("Feedback submitted successfully!");
   };
 
-  // تحديث تقييم النجوم لكل فئة
   const handleStarClick = (category, value) => {
     setStarRatings((prevRatings) => ({
       ...prevRatings,
-      [category]: value,
+      [category.toLowerCase()]: value,
     }));
   };
 
-  // حذف التقييم اذا بده اليوزر
   const handleDeleteFeedback = (id) => {
-    const updatedFeedbacks = userfeedbacks.filter(
-      (feedback) => feedback.id !== id
-    );
-    setUserFeedbacks(updatedFeedbacks); // تحديث الحالة
-    saveToLocalStorage(updatedFeedbacks); // تحديث localStorage بعد الحذف
+    const updatedFeedbacks = userfeedbacks.filter((feedback) => feedback.id !== id);
+    setUserFeedbacks(updatedFeedbacks);
+    saveToLocalStorage(updatedFeedbacks);
   };
 
-  // من هون بتبلش واجهة المستخدم اللي بتحتوي على مكان ادخال الفيدباك والتقييم ووووو
   return (
     <div className="userfeedback-body">
       <div className="userfeedback-container">
@@ -117,40 +97,36 @@ const UserFeedBack = () => {
           />
           <br />
           <div className="ssh-CategoryRating-body">
-            {["Content", "Reviews", "Interactive", "User Interface & Design", "Performance"].map(
-              (category) => (
-                <div key={category} className="ssh-rating-category">
-                  <h4>{category.replace(/([A-Z])/g, " $1")}</h4>
-                  <div className="ssh-star-rating">
-                    {[...Array(5)].map((_, index) => {
-                      const starValue = index + 1;
-                      return (
-                        <label key={starValue}>
-                          <input
-                            type="radio"
-                            name={category}
-                            value={starValue}
-                            checked={StarRatings[category] === starValue}
-                            onChange={() => handleStarClick(category, starValue)}
-                            style={{ display: "none" }}
-                          />
-                          <span
-                            className={`ssh-star ${
-                              starValue <= StarRatings[category]
-                                ? "filled-star"
-                                : "empty-star"
-                            }`}
-                            onClick={() => handleStarClick(category, starValue)}
-                          >
-                            &#9733;
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
+            {["content", "reviews", "interactive", "ui", "performance"].map((category) => (
+              <div key={category} className="ssh-rating-category">
+                <h4>{category.charAt(0).toUpperCase() + category.slice(1)}</h4>
+                <div className="ssh-star-rating">
+                  {[...Array(5)].map((_, index) => {
+                    const starValue = index + 1;
+                    return (
+                      <label key={starValue}>
+                        <input
+                          type="radio"
+                          name={category}
+                          value={starValue}
+                          checked={StarRatings[category] === starValue}
+                          onChange={() => handleStarClick(category, starValue)}
+                          style={{ display: "none" }}
+                        />
+                        <span
+                          className={`ssh-star ${
+                            starValue <= StarRatings[category] ? "filled-star" : "empty-star"
+                          }`}
+                          onClick={() => handleStarClick(category, starValue)}
+                        >
+                          &#9733;
+                        </span>
+                      </label>
+                    );
+                  })}
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </div>
 
           <button type="submit" className="ssha-submit-btn">
@@ -165,7 +141,7 @@ const UserFeedBack = () => {
               <li key={feedback.id} className="ssh-feedback-item">
                 <p className="ssh-feedback-username">
                   <strong>
-                  <i className="fa-solid fa-circle-user ssha-user"></i> {feedback.username}:
+                    <i className="fa-solid fa-circle-user ssha-user"></i> {feedback.username}:
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>
@@ -174,9 +150,7 @@ const UserFeedBack = () => {
                   <div className="stars-container">
                     <div
                       className="stars-filled"
-                      style={{
-                        width: `${feedback.totalPercentage}%`,
-                      }}
+                      style={{ width: `${feedback.totalPercentage}%` }}
                     >
                       &#9733;&#9733;&#9733;&#9733;&#9733;
                     </div>
@@ -185,7 +159,6 @@ const UserFeedBack = () => {
                     </div>
                   </div>
                 </div>
-                {/* زر الحذف */}
                 <button
                   onClick={() => handleDeleteFeedback(feedback.id)}
                   className="ssh-delete-btn"
