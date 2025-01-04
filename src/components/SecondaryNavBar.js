@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const  SecondaryNavBar= () => {
   return (
     <div classNme="AllNav">
-      <div className="sub-navbar">
+      <div className="sub-navbarDR">
         <ul className="sub-ul">
       <Link to="/category/archaeological-site" className="cat sub-link" href="/Archaeological Sites"> <i class="fa-solid fa-building-wheat "></i> Archaeological Sites</Link> 
         <Link to="/category/restaurant" className="cat sub-link"href="/Restaurants"> <i className="fa-solid fa-utensils fa-xl " ></i> Restaurants</Link>
