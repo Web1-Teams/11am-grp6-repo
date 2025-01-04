@@ -1,13 +1,13 @@
-.userfeedback-body{
-  background-color: #f8f9fa;
+.userfeedback-body {
   overflow-y: hidden;
 }
+
 .userfeedback-container {
   width: 100%;
   max-width: 1200px;
   margin: 130px auto;
   padding: 30px;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   background-color: #f8f9fa;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -18,22 +18,27 @@
   padding-bottom: 40px;
   overflow-x: hidden;
 }
+
 .ssh-delete-btn {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
+  background-color: #f8f9fa;
+  color: #dc3545;
+  border-color: #dc3545;
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 10px;
+  transition: transform 0.3s, background-color 0.3s;
+  align-self: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 body {
   background-color: #ddd3d3; 
   animation: backgroundChange 8s infinite;
 }
 .ssh-delete-btn:hover {
-  background-color: #e60000;
+  background-color: #dc3545;
+  color: white;
+  transform: translateY(-2px);
 }
-
 
 .ssh-TextArea {
   width: 100%;
@@ -44,36 +49,38 @@ body {
   font-size: 16px;
   resize: vertical;
   background-color: #fff;
-  border-color: #800020;
-  background-color:#f8f9fa;
+
+  border-color: #880223;
+  background-color: #f8f9fa;
   box-sizing: border-box;
   transition: border-color 0.3s, background-color 0.3s;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
- }
+}
 .ssh-TheFeedBacks {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.9rem;
   margin-bottom: 0px;
-   width: 300px;
+  width: 300px;
   margin-left: -30px;
   color: #fffdfb;
-  background: #f4c542;
+
+  background: #880223;
   padding:15px 20px 15px;
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-  
 }
+
 .ssh-Write {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.9rem;
   margin-bottom: 40px;
   width: 300px;
   margin-left: -30px;
   color: #fffdfb;
-  background:#f4c542;
+  background:#880223;
   padding:15px 20px 15px;
   border-radius: 0 50px 50px 0;
   text-align: left;
@@ -88,10 +95,10 @@ body {
 
 .ssha-submit-btn {
   display: inline-block;
-  background-color: #f4c542;
-  color: #800020;
+  background-color: #f8f9fa;
+  color: #28a745;
+  border-color: #28a745;
   padding: 12px 25px;
-  border: none;
   border-radius: 8px;
   font-size: 18px;
   cursor: pointer;
@@ -101,7 +108,8 @@ body {
 }
 
 .ssha-submit-btn:hover {
-  background-color: #d4a10d;
+  background-color: #28a745;
+  color: white;
   transform: translateY(-2px);
 }
 
@@ -116,7 +124,7 @@ body {
   padding: 25px;
   margin-bottom: 20px;
   gap: 20px;
-  background-color: #800020;
+  background-color: #880223;
 }
 
 .ssh-feedback-item {
@@ -127,18 +135,14 @@ body {
   border: 1px solid #b0c4de;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
-  color: #800020;
-}
-
-.ssh-feedback-item:hover {
-  transform: translateY(-5px);
+  color: #880223;
 }
 
 .ssh-feedback-username {
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #800020;
+  color: #880223;
 }
 
 .star-rating-display {
@@ -150,15 +154,16 @@ body {
   position: relative;
   display: inline-block;
   font-size: 2.4rem;
-  
 }
-.ssh-CategoryRating-body{
+}
+.ssh-CategoryRating-body {
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
   margin-bottom: 20px;
-    background-color: #800020;
+  background-color: #880223;
 }
+
 .stars-filled {
   position: absolute;
   top: 0;
@@ -169,6 +174,7 @@ body {
   color: #f4c542;
   z-index: 1;
 }
+
 .stars-background {
   color: #ddd;
   z-index: 0;
@@ -186,7 +192,7 @@ body {
   align-items: center;
 }
 
-.ssh-star{
+.ssh-star {
   font-size: 30px;
   color: #ddd;
   cursor: pointer;
@@ -198,7 +204,7 @@ body {
 }
 
 .ssh-star:hover,
-.ssh-star:hover ~ .ssh-star {
+.ssh-star:hover~.ssh-star {
   color: #ffeb3b;
   transform: scale(1.2);
 }
@@ -207,11 +213,6 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #555;
-}
-
-.ssh-feedback-item:hover {
-  background-color: #f8e4ec;
-  border-color: #f4c542;
 }
 
 @media (max-width: 1024px) {
@@ -223,6 +224,7 @@ body {
   .ssh-rating-category {
     flex-direction: column;
   }
+
   .submit-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -237,9 +239,11 @@ body {
     font-size: 14px;
   }
 }
-.TheText-ssh{
-overflow-wrap: break-word; 
-word-wrap: break-word;}
-.ssha-user{
-font-size: 1.5rem;
+.TheText-ssh {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
+.ssha-user {
+  font-size: 1.5rem;
+}
+

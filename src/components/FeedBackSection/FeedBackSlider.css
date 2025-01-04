@@ -43,7 +43,6 @@
   }
 }
 
-/* عند الشاشات أصغر من 360px */
 @media (max-width: 360px) {
   .custom-hr {
     width: 80%;
@@ -85,7 +84,7 @@
 }
 
 .slick-next {
-  right: -45px;
+  right: -46px;
 }
 
 .slick-prev {
@@ -119,7 +118,7 @@
 
 .slick-dots {
   position: absolute;
-  bottom: -60px;
+  bottom: -70px;
   width: 50%;
   left: 50%;
   transform: translateX(-50%);
@@ -166,7 +165,7 @@
 
 @media (max-width: 450px) {
   .slick-dots {
-    bottom: -45px;
+    bottom: -50px;
     width: 70%;
   }
 
@@ -188,4 +187,61 @@
   .slick-prev {
     left: -65px;
   }
+}
+
+@media (min-width: 450px) {
+  .slick-dots {
+    bottom: -65px;
+    width: 70%;
+  }
+}
+
+.custom-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 14px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(to bottom right, #800020, #ff6347);
+  border: 4px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 7.5px 9px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(242, 71, 71, 0.2);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.custom-button:hover::before {
+  opacity: 1;
+}
+
+.custom-button:hover {
+  transform: translateY(-2px);
+  /* رفع بسيط عند التمرير */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+  /* زيادة الظل */
+  background: linear-gradient(to bottom right, #990024, #ff7f50);
+  /* تدرج جديد */
+}
+
+.custom-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  /* تقليل الظل عند النقر */
 }
