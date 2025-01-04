@@ -25,7 +25,7 @@ const Footer_cat = (props) => {
       categoryLink = '/category/play-center';
       break;
     default:
-      categoryLink = '/'; // Default to home if no match
+      categoryLink = '/HomePage'; // Default to home if no match
   }
 
   return (

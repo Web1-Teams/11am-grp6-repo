@@ -58,6 +58,7 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
 }
+
 .ssh-TheFeedBacks {
   font-family: "Playfair Display", serif;
   font-size: 1.9rem;
@@ -155,7 +156,7 @@ body {
   display: inline-block;
   font-size: 2.4rem;
 }
-}
+
 .ssh-CategoryRating-body {
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -239,10 +240,12 @@ body {
     font-size: 14px;
   }
 }
+
 .TheText-ssh {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
 .ssha-user {
   font-size: 1.5rem;
 }

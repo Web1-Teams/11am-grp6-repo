@@ -15,23 +15,28 @@ const UserFeedBack = () => {
   });
   const [username, setUsername] = useState("");
   const [CUser, setCUser] = useState(null); // المستخدم الحالي بنحط هون
-  const [profilePic, setProfilePic] = useState("");
 
-  useEffect(() => {
+  // const [profilePic, setProfilePic] = useState("");
+
+
+   useEffect(() => {
     // استرجاع المستخدم من localStorage عند تحميل الصفحة
     const temp = localStorage.getItem("currentUser");
-  const user = JSON.parse(temp);
-  if (user) {
-    setCUser(user); // تعيين المستخدم الموجود هلا
-    setUsername(user.userName || "Guest"); // تعيين اسم المستخدم
-    setProfilePic(user.profilePic || ""); // استرجاع صورة البروفايل
-  } else {
-    setUsername("Guest"); // إذا لم يكن هناك مستخدم سابق هاي ديفولت للاحتياط يعني اذا مش معمول لوج
-  }
 
-  // استرجاع الفيدباك من localStorage
-  const storedFeedbacks = JSON.parse(localStorage.getItem("userfeedbacks")) || [];
-  setUserFeedbacks(storedFeedbacks); // تعيين الفيدباك في الحالة
+    const user = JSON.parse(temp);
+    if (user) {
+      setCUser(user); // تعيين المستخدم الحالي
+      setUsername(user.userName || "Guest"); // تعيين اسم المستخدم
+      // setProfilePic(user.profilePic || ""); // استرجاع صورة البروفايل
+    } else {
+      setUsername("Guest"); // إذا لم يكن هناك مستخدم سابق، نعرض اسم "Guest"
+    }
+
+    // استرجاع الفيدباك من localStorage
+    const storedFeedbacks =
+      JSON.parse(localStorage.getItem("userfeedbacks")) || [];
+    setUserFeedbacks(storedFeedbacks); // تعيين الفيدباك في الحالة
+
   }, []);
 
   // دالة لتحديث بيانات المستخدم في localStorage
@@ -69,13 +74,19 @@ const UserFeedBack = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newUserFeedback.trim() === "") {
-      toast.error("Please write your feedback before submitting.")
+
+      toast.error("Please write your feedback before submitting.");
+
       return;
     }
 
-    const allCategoriesRated = Object.values(StarRatings).every((rating) => rating > 0);
+    const allCategoriesRated = Object.values(StarRatings).every(
+      (rating) => rating > 0
+    );
     if (!allCategoriesRated) {
-      toast.error("Please provide at least one star for all categories.")
+
+      toast.error("Please provide at least one star for all categories.");
+
       return;
     }
     const totalPercentage = calculateTotalPercentage();
@@ -110,8 +121,12 @@ const UserFeedBack = () => {
     }));
   };
 
-  const handleDeleteFeedback = (id) => {//فنكشن حذف الفيدباك 
-    const updatedFeedbacks = userfeedbacks.filter((feedback) => feedback.id !== id);// بدور على id الفيدباك اللي بدي احذفه وبحذف كل معلوماته
+  const handleDeleteFeedback = (id) => {
+    //فنكشن حذف الفيدباك
+    const updatedFeedbacks = userfeedbacks.filter(
+      (feedback) => feedback.id !== id
+    ); // بدور على id الفيدباك اللي بدي احذفه وبحذف كل معلوماته
+
     setUserFeedbacks(updatedFeedbacks); // تحديث الستاتس
     saveToLocalStorage(updatedFeedbacks); // حفظ التغييرات في localStorage
   };
@@ -129,19 +144,6 @@ const UserFeedBack = () => {
     <div className="userfeedback-body">
       <div className="userfeedback-container">
         <h2 className="ssh-Write">Feedbacks</h2>
-        
-        {!CUser&& (
-          <div>
-            <input
-              type="text"
-              placeholder="Enter your username"
-              onBlur={(e) => handleSignUp(e.target.value)}
-            />
-            <button onClick={() => handleSignUp(document.querySelector("input").value)}>
-              Sign Up
-            </button>
-          </div>
-        )} 
 
         <form onSubmit={handleSubmit}>
           <textarea
@@ -154,36 +156,45 @@ const UserFeedBack = () => {
           />
           <br />
           <div className="ssh-CategoryRating-body">
-            {["Content", "Reviews", "Interactive", "Design", "Performance"].map((category) => (
-              <div key={category} className="ssh-rating-category">
-                <h4>{category}</h4>
-                <div className="ssh-star-rating">
-                  {[...Array(5)].map((_, index) => {
-                    const starValue = index + 1;
-                    return (
-                      <label key={starValue}>
-                        <input
-                          type="radio"
-                          name={category}
-                          value={starValue}
-                          checked={StarRatings[category.toLowerCase()] === starValue}
-                          onChange={() => handleStarClick(category, starValue)}
-                          style={{ display: "none" }}
-                        />
-                        <span
-                          className={`ssh-star ${
-                            starValue <= StarRatings[category.toLowerCase()] ? "filled-star" : "empty-star"
-                          }`}
-                          onClick={() => handleStarClick(category, starValue)}
-                        >
-                          &#9733;
-                        </span>
-                      </label>
-                    );
-                  })}
+            {["Content", "Reviews", "Interactive", "Design", "Performance"].map(
+              (category) => (
+                <div key={category} className="ssh-rating-category">
+                  <h4>{category}</h4>
+                  <div className="ssh-star-rating">
+                    {[...Array(5)].map((_, index) => {
+                      const starValue = index + 1;
+                      return (
+                        <label key={starValue}>
+                          <input
+                            type="radio"
+                            name={category}
+                            value={starValue}
+                            checked={
+                              StarRatings[category.toLowerCase()] === starValue
+                            }
+                            onChange={() =>
+                              handleStarClick(category, starValue)
+                            }
+                            style={{ display: "none" }}
+                          />
+                          <span
+                            className={`ssh-star ${
+                              starValue <= StarRatings[category.toLowerCase()]
+                                ? "filled-star"
+                                : "empty-star"
+                            }`}
+                            onClick={() => handleStarClick(category, starValue)}
+                          >
+                            &#9733;
+                          </span>
+                        </label>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
+
           </div>
 
           <button type="submit" className="ssha-submit-btn">
@@ -199,13 +210,9 @@ const UserFeedBack = () => {
                 <p className="ssh-feedback-username">
                   
                   <strong>
-                  
-            {profilePic ? (
-              <img src={profilePic} alt="Profile" className="ssh-profile-image" />
-            ) : (
-              ""
-            )}
-            {feedback.username}:
+
+                    <i className="fa-solid fa-circle-user ssha-user"> </i> {feedback.username}:
+
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>
@@ -224,7 +231,8 @@ const UserFeedBack = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => handleDeleteFeedback(feedback.id)}//نستدعي ال on click لما يكبس المستخدم على زر الحذف وبنفذ الفنكشن تبع الحذف
+                  onClick={() => handleDeleteFeedback(feedback.id)} //نستدعي ال on click لما يكبس المستخدم على زر الحذف وبنفذ الفنكشن تبع الحذف
+
                   className="ssh-delete-btn"
                 >
                   Delete

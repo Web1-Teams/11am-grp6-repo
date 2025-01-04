@@ -153,7 +153,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
   if (!place) {
     return (
       <div>
-        Place not found. <Link to="/">Go Back</Link>
+        Place not found. <Link to="/HomePage">Go Back</Link>
       </div>
     );
   }
