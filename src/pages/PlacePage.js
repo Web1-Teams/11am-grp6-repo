@@ -5,8 +5,6 @@ import "./PlacePage.css";
 import PlacePageSlider from "../components/PlacePageSlider";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
-import { toast } from "react-hot-toast";
-import { Toaster } from "react-hot-toast";
 
 const PlacePage = ({ places, updatePlaceRating }) => {
     const { id } = useParams();
@@ -84,44 +82,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         updateLocalStorage(updatedPlace);
     };
 
-    updateLocalStorage(updatedPlace);
-  };
-
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-    if (newComment.trim() && !comments.includes(newComment.trim())) {
-      const updatedComments = [...comments, newComment.trim()];
-      setComments(updatedComments);
-      localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
-
-      setNewComment("");
-      setShowEmoji(comments.length === 0); // Show emoji only for the first comment
-    }
-  };
-
-  const handleRatingClick = (category, emoji) => {
-    setRatings((prev) => ({ ...prev, [category]: emoji }));
-  };
-
-  const handleFeedbackSubmit = () => {
-    if (Object.values(ratings).every(Boolean)) {
-      const totalRating = (
-        ratingValues[ratings.food] * 39.5 +
-        ratingValues[ratings.service] * 24.5 +
-        ratingValues[ratings.price] * 19.5 +
-        ratingValues[ratings.atmosphere] * 16.5
-      ).toFixed(2);
-
-      updatePlaceRating(place.id, totalRating);
-      setIsFeedbackOpen(false);
-    } else {
-      // alert("Please rate all categories!");
-      toast.error("Please provide rating for all categories.", {
-        icon: "⚠️",
-      });
-    }
-  };
-
 
     const handleCheckClick = (e) => {
         e.stopPropagation();
@@ -134,7 +94,37 @@ const PlacePage = ({ places, updatePlaceRating }) => {
     };
 
 
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+        if (newComment.trim() && !comments.includes(newComment.trim())) {
+            const updatedComments = [...comments, newComment.trim()];
+            setComments(updatedComments);
+            localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
 
+            setNewComment("");
+            setShowEmoji(comments.length === 0); // Show emoji only for the first comment
+        }
+    };
+
+    const handleRatingClick = (category, emoji) => {
+        setRatings((prev) => ({ ...prev, [category]: emoji }));
+    };
+
+    const handleFeedbackSubmit = () => {
+        if (Object.values(ratings).every(Boolean)) {
+            const totalRating = (
+                ratingValues[ratings.food] * 39.5 +
+                ratingValues[ratings.service] * 24.5 +
+                ratingValues[ratings.price] * 19.5 +
+                ratingValues[ratings.atmosphere] * 16.5
+            ).toFixed(2);
+
+            updatePlaceRating(place.id, totalRating);
+            setIsFeedbackOpen(false);
+        } else {
+            alert("Please rate all categories!");
+        }
+    };
 
     const extractCoordinates = (url) => {
         const regex = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
@@ -148,7 +138,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                 Place not found. <Link to="/">Go Back</Link>
             </div>
         );
-
     }
 
     const coordinates = extractCoordinates(place.location);
@@ -315,64 +304,69 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     ) : (
                         <p className="no-comments">No comments yet. Be the first to comment!</p>
                     )}
-               </ul>
+                </ul>
+
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <Footer BrandName="Visit Me">
-        <Footer_cat
-          c1="Restaurants"
-          c1tag1="Family Type"
-          c1tag2="Locations"
-          c1tag3="Generic"
-          c1tag4="Best Sellers"
-          c1tag5="Help"
-        />
-        <Footer_cat
-          c1="Archaeological Sites"
-          c1tag1="Pictures"
-          c1tag2="Locations"
-          c1tag3="More Info"
-          c1tag4="Most Visited"
-          c1tag5="Help"
-        />
-        <Footer_cat
-          c1="Amusement Parks"
-          c1tag1="Childish"
-          c1tag2="Locations"
-          c1tag3="Reviews"
-          c1tag4="More Info"
-          c1tag5="Help"
-        />
-        <Footer_cat
-          c1="Parks"
-          c1tag1="More Info"
-          c1tag2="Locations"
-          c1tag3="Photos"
-          c1tag4="Entertainment"
-          c1tag5="Help"
-        />
-        <Footer_cat
-          c1="Cafés"
-          c1tag1="Family Type"
-          c1tag2="Locations"
-          c1tag3="Pictures"
-          c1tag4="Best Sellers"
-          c1tag5="Help"
-        />
-        <Footer_cat
-          c1="Play Centers"
-          c1tag1="Support"
-          c1tag2="Locations"
-          c1tag3="Know More"
-          c1tag4="More Info"
-          c1tag5="Help"
-        />
-      </Footer>
-      <Toaster position="top-center" />
-    </div>
-  );
+
+               
+          
+              
+            </div>
+           
+
+            <Footer BrandName="Visit Me">
+                <Footer_cat
+                    c1="Restaurants"
+                    c1tag1="Family Type"
+                    c1tag2="Locations"
+                    c1tag3="Generic"
+                    c1tag4="Best Sellers"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Archaeological Sites"
+                    c1tag1="Pictures"
+                    c1tag2="Locations"
+                    c1tag3="More Info"
+                    c1tag4="Most Visited"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Amusement Parks"
+                    c1tag1="Childish"
+                    c1tag2="Locations"
+                    c1tag3="Reviews"
+                    c1tag4="More Info"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Parks"
+                    c1tag1="More Info"
+                    c1tag2="Locations"
+                    c1tag3="Photos"
+                    c1tag4="Entertainment"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Cafés"
+                    c1tag1="Family Type"
+                    c1tag2="Locations"
+                    c1tag3="Pictures"
+                    c1tag4="Best Sellers"
+                    c1tag5="Help"
+                />
+                <Footer_cat
+                    c1="Play Centers"
+                    c1tag1="Support"
+                    c1tag2="Locations"
+                    c1tag3="Know More"
+                    c1tag4="More Info"
+                    c1tag5="Help"
+                />
+            </Footer>
+        </div></div>
+    );
 };
 
 export default PlacePage;
