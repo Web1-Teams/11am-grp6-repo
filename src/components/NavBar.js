@@ -78,9 +78,18 @@ const NavBar = ({ BrandName, i2, i3,i4 }) => {
                 </Link>
               </li>
               <li>
-                <a className="dropdown-item" href="#logout">
-                  <i className="fa-solid fa-right-from-bracket"></i> Log Out
-                </a>
+              <Link
+           className="dropdown-item"
+               href="#logout"
+             onClick={() => {
+                   localStorage.removeItem("currentUser");
+                       console.log(
+                           "User logged out and currentUser removed from localStorage"
+                       );
+                        }}
+>
+  <i className="fa-solid fa-right-from-bracket"></i> Log Out
+   </Link>
               </li>
               <li></li>
             </ul>

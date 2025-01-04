@@ -15,11 +15,14 @@ const UserFeedBack = () => {
   });
   const [username, setUsername] = useState("");
   const [CUser, setCUser] = useState(null); // المستخدم الحالي بنحط هون
+
   // const [profilePic, setProfilePic] = useState("");
+
 
   useEffect(() => {
     // استرجاع المستخدم من localStorage عند تحميل الصفحة
     const temp = localStorage.getItem("currentUser");
+
     const user = JSON.parse(temp);
     if (user) {
       setCUser(user); // تعيين المستخدم الحالي
@@ -33,6 +36,7 @@ const UserFeedBack = () => {
     const storedFeedbacks =
       JSON.parse(localStorage.getItem("userfeedbacks")) || [];
     setUserFeedbacks(storedFeedbacks); // تعيين الفيدباك في الحالة
+
   }, []);
 
   // دالة لتحديث بيانات المستخدم في localStorage
@@ -70,7 +74,9 @@ const UserFeedBack = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newUserFeedback.trim() === "") {
+
       toast.error("Please write your feedback before submitting.");
+
       return;
     }
 
@@ -78,7 +84,9 @@ const UserFeedBack = () => {
       (rating) => rating > 0
     );
     if (!allCategoriesRated) {
+
       toast.error("Please provide at least one star for all categories.");
+
       return;
     }
     const totalPercentage = calculateTotalPercentage();
@@ -88,6 +96,7 @@ const UserFeedBack = () => {
       StarRatings,
       totalPercentage,
       username,
+
     };
 
     const updatedFeedbacks = [feedback, ...userfeedbacks];
@@ -117,6 +126,7 @@ const UserFeedBack = () => {
     const updatedFeedbacks = userfeedbacks.filter(
       (feedback) => feedback.id !== id
     ); // بدور على id الفيدباك اللي بدي احذفه وبحذف كل معلوماته
+
     setUserFeedbacks(updatedFeedbacks); // تحديث الستاتس
     saveToLocalStorage(updatedFeedbacks); // حفظ التغييرات في localStorage
   };
@@ -198,6 +208,7 @@ const UserFeedBack = () => {
                 </div>
               )
             )}
+
           </div>
 
           <button type="submit" className="ssha-submit-btn">
@@ -211,8 +222,11 @@ const UserFeedBack = () => {
             {userfeedbacks.map((feedback) => (
               <li key={feedback.id} className="ssh-feedback-item">
                 <p className="ssh-feedback-username">
+                  
                   <strong>
+
                     <i className="fa-solid fa-circle-user ssha-user"> </i> {feedback.username}:
+
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>
@@ -232,6 +246,7 @@ const UserFeedBack = () => {
                 </div>
                 <button
                   onClick={() => handleDeleteFeedback(feedback.id)} //نستدعي ال on click لما يكبس المستخدم على زر الحذف وبنفذ الفنكشن تبع الحذف
+
                   className="ssh-delete-btn"
                 >
                   Delete
