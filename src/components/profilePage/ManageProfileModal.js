@@ -1,6 +1,6 @@
-
 import React from "react";
-
+import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 const ManageProfileModal = ({
   userName,
   profilePicture,
@@ -8,11 +8,68 @@ const ManageProfileModal = ({
   onPictureChange,
   temporaryUserName,
   setTemporaryUserName,
+  deleteUserFromForms,
+  userId,
 }) => {
   const handleSave = () => {
     onSaveProfile(); // استدعاء فنكشن الحفظ الموجود في ProfilePage --> handleSaveProfile
   };
-
+  const handleDeleteAccount = (userId) => {
+    toast(
+      (t) => (
+        <div>
+          <p>Are you sure you want to delete your account?</p>
+          <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+            <Link
+              to="/Login"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <button
+                style={{
+                  padding: "5px 10px",
+                  background: "#ff6b6b",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  // إغلاق المودل
+                  const modalElement =
+                    document.getElementById("manageProfileModal");
+                  const modalInstance =
+                    window.bootstrap.Modal.getInstance(modalElement);
+                  if (modalInstance) {
+                    modalInstance.hide();
+                  }
+                  deleteUserFromForms(userId);
+                  toast.dismiss(t.id);
+                  console.log("Account deleted successfully.");
+                  toast.success("Your Account has been deleted successfully!");
+                }}
+              >
+                Yes
+              </button>
+            </Link>
+            <button
+              style={{
+                padding: "5px 10px",
+                background: "#ddd",
+                color: "#333",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+              onClick={() => toast.dismiss(t.id)} // إغلاق التوست
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      ),
+      { duration: Infinity } // بضل التوست مفتوح
+    );
+  };
   return (
     <div
       className="modal fade"
@@ -34,7 +91,6 @@ const ManageProfileModal = ({
               aria-label="Close"
               onClick={() => {
                 setTemporaryUserName(userName);
-                
               }}
             ></button>
           </div>
@@ -49,10 +105,11 @@ const ManageProfileModal = ({
                   type="text"
                   className="form-control"
                   id="userName"
-                  value={temporaryUserName} 
+                  value={temporaryUserName}
                   onChange={(e) => setTemporaryUserName(e.target.value)}
                 />
               </div>
+              <hr />
               {/* Profile Picture */}
               <div className="mb-3">
                 <label htmlFor="profilePicture" className="form-label">
@@ -73,6 +130,7 @@ const ManageProfileModal = ({
                   style={{ maxWidth: "150px" }}
                 />
               </div>
+              <hr />
               {/* Password Section */}
               <div className="mb-3">
                 <label htmlFor="userPassword" className="form-label">
@@ -94,6 +152,18 @@ const ManageProfileModal = ({
                   Change Password
                 </button>
               </div>
+
+              {/* زر الحذف */}
+              <hr />
+              <button
+                className="btn btn-danger btn-sm"
+                onClick={(e) => {
+                  e.preventDefault(); // منع إعادة التحميل الافتراضية
+                  handleDeleteAccount(userId); // استدعاء الحذف
+                }}
+              >
+                Delete Account
+              </button>
             </form>
           </div>
           <div className="modal-footer">
@@ -103,7 +173,6 @@ const ManageProfileModal = ({
               data-bs-dismiss="modal"
               onClick={() => {
                 setTemporaryUserName(userName);
-                
               }}
             >
               Cancel
@@ -121,6 +190,5 @@ const ManageProfileModal = ({
     </div>
   );
 };
-
 
 export default ManageProfileModal;
