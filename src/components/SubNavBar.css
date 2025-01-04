@@ -2,23 +2,29 @@
   display: flex;
   gap: 10px;
   padding: 10px;
-  padding-top: 15px;
-  background-color: white;
-  border-bottom: 1px solid white;
-  overflow-x: auto;
-  margin-bottom: 20px;
-  height: 85px;
+  padding-top: 5px;
+  margin-top: -65px;
+  background-color: rgba(255, 160, 160, 0)!important;
+  border:none!important;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  margin-bottom: 23px !important;
   justify-content: center;
+  position: relative !important;
+  box-sizing: border-box; /* Ensures padding and border are included in the height calculation */
+  height: fit-content !important; 
+  animation: slideDown 0.9s ease-in-out;
+  flex-wrap: wrap; /* Ensure items wrap to prevent overflow */
 }
 
 .subnav-tag {
-  padding: 8px 12px;
+  padding: 10px 16px;
   border: none;
-  background-color:#f1f1e8d5;
+  height: fit-content;
+  background-color:#f2f2efc4;
   color: #393e43;
   border-radius: 13px;
   cursor: pointer;
-  border: 1px solid  #830522dc;
+  border: 1px solid  #830522;
   transition: background-color 0.3s ease;
   font-size: 11px;
   font-weight: 650;
@@ -27,12 +33,43 @@
 }
 
 .subnav-tag.active {
-  background-color:  #830522e1;
+  background-color:  #830522c0;
   color:#f5f5d5;
   filter: brightness(1.02);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .subnav-tag:hover {
   background-color:  #830522dc;
   color:#f5f5d5;
+  animation: bounce 0.5s infinite alternate;
+}
+@media (max-width: 1199px) {
+  .sub-navbar {
+    display: flex !important; /* Ensure it's still displayed */
+  }
+}
+@media only screen and (max-width:767px) {
+  .subnav-tag{
+    font-size:7px;
+  }
+  
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-4px);
+  }
 }

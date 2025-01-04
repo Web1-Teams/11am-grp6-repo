@@ -46,7 +46,7 @@ const CategoryPage = () => {
 
       <SubNavBar tags={tags} activeTags={activeTags} toggleTag={toggleTag} />
 
-      <div className="category-page container py-4">
+      <div className="category-page py-4">
         <h1 className="cat-text  text-center mb-4">{categoryName}s</h1>
         {filteredPlaces.length > 0 ? (
           <div className="row">

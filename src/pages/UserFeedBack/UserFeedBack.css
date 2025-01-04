@@ -30,7 +30,10 @@
   align-self: center;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
-
+body {
+  background-color: #ddd3d3; 
+  animation: backgroundChange 8s infinite;
+}
 .ssh-delete-btn:hover {
   background-color: #dc3545;
   color: white;
