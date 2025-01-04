@@ -1,153 +1,149 @@
-.grp6-body-calendar {
-    margin-top: 3rem;
-    padding: 2rem;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-
-.grp6-header {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 10;
-}
-
-.grp6-header .box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-}
-
-.grp6-header .icon {
+.wa-se {
     position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 0;
-    right: 10px;
-    z-index: 100;
+    align-items: center;
 }
 
-.grp6-header .icon span {
-    font-size: 2.5rem;
-    width: 10px;
-    height: 100px;
-    margin: 10px 30px;
-    cursor: pointer;
-    color:#800020;
+.wa {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wa-header {
+    font-family: "Josefin Sans", sans-serif;
     text-align: center;
-    user-select: none;
-    transition: transform 0.1s ease-in-out 0.1s;
-    padding-right: 2rem;
-    padding-top: 1rem;
 }
 
-.grp6-header .icon span :last-child {
-    margin-right: -10px;
-}
-
-.grp6-header .icon span:hover {
-    transform: scale(1.2);
-}
-
-.grp6-header .current-date {
-    font-size: 3.5rem;
-    font-weight: 800;
-}
-
-.calendar {
-    padding: 0.7rem;
-    border: solid 0.1rem;
-    border-radius: 5px;
+.wa-label.wa-input {
+    font-family: "Josefin Sans", sans-serif;
     width: 100%;
-    overflow: hidden;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
-.calendar ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
+.wa-input {
+    font-family: "Josefin Sans", sans-serif;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.wa-label {
+    padding-top: 10px;
+    font-size: 23px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.wa-textarea {
+    font-family: "Josefin Sans", sans-serif;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.wa-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #800020;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.wa-button:hover {
+    background-color: #52a852;
+}
+
+#close {
+    background-color: #555;
+}
+
+/*------------------------------------------------------------------------------*/
+
+.fc-daygrid-day {
+    background-color: #f4eeee;
+}
+
+.fc-daygrid-day:hover {
+    background-color: #555
+}
+
+.fc-toolbar-title {
+    font-weight: 700;
+    font-family: "Josefin Sans", sans-serif;
+    color: #800020;
+    font-size: 24px;
     text-align: center;
 }
 
-.calendar .days {
-    margin-bottom: 0;
+@media (max-width: 600px) {
+    .fc-toolbar-title {
+        font-size: 15px;
+    }
 }
 
-.calendar li {
-    position: relative;
-    color: rgb(140, 97, 54);
-    width: calc(100% / 7);
-    font-size: 1.75rem;
+@media (max-width: 400px) {
+    .fc-toolbar-title {
+        font-size: 14px;
+    }
 }
 
-.calendar .weeks li {
-    font-weight: 700;
-    cursor: default;
-    font-size: 2.5rem;
+.fc-daygrid-day-number {
+    color: #990127;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 900;
+    font-size: 17px;
 }
 
-.calendar .days li {
-    font-weight: 500;
-    z-index: 1;
-    cursor: pointer;
-    position: relative;
-    margin-top: 2.5rem;
-    margin-bottom: 5px;
+.fc-daygrid-day:hover {
+    background-color: #817e7ec0;
 }
 
-.days li.inactive {
-    color: #000000a3;
+.fc-event {
+    background-color: #800020;
+    padding: 1px 5px;
+    color: white;
+    border-radius: 5px;
+    font-family: "Josefin Sans", sans-serif;
 }
 
-.days li.active {
-    font-weight: 800;
-    color: #000000f6;
+.fc-event:hover {
+    background-color: #a40029;
 }
 
-.days li::before {
-    position: absolute;
-    content: "";
-    left: 50%;
-    top: 50%;
-    height: 50px;
-    width: 50px;
-    z-index: -1;
-    border-radius: 35%;
-    transform: translate(-50%, -50%);
+.fc-daygrid-day {
+    background-color: #f2f1f1;
 }
 
-.days li.active::before {
-    background-color: rgba(140, 97, 54, 0.668);
+.fc-daygrid-day-events {
+    padding-left: 5px;
 }
 
-.days li:not(.active):hover::before {
-    background: #715c5c59;
+.search-bar {
+    display: block;
+    margin: 10px auto;
+    height: 32px;
+    width: 70%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 2px solid #ccccccec;
 }
 
-.days li.active::after {
-    content: "⭐";
-    position: absolute;
-    left: 50%;
-    bottom: 45px;
-    transform: translateX(-50%);
-    font-size: 1.75rem;
-}
-
-.days li:not(.active)::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 45px;
-    transform: translateX(-50%);
-    font-size: 1.75rem;
+.search-bar:focus {
+    outline: none;
+    border-color: #800020;
 }

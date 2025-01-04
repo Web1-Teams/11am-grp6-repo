@@ -1,11 +1,12 @@
 .ssh-placePage-body{
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .ssh-place-page {
   background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-x: hidden;
+  margin-top: 0px !important;
 }
 
 /* Slider and Description */
@@ -423,7 +424,6 @@ margin: 10px 10px;
 }
 
 @media (max-width: 1024px) {
-
   .short-ssh-Info{
     font-size: 16px; 
     margin-top: 10px; 

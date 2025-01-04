@@ -22,7 +22,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
     const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
     const [showEmoji, setShowEmoji] = useState(false);
-
+    const [username, setUsername] = useState("");
     // Constants
     const ratingValues = {
         "😭": 0.2,
@@ -47,7 +47,10 @@ const PlacePage = ({ places, updatePlaceRating }) => {
         const currentPlace = storedState.find((item) => item.id === parseInt(id)) || {};
         setIsHeartClicked(currentPlace.isHeartClicked || false);
         setIsCheckClicked(currentPlace.isCheckClicked || false);
-
+        const temp = localStorage.getItem("currentUser");
+        const user = JSON.parse(temp);
+        const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
+        setUsername(storedUsername);
         const storedComments = JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
         setComments(storedComments);
     }, [id]);
@@ -145,7 +148,6 @@ const PlacePage = ({ places, updatePlaceRating }) => {
 
 
     return (
-
         <div className="ssh-placePage-body">
         <div className="ssh-place-page" style={{ marginTop: "40px", padding: "0px" }}>
          
@@ -291,8 +293,12 @@ const PlacePage = ({ places, updatePlaceRating }) => {
                     {comments.length > 0 ? (
                         comments.map((comment, index) => (
                             <li key={index} className="comment-item">
-                               <i className="fa-solid fa-user ssh-user"></i> : {comment}
-
+                                <strong>
+                  <i className="fa-solid fa-circle-user ssha-user"></i> {username}:
+                  </strong>
+                  <p>
+                  {comment}
+                  </p>
                             </li>
                         ))
                     ) : (

@@ -26,7 +26,7 @@ const UserInfo = ({
 
   return (
     <div className="user-info bg-white d-flex flex-column justify-content-start">
-      <section className="my-5">
+      <section className="mt-5">
         <h3 className="Profile-Information text-center mb-4">
           Profile Information
         </h3>
@@ -138,11 +138,11 @@ const UserInfo = ({
         onSave={handleSaveLocation}
       />
 
-      <Section
+      {/* <Section
         subtitle="Your Favorites"
         places={favoritePlaces}
         id="your-favorites"
-      />
+      /> */}
     </div>
   );
 };
