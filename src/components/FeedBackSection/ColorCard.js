@@ -11,7 +11,7 @@ const ColorCard = ({ feedback }) => {
   return (
     <div
       style={{
-        width: "95  %", // Make it full width for small screens
+        width: "95%", // Make it full width for small screens
         maxWidth: "480px", // Cap the width to maintain design consistency
         height: "230px",
         margin: "10px", // Adds spacing for all screen sizes

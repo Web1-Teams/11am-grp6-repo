@@ -88,7 +88,7 @@ function App() {
                   i2="Calendar"
                   i3=" My Favorites"
                 />{" "}
-                <SecondaryNavBar />
+                <SecondaryNavBar/>
                 <AddPlace onAddPlace={handleAddPlace} />
               </>
             }

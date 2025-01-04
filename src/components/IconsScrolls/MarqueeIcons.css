@@ -2,18 +2,18 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    top:45px;
+    top:16px;
     bottom: 45px;
-    height: 50px; /* تحديد ارتفاع الشريط */
+    height: 50px; 
   }
   
   .marquee-content {
     display: flex;
-    animation: marquee-scroll 20s linear infinite; /* الانيميشن المستمر */
+    animation: marquee-scroll 25s linear infinite; 
   }
   
   .marquee-icon {
-    font-size: 1rem; /* تحديد حجم الأيقونات */
+    font-size: 1rem; 
     color: #800020;
     opacity: 0.9;
     display: flex;
