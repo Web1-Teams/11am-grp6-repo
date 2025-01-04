@@ -26,7 +26,10 @@
   cursor: pointer;
   margin-top: 10px;
 }
-
+body {
+  background-color: #ddd3d3; 
+  animation: backgroundChange 8s infinite;
+}
 .ssh-delete-btn:hover {
   background-color: #e60000;
 }
