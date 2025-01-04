@@ -1,6 +1,7 @@
-.userfeedback-body{
+.userfeedback-body {
   overflow-y: hidden;
 }
+
 .userfeedback-container {
   width: 100%;
   max-width: 1200px;
@@ -17,10 +18,11 @@
   padding-bottom: 40px;
   overflow-x: hidden;
 }
+
 .ssh-delete-btn {
   background-color: #f8f9fa;
   color: #dc3545;
-  border-color:  #dc3545;
+  border-color: #dc3545;
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 10px;
@@ -30,7 +32,7 @@
 }
 
 .ssh-delete-btn:hover {
-  background-color:#dc3545;
+  background-color: #dc3545;
   color: white;
   transform: translateY(-2px);
 }
@@ -46,8 +48,7 @@
   background-color: #fff;
 
   border-color: #880223;
-  background-color:#f8f9fa;
-
+  background-color: #f8f9fa;
   box-sizing: border-box;
   transition: border-color 0.3s, background-color 0.3s;
   border-radius: 12px;
@@ -64,11 +65,11 @@
 
   background: #880223;
   padding:15px 20px 15px;
-
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
+
 .ssh-Write {
   font-family: "Playfair Display", serif;
   font-size: 1.9rem;
@@ -76,10 +77,8 @@
   width: 300px;
   margin-left: -30px;
   color: #fffdfb;
-
   background:#880223;
   padding:15px 20px 15px;
-
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
@@ -153,14 +152,15 @@
   display: inline-block;
   font-size: 2.4rem;
 }
+}
 .ssh-CategoryRating-body {
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
   margin-bottom: 20px;
-
-    background-color: #880223;
+  background-color: #880223;
 }
+
 .stars-filled {
   position: absolute;
   top: 0;
@@ -171,6 +171,7 @@
   color: #f4c542;
   z-index: 1;
 }
+
 .stars-background {
   color: #ddd;
   z-index: 0;
@@ -200,7 +201,7 @@
 }
 
 .ssh-star:hover,
-.ssh-star:hover ~ .ssh-star {
+.ssh-star:hover~.ssh-star {
   color: #ffeb3b;
   transform: scale(1.2);
 }
@@ -220,6 +221,7 @@
   .ssh-rating-category {
     flex-direction: column;
   }
+
   .submit-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -241,3 +243,4 @@
 .ssha-user {
   font-size: 1.5rem;
 }
+
