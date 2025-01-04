@@ -19,7 +19,7 @@ const UserFeedBack = () => {
   // const [profilePic, setProfilePic] = useState("");
 
 
-  useEffect(() => {
+   useEffect(() => {
     // استرجاع المستخدم من localStorage عند تحميل الصفحة
     const temp = localStorage.getItem("currentUser");
 
@@ -131,33 +131,19 @@ const UserFeedBack = () => {
     saveToLocalStorage(updatedFeedbacks); // حفظ التغييرات في localStorage
   };
 
-  // const handleSignUp = (newUserName) => {
-  //   const newUser = {
-  //     id: Date.now(), // يمكن استخدام قيمة الوقت كمعرف للمستخدم
-  //     userName: newUserName,
-  //   };
-  //   setUsername(newUserName); // تعيين اسم المستخدم الجديد
-  //   saveUserData(newUser); // حفظ بيانات المستخدم في localStorage
-  // };
+   const handleSignUp = (newUserName) => {
+     const newUser = {
+      id: Date.now(), // يمكن استخدام قيمة الوقت كمعرف للمستخدم
+      userName: newUserName,
+    };
+    setUsername(newUserName); // تعيين اسم المستخدم الجديد
+    saveUserData(newUser); // حفظ بيانات المستخدم في localStorage
+  };
 
   return (
     <div className="userfeedback-body">
       <div className="userfeedback-container">
         <h2 className="ssh-Write">Feedbacks</h2>
-
-        {/* تسجيل الدخول أو التعديل على اسم المستخدم
-        {!CUser&& (
-          <div>
-            <input
-              type="text"
-              placeholder="Enter your username"
-              onBlur={(e) => handleSignUp(e.target.value)}
-            />
-            <button onClick={() => handleSignUp(document.querySelector("input").value)}>
-              Sign Up
-            </button>
-          </div>
-        )} */}
 
         <form onSubmit={handleSubmit}>
           <textarea

@@ -17,6 +17,8 @@ import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
 import SecondaryNavBar from "./components/SecondaryNavBar.js";
+import FeedBackCardSlider from "./components/FeedBackSection/FeedBackCardSlider.js";
+
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -203,6 +205,7 @@ function App() {
           ></Route>
           <Route path="/SignUp" element={<SignUp />} />
 
+
           <Route
             path="/HomePage"
             element={
@@ -217,6 +220,10 @@ function App() {
               </>
             }
           />
+
+
+          <Route path="/UserFeedBack" element={<UserFeedBack />} />
+
         </Routes>
       </Router>
     </>
