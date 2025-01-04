@@ -117,40 +117,44 @@ const UserFeedBack = () => {
           />
           <br />
           <div className="ssh-CategoryRating-body">
-            {["Content", "Reviews", "Interactive", "User Interface & Design", "Performance"].map(
-              (category) => (
-                <div key={category} className="ssh-rating-category">
-                  <h4>{category.replace(/([A-Z])/g, " $1")}</h4>
-                  <div className="ssh-star-rating">
-                    {[...Array(5)].map((_, index) => {
-                      const starValue = index + 1;
-                      return (
-                        <label key={starValue}>
-                          <input
-                            type="radio"
-                            name={category}
-                            value={starValue}
-                            checked={StarRatings[category] === starValue}
-                            onChange={() => handleStarClick(category, starValue)}
-                            style={{ display: "none" }}
-                          />
-                          <span
-                            className={`ssh-star ${
-                              starValue <= StarRatings[category]
-                                ? "filled-star"
-                                : "empty-star"
-                            }`}
-                            onClick={() => handleStarClick(category, starValue)}
-                          >
-                            &#9733;
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
+            {[
+              "Content",
+              "Reviews",
+              "Interactive",
+              "User Interface & Design",
+              "Performance",
+            ].map((category) => (
+              <div key={category} className="ssh-rating-category">
+                <h4>{category.replace(/([A-Z])/g, " $1")}</h4>
+                <div className="ssh-star-rating">
+                  {[...Array(5)].map((_, index) => {
+                    const starValue = index + 1;
+                    return (
+                      <label key={starValue}>
+                        <input
+                          type="radio"
+                          name={category}
+                          value={starValue}
+                          checked={StarRatings[category] === starValue}
+                          onChange={() => handleStarClick(category, starValue)}
+                          style={{ display: "none" }}
+                        />
+                        <span
+                          className={`ssh-star ${
+                            starValue <= StarRatings[category]
+                              ? "filled-star"
+                              : "empty-star"
+                          }`}
+                          onClick={() => handleStarClick(category, starValue)}
+                        >
+                          &#9733;
+                        </span>
+                      </label>
+                    );
+                  })}
                 </div>
-              )
-            )}
+              </div>
+            ))}
           </div>
 
           <button type="submit" className="ssha-submit-btn">
@@ -165,7 +169,8 @@ const UserFeedBack = () => {
               <li key={feedback.id} className="ssh-feedback-item">
                 <p className="ssh-feedback-username">
                   <strong>
-                  <i className="fa-solid fa-circle-user ssha-user"></i> {feedback.username}:
+                    <i className="fa-solid fa-circle-user ssha-user"></i>{" "}
+                    {feedback.username}:
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>

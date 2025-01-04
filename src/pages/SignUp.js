@@ -17,7 +17,7 @@ const SignUp = () => {
     age: "",
     gender: "",
     cities: "",
-    profilePic:"https://w7.pngwing.com/pngs/205/731/png-transparent-default-avatar-thumbnail.png"
+    profilePic: "/img/profile-pic.png",
   });
 
   const navigate = useNavigate();

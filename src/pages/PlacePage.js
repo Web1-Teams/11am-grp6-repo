@@ -5,6 +5,8 @@ import "./PlacePage.css";
 import PlacePageSlider from "../components/PlacePageSlider";
 import Footer from "../components/Footer";
 import Footer_cat from "../components/Footer_cat";
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const PlacePage = ({ places, updatePlaceRating }) => {
   const { id } = useParams();
@@ -127,7 +129,10 @@ const PlacePage = ({ places, updatePlaceRating }) => {
       updatePlaceRating(place.id, totalRating);
       setIsFeedbackOpen(false);
     } else {
-      alert("Please rate all categories!");
+      // alert("Please rate all categories!");
+      toast.error("Please provide rating for all categories.", {
+        icon: "⚠️",
+      });
     }
   };
 
@@ -376,6 +381,7 @@ const PlacePage = ({ places, updatePlaceRating }) => {
           c1tag5="Help"
         />
       </Footer>
+      <Toaster position="top-center" />
     </div>
   );
 };
