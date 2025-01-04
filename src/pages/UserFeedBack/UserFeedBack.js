@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./UserFeedBack.css";
+import { toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 const UserFeedBack = () => {
   const [userfeedbacks, setUserFeedbacks] = useState([]);
@@ -8,26 +10,55 @@ const UserFeedBack = () => {
     content: 0,
     reviews: 0,
     interactive: 0,
-    ui: 0,
+    design: 0,
     performance: 0,
   });
   const [username, setUsername] = useState("");
+  const [CUser, setCUser] = useState(null); // المستخدم الحالي بنحط هون
+  const [profilePic, setProfilePic] = useState("");
 
   useEffect(() => {
-    const temp = localStorage.getItem("currentUser") || "Guest";
-    const user = JSON.parse(temp);
-    const storedUsername = user.userName; // هيك تم الوصول لليوزر نيم في اللوكال ستورج
-    setUsername(storedUsername);
+    // استرجاع المستخدم من localStorage عند تحميل الصفحة
+    const temp = localStorage.getItem("currentUser");
+  const user = JSON.parse(temp);
+  if (user) {
+    setCUser(user); // تعيين المستخدم الحالي
+    setUsername(user.userName || "Guest"); // تعيين اسم المستخدم
+    setProfilePic(user.profilePic || ""); // استرجاع صورة البروفايل
+  } else {
+    setUsername("Guest"); // إذا لم يكن هناك مستخدم سابق، نعرض اسم "Guest"
+  }
 
-    const storedFeedbacks =
-
-      JSON.parse(localStorage.getItem(`userfeedbacks`)) || [];
-    setUserFeedbacks(storedFeedbacks); // تعيين التقييمات في الحالة
-
+  // استرجاع الفيدباك من localStorage
+  const storedFeedbacks = JSON.parse(localStorage.getItem("userfeedbacks")) || [];
+  setUserFeedbacks(storedFeedbacks); // تعيين الفيدباك في الحالة
   }, []);
 
+  // دالة لتحديث بيانات المستخدم في localStorage
+  const saveUserData = (user) => {
+    const userForms = localStorage.getItem("userForms"); // الحصول على بيانات المستخدمين المخزنة
+    let userFormsArray = userForms ? JSON.parse(userForms) : [];
+
+    // التحقق إذا كان المستخدم موجود من قبل
+    const userIndex = userFormsArray.findIndex((u) => u.id === user.id);
+
+    if (userIndex === -1) {
+      // إذا مكنش موجود يضيفه للاري تبعتنا
+      userFormsArray.push(user);
+    } else {
+      // إذا كان موجود تحديث البيانات تبعونه
+      userFormsArray[userIndex] = user;
+    }
+
+    // حفظ الاري في الوكال ستورج
+    localStorage.setItem("userForms", JSON.stringify(userFormsArray));
+
+    // حفظ المستخدم الحالي
+    localStorage.setItem("currentUser", JSON.stringify(user));
+  };
+
   const saveToLocalStorage = (feedbacks) => {
-    localStorage.setItem(`userfeedbacks`, JSON.stringify(feedbacks));
+    localStorage.setItem("userfeedbacks", JSON.stringify(feedbacks));
   };
 
   const calculateTotalPercentage = () => {
@@ -38,16 +69,15 @@ const UserFeedBack = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newUserFeedback.trim() === "") {
-      alert("Please write your feedback before submitting.");
+      toast.error("Please write your feedback before submitting.")
       return;
     }
 
     const allCategoriesRated = Object.values(StarRatings).every((rating) => rating > 0);
     if (!allCategoriesRated) {
-      alert("Please provide at least one star for all categories.");
+      toast.error("Please provide at least one star for all categories.")
       return;
     }
-
     const totalPercentage = calculateTotalPercentage();
     const feedback = {
       id: Date.now(),
@@ -55,22 +85,22 @@ const UserFeedBack = () => {
       StarRatings,
       totalPercentage,
       username,
+
     };
 
     const updatedFeedbacks = [feedback, ...userfeedbacks];
-    setUserFeedbacks(updatedFeedbacks);
-    saveToLocalStorage(updatedFeedbacks);
+    setUserFeedbacks(updatedFeedbacks); // تحديث الحالة مباشرة
+    saveToLocalStorage(updatedFeedbacks); // حفظ البيانات في localStorage
 
     setNewUserFeedback("");
     setStarRatings({
       content: 0,
       reviews: 0,
       interactive: 0,
-      ui: 0,
+      design: 0,
       performance: 0,
     });
-
-    alert("Feedback submitted successfully!");
+    toast.success("Feedback submitted successfully!");
   };
 
   const handleStarClick = (category, value) => {
@@ -80,16 +110,40 @@ const UserFeedBack = () => {
     }));
   };
 
-  const handleDeleteFeedback = (id) => {
-    const updatedFeedbacks = userfeedbacks.filter((feedback) => feedback.id !== id);
-    setUserFeedbacks(updatedFeedbacks);
-    saveToLocalStorage(updatedFeedbacks);
+  const handleDeleteFeedback = (id) => {//فنكشن حذف الفيدباك 
+    const updatedFeedbacks = userfeedbacks.filter((feedback) => feedback.id !== id);// بدور على id الفيدباك اللي بدي احذفه وبحذف كل معلوماته
+    setUserFeedbacks(updatedFeedbacks); // تحديث الستاتس
+    saveToLocalStorage(updatedFeedbacks); // حفظ التغييرات في localStorage
   };
+
+  // const handleSignUp = (newUserName) => {
+  //   const newUser = {
+  //     id: Date.now(), // يمكن استخدام قيمة الوقت كمعرف للمستخدم
+  //     userName: newUserName,
+  //   };
+  //   setUsername(newUserName); // تعيين اسم المستخدم الجديد
+  //   saveUserData(newUser); // حفظ بيانات المستخدم في localStorage
+  // };
 
   return (
     <div className="userfeedback-body">
       <div className="userfeedback-container">
         <h2 className="ssh-Write">Feedbacks</h2>
+        
+        {/* تسجيل الدخول أو التعديل على اسم المستخدم
+        {!CUser&& (
+          <div>
+            <input
+              type="text"
+              placeholder="Enter your username"
+              onBlur={(e) => handleSignUp(e.target.value)}
+            />
+            <button onClick={() => handleSignUp(document.querySelector("input").value)}>
+              Sign Up
+            </button>
+          </div>
+        )} */}
+
         <form onSubmit={handleSubmit}>
           <textarea
             value={newUserFeedback}
@@ -101,16 +155,9 @@ const UserFeedBack = () => {
           />
           <br />
           <div className="ssh-CategoryRating-body">
-
-            {[
-              "Content",
-              "Reviews",
-              "Interactive",
-              "User Interface & Design",
-              "Performance",
-            ].map((category) => (
+            {["Content", "Reviews", "Interactive", "Design", "Performance"].map((category) => (
               <div key={category} className="ssh-rating-category">
-                <h4>{category.replace(/([A-Z])/g, " $1")}</h4>
+                <h4>{category}</h4>
                 <div className="ssh-star-rating">
                   {[...Array(5)].map((_, index) => {
                     const starValue = index + 1;
@@ -120,15 +167,13 @@ const UserFeedBack = () => {
                           type="radio"
                           name={category}
                           value={starValue}
-                          checked={StarRatings[category] === starValue}
+                          checked={StarRatings[category.toLowerCase()] === starValue}
                           onChange={() => handleStarClick(category, starValue)}
                           style={{ display: "none" }}
                         />
                         <span
                           className={`ssh-star ${
-                            starValue <= StarRatings[category]
-                              ? "filled-star"
-                              : "empty-star"
+                            starValue <= StarRatings[category.toLowerCase()] ? "filled-star" : "empty-star"
                           }`}
                           onClick={() => handleStarClick(category, starValue)}
                         >
@@ -138,7 +183,6 @@ const UserFeedBack = () => {
                     );
                   })}
                 </div>
-
               </div>
             ))}
           </div>
@@ -154,10 +198,16 @@ const UserFeedBack = () => {
             {userfeedbacks.map((feedback) => (
               <li key={feedback.id} className="ssh-feedback-item">
                 <p className="ssh-feedback-username">
+                  
                   <strong>
-
-                  <i className="fa-solid fa-circle-user ssha-user"></i> {username}:
-
+                  
+            {profilePic ? (
+              <img src={profilePic} alt="Profile" className="ssh-profile-image" />
+            ) : (
+              // لا يتم عرض أي شيء إذا لم توجد صورة بروفايل
+              ""
+            )}
+            {feedback.username}:
                   </strong>
                 </p>
                 <p className="TheText-ssh">{feedback.text}</p>
@@ -176,7 +226,7 @@ const UserFeedBack = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => handleDeleteFeedback(feedback.id)}
+                  onClick={() => handleDeleteFeedback(feedback.id)}//نستدعي ال on click لما يكبس المستخدم على زر الحذف وبنفذ الفنكشن تبع الحذف
                   className="ssh-delete-btn"
                 >
                   Delete
@@ -188,6 +238,7 @@ const UserFeedBack = () => {
           <p>No feedback yet.</p>
         )}
       </div>
+      <Toaster position="top-center" />
     </div>
   );
 };
