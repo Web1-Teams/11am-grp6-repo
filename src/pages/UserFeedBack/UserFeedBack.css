@@ -1,7 +1,26 @@
-.userfeedback-body{
-  background-color: #f8f9fa;
+@keyframes backgroundChange {
+  0% {
+    background-color: #f7e0e0;
+  }
+
+  50% {
+    background-color: #faece2;
+  }
+
+  100% {
+    background-color: #f5dfeb;
+  }
+}
+
+body {
+  background-color: #ddd3d3;
+  animation: backgroundChange 8s infinite;
+}
+
+.userfeedback-body {
   overflow-y: hidden;
 }
+
 .userfeedback-container {
   width: 100%;
   max-width: 1200px;
@@ -18,6 +37,7 @@
   padding-bottom: 40px;
   overflow-x: hidden;
 }
+
 .ssh-delete-btn {
   background-color: #ff4d4d;
   color: white;
@@ -42,27 +62,29 @@
   resize: vertical;
   background-color: #fff;
   border-color: #800020;
-  background-color:#f8f9fa;
+  background-color: #f8f9fa;
   box-sizing: border-box;
   transition: border-color 0.3s, background-color 0.3s;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
- }
+}
+
 .ssh-TheFeedBacks {
   font-family: 'Playfair Display', serif;
   font-size: 1.9rem;
   margin-bottom: 0px;
-   width: 300px;
+  width: 300px;
   margin-left: -30px;
   color: #fffdfb;
   background: #f4c542;
-  padding:15px 20px 15px;
+  padding: 15px 20px 15px;
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-  
+
 }
+
 .ssh-Write {
   font-family: 'Playfair Display', serif;
   font-size: 1.9rem;
@@ -70,8 +92,8 @@
   width: 300px;
   margin-left: -30px;
   color: #fffdfb;
-  background:#f4c542;
-  padding:15px 20px 15px;
+  background: #f4c542;
+  padding: 15px 20px 15px;
   border-radius: 0 50px 50px 0;
   text-align: left;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
@@ -147,15 +169,17 @@
   position: relative;
   display: inline-block;
   font-size: 2.4rem;
-  
+
 }
-.ssh-CategoryRating-body{
+
+.ssh-CategoryRating-body {
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   padding: 25px;
   margin-bottom: 20px;
-    background-color: #800020;
+  background-color: #800020;
 }
+
 .stars-filled {
   position: absolute;
   top: 0;
@@ -166,6 +190,7 @@
   color: #f4c542;
   z-index: 1;
 }
+
 .stars-background {
   color: #ddd;
   z-index: 0;
@@ -183,7 +208,7 @@
   align-items: center;
 }
 
-.ssh-star{
+.ssh-star {
   font-size: 30px;
   color: #ddd;
   cursor: pointer;
@@ -195,7 +220,7 @@
 }
 
 .ssh-star:hover,
-.ssh-star:hover ~ .ssh-star {
+.ssh-star:hover~.ssh-star {
   color: #ffeb3b;
   transform: scale(1.2);
 }
@@ -220,6 +245,7 @@
   .ssh-rating-category {
     flex-direction: column;
   }
+
   .submit-btn {
     font-size: 16px;
     padding: 10px 20px;
@@ -234,9 +260,12 @@
     font-size: 14px;
   }
 }
-.TheText-ssh{
-overflow-wrap: break-word; 
-word-wrap: break-word;}
-.ssha-user{
-font-size: 1.5rem;
+
+.TheText-ssh {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.ssha-user {
+  font-size: 1.5rem;
 }

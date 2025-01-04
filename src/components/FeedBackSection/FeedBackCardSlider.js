@@ -12,13 +12,13 @@ const FeedBackCardSlider = () => {
 
   useEffect(() => {
     const storedFeedbacks =
-      JSON.parse(localStorage.getItem("userfeedbacks-Guest")) || [];
+      JSON.parse(localStorage.getItem("userfeedbacks")) || [];
     setFeedbacks(storedFeedbacks);
   }, []);
 
   const settings = {
-    infinite: true,
-    slidesToShow: 3.5,
+    infinite: false,
+    slidesToShow: 3.7,
     slidesToScroll: 1,
     arrows: true,
     dots: true,
@@ -55,8 +55,8 @@ const FeedBackCardSlider = () => {
       <div className="carousel-container">
         <Slider {...settings}>
           {feedbacks.length > 0 ? (
-            feedbacks.map((feedback, index) => (
-              <ColorCard key={index} feedback={feedback} />
+            feedbacks.map((userfeedbacks, index) => (
+              <ColorCard key={index} userfeedbacks={userfeedbacks} />
             ))
           ) : (
             <p style={{ textAlign: "center", color: "#888" }}>
