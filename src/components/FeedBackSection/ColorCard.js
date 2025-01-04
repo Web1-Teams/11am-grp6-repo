@@ -1,38 +1,76 @@
-const cards = [
-  {
-    background: "#800020",
-    borderRadius: "50px 0px 80px 0",
-    boxShadow: "0 6px 8px rgba(0, 0, 0, 0.58)", 
-  },
-];
+import React from "react";
 
-const ColorCard = () => {
+const ColorCard = ({ feedback }) => {
+  // Default design properties for the card
+  const cardDesign = {
+    background: "#800020",
+    borderRadius: "45px 0px 60px 0",
+    boxShadow: "0 6px 8px rgba(0, 0, 0, 0.58)",
+  };
+
   return (
     <div
       style={{
+        width: "95%", // Make it full width for small screens
+        maxWidth: "310px", // Cap the width to maintain design consistency
+        height: "170px",
+        margin: "10px", // Adds spacing for all screen sizes
+        borderRadius: cardDesign.borderRadius,
+        backgroundColor: cardDesign.background,
+        boxShadow: cardDesign.boxShadow,
+        position: "relative",
+        padding: "15px",
+        color: "#fff",
         display: "flex",
-        justifyContent: "center", 
-        alignItems: "flex-start", 
-        flexWrap: "wrap",
-        minHeight: "40vh", 
-        backgroundColor: "#f5f5f5",
-        padding: 0,
+        flexDirection: "column",
+        justifyContent: "space-between",
+        boxSizing: "border-box", // Ensures padding doesn't exceed dimensions
       }}
     >
-      {cards.map((card, index) => (
-        <div
-          key={index}
+      {feedback ? (
+        <div>
+          <div
+            style={{
+              position: "absolute",
+              top: "5px",
+              left: "10px",
+              backgroundImage: "url('/path/to/user-image.jpg')", 
+              backgroundPosition: "center",
+              borderRadius: "50%",
+            }}
+          ></div>
+          <p
+            style={{ fontWeight: "700", fontSize: "18px", marginLeft: "65px" , marginTop:"3px" }}
+          >
+            
+            {feedback.username}
+          </p>
+          <p
+            style={{ fontSize: "16px", marginLeft: "12px", textAlign: "left" }}
+          ><span><hr className="custom-hr"
           style={{
-            width: "480px",
-            height: "230px",
-            margin: "0 10px", 
-            borderRadius: card.borderRadius,
-            backgroundColor: card.background,
-            boxShadow: card.boxShadow || "none",
-            position: "relative",
+            marginTop: "-7px",
+            marginBottom: "14px", 
+            width: "70%", 
+            height: "2px", 
+            margin: "0", 
+            border: "none", 
+            background: "#fff", 
           }}
-        ></div>
-      ))}
+        /></span>
+            {feedback.text}
+          </p>
+          <p
+            style={{ fontSize: "14px", textAlign: "left", marginTop: "40px" , marginLeft: "6px" }}
+          >
+            <strong>Total Rating: {feedback.totalPercentage}%</strong>
+          </p>
+        </div>
+      ) : (
+        <p style={{ fontSize: "16px", textAlign: "center", padding: "20px" }}>
+          No Feedback
+        </p>
+      )}
     </div>
   );
 };
