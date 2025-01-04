@@ -23,11 +23,10 @@ class ActionProvider {
                 (restaurant) =>
                     `🔹 ${restaurant.Name}\n` +
                     `\n📍 Location: ${restaurant.Locationname}\n` +
-                    `\n⭐ Rating: ${restaurant.Rating}\n` +
+                    `\n⭐ Rating: ${restaurant.Rating} %\n` +
                     `\n📝 Description: ${restaurant.Description}\n` +
                     `\n🚗 Parking: ${restaurant.Haveaparking ? 'Available' : 'Not Available'}\n` +
-                    `\n✅ Visited: ${restaurant.Ischeckclicked ? 'Yes' : 'No'}\n` +
-                    `\n ❤️ Favourite: ${restaurant.Isheartclicked ? 'Yes' : 'No'}\n`+
+                    `\n🕒 Open 24/7: ${restaurant.Open247? 'Yes' : 'No'}\n` +
                     '----------------------------------------------'
             ).join("\n\n")
         );
@@ -126,16 +125,16 @@ class ActionProvider {
             message = this.createChatBotMessage("I'm here to help! Please let me know how I can assist you. 🤝");
             break;
         case "What can you do?":
-            message = this.createChatBotMessage("I can answer your questions about Nablus, provide information on local attractions, and help you plan your visit. I can also answer general questions and provide basic information. 🗺️🤖");
+            message = this.createChatBotMessage("I can answer your questions about Nablus, provide information on local attractions, and help you plan your visit. I can also answer general questions about VisitMe website and provide basic information. 🗺️🤖");
             break;
         case "What are you good at?":
-            message = this.createChatBotMessage("I'm good at providing information about Nablus, its attractions, and local tips. I can also answer general questions and provide basic information. 🌍");
+            message = this.createChatBotMessage("I'm good at providing information about Nablus, its attractions, and local tips. I can also answer general questions about VisitMe website and provide basic information. 🌍");
             break;
             case "Are you a robot?":
-                message = this.createChatBotMessage("That's a perceptive question! I am an AI, but I'm always learning and improving. 🤖");
+                message = this.createChatBotMessage("That's a perceptive question! I am a ChatBot, but I'm always learning and improving. 🤖");
                 break;
             case "Do you have feelings?":
-                message = this.createChatBotMessage("As an AI, I don't experience emotions in the same way humans do. But I can process and understand information related to emotions. 😊");
+                message = this.createChatBotMessage("As a Chatbot, I don't experience emotions in the same way humans do. But I can process and understand information related to emotions. 😊");
                 break;
             case "Tell me a joke":
                 message = this.createChatBotMessage("Why don't scientists trust atoms? Because they make up everything! 😜"); 
@@ -173,12 +172,37 @@ class ActionProvider {
                 case "Can I save my favorite places?":
                     message = this.createChatBotMessage("⭐ Absolutely! Log in to your account and use the 'Add to Favorites' button on any place you like.");
                     break;
+                    
                 case "What languages does VisitMe support?":
                     message = this.createChatBotMessage("🌐 Currently, VisitMe supports English , with more languages coming soon!");
                     break;
                 case "Is there a mobile app?":
                     message = this.createChatBotMessage("📱 We're working on a VisitMe mobile app! Stay tuned for updates.");
                     break;
+                case "What events are happening in Nablus?":
+                    message = this.createChatBotMessage("You can find information about upcoming events in the 'Events' section of the VisitMe website. 🎉");
+                    break;
+                 case "who is Dareen Abu Aisheh":
+                        message = this.createChatBotMessage("Dareen is my Developer 💻 , She made me! \nThanks for her 💗 \nShe also has made SubNavBar , About us page , Card Slider and searchBar placement in VisitMe Website ⚡");
+                        break;
+                 case "who is Suhad Shaheen":
+                        message = this.createChatBotMessage("Suhad is our talented UX/UI designer, ensuring the VisitMe website is user-friendly and visually appealing. 🎨");
+                        break;
+                 case "who is Hamza Nasser":
+                        message = this.createChatBotMessage("Hamza Nasser is a developer who is funny and loves chess and team working, with coordination with the team he created Login, SignUp and Add Place pages.He also connected the site pages with the current user info by using local storage. 💻♟️ ");
+                        break;
+                 case "who is Hamza Zarour":
+                        message = this.createChatBotMessage("Hamza Zarour is our project manager, coordinating the team and keeping everything on track. 🗂️");
+                        break;
+                 case "who is Remaa Saleh":
+                        message = this.createChatBotMessage("Remaa did the create category page logic and design, the favourite page logic ,and design , and did there sub nav bars design and logic too , the footer companants design and cereation , map and slider  in the place page , design the placepage , and make the rate in cards transfer from percentage to a dynamic filling stars , collect data for restaurants and cafes she's gorgeous 🤍");
+                        break;
+                 case "who is Waseem Qaneer":
+                        message = this.createChatBotMessage("Waseem is one of the team members who brought the API ideas to the site and created the weather Search and calendar.🌐");
+                        break;
+                 case "who is Ashour Jarrar":
+                        message = this.createChatBotMessage("Ashour is our frontend developer, crafting interactive and engaging features for the website. 🖥️");
+                        break;
                 default:
                     message = this.createChatBotMessage("🤔 I'm here to help! Ask me anything about VisitMe or Nablus.");
                     break;
@@ -192,7 +216,7 @@ class ActionProvider {
   }
   handleGeneralQuery(query) {
     const message = this.createChatBotMessage(
-      "I'm sorry, I didn't understand that. Can you please rephrase your question?"
+      "I'm sorry, I didn't understand that. Can you please rephrase your question? 🤔"
     );
     this.setState((prev) => ({
       ...prev,

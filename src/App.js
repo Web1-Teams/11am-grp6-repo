@@ -16,8 +16,10 @@ import ProfilePage from "./pages/ProfilePage.js";
 import EventPage from "./pages/EventPage/EventPage.js";
 import UserFeedBack from "./pages/UserFeedBack/UserFeedBack.js";
 import MyChatBot from "./components/Chatbot/MyChatBot.js";
+import TeamPage from "./pages/AboutUs/TeamPage.js"
 import SecondaryNavBar from "./components/SecondaryNavBar.js";
 import FeedBackCardSlider from "./components/FeedBackSection/FeedBackCardSlider.js";
+
 
 
 function App() {
@@ -62,8 +64,34 @@ function App() {
       <MyChatBot />
 
       <Router>
+
+      <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+        <Routes>
+          <Route path="team-page" element={<TeamPage/>}>
+          </Route>
+          <Route
+            path="/"
+            element={
+              <>
+                <NavBar
+                  BrandName="VisitMe"
+                  i1="Home"
+                  i2="Calendar"
+                  i3=" My Favorites"
+                />
+                <HomePage places={places} />
+              </>
+            }
+          />
+
         <Routes>
           <Route path="/" element={<Login places={places} />} />
+
 
           <Route
             path="/add-place"
@@ -193,12 +221,7 @@ function App() {
             path="/about-us"
             element={
               <>
-                <NavBar
-                  BrandName="VisitMe"
-                  i1="Home"
-                  i2="Calendar"
-                  i3=" My Favorites"
-                />
+               
                 <AboutUs places={places} />
               </>
             }
